@@ -8,15 +8,12 @@ import truespot.business.contract.UsersManager;
 @Service
 public class BusinessManagerImpl extends BusinessManager {
 
-    private UsersManager userManager;
-
-
+     UsersManager userManager;
 
 
     public UsersManager getUserManager(UsersManager usersManager) {
         return usersManager;
     }
-
 
     @Autowired
     public void setUserManager(UsersManager userManager) {

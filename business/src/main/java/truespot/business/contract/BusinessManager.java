@@ -2,8 +2,10 @@ package truespot.business.contract;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import truespot.consumer.contract.DaoFactory;
 
+@Service
 public abstract class BusinessManager {
 
     private DaoFactory daoFactory;
@@ -13,7 +15,7 @@ public abstract class BusinessManager {
     }
 
     @Autowired
-    public void setDaoFactory(DaoFactory daoFactory) {
+     void setDaoFactory(DaoFactory daoFactory) {
         this.daoFactory = daoFactory;
     }
 }
