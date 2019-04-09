@@ -12,8 +12,6 @@ import java.util.Optional;
 @Service
 public class UsersManagerImpl extends BusinessManagerImpl implements UsersManager {
 
-
-
     @Override
     public List<Users> findAllUser() {
         return getDaoFactory().getUsersRepository().findAll();

@@ -12,7 +12,7 @@ public enum  ClimbingRoadType implements Serializable {
     GRANDEVOIE(null,"Big Road","Grande voie"),
     RELAIS(null,"Multi-Pich climbing","Relais"),
     FREE(null,"Free climbing","Escalade libre"),
-    ClimbingRoadType(null,"DeepWater","Escalade maritime");
+    DEEPWATER(null,"DeepWater","Escalade maritime");
 
 
     @Id
@@ -26,6 +26,30 @@ public enum  ClimbingRoadType implements Serializable {
     ClimbingRoadType(ClimbingRoad climbingRoad, String en, String fr) {
         this.climbingRoad = climbingRoad;
         this.en = en;
+        this.fr = fr;
+    }
+
+    public ClimbingRoad getClimbingRoad() {
+        return climbingRoad;
+    }
+
+    public void setClimbingRoad(ClimbingRoad climbingRoad) {
+        this.climbingRoad = climbingRoad;
+    }
+
+    public String getEn() {
+        return en;
+    }
+
+    public void setEn(String en) {
+        this.en = en;
+    }
+
+    public String getFr() {
+        return fr;
+    }
+
+    public void setFr(String fr) {
         this.fr = fr;
     }
 }

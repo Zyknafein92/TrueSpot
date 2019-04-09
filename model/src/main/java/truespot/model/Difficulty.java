@@ -25,14 +25,14 @@ public class Difficulty implements Serializable {
     @Column(name="letter")
     private char letter;
 
-    @Column(name="symbole")
-    private char symbole;
+    @Column(name="symbol")
+    private char symbol;
 
     protected Difficulty(){}
 
-    public Difficulty(int number, char letter, char symbole) {
+    public Difficulty(int number, char letter, char symbol) {
         this.number = number;
         this.letter = letter;
-        this.symbole = symbole;
+        this.symbol = symbol;
     }
 }
