@@ -28,6 +28,7 @@ public class ClimbingRoad implements Serializable {
     @Column(name="difficulty")
     private Difficulty difficulty;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="climbing_road_type")
     private ClimbingRoadType type;
 
@@ -38,4 +39,11 @@ public class ClimbingRoad implements Serializable {
         this.difficulty = difficulty;
         this.type = type;
     }
+
+
+    public ClimbingRoad(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
 }
