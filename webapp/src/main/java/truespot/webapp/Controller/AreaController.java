@@ -29,10 +29,12 @@ public class AreaController {
         return areaManager.saveArea(Area);
     }
 
+    //todo a rework
     @PutMapping(value = "/area/{id}")
     public void updateArea(@PathVariable Long id , @RequestBody Area Area) {
         areaManager.updateArea(id,Area);
     }
+
 
     @DeleteMapping(value= "/area/{id}")
     public void deleteArea(@PathVariable Long id){
