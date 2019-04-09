@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @Service
 public class DifficultyManagerImpl extends BusinessManagerImpl implements DifficultyManager {
+
     @Override
     public Optional<Difficulty> getDifficulty(Long id) {
         return getDaoFactory().getDifficultyRepository().findById(id);

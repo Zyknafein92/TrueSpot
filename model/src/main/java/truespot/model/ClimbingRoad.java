@@ -28,7 +28,7 @@ public class ClimbingRoad implements Serializable {
     @Column(name="difficulty")
     private Difficulty difficulty;
 
-    @Enumerated(EnumType.STRING)
+  //  @Enumerated(EnumType.STRING)
     @Column(name="climbing_road_type")
     private ClimbingRoadType type;
 
@@ -41,9 +41,8 @@ public class ClimbingRoad implements Serializable {
     }
 
 
-    public ClimbingRoad(String name, String description) {
-        this.name = name;
-        this.description = description;
+    protected ClimbingRoad() {
+
     }
 
 }

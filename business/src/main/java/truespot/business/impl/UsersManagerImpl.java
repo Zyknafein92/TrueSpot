@@ -2,7 +2,6 @@ package truespot.business.impl;
 
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import truespot.business.contract.UsersManager;
 import truespot.model.Users;
 import java.util.List;
@@ -18,7 +17,7 @@ public class UsersManagerImpl extends BusinessManagerImpl implements UsersManage
     }
 
     @Override
-    public Optional<Users> getUser(@PathVariable Long id) {
+    public Optional<Users> getUser(Long id) {
        return getDaoFactory().getUsersRepository().findById(id);
     }
 

@@ -1,7 +1,6 @@
 package truespot.business.impl;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import truespot.business.contract.AreaManager;
 import truespot.model.Area;
 import java.util.List;
@@ -17,7 +16,7 @@ public class AreaManagerImpl extends BusinessManagerImpl implements AreaManager 
     }
 
     @Override
-    public Optional<Area> getArea(@PathVariable Long id) {
+    public Optional<Area> getArea(Long id) {
         return getDaoFactory().getAreaRepository().findById(id);
     }
 

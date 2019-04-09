@@ -9,14 +9,18 @@ import truespot.consumer.implement.*;
 
 public interface DaoFactory {
 
-    UsersRepository getUsersRepository();
+    AdminRepository getAdminRepository();
     AreaRepository getAreaRepository();
     ClimbingRoadRepository getClimbingRoadRepository();
     ClimbingRoadTypeRepository getClimbingRoadTypeRepository();
+    DepartmentRepository getDepartmentRepository();
     DifficultyRepository getDifficultyRepository();
+    SpotRepository getSpotRepository();
+    TopoRepository getTopoRepository();
+    UsersRepository getUsersRepository();
 
     @Autowired
-    void setUsersRepository(UsersRepository usersRepository);
+    void setAdminRepository(AdminRepository adminRepository);
     @Autowired
     void setAreaRepository(AreaRepository areaRepository);
     @Autowired
@@ -24,5 +28,13 @@ public interface DaoFactory {
     @Autowired
     void setClimbingRoadTypeRepository(ClimbingRoadTypeRepository climbingRoadTypeRepository);
     @Autowired
+    void setDepartmentRepository(DepartmentRepository departmentRepository);
+    @Autowired
     void setDifficultyRepository(DifficultyRepository difficultyRepository);
+    @Autowired
+    void setSpotRepository(SpotRepository spotRepository);
+    @Autowired
+    void setTopoRepository(TopoRepository topoRepository);
+    @Autowired
+    void setUsersRepository(UsersRepository usersRepository);
 }
