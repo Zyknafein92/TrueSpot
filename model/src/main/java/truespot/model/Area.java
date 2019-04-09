@@ -14,7 +14,8 @@ public class Area implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long area_id;
+    @Column(name ="area_id")
+    private long id;
 
    // private Spot spot;
 
