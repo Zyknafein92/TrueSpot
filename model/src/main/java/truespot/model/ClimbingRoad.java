@@ -14,7 +14,7 @@ public class ClimbingRoad implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long climbing_road_id;
+    private long id;
 
     @Column(name="area_id")
     private Area area;
@@ -28,7 +28,6 @@ public class ClimbingRoad implements Serializable {
     @OneToOne
     private Difficulty difficulty;
 
-  //  @Enumerated(EnumType.STRING)
     @Column(name="climbing_road_type")
     private ClimbingRoadType type;
 
@@ -41,7 +40,7 @@ public class ClimbingRoad implements Serializable {
     }
 
 
-    protected ClimbingRoad() {
+    public ClimbingRoad() {
 
     }
 

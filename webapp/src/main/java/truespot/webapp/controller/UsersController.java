@@ -57,7 +57,8 @@ public class UsersController {
 
     @PutMapping(value = "/users/{id}")
     public void updateUser(@PathVariable Long id , @RequestBody User user) {
-        usersManager.updateUser(id,user);
+        user.setId(id);
+        usersManager.saveUser(user);
     }
 
     @DeleteMapping(value= "/users/{id}")

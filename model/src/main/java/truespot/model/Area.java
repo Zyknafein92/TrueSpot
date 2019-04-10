@@ -30,7 +30,7 @@ public class Area implements Serializable {
     @Column(name="height")
     private int height;
 
-    protected Area() {}
+    public Area() {}
 
     public Area(String name, String description, String orientation, int roadNumber, int height) {
         this.name = name;
