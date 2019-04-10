@@ -3,7 +3,7 @@ package truespot.business.impl;
 
 import org.springframework.stereotype.Service;
 import truespot.business.contract.UsersManager;
-import truespot.model.Users;
+import truespot.model.User;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,22 +12,22 @@ import java.util.Optional;
 public class UsersManagerImpl extends BusinessManagerImpl implements UsersManager {
 
     @Override
-    public List<Users> findAllUser() {
+    public List<User> findAllUser() {
         return getDaoFactory().getUsersRepository().findAll();
     }
 
     @Override
-    public Optional<Users> getUser(Long id) {
+    public Optional<User> getUser(Long id) {
        return getDaoFactory().getUsersRepository().findById(id);
     }
 
     @Override
-    public Users saveUser(Users user) {
+    public User saveUser(User user) {
         return getDaoFactory().getUsersRepository().save(user);
     }
 
     @Override
-    public void updateUser(Long id, Users user) {
+    public void updateUser(Long id, User user) {
         getDaoFactory().getUsersRepository().save(user); //todo : a corriger
     }
 

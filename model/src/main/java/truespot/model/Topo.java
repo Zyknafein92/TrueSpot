@@ -20,17 +20,15 @@ public class Topo implements Serializable {
     @Column(name = "name")
     private String name;
 
-    //  @OneToMany(mappedBy = "users")
-    @Column(name = "user_id")
-    private Users user;
+    @ManyToOne
+    private User user;
 
-    //   @OneToOne(mappedBy = "department")
-    @Column(name = "department")
+    @OneToOne
     private Department department;
 
     protected Topo(){};
 
-    public Topo(String name, Users user, Department department) {
+    public Topo(String name, User user, Department department) {
         this.name = name;
         this.user = user;
         this.department = department;

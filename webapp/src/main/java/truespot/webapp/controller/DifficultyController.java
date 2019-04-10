@@ -1,7 +1,7 @@
-package truespot.webapp.Controller;
+package truespot.webapp.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DepartmentController {
+public class DifficultyController {
 }

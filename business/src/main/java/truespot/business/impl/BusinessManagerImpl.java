@@ -9,7 +9,7 @@ import truespot.model.Department;
 @Service
 public class BusinessManagerImpl extends BusinessManager {
 
-    private AdminManager adminManager;
+
     private AreaManager areaManager;
     private ClimbingRoadManager climbingRoadManager;
     private ClimbingRoadTypeManager climbingRoadTypeManager;
@@ -22,7 +22,7 @@ public class BusinessManagerImpl extends BusinessManager {
 
     //Getter
 
-    public AdminManager getAdminManager() { return adminManager; }
+
 
     public AreaManager getAreaManager() { return areaManager; }
 
@@ -43,8 +43,6 @@ public class BusinessManagerImpl extends BusinessManager {
 
 
     //Setter
-    @Autowired
-    public void setAdminManager(AdminManager adminManager) { this.adminManager = adminManager; }
 
     @Autowired
     public void setAreaManager(AreaManager areaManager) { this.areaManager = areaManager; }

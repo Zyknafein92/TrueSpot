@@ -5,13 +5,14 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Getter
 @Setter
 @Entity
-@Table(name="Users", schema= "public")
-public class Users implements Serializable {
+@Table(name="User", schema= "public")
+public class User implements Serializable {
 
 
     @Id
@@ -19,6 +20,11 @@ public class Users implements Serializable {
     @Column(name="users_id")
     private long id;
 
+    @OneToMany
+    private List<Role> roles;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Topo> topo;
 
     @Column(name="name")
     private String name;
@@ -47,9 +53,9 @@ public class Users implements Serializable {
     @Column(name="isadmin")
     private Boolean admin;
 
-    protected Users(){}
+    public User(){}
 
-    public Users(String name, String realName, int age, String gender, String pseudo, String password, String email, String phoneNumber, Boolean admin) {
+    public User(String name, String realName, int age, String gender, String pseudo, String password, String email, String phoneNumber, Boolean admin) {
         this.name = name;
         this.realName = realName;
         this.age = age;

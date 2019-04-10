@@ -10,7 +10,7 @@ import java.util.List;
 public class DepartmentManagerImpl extends BusinessManagerImpl implements DepartmentManager {
 
     @Override
-    public List<Department> findAllDepartment(Department department) {
+    public List<Department> findAllDepartment() {
         return getDaoFactory().getDepartmentRepository().findAll();
     }
 }

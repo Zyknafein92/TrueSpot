@@ -25,7 +25,7 @@ public class ClimbingRoad implements Serializable {
     @Column(name="description")
     private String description;
 
-    @Column(name="difficulty")
+    @OneToOne
     private Difficulty difficulty;
 
   //  @Enumerated(EnumType.STRING)

@@ -16,4 +16,5 @@ public interface AreaManager {
     void updateArea(Long id, Area area);
 
     void deleteArea(Long id);
+
 }

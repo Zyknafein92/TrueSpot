@@ -7,7 +7,7 @@ import truespot.consumer.contract.DaoFactory;
 @Component
 public class DaoFactoryImpl implements DaoFactory {
 
-    private AdminRepository adminRepository;
+
     private AreaRepository areaRepository;
     private ClimbingRoadRepository climbingRoadRepository;
     private ClimbingRoadTypeRepository climbingRoadTypeRepository;
@@ -22,8 +22,6 @@ public class DaoFactoryImpl implements DaoFactory {
 
 
     // Getters
-    @Override
-    public AdminRepository getAdminRepository() { return adminRepository; }
     @Override
     public AreaRepository getAreaRepository() {
         return areaRepository;
@@ -46,11 +44,7 @@ public class DaoFactoryImpl implements DaoFactory {
     }
 
     //Setters
-    @Override
-    @Autowired
-    public void setAdminRepository(AdminRepository adminRepository) {
-        this.adminRepository = adminRepository;
-    }
+
 
     @Override
     @Autowired

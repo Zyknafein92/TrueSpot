@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DepartmentManager {
 
-    List<Department> findAllDepartment (Department department);
+    List<Department> findAllDepartment();
 }

@@ -1,4 +1,4 @@
-package truespot.webapp.Controller;
+package truespot.webapp.controller;
 
 import org.springframework.stereotype.Service;
 
