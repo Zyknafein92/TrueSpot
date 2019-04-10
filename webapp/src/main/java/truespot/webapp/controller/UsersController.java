@@ -27,9 +27,12 @@ public class UsersController {
        if(user.isPresent()){
            User userReal = user.get();
            UserDTO userDTO = new UserDTO();
-           userDTO.setId(userReal.getId());
-           userDTO.setName(userReal.getName());
+
+           userDTO.setPseudo(userReal.getPseudo());
            userDTO.setAge(userReal.getAge());
+           userDTO.setGender(userReal.getGender());
+           userDTO.setEmail(userReal.getEmail());
+
            return userDTO;
        }throw new RuntimeException("user not found");
     }
