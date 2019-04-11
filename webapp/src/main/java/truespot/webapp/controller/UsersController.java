@@ -3,7 +3,7 @@ package truespot.webapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import truespot.business.contract.UsersManager;
+import truespot.business.contract.UserManager;
 import truespot.model.User;
 import truespot.webapp.dto.UserDTO;
 
@@ -14,27 +14,27 @@ import java.util.Optional;
 public class UsersController {
 
     @Autowired
-    private UsersManager usersManager;
+    private UserManager userManager;
 
     @GetMapping(value="/users")
     public List<User> getUsers(){
-        return usersManager.findAllUser();
+        return userManager.findAllUser();
     }
 
     @GetMapping(value="/users/{id}")
     public UserDTO getUser(@PathVariable Long id) {
-       Optional<User> user = usersManager.getUser(id);
-       if(user.isPresent()){
-           User userReal = user.get();
-           UserDTO userDTO = new UserDTO();
+        Optional<User> user = userManager.getUser(id);
+        if(user.isPresent()){
+            User userReal = user.get();
+            UserDTO userDTO = new UserDTO();
 
-           userDTO.setPseudo(userReal.getPseudo());
-           userDTO.setAge(userReal.getAge());
-           userDTO.setGender(userReal.getGender());
-           userDTO.setEmail(userReal.getEmail());
+            userDTO.setPseudo(userReal.getPseudo());
+            userDTO.setAge(userReal.getAge());
+            userDTO.setGender(userReal.getGender());
+            userDTO.setEmail(userReal.getEmail());
 
-           return userDTO;
-       }throw new RuntimeException("user not found");
+            return userDTO;
+        }throw new RuntimeException("user not found");
     }
 
     @PostMapping(value="/users")
@@ -50,20 +50,19 @@ public class UsersController {
         user.setEmail(userDTO.getEmail());
         user.setPhoneNumber(userDTO.getPhoneNumber());
 
-        user = usersManager.saveUser(user);
+        user = userManager.saveUser(user);
         userDTO.setId(user.getId());
         return userDTO;
     }
 
     @PutMapping(value = "/users/{id}")
     public void updateUser(@PathVariable Long id , @RequestBody User user) {
-        user.setId(id);
-        usersManager.saveUser(user);
+        userManager.updateUser(id, user);
     }
 
     @DeleteMapping(value= "/users/{id}")
     public void deleteUser(@PathVariable Long id){
-        usersManager.deleteUser(id);
+        userManager.deleteUser(id);
     }
 
 

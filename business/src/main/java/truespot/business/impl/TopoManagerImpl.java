@@ -28,7 +28,8 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
 
     @Override
     public void updateTopo(Long id, Topo topo) {
-        //todo
+        topo.setId(id);
+        getDaoFactory().getTopoRepository().save(topo);
     }
 
     @Override

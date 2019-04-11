@@ -27,7 +27,8 @@ public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements Clim
 
     @Override
     public void updateClimbingRoad(Long id, ClimbingRoad climbingRoad) {
-      //TODO
+      climbingRoad.setId(id);
+      getDaoFactory().getClimbingRoadRepository().save(climbingRoad);
     }
 
     @Override

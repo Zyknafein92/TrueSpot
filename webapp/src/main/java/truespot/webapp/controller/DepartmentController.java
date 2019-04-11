@@ -51,8 +51,7 @@ public class DepartmentController {
 
     @PutMapping(value = "/department/{id}")
     public void updateDepartment(@PathVariable Long id , @RequestBody Department department) {
-        department.setId(id);
-        departmentManager.saveDepartment(department);
+        departmentManager.updateDepartment(id,department);
     }
 
 

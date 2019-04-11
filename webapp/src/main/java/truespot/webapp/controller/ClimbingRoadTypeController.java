@@ -47,12 +47,11 @@ public class ClimbingRoadTypeController {
 
     @PutMapping(value="/roadType/{id}")
     public void updateClimbingRoadType(@PathVariable Long id, @RequestBody ClimbingRoadType climbingRoadType){
-        climbingRoadType.setId(id);
-        climbingRoadTypeManager.saveClimbingRoadType(climbingRoadType);
+        climbingRoadTypeManager.updateClimbingRoadType(id,climbingRoadType);
     }
 
     @DeleteMapping(value="/roadType/{id}")
     public void deleteClimbingRoadType(@PathVariable Long id){
-     climbingRoadTypeManager.deleteClimbingRoadType(id);
+        climbingRoadTypeManager.deleteClimbingRoadType(id);
     }
 }

@@ -28,8 +28,8 @@ public class TopoController {
             TopoDTO topoDTO = new TopoDTO();
 
             topoDTO.setName(topoReal.getName());
-          //  topoDTO.setUser(topoReal.getUser());
-          //  topoDTO.setDepartment(topoReal.getDepartment());
+            //  topoDTO.setUser(topoReal.getUser());
+            //  topoDTO.setDepartment(topoReal.getDepartment());
 
 
             return topoDTO;
@@ -43,8 +43,8 @@ public class TopoController {
         Topo topo = new Topo();
 
         topo.setName(topoDTO.getName());
-     //   topo.setUser(topoDTO.getUser());
-     //   topo.setDepartment(topoDTO.getDepartment());
+        //   topo.setUser(topoDTO.getUser());
+        //   topo.setDepartment(topoDTO.getDepartment());
 
 
         topo = topoManager.saveTopo(topo);
@@ -55,8 +55,7 @@ public class TopoController {
 
     @PutMapping(value = "/topo/{id}")
     public void updateTopo(@PathVariable Long id , @RequestBody Topo topo) {
-        topo.setId(id);
-        topoManager.saveTopo(topo);
+        topoManager.updateTopo(id,topo);
     }
 
 

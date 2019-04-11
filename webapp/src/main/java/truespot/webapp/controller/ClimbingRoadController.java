@@ -54,8 +54,7 @@ public class ClimbingRoadController {
 
     @PutMapping(value = "/road/{id}")
     public void updateClimbingRoad(@PathVariable Long id , @RequestBody ClimbingRoad climbingRoad) {
-        climbingRoad.setId(id);
-        climbingRoadManager.saveClimbingRoad(climbingRoad);
+        climbingRoadManager.updateClimbingRoad(id,climbingRoad);
     }
 
 

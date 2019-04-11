@@ -28,12 +28,12 @@ public class DifficultyController {
             Difficulty difficultyReal = Difficulty.get();
             DifficultyDTO difficultyDTO = new DifficultyDTO();
 
-           difficultyDTO.setNumber(difficultyReal.getNumber());
-           difficultyDTO.setLetter(difficultyReal.getLetter());
-           difficultyDTO.setSymbol(difficultyReal.getSymbol());
+            difficultyDTO.setNumber(difficultyReal.getNumber());
+            difficultyDTO.setLetter(difficultyReal.getLetter());
+            difficultyDTO.setSymbol(difficultyReal.getSymbol());
 
-           difficultyReal = difficultyManager.saveDifficulty(difficultyReal);
-           difficultyDTO.setId(difficultyReal.getId());
+            difficultyReal = difficultyManager.saveDifficulty(difficultyReal);
+            difficultyDTO.setId(difficultyReal.getId());
             return difficultyDTO;
 
         }throw new RuntimeException("Difficulty not found");
@@ -57,8 +57,7 @@ public class DifficultyController {
 
     @PutMapping(value = "/difficulty/{id}")
     public void updateDifficulty(@PathVariable Long id , @RequestBody Difficulty difficulty) {
-        difficulty.setId(id);
-        difficultyManager.saveDifficulty(difficulty);
+        difficultyManager.updateDifficulty(id,difficulty);
     }
 
 

@@ -27,7 +27,7 @@ public class SpotController {
             Spot spotReal = spot.get();
             SpotDTO spotDTO = new SpotDTO();
 
-          //  spotDTO.setTopo(spotReal.getTopo());
+            //  spotDTO.setTopo(spotReal.getTopo());
             spotDTO.setName(spotReal.getName());
             spotDTO.setDescription(spotReal.getDescription());
             spotDTO.setNearestCity(spotReal.getNearestCity());

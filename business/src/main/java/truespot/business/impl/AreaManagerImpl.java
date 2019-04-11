@@ -27,7 +27,10 @@ public class AreaManagerImpl extends BusinessManagerImpl implements AreaManager 
     }
 
     @Override
-    public void updateArea(Long id, Area area) {}//todo
+    public void updateArea(Long id, Area area) {
+        area.setId(id);
+        getDaoFactory().getAreaRepository().save(area);
+    }
 
     @Override
     public void deleteArea(Long id) { getDaoFactory().getAreaRepository().deleteById(id);}

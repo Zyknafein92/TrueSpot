@@ -3,7 +3,6 @@ package truespot.business.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.*;
-import truespot.model.Department;
 
 
 @Service
@@ -17,12 +16,10 @@ public class BusinessManagerImpl extends BusinessManager {
     private DifficultyManager difficultyManager;
     private SpotManager spotManager;
     private TopoManager topoManager;
-    private UsersManager usersManager;
+    private UserManager userManager;
 
 
     //Getter
-
-
 
     public AreaManager getAreaManager() { return areaManager; }
 
@@ -38,8 +35,7 @@ public class BusinessManagerImpl extends BusinessManager {
 
     public TopoManager getTopoManager() { return topoManager; }
 
-    public UsersManager getUsersManager() { return usersManager; }
-
+    public UserManager getUserManager() { return userManager; }
 
 
     //Setter
@@ -68,5 +64,5 @@ public class BusinessManagerImpl extends BusinessManager {
     public void setTopoManager(TopoManager topoManager) { this.topoManager = topoManager; }
 
     @Autowired
-    public void setUsersManager(UsersManager usersManager) { this.usersManager = usersManager; }
+    public void setUserManager(UserManager userManager) { this.userManager = userManager; }
 }

@@ -27,6 +27,7 @@ public class DepartmentManagerImpl extends BusinessManagerImpl implements Depart
 
     @Override
     public void updateDepartment(Long id, Department department) {
+        department.setId(id);
        getDaoFactory().getDepartmentRepository().save(department);
     }
 

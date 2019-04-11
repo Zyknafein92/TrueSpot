@@ -27,6 +27,7 @@ public class DifficultyManagerImpl extends BusinessManagerImpl implements Diffic
 
     @Override
     public void updateDifficulty(Long id, Difficulty difficulty) {
+        difficulty.setId(id);
       getDaoFactory().getDifficultyRepository().save(difficulty);
     }
 

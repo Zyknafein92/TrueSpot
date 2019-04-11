@@ -6,7 +6,7 @@ import truespot.model.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface UsersManager {
+public interface UserManager {
 
     List<User> findAllUser();
 

@@ -57,8 +57,7 @@ public class AreaController {
 
     @PutMapping(value = "/area/{id}")
     public void updateArea(@PathVariable Long id , @RequestBody Area area) {
-        area.setId(id);
-        areaManager.saveArea(area);
+        areaManager.updateArea(id,area);
     }
 
 
