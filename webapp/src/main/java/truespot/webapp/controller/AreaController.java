@@ -54,7 +54,7 @@ public class AreaController {
         return areaDTO;
     }
 
-    //todo a rework
+
     @PutMapping(value = "/area/{id}")
     public void updateArea(@PathVariable Long id , @RequestBody Area area) {
         area.setId(id);

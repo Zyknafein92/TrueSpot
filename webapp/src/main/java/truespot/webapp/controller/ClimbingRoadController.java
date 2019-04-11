@@ -30,7 +30,7 @@ public class ClimbingRoadController {
             ClimbingRoadDTO climbingRoadDTO = new ClimbingRoadDTO();
 
             climbingRoadDTO.setId(cr.getId());
-            climbingRoadDTO.setName(cr.getDescription());
+            climbingRoadDTO.setName(cr.getName());
             climbingRoadDTO.setDescription(cr.getDescription());
 
             return climbingRoadDTO;
@@ -43,7 +43,7 @@ public class ClimbingRoadController {
         ClimbingRoad climbingRoad = new ClimbingRoad();
 
         climbingRoad.setName(climbingRoadDTO.getName());
-        climbingRoad.setDescription(climbingRoad.getDescription());
+        climbingRoad.setDescription(climbingRoadDTO.getDescription());
 
         climbingRoad = climbingRoadManager.saveClimbingRoad(climbingRoad);
         climbingRoadDTO.setId(climbingRoad.getId());
@@ -51,7 +51,7 @@ public class ClimbingRoadController {
         return climbingRoadDTO;
     }
 
-    //todo a rework
+
     @PutMapping(value = "/road/{id}")
     public void updateClimbingRoad(@PathVariable Long id , @RequestBody ClimbingRoad climbingRoad) {
         climbingRoad.setId(id);

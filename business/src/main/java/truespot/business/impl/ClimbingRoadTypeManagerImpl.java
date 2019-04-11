@@ -10,7 +10,7 @@ import java.util.Optional;
 public class ClimbingRoadTypeManagerImpl extends BusinessManagerImpl implements ClimbingRoadTypeManager {
 
     @Override
-    public Optional<ClimbingRoadType> getClimbingRoad(Long id) {
+    public Optional<ClimbingRoadType> getClimbingRoadType(Long id) {
         return getDaoFactory().getClimbingRoadTypeRepository().findById(id);
     }
 
@@ -21,7 +21,8 @@ public class ClimbingRoadTypeManagerImpl extends BusinessManagerImpl implements 
 
     @Override
     public void updateClimbingRoadType(Long id, ClimbingRoadType climbingRoadType) {
-        //todo
+        climbingRoadType.setId(id);
+        getDaoFactory().getClimbingRoadTypeRepository().save(climbingRoadType);
     }
 
     @Override

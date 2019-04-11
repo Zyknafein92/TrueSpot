@@ -28,10 +28,8 @@ public class  ClimbingRoadType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="en")
-    private String en;
-    @Column(name="fr")
-    private String fr;
+    @Column(name="name")
+    private String name;
 
 
 
