@@ -11,6 +11,11 @@ import java.util.Optional;
 public class SpotManagerImpl extends BusinessManagerImpl implements SpotManager {
 
     @Override
+    public List<Spot> findAllSpot() {
+        return getDaoFactory().getSpotRepository().findAll();
+    }
+
+    @Override
     public Optional<Spot> getSpot(Long id) {
         return getDaoFactory().getSpotRepository().findById(id);
     }
@@ -22,7 +27,8 @@ public class SpotManagerImpl extends BusinessManagerImpl implements SpotManager 
 
     @Override
     public void updateSpot(Long id, Spot spot) {
-        //todo
+        spot.setId(id);
+        getDaoFactory().getSpotRepository().save(spot);
     }
 
     @Override

@@ -12,11 +12,12 @@ import java.io.Serializable;
 @Table(name="spot", schema="public")
 public class Spot implements Serializable {
 
-    private static final long serialVersionUID = -3746412473835952080L;
-
-
     @Id
-    @Column(name = "topo_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
+
+    @Column(name="topo_id")
     private Topo topo;
 
     @Column(name="name")
