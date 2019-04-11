@@ -26,7 +26,7 @@ public class Topo implements Serializable {
     @OneToOne
     private Department department;
 
-    protected Topo(){};
+    public Topo(){}
 
     public Topo(String name, User user, Department department) {
         this.name = name;

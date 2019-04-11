@@ -1,5 +1,5 @@
 package truespot.webapp.dto;
 
-public class StopDTO
+public class SpotDTO
 {
 }
