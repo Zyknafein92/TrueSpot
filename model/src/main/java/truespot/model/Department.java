@@ -122,7 +122,7 @@ public class Department implements Serializable {
     @Column(name="department_name")
     private String name;
 
-    protected Department() {}
+    public Department() {}
 
     public Department(int number, String name) {
         this.number = number;
