@@ -28,7 +28,7 @@ public class Difficulty implements Serializable {
     @Column(name="symbol")
     private char symbol;
 
-    protected Difficulty(){}
+    public Difficulty(){}
 
     public Difficulty(int number, char letter, char symbol) {
         this.number = number;

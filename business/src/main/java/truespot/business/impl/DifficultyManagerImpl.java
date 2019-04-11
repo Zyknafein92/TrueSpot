@@ -4,10 +4,16 @@ import org.springframework.stereotype.Service;
 import truespot.business.contract.DifficultyManager;
 import truespot.model.Difficulty;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DifficultyManagerImpl extends BusinessManagerImpl implements DifficultyManager {
+
+    @Override
+    public List<Difficulty> findAllDifficulties(){
+        return getDaoFactory().getDifficultyRepository().findAll();
+    }
 
     @Override
     public Optional<Difficulty> getDifficulty(Long id) {
@@ -21,7 +27,7 @@ public class DifficultyManagerImpl extends BusinessManagerImpl implements Diffic
 
     @Override
     public void updateDifficulty(Long id, Difficulty difficulty) {
-     //todo
+      getDaoFactory().getDifficultyRepository().save(difficulty);
     }
 
     @Override
