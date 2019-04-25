@@ -1,13 +1,15 @@
 package truespot.model;
 
 
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-
+@ApiModel(value = "User")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen")
 @Getter
 @Setter
 @Entity

@@ -35,7 +35,7 @@ public class UserMapper {
 
          User user = new User();
 
-         user = userManager.getUser(id);
+        // user = userManager.getUser(id);
          //todo.. setter ect...
 
          return user;
