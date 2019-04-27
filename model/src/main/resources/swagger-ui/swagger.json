@@ -1,0 +1,224 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a sample.",
+    "version" : "v1",
+    "title" : "Swagger Maven Plugin Sample",
+    "termsOfService" : "http://www.github.com/kongchen/swagger-maven-plugin",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "data"
+  } ],
+  "paths" : {
+    "/api/user" : {
+      "get" : {
+        "tags" : [ "data" ],
+        "summary" : "",
+        "description" : "",
+        "operationId" : "user",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/User"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request ",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Department" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "number" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Property" : {
+      "type" : "object",
+      "properties" : {
+        "readOnly" : {
+          "type" : "boolean"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "format" : {
+          "type" : "string"
+        },
+        "position" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "vendorExtensions" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
+        },
+        "example" : {
+          "type" : "object"
+        },
+        "allowEmptyValue" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "Response" : {
+      "type" : "object",
+      "properties" : {
+        "description" : {
+          "type" : "string"
+        },
+        "schema" : {
+          "$ref" : "#/definitions/Property"
+        },
+        "examples" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "headers" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "$ref" : "#/definitions/Property"
+          }
+        }
+      }
+    },
+    "Role" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Topo" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "user" : {
+          "$ref" : "#/definitions/User"
+        },
+        "department" : {
+          "$ref" : "#/definitions/Department"
+        }
+      }
+    },
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "roles" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Role"
+          }
+        },
+        "topo" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Topo"
+          }
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "realName" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "gender" : {
+          "type" : "string"
+        },
+        "pseudo" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "admin" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "Xml" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "namespace" : {
+          "type" : "string"
+        },
+        "prefix" : {
+          "type" : "string"
+        },
+        "attribute" : {
+          "type" : "boolean"
+        },
+        "wrapped" : {
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}

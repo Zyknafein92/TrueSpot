@@ -9,7 +9,46 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+
     <artifactId>front</artifactId>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>2.3.1</version>
+                <executions>
+                    <!-- portlet frontend model generation-->
+                    <execution>
+                        <id>openApi angular generation</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>D:\IdeaProject\workspace\truespot\model\src\main\resources\swagger-ui\swagger.json</inputSpec>
+                            <output>D:\IdeaProject\workspace\truespot\front\truespotFront\src\</output>
+                            <language>typescript-angular</language>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <configOptions>
+                                <sourceFolder>src/main/typescript</sourceFolder>
+                            </configOptions>
+                            <verbose>false</verbose>
+                            <addCompileSourceRoot>true</addCompileSourceRoot>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
 
 
 </project>
