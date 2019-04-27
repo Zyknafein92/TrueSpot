@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.UserManager;
 import truespot.model.User;
-import truespot.webapp.dto.UserDTO;
+import truespot.business.dto.UserDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,12 +16,12 @@ public class UsersController {
     @Autowired
     private UserManager userManager;
 
-    @GetMapping(value="/users")
+    @GetMapping(value="/user")
     public List<User> getUsers(){
         return userManager.findAllUser();
     }
 
-    @GetMapping(value="/users/{id}")
+    @GetMapping(value="/user/{id}")
     public UserDTO getUser(@PathVariable Long id) {
         Optional<User> user = userManager.getUser(id);
         if(user.isPresent()){
@@ -37,7 +37,7 @@ public class UsersController {
         }throw new RuntimeException("user not found");
     }
 
-    @PostMapping(value="/users")
+    @PostMapping(value="/user")
     public UserDTO createUser(@RequestBody UserDTO userDTO){
         User user = new User();
 
@@ -55,12 +55,12 @@ public class UsersController {
         return userDTO;
     }
 
-    @PutMapping(value = "/users/{id}")
+    @PutMapping(value = "/user/{id}")
     public void updateUser(@PathVariable Long id , @RequestBody User user) {
         userManager.updateUser(id, user);
     }
 
-    @DeleteMapping(value= "/users/{id}")
+    @DeleteMapping(value= "/user/{id}")
     public void deleteUser(@PathVariable Long id){
         userManager.deleteUser(id);
     }

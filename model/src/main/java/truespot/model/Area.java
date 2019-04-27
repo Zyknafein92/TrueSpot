@@ -1,11 +1,15 @@
 package truespot.model;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+
+@ApiModel(value = "Area")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen")
 @Getter
 @Setter
 @Entity

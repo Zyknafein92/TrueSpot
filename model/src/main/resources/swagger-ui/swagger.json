@@ -14,6 +14,168 @@
     "name" : "data"
   } ],
   "paths" : {
+    "/api/area" : {
+      "get" : {
+        "tags" : [ "data" ],
+        "summary" : "",
+        "description" : "",
+        "operationId" : "area",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Area"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request ",
+            "schema" : {
+              "$ref" : "#/definitions/Area"
+            }
+          }
+        }
+      }
+    },
+    "/api/department" : {
+      "get" : {
+        "tags" : [ "data" ],
+        "summary" : "",
+        "description" : "",
+        "operationId" : "department",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Department"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request ",
+            "schema" : {
+              "$ref" : "#/definitions/Department"
+            }
+          }
+        }
+      }
+    },
+    "/api/road" : {
+      "get" : {
+        "tags" : [ "data" ],
+        "summary" : "",
+        "description" : "",
+        "operationId" : "road",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ClimbingRoad"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request ",
+            "schema" : {
+              "$ref" : "#/definitions/ClimbingRoad"
+            }
+          }
+        }
+      }
+    },
+    "/api/roadType" : {
+      "get" : {
+        "tags" : [ "data" ],
+        "summary" : "",
+        "description" : "",
+        "operationId" : "roadType",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ClimbingRoadType"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request ",
+            "schema" : {
+              "$ref" : "#/definitions/ClimbingRoadType"
+            }
+          }
+        }
+      }
+    },
+    "/api/spot" : {
+      "get" : {
+        "tags" : [ "data" ],
+        "summary" : "",
+        "description" : "",
+        "operationId" : "spot",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Spot"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request ",
+            "schema" : {
+              "$ref" : "#/definitions/Spot"
+            }
+          }
+        }
+      }
+    },
+    "/api/topo" : {
+      "get" : {
+        "tags" : [ "data" ],
+        "summary" : "",
+        "description" : "",
+        "operationId" : "topo",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Topo"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request ",
+            "schema" : {
+              "$ref" : "#/definitions/Topo"
+            }
+          }
+        }
+      }
+    },
     "/api/user" : {
       "get" : {
         "tags" : [ "data" ],
@@ -43,6 +205,68 @@
     }
   },
   "definitions" : {
+    "Area" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "orientation" : {
+          "type" : "string"
+        },
+        "roadNumber" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "height" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "ClimbingRoad" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "area" : {
+          "$ref" : "#/definitions/Area"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "difficulty" : {
+          "$ref" : "#/definitions/Difficulty"
+        },
+        "type" : {
+          "$ref" : "#/definitions/ClimbingRoadType"
+        }
+      }
+    },
+    "ClimbingRoadType" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
     "Department" : {
       "type" : "object",
       "properties" : {
@@ -59,10 +283,51 @@
         }
       }
     },
+    "Difficulty" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "number" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "letter" : {
+          "type" : "string"
+        },
+        "symbol" : {
+          "type" : "string"
+        }
+      }
+    },
     "Property" : {
       "type" : "object",
       "properties" : {
+        "position" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "example" : {
+          "type" : "object"
+        },
+        "vendorExtensions" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
+        },
         "readOnly" : {
+          "type" : "boolean"
+        },
+        "allowEmptyValue" : {
           "type" : "boolean"
         },
         "type" : {
@@ -71,30 +336,8 @@
         "format" : {
           "type" : "string"
         },
-        "position" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
         "description" : {
           "type" : "string"
-        },
-        "title" : {
-          "type" : "string"
-        },
-        "vendorExtensions" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "object"
-          }
-        },
-        "xml" : {
-          "$ref" : "#/definitions/Xml"
-        },
-        "example" : {
-          "type" : "object"
-        },
-        "allowEmptyValue" : {
-          "type" : "boolean"
         }
       }
     },
@@ -129,6 +372,42 @@
           "format" : "int64"
         },
         "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Spot" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "topo" : {
+          "$ref" : "#/definitions/Topo"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "nearestCity" : {
+          "type" : "string"
+        },
+        "carAccess" : {
+          "type" : "boolean"
+        },
+        "carParking" : {
+          "type" : "boolean"
+        },
+        "accessDescription" : {
+          "type" : "string"
+        },
+        "nearestHospital" : {
+          "type" : "string"
+        },
+        "supplyComment" : {
           "type" : "string"
         }
       }

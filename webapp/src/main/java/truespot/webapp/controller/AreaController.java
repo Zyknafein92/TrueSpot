@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.AreaManager;
 import truespot.model.Area;
-import truespot.webapp.dto.AreaDTO;
+import truespot.business.dto.AreaDTO;
 
 import java.util.List;
 import java.util.Optional;

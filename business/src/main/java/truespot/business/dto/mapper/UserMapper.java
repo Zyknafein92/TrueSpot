@@ -1,11 +1,11 @@
-package truespot.webapp.dto.mapper;
+package truespot.business.dto.mapper;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import truespot.business.contract.UserManager;
 import truespot.model.User;
-import truespot.webapp.dto.UserDTO;
+import truespot.business.dto.UserDTO;
 
 @Component
 public class UserMapper {

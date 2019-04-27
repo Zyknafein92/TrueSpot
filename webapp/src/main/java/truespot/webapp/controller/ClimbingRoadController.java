@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.ClimbingRoadManager;
 import truespot.model.ClimbingRoad;
-import truespot.webapp.dto.ClimbingRoadDTO;
+import truespot.business.dto.ClimbingRoadDTO;
 
 import java.util.List;
 import java.util.Optional;

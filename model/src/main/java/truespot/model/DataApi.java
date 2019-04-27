@@ -18,6 +18,72 @@ import javax.ws.rs.Produces;
 public interface DataApi {
 
     @GET
+    @Path("/area")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = Area.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = Area.class)
+    })
+    Response area();
+
+    @GET
+    @Path("/road")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = ClimbingRoad.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = ClimbingRoad.class)
+    })
+    Response road();
+
+    @GET
+    @Path("/roadType")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = ClimbingRoadType.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = ClimbingRoadType.class)
+    })
+    Response roadType();
+
+    @GET
+    @Path("/department")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = Department.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = Department.class)
+    })
+    Response department();
+
+    @GET
+    @Path("/spot")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = Spot.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = Spot.class)
+    })
+    Response spot();
+
+    @GET
+    @Path("/topo")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = Topo.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = Topo.class)
+    })
+    Response topo();
+
+    @GET
     @Path("/user")
     @Consumes({"application/json"})
     @Produces({"application/json"})

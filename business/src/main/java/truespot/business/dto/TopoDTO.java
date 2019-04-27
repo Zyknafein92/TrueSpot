@@ -1,4 +1,4 @@
-package truespot.webapp.dto;
+package truespot.business.dto;
 
 import lombok.Data;
 import truespot.model.Department;

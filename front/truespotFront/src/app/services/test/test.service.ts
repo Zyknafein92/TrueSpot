@@ -6,11 +6,12 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
+
 export class TestService {
   private userUrl = 'http://localhost:8080';
   constructor(private http:HttpClient) { }
 
   registerPerson(form: FormGroup): Observable<FormGroup> {
-    return this.http.post<FormGroup>(this.userUrl + '/person', form.value);
+    return this.http.post<FormGroup>(this.userUrl + '/user', form.value);
   }
 }

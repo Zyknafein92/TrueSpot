@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.DepartmentManager;
 import truespot.model.Department;
-import truespot.webapp.dto.DepartmentDTO;
+import truespot.business.dto.DepartmentDTO;
 
 import java.util.List;
 import java.util.Optional;

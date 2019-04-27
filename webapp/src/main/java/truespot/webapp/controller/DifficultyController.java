@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.DifficultyManager;
 import truespot.model.Difficulty;
-import truespot.webapp.dto.DifficultyDTO;
+import truespot.business.dto.DifficultyDTO;
 
 import java.util.List;
 import java.util.Optional;
