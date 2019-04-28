@@ -40,7 +40,7 @@ public class UsersController {
 
     @PutMapping(value = "/user/{id}")
     public void updateUser(@PathVariable Long id , @RequestBody User user) {
-        userManager.updateUser(id, user);
+        userManager.updateUser(id,user);
     }
 
     @DeleteMapping(value= "/user/{id}")

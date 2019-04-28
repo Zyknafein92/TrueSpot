@@ -7,6 +7,8 @@ import truespot.business.contract.UserManager;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
 
+import java.util.Optional;
+
 @Component
 public class UserMapper {
 
@@ -45,12 +47,10 @@ public class UserMapper {
 
      public User updateRecord(Long id, User uUpdate){
 
-         User user = new User();
 
-        // user = userManager.getUser(id);
          //todo.. setter ect...
 
-         return user;
+        return null;
      }
 
 }

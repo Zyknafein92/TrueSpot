@@ -3,6 +3,7 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.TopoManager;
+import truespot.business.dto.mapper.TopoMapper;
 import truespot.model.Topo;
 import truespot.business.dto.TopoDTO;
 
@@ -14,6 +15,8 @@ public class TopoController {
 
     @Autowired
     private TopoManager topoManager;
+    @Autowired
+    private TopoMapper topoMapper;
 
     @GetMapping(value="/topo")
     public List<Topo> getTopos(){
@@ -23,33 +26,16 @@ public class TopoController {
     @GetMapping(value="/topo/{id}")
     public TopoDTO getTopo(@PathVariable Long id) {
         Optional<Topo> topo = topoManager.getTopo(id);
-        if(topo.isPresent()){
-            Topo topoReal = topo.get();
-            TopoDTO topoDTO = new TopoDTO();
-
-            topoDTO.setName(topoReal.getName());
-            //  topoDTO.setUser(topoReal.getUser());
-            //  topoDTO.setDepartment(topoReal.getDepartment());
-
-
-            return topoDTO;
+        if(topo.isPresent()) {
+            Topo topoR = topo.get();
+            return topoMapper.objectToDTO(topoR);
         }throw new RuntimeException("topo not found");
     }
 
 
     @PostMapping(value="/topo")
-    public TopoDTO createTopo(@RequestBody TopoDTO topoDTO){
-
-        Topo topo = new Topo();
-
-        topo.setName(topoDTO.getName());
-        //   topo.setUser(topoDTO.getUser());
-        //   topo.setDepartment(topoDTO.getDepartment());
-
-
-        topo = topoManager.saveTopo(topo);
-        topoDTO.setId(topo.getId());
-        return topoDTO;
+    public Topo createTopo(@RequestBody TopoDTO topoDTO){
+        return topoMapper.dtoToObject(topoDTO);
     }
 
 
