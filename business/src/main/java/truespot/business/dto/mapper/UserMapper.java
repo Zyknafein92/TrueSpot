@@ -18,15 +18,27 @@ public class UserMapper {
          UserDTO userDTO = new UserDTO();
 
          userDTO.setPseudo(user.getPseudo() != null ? user.getPseudo() : "");
-         //todo tous les attributs
-
+         userDTO.setAge(user.getAge());
+         userDTO.setGender(user.getGender()!= null ? user.getGender() : "");
+         userDTO.setEmail(user.getEmail()!= null ? user.getEmail() : "");
 
          return userDTO;
      }
 
      public User dtoToObject (UserDTO userDTO){
+
          User user = new User();
-         //todo :  même chose inverse
+
+         user.setName(userDTO.getName());
+         user.setRealName(userDTO.getRealName());
+         user.setAge(userDTO.getAge());
+         user.setGender(userDTO.getGender());
+         user.setPseudo(userDTO.getPseudo());
+         user.setPassword(userDTO.getPassword());
+         user.setEmail(userDTO.getEmail());
+         user.setPhoneNumber(userDTO.getPhoneNumber());
+         user = userManager.saveUser(user);
+         userDTO.setId(user.getId());
 
          return user;
      }

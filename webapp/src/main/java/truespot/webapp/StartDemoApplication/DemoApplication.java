@@ -15,18 +15,10 @@ import truespot.model.User;
 @EntityScan(basePackages = "truespot.model")
 @EnableJpaRepositories(basePackages = "truespot.consumer")
 @ComponentScan(basePackages = "truespot")
-public class DemoApplication implements CommandLineRunner {
-
-    @Autowired
-    private UserManager userManager;
+public class DemoApplication{
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class);
     }
-
-    @Override
-    public void run(String... args) throws Exception {
-
-       userManager.saveUser(new User("Paul","Pierre",21,"male","PoloLeBlaireau","password","Pololeblaireau@gmail.com","025626655",false));
-    }
+    
 }

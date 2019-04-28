@@ -13,9 +13,11 @@ public interface DaoFactory {
     AreaRepository getAreaRepository();
     ClimbingRoadRepository getClimbingRoadRepository();
     DepartmentRepository getDepartmentRepository();
+    RoleRepository getRoleRepository();
     SpotRepository getSpotRepository();
     TopoRepository getTopoRepository();
     UsersRepository getUsersRepository();
+
 
 
     @Autowired
@@ -24,6 +26,8 @@ public interface DaoFactory {
     void setClimbingRoadRepository(ClimbingRoadRepository climbingRoadRepository);
     @Autowired
     void setDepartmentRepository(DepartmentRepository departmentRepository);
+    @Autowired
+    void setRoleRepository(RoleRepository roleRepository);
     @Autowired
     void setSpotRepository(SpotRepository spotRepository);
     @Autowired

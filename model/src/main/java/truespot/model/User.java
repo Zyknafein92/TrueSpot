@@ -19,10 +19,10 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="users_id")
+    @Column(name="user_id")
     private long id;
 
-    @OneToMany
+    @OneToMany()
     private List<Role> roles;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)

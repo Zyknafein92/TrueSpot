@@ -11,9 +11,11 @@ public class DaoFactoryImpl implements DaoFactory {
     private AreaRepository areaRepository;
     private ClimbingRoadRepository climbingRoadRepository;
     private DepartmentRepository departmentRepository;
+    private RoleRepository roleRepository;
     private SpotRepository spotRepository;
     private TopoRepository topoRepository;
     private UsersRepository usersRepository;
+
 
 
 
@@ -28,6 +30,8 @@ public class DaoFactoryImpl implements DaoFactory {
     public ClimbingRoadRepository getClimbingRoadRepository() { return climbingRoadRepository; }
     @Override
     public DepartmentRepository getDepartmentRepository() { return departmentRepository; }
+    @Override
+    public RoleRepository getRoleRepository() {return roleRepository;}
     @Override
     public SpotRepository getSpotRepository() { return spotRepository; }
     @Override
@@ -57,7 +61,11 @@ public class DaoFactoryImpl implements DaoFactory {
         this.departmentRepository = departmentRepository;
     }
 
-
+    @Override
+    @Autowired
+    public void setRoleRepository(RoleRepository roleRepository){
+        this.roleRepository = roleRepository;
+    }
     @Override
     @Autowired
     public void setSpotRepository(SpotRepository spotRepository) {
