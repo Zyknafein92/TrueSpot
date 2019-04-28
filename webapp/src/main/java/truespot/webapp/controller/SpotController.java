@@ -3,6 +3,7 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.SpotManager;
+import truespot.business.dto.mapper.SpotMapper;
 import truespot.model.Spot;
 import truespot.business.dto.SpotDTO;
 
@@ -14,6 +15,8 @@ public class SpotController {
 
     @Autowired
     private SpotManager spotManager;
+    @Autowired
+    private SpotMapper spotMapper;
 
     @GetMapping(value="/spot")
     public List<Spot> getSpots(){
@@ -25,41 +28,14 @@ public class SpotController {
         Optional<Spot> spot = spotManager.getSpot(id);
         if(spot.isPresent()){
             Spot spotReal = spot.get();
-            SpotDTO spotDTO = new SpotDTO();
-
-            //  spotDTO.setTopo(spotReal.getTopo());
-            spotDTO.setName(spotReal.getName());
-            spotDTO.setDescription(spotReal.getDescription());
-            spotDTO.setNearestCity(spotReal.getNearestCity());
-            spotDTO.setCarAccess(spotReal.getCarAccess());
-            spotDTO.setCarParking(spotReal.getCarParking());
-            spotDTO.setAccessDescription(spotReal.getAccessDescription());
-            spotDTO.setNearestHospital(spotReal.getNearestHospital());
-            spotDTO.setSupplyComment(spotReal.getSupplyComment());
-
-
-            return spotDTO;
+            return spotMapper.objectToDTO(spotReal);
         }throw new RuntimeException("spot not found");
     }
 
 
     @PostMapping(value="/spot")
-    public SpotDTO createSpot(@RequestBody SpotDTO spotDTO){
-
-        Spot spot = new Spot();
-
-        spot.setName(spotDTO.getName());
-        spot.setDescription(spotDTO.getDescription());
-        spot.setNearestCity(spotDTO.getNearestCity());
-        spot.setCarAccess(spotDTO.getCarAccess());
-        spot.setCarParking(spotDTO.getCarParking());
-        spot.setAccessDescription(spotDTO.getAccessDescription());
-        spot.setNearestHospital(spotDTO.getNearestHospital());
-        spot.setSupplyComment(spotDTO.getSupplyComment());
-
-        spot = spotManager.saveSpot(spot);
-        spotDTO.setId(spot.getId());
-        return spotDTO;
+    public Spot createSpot(@RequestBody SpotDTO spotDTO){
+        return spotMapper.dtoToObject(spotDTO);
     }
 
 

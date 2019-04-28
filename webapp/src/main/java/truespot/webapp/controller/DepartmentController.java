@@ -3,6 +3,7 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.DepartmentManager;
+import truespot.business.dto.mapper.DepartmentMapper;
 import truespot.model.Department;
 import truespot.business.dto.DepartmentDTO;
 
@@ -14,6 +15,8 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentManager departmentManager;
+    @Autowired
+    private DepartmentMapper departmentMapper;
 
     @GetMapping(value="/department")
     public List<Department> getDepartments(){
@@ -24,28 +27,15 @@ public class DepartmentController {
     public DepartmentDTO getDepartment(@PathVariable Long id) {
         Optional<Department> department = departmentManager.getDepartment(id);
         if(department.isPresent()){
-            Department departmentReal = department.get();
-            DepartmentDTO departmentDTO = new DepartmentDTO();
-
-            departmentDTO.setName(departmentReal.getName());
-            departmentDTO.setNumber(departmentReal.getNumber());
-
-            return departmentDTO;
+            Department departmentR = department.get();
+            return departmentMapper.objectToDTO(departmentR);
         }throw new RuntimeException("department not found");
     }
 
 
     @PostMapping(value="/department")
-    public DepartmentDTO createDepartment(@RequestBody DepartmentDTO departmentDTO){
-
-        Department department = new Department();
-
-        department.setName(departmentDTO.getName());
-        department.setNumber(departmentDTO.getNumber());
-
-        department = departmentManager.saveDepartment(department);
-        departmentDTO.setId(department.getId());
-        return departmentDTO;
+    public Department createDepartment(@RequestBody DepartmentDTO departmentDTO){
+        return departmentMapper.DTOToObject(departmentDTO);
     }
 
 
