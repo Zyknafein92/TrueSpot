@@ -40,17 +40,6 @@ public interface DataApi {
     Response road();
 
     @GET
-    @Path("/roadType")
-    @Consumes({"application/json"})
-    @Produces({"application/json"})
-    @ApiOperation(value = "", tags = {"data"})
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success", response = ClimbingRoadType.class, responseContainer = "List"),
-            @ApiResponse(code = 400, message = "Bad Request ", response = ClimbingRoadType.class)
-    })
-    Response roadType();
-
-    @GET
     @Path("/department")
     @Consumes({"application/json"})
     @Produces({"application/json"})

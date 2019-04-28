@@ -29,23 +29,40 @@ public class ClimbingRoad implements Serializable {
     @Column(name="description")
     private String description;
 
-    @OneToOne
-    private Difficulty difficulty;
+    @Column(name="type")
+    private String type;
 
-    @Column(name="climbing_road_type")
-    private ClimbingRoadType type;
+    @Column(name="number")
+    private int number;
 
-    public ClimbingRoad(Area area, String name, String description, Difficulty difficulty, ClimbingRoadType type) {
-        this.area = area;
-        this.name = name;
-        this.description = description;
-        this.difficulty = difficulty;
-        this.type = type;
-    }
+    @Column(name="letter")
+    private char letter;
 
+    @Column(name="symbol")
+    private char symbol;
 
     public ClimbingRoad() {
 
     }
+
+    public ClimbingRoad(String name, String description, String type, int number, char letter, char symbol) {
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.number = number;
+        this.letter = letter;
+        this.symbol = symbol;
+    }
+
+    public ClimbingRoad(Area area, String name, String description, String type, int number, char letter, char symbol) {
+        this.area = area;
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.number = number;
+        this.letter = letter;
+        this.symbol = symbol;
+    }
+
 
 }

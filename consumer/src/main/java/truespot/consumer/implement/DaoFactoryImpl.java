@@ -10,9 +10,7 @@ public class DaoFactoryImpl implements DaoFactory {
 
     private AreaRepository areaRepository;
     private ClimbingRoadRepository climbingRoadRepository;
-    private ClimbingRoadTypeRepository climbingRoadTypeRepository;
     private DepartmentRepository departmentRepository;
-    private DifficultyRepository difficultyRepository;
     private SpotRepository spotRepository;
     private TopoRepository topoRepository;
     private UsersRepository usersRepository;
@@ -29,11 +27,7 @@ public class DaoFactoryImpl implements DaoFactory {
     @Override
     public ClimbingRoadRepository getClimbingRoadRepository() { return climbingRoadRepository; }
     @Override
-    public ClimbingRoadTypeRepository getClimbingRoadTypeRepository() { return climbingRoadTypeRepository; }
-    @Override
     public DepartmentRepository getDepartmentRepository() { return departmentRepository; }
-    @Override
-    public DifficultyRepository getDifficultyRepository() { return difficultyRepository; }
     @Override
     public SpotRepository getSpotRepository() { return spotRepository; }
     @Override
@@ -56,11 +50,6 @@ public class DaoFactoryImpl implements DaoFactory {
     public void setClimbingRoadRepository(ClimbingRoadRepository climbingRoadRepository) {
         this.climbingRoadRepository = climbingRoadRepository; }
 
-    @Override
-    @Autowired
-    public void setClimbingRoadTypeRepository(ClimbingRoadTypeRepository climbingRoadTypeRepository) {
-        this.climbingRoadTypeRepository = climbingRoadTypeRepository;
-    }
 
     @Override
     @Autowired
@@ -68,11 +57,6 @@ public class DaoFactoryImpl implements DaoFactory {
         this.departmentRepository = departmentRepository;
     }
 
-    @Override
-    @Autowired
-    public void setDifficultyRepository(DifficultyRepository difficultyRepository) {
-        this.difficultyRepository = difficultyRepository;
-    }
 
     @Override
     @Autowired

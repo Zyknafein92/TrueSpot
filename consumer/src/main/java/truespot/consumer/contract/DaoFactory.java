@@ -12,9 +12,7 @@ public interface DaoFactory {
 
     AreaRepository getAreaRepository();
     ClimbingRoadRepository getClimbingRoadRepository();
-    ClimbingRoadTypeRepository getClimbingRoadTypeRepository();
     DepartmentRepository getDepartmentRepository();
-    DifficultyRepository getDifficultyRepository();
     SpotRepository getSpotRepository();
     TopoRepository getTopoRepository();
     UsersRepository getUsersRepository();
@@ -25,11 +23,7 @@ public interface DaoFactory {
     @Autowired
     void setClimbingRoadRepository(ClimbingRoadRepository climbingRoadRepository);
     @Autowired
-    void setClimbingRoadTypeRepository(ClimbingRoadTypeRepository climbingRoadTypeRepository);
-    @Autowired
     void setDepartmentRepository(DepartmentRepository departmentRepository);
-    @Autowired
-    void setDifficultyRepository(DifficultyRepository difficultyRepository);
     @Autowired
     void setSpotRepository(SpotRepository spotRepository);
     @Autowired

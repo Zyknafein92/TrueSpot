@@ -13,14 +13,14 @@ import { Xml } from './xml';
 
 
 export interface Property {
-    position?: number;
-    example?: any;
-    vendorExtensions?: { [key: string]: any; };
-    title?: string;
-    xml?: Xml;
     readOnly?: boolean;
-    allowEmptyValue?: boolean;
     type?: string;
-    format?: string;
     description?: string;
+    format?: string;
+    position?: number;
+    xml?: Xml;
+    example?: any;
+    allowEmptyValue?: boolean;
+    title?: string;
+    vendorExtensions?: { [key: string]: any; };
 }

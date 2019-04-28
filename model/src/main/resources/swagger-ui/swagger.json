@@ -95,33 +95,6 @@
         }
       }
     },
-    "/api/roadType" : {
-      "get" : {
-        "tags" : [ "data" ],
-        "summary" : "",
-        "description" : "",
-        "operationId" : "roadType",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/ClimbingRoadType"
-              }
-            }
-          },
-          "400" : {
-            "description" : "Bad Request ",
-            "schema" : {
-              "$ref" : "#/definitions/ClimbingRoadType"
-            }
-          }
-        }
-      }
-    },
     "/api/spot" : {
       "get" : {
         "tags" : [ "data" ],
@@ -247,22 +220,17 @@
         "description" : {
           "type" : "string"
         },
-        "difficulty" : {
-          "$ref" : "#/definitions/Difficulty"
-        },
         "type" : {
-          "$ref" : "#/definitions/ClimbingRoadType"
-        }
-      }
-    },
-    "ClimbingRoadType" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "integer",
-          "format" : "int64"
+          "type" : "string"
         },
-        "name" : {
+        "number" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "letter" : {
+          "type" : "string"
+        },
+        "symbol" : {
           "type" : "string"
         }
       }
@@ -283,61 +251,42 @@
         }
       }
     },
-    "Difficulty" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "number" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "letter" : {
-          "type" : "string"
-        },
-        "symbol" : {
-          "type" : "string"
-        }
-      }
-    },
     "Property" : {
       "type" : "object",
       "properties" : {
+        "readOnly" : {
+          "type" : "boolean"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "format" : {
+          "type" : "string"
+        },
         "position" : {
           "type" : "integer",
           "format" : "int32"
         },
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
+        },
         "example" : {
           "type" : "object"
+        },
+        "allowEmptyValue" : {
+          "type" : "boolean"
+        },
+        "title" : {
+          "type" : "string"
         },
         "vendorExtensions" : {
           "type" : "object",
           "additionalProperties" : {
             "type" : "object"
           }
-        },
-        "title" : {
-          "type" : "string"
-        },
-        "xml" : {
-          "$ref" : "#/definitions/Xml"
-        },
-        "readOnly" : {
-          "type" : "boolean"
-        },
-        "allowEmptyValue" : {
-          "type" : "boolean"
-        },
-        "type" : {
-          "type" : "string"
-        },
-        "format" : {
-          "type" : "string"
-        },
-        "description" : {
-          "type" : "string"
         }
       }
     },
