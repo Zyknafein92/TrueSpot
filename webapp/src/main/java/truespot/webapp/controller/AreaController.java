@@ -3,6 +3,7 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.AreaManager;
+import truespot.business.dto.mapper.AreaMapper;
 import truespot.model.Area;
 import truespot.business.dto.AreaDTO;
 
@@ -14,6 +15,8 @@ public class AreaController {
 
     @Autowired
     private AreaManager areaManager;
+    @Autowired
+    private AreaMapper areaMapper;
 
     @GetMapping(value="/area")
     public List<Area> getAreas(){
@@ -25,33 +28,14 @@ public class AreaController {
         Optional<Area> area = areaManager.getArea(id);
         if(area.isPresent()){
             Area areaReal = area.get();
-            AreaDTO areaDTO = new AreaDTO();
-
-            areaDTO.setName(areaReal.getName());
-            areaDTO.setDescription(areaReal.getDescription());
-            areaDTO.setOrientation(areaReal.getOrientation());
-            areaDTO.setRoadNumber(areaReal.getRoadNumber());
-            areaDTO.setHeight(areaReal.getHeight());
-
-            return areaDTO;
+            return areaMapper.objectToDTO(areaReal);
         }throw new RuntimeException("area not found");
     }
 
 
     @PostMapping(value="/area")
-    public AreaDTO createArea(@RequestBody AreaDTO areaDTO){
-
-        Area area = new Area();
-
-        area.setName(areaDTO.getName());
-        area.setDescription(areaDTO.getDescription());
-        area.setOrientation(areaDTO.getOrientation());
-        area.setRoadNumber(areaDTO.getRoadNumber());
-        area.setHeight(areaDTO.getHeight());
-
-        area = areaManager.saveArea(area);
-        areaDTO.setId(area.getId());
-        return areaDTO;
+    public Area createArea(@RequestBody AreaDTO areaDTO){
+        return areaMapper.DTOToObject(areaDTO);
     }
 
 
