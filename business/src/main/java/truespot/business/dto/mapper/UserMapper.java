@@ -31,14 +31,15 @@ public class UserMapper {
 
          User user = new User();
 
-         user.setName(userDTO.getName());
-         user.setRealName(userDTO.getRealName());
+         user.setFirstName(userDTO.getFirstName());
+         user.setLastName(userDTO.getLastName());
          user.setAge(userDTO.getAge());
          user.setGender(userDTO.getGender());
          user.setPseudo(userDTO.getPseudo());
          user.setPassword(userDTO.getPassword());
          user.setEmail(userDTO.getEmail());
          user.setPhoneNumber(userDTO.getPhoneNumber());
+        // user.setAdmin(userDTO.setIsAdmin(false));
          user = userManager.saveUser(user);
          userDTO.setId(user.getId());
 

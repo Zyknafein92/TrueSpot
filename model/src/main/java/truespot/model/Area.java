@@ -43,4 +43,5 @@ public class Area implements Serializable {
         this.roadNumber = roadNumber;
         this.height = height;
     }
+
 }

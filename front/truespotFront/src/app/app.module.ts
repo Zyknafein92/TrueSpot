@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestUserComponent } from './test-user/test-user.component';
 import {TestService} from "./services/test/test.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
-import { ViewProfileComponent } from './components/user/view-profile/view-profile.component';
+import { ViewProfilComponent } from './components/user/view-profil/view-profil.component';
 import { NavigationComponent } from './components/gui/navigation/navigation.component';
 import { HeaderComponent } from './components/gui/header/header.component';
 import { FooterComponent } from './components/gui/footer/footer.component';
@@ -32,7 +32,7 @@ import { ViewListAreaComponent } from './components/area/view-list-area/view-lis
     AppComponent,
     TestUserComponent,
     CreateUserComponent,
-    ViewProfileComponent,
+    ViewProfilComponent,
     NavigationComponent,
     HeaderComponent,
     FooterComponent,
@@ -56,6 +56,7 @@ import { ViewListAreaComponent } from './components/area/view-list-area/view-lis
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [TestService],
   bootstrap: [AppComponent]

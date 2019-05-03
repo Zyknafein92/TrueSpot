@@ -10,6 +10,7 @@ import truespot.business.dto.AreaDTO;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class AreaController {
 
@@ -25,17 +26,14 @@ public class AreaController {
 
     @GetMapping(value="/area/{id}")
     public AreaDTO getArea(@PathVariable Long id) {
-        Optional<Area> area = areaManager.getArea(id);
-        if(area.isPresent()){
-            Area areaReal = area.get();
-            return areaMapper.objectToDTO(areaReal);
-        }throw new RuntimeException("area not found");
+
+        return areaManager.getArea(id);
     }
 
 
     @PostMapping(value="/area")
     public Area createArea(@RequestBody AreaDTO areaDTO){
-        return areaMapper.DTOToObject(areaDTO);
+        return areaManager.saveArea(areaDTO);
     }
 
 

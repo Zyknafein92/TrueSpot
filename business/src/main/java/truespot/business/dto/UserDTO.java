@@ -10,13 +10,14 @@ public class UserDTO {
 
     private long id;
     private List<TopoDTO> topo;
-    private String name;
-    private String realName;
+    private String firstName;
+    private String lastName;
     private int age;
     private String gender;
     private String pseudo;
     private String password;
     private String email;
     private String phoneNumber;
+    private Boolean isAdmin;
 
 }

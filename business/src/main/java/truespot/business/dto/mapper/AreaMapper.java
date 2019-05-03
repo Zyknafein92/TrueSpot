@@ -1,18 +1,13 @@
 package truespot.business.dto.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import truespot.business.contract.AreaManager;
 import truespot.business.dto.AreaDTO;
 import truespot.model.Area;
 
 @Component
 public class AreaMapper {
 
-    @Autowired
-    private AreaManager areaManager;
-
-    public AreaDTO objectToDTO (Area area){
+    public static AreaDTO objectToDTO (Area area){
 
         AreaDTO areaDTO = new AreaDTO();
 
@@ -25,7 +20,7 @@ public class AreaMapper {
         return areaDTO;
     }
 
-    public Area DTOToObject (AreaDTO areaDTO){
+    public static Area DTOToObject (AreaDTO areaDTO){
 
         Area area = new Area();
 
@@ -35,8 +30,8 @@ public class AreaMapper {
         area.setRoadNumber(areaDTO.getRoadNumber());
         area.setHeight(areaDTO.getHeight());
 
-        area = areaManager.saveArea(area);
-        areaDTO.setId(area.getId());
+       // area = areaManager.saveArea(area);
+        areaDTO.setId(area.getId()); //todo : a retirer ? si id non utiluser
         return area;
     }
 }

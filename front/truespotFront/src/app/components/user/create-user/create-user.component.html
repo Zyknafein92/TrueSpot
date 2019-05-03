@@ -1,0 +1,162 @@
+<p></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="well-block">
+        <div class="well-title">
+          <h2>Créer un utilisateur</h2>
+        </div>
+
+
+        <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveuser()">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group"
+                   [class.has-success]="forms.get('firstName').valid"
+                   [class.has-error]="forms.get('firstName').invalid && forms.get('firstName').touched">
+                <label class="control-label">Prénom:</label>
+                <input class="form-control"
+                       type="text"
+                       name="firstName"
+                       placeholder="Prénom"
+                       formControlName="firstName"
+                       required minlength="2">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group"
+                   [class.has-success]="forms.get('lastName').valid"
+                   [class.has-error]="forms.get('lastName').invalid && forms.get('lastName').touched">
+                <label class="control-label">Nom:</label>
+                <input class="form-control input-md"
+                       type="text"
+                       name="lastName"
+                       placeholder="Nom"
+                       formControlName="lastName"
+                       required
+                       minlength="2">
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group"
+                   [class.has-success]="forms.get('email').valid"
+                   [class.has-error]="forms.get('email').invalid && forms.get('email').touched">
+                <label for="email" class="control-label">Email:</label>
+                <input required
+                       id="email"
+                       name="email"
+                       type="email"
+                       class="form-control"
+                       formControlName="email"
+                       placeholder="Email">
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group"
+                   [class.has-success]="forms.get('age').valid"
+                   [class.has-error]="forms.get('age').invalid && forms.get('age').touched">
+                <label class="control-label">Age:</label>
+                <input class="form-control input-md"
+                       type="number"
+                       name="age"
+                       placeholder="Adresse"
+                       formControlName="age"
+                       autocapitalize="on"
+                       spellcheck="on"
+                       required
+                       minlength="10">
+              </div>
+            </div>
+
+
+            <div class="col-md-4">
+              <div class="form-group"
+                   [class.has-success]="forms.get('phoneNumber').valid"
+                   [class.has-error]="forms.get('phoneNumber').invalid && forms.get('phoneNumber').touched">
+                <label class="control-label">Numéro de téléphone:</label>
+                <input class="form-control input-md"
+                       type="phoneNumber"
+                       name="phoneNumber"
+                       placeholder="Numéro de téléphone"
+                       formControlName="phoneNumber"
+                       required>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label> Genre:</label>
+              <div class="form-group"
+                   [class.has-success]="forms.get('gender').valid"
+                   [class.has-error]="forms.get('gender').invalid && forms.get('gender').touched">
+                <div class="form-group">
+                  <label class="d-block">
+                    <input type="radio" class="mr-1" name="gender" value="masculin" formControlName="gender"> Homme
+                  </label>
+                  <label class="d-block">
+                    <input type="radio" class="mr-1" name="gender" value="feminin" formControlName="gender"> Femme
+                  </label>
+                </div>
+            </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+              <div class="form-group"
+                   [class.has-success]="forms.get('pseudo').valid"
+                   [class.has-error]="forms.get('pseudo').invalid && forms.get('pseudo').touched">
+                <label class="control-label">Pseudo</label>
+                <input class="form-control input-md"
+                       type="text"
+                       name="pseudo"
+                       placeholder="Pseudo"
+                       formControlName="pseudo"
+                       required>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group"
+                   [class.has-success]="forms.get('password').valid"
+                   [class.has-error]="forms.get('password').invalid && forms.get('password').touched">
+                <label class="control-label">Mot de passe:</label>
+                <input class="form-control input-md"
+                       type="password"
+                       name="password"
+                       placeholder="Mot de passe"
+                       formControlName="password"
+                       required>
+              </div>
+            </div>
+
+
+<!--            <div class="col-md-6">-->
+<!--              <label class="custom-file">-->
+<!--                <input id="upload"-->
+<!--                       type="file"-->
+<!--                       (change)="imageChange($event)"-->
+<!--                       />-->
+<!--                <span class="custom-file-control"></span>-->
+<!--              </label>-->
+<!--            </div>-->
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <button
+                  type="submit"
+                  class="btn btn-primary"> Valider
+<!--                  [disabled]="forms.invalid">Valider-->
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

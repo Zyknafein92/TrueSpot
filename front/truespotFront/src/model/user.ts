@@ -17,8 +17,8 @@ export interface User {
     id?: number;
     roles?: Array<Role>;
     topo?: Array<Topo>;
-    name?: string;
-    realName?: string;
+    firstName?: string;
+    lastName?: string;
     age?: number;
     gender?: string;
     pseudo?: string;

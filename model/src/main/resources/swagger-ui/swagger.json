@@ -260,33 +260,33 @@
         "type" : {
           "type" : "string"
         },
+        "position" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
         "format" : {
           "type" : "string"
         },
         "description" : {
           "type" : "string"
         },
-        "position" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
         "title" : {
           "type" : "string"
-        },
-        "xml" : {
-          "$ref" : "#/definitions/Xml"
-        },
-        "example" : {
-          "type" : "object"
-        },
-        "allowEmptyValue" : {
-          "type" : "boolean"
         },
         "vendorExtensions" : {
           "type" : "object",
           "additionalProperties" : {
             "type" : "object"
           }
+        },
+        "allowEmptyValue" : {
+          "type" : "boolean"
+        },
+        "example" : {
+          "type" : "object"
+        },
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
         }
       }
     },
@@ -398,10 +398,10 @@
             "$ref" : "#/definitions/Topo"
           }
         },
-        "name" : {
+        "firstName" : {
           "type" : "string"
         },
-        "realName" : {
+        "lastName" : {
           "type" : "string"
         },
         "age" : {

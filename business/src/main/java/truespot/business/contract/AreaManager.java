@@ -1,5 +1,6 @@
 package truespot.business.contract;
 
+import truespot.business.dto.AreaDTO;
 import truespot.model.Area;
 
 import java.util.List;
@@ -9,9 +10,9 @@ public interface AreaManager {
 
     List<Area> findAllArea();
 
-    Optional<Area> getArea(Long id);
+    AreaDTO getArea(Long id);
 
-    Area saveArea(Area area);
+    Area saveArea(AreaDTO areaDTO);
 
     void updateArea(Long id, Area area);
 
