@@ -15,12 +15,12 @@ import { Xml } from './xml';
 export interface Property {
     readOnly?: boolean;
     type?: string;
-    position?: number;
     format?: string;
     description?: string;
+    position?: number;
+    xml?: Xml;
+    example?: any;
     title?: string;
     vendorExtensions?: { [key: string]: any; };
     allowEmptyValue?: boolean;
-    example?: any;
-    xml?: Xml;
 }

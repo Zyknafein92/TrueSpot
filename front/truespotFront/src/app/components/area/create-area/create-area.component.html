@@ -1,3 +1,104 @@
-<p>
-  create-area works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="well-block">
+        <div class="well-title">
+          <h2>Créer un secteur de grimpe</h2>
+        </div>
+
+
+        <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveArea()">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group"
+                   [class.has-success]="forms.get('name').valid"
+                   [class.has-error]="forms.get('name').invalid && forms.get('name').touched">
+                <label class="control-label">Nom:</label>
+                <input class="form-control"
+                       type="text"
+                       name="name"
+                       placeholder="Nom du site"
+                       formControlName="name"
+                       required minlength="2">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group"
+                   [class.has-success]="forms.get('description').valid"
+                   [class.has-error]="forms.get('description').invalid && forms.get('description').touched">
+                <label class="control-label">Description:</label>
+                <input class="form-control input-md"
+                       type="text"
+                       name="description"
+                       placeholder="Description du site"
+                       formControlName="description"
+                       required
+                       minlength="2">
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group"
+                   [class.has-success]="forms.get('orientation').valid"
+                   [class.has-error]="forms.get('orientation').invalid && forms.get('orientation').touched">
+                <label for="orientation" class="control-label">Orientation du site:</label>
+                <input required
+                       id="orientation"
+                       name="orientation"
+                       type="text"
+                       class="form-control"
+                       formControlName="orientation"
+                       placeholder="Nord, Nord-est">
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group"
+                   [class.has-success]="forms.get('roadNumber').valid"
+                   [class.has-error]="forms.get('roadNumber').invalid && forms.get('roadNumber').touched">
+                <label class="control-label">Nombre de voie:</label>
+                <input class="form-control input-md"
+                       type="number"
+                       name="roadNumber"
+                       placeholder="1..2.."
+                       formControlName="roadNumber"
+                       autocapitalize="on"
+                       spellcheck="on"
+                       required
+                       minlength="10">
+              </div>
+
+            </div>
+            <div class="col-md-4">
+              <div class="form-group"
+                   [class.has-success]="forms.get('height').valid"
+                   [class.has-error]="forms.get('height').invalid && forms.get('height').touched">
+                <label class="control-label">Hauteur estimée:</label>
+                <input class="form-control input-md"
+                       type="number"
+                       name="height"
+                       placeholder="Hauteur estimée"
+                       formControlName="height"
+                       autocapitalize="on"
+                       spellcheck="on"
+                       required
+                       minlength="10">
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <button
+                  type="submit"
+                  class="btn btn-primary"[disabled]="forms.invalid">Valider
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RoadService} from "../../../services/road/roadservice";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-create-road',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateRoadComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private roadService: RoadService, private formBuilder: FormBuilder) {
   }
 
+  ngOnInit() {
+    this.initform();
+  }
+
+  private initform() {
+  }
 }
