@@ -31,7 +31,7 @@ export class CreateUserComponent implements OnInit {
 
   }
 
-  initForm(){
+  private initForm(){
     this.forms = this.formBuilder.group(
       {
         firstName: new FormControl(),

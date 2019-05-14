@@ -1,10 +1,10 @@
-
+<div class="container">
 <div class="row">
   <div class="col-lg-12">
     <div class="well-block">
       <div class="well-title">
         <p></p>
-        <h2>Créer un secteur de grimpe</h2>
+        <h2>Créer une voie :</h2>
       </div>
 
       <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveRoad()">
@@ -43,7 +43,7 @@
         <h4>Cotation de la voie:</h4>
       <div class="row">
         <div class="col-md-2">
-          <label class="control-label">Valeur numérique:</label>
+          <label class="control-label">Chiffre:</label>
           <div class="form-group"
                [class.has-success]="forms.get('number').valid"
                [class.has-error]="forms.get('number').invalid && forms.get('number').touched">
@@ -96,8 +96,7 @@
              [class.has-error]="forms.get('description').invalid && forms.get('description').touched">
           <textarea class="form-control input-md"
                     type="text"
-                    rows="8"
-                    cols="8"
+                    rows="5"
                     name="description"
                     placeholder="Description de la voie"
                     formControlName="description"
@@ -119,4 +118,4 @@
     </div>
   </div>
 </div>
-
+</div>

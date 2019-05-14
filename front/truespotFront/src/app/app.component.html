@@ -1,17 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
 
 
+    <nav class="navbar navbar-fixed-top navbar-dark bg-dark">
+      <div class="align-baseline">
+        <a class="navbar-brand">TrueSpot</a>
+        <ul class="nav navbar-dark" routerLinkActive="active" a>
+          <li class="nav-item"><a class="nav-link" routerLink="/createUser">Créer un compte</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/createTopo">Créer un topo</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/createSpot">Créer un spot</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/createArea">Créer un secteur</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/createRoad">Créer une voie</a></li>
+        </ul>
+      </div>
+    </nav>
 
 
-<div style="text-align:center">
-
-  <ul>
-    <li><a routerLink="/createUser">Create User</a></li>
-    <li><a routerLink="/view-profil">View-Profil</a> </li>
-    <li><a routerLink="/createArea">Create Area</a></li>
-    <li><a routerLink="/createRoad">Create Road</a></li>
-  </ul>
-</div>
 
 
 <router-outlet></router-outlet>

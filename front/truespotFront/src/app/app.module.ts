@@ -9,9 +9,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
 import { ViewProfilComponent } from './components/user/view-profil/view-profil.component';
-import { NavigationComponent } from './components/gui/navigation/navigation.component';
-import { HeaderComponent } from './components/gui/header/header.component';
-import { FooterComponent } from './components/gui/footer/footer.component';
 import { ViewListUsersComponent } from './components/user/view-list-users/view-list-users.component';
 import { CreateTopoComponent } from './components/topo/create-topo/create-topo.component';
 import { ViewTopoComponent } from './components/topo/view-topo/view-topo.component';
@@ -33,9 +30,6 @@ import { ViewListAreaComponent } from './components/area/view-list-area/view-lis
     TestUserComponent,
     CreateUserComponent,
     ViewProfilComponent,
-    NavigationComponent,
-    HeaderComponent,
-    FooterComponent,
     ViewListUsersComponent,
     CreateTopoComponent,
     ViewTopoComponent,

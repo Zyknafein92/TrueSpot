@@ -26,7 +26,6 @@ public class AreaController {
 
     @GetMapping(value="/area/{id}")
     public AreaDTO getArea(@PathVariable Long id) {
-
         return areaManager.getArea(id);
     }
 

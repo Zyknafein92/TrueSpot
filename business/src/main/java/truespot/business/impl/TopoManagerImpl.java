@@ -7,6 +7,7 @@ import truespot.model.Topo;
 import java.util.List;
 import java.util.Optional;
 
+// TODO: 10/05/2019 refactor selon area 
 @Service
 public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager {
 

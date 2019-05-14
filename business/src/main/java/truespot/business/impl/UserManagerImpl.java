@@ -7,7 +7,7 @@ import truespot.model.User;
 import java.util.List;
 import java.util.Optional;
 
-
+//todo refactor selon area
 @Service
 public class UserManagerImpl extends BusinessManagerImpl implements UserManager {
 

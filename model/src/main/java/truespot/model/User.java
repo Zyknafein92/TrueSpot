@@ -16,6 +16,8 @@ import java.util.List;
 @Table(name="User", schema= "public")
 public class User implements Serializable {
 
+ //todo : ajouter 2 arraylist : demande de pret et prêté a pour le prêt de topo.
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

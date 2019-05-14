@@ -20,7 +20,7 @@ public class AreaMapper {
         return areaDTO;
     }
 
-    public static Area DTOToObject (AreaDTO areaDTO){
+    public static Area DTOToObject (AreaDTO areaDTO) {
 
         Area area = new Area();
 
@@ -33,5 +33,12 @@ public class AreaMapper {
        // area = areaManager.saveArea(area);
         areaDTO.setId(area.getId()); //todo : a retirer ? si id non utiluser
         return area;
+    }
+
+    public static AreaDTO updateDTO (AreaDTO areaDTO, Area area) {
+
+        areaDTO.setName(area.getName() != null ? area.getName() : areaDTO.getName());
+
+        return areaDTO;
     }
 }

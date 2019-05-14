@@ -7,6 +7,7 @@ import truespot.model.Spot;
 import java.util.List;
 import java.util.Optional;
 
+// TODO: 10/05/2019 refactor selon area 
 @Service
 public class SpotManagerImpl extends BusinessManagerImpl implements SpotManager {
 
