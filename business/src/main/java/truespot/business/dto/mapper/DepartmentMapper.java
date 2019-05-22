@@ -15,9 +15,7 @@ public class DepartmentMapper {
     public DepartmentDTO objectToDTO(Department department){
 
         DepartmentDTO departmentDTO = new DepartmentDTO();
-
         departmentDTO.setName(department.getName());
-        departmentDTO.setNumber(department.getNumber());
 
         return departmentDTO;
     }
@@ -27,7 +25,6 @@ public class DepartmentMapper {
         Department department = new Department();
 
         department.setName(departmentDTO.getName());
-        department.setNumber(departmentDTO.getNumber());
         department = departmentManager.saveDepartment(department);
         departmentDTO.setId(department.getId());
         return department;
