@@ -15,23 +15,25 @@ public class UserMapper {
     @Autowired
     private UserManager userManager;
 
-     public UserDTO objectToDTO (User user) {
+     public static UserDTO objectToDTO (User user) {
 
          UserDTO userDTO = new UserDTO();
 
-         userDTO.setFirstName(user.getFirstName() != null ? user.getFirstName() : "");
-         userDTO.setLastName(user.getLastName() != null ? user.getLastName() : "");
+
+         userDTO.setFirstName(user.getFirstName());
+         userDTO.setLastName(user.getLastName());
          userDTO.setAge(user.getAge());
-         userDTO.setGender(user.getGender()!= null ? user.getGender() : "");
-         userDTO.setPseudo(user.getPseudo() != null ? user.getPseudo() : "");
-         userDTO.setPassword(user.getPassword() != null ? user.getPassword() : "");
-         userDTO.setEmail(user.getEmail()!= null ? user.getEmail() : "");
-         userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : "");
+         userDTO.setGender(user.getGender());
+         userDTO.setPseudo(user.getPseudo());
+         userDTO.setPassword(user.getPassword());
+         userDTO.setEmail(user.getEmail());
+         userDTO.setPhoneNumber(user.getPhoneNumber());
+
 
          return userDTO;
      }
 
-     public User dtoToObject (UserDTO userDTO){
+     public static User dtoToObject (UserDTO userDTO){
 
          User user = new User();
 
@@ -44,18 +46,23 @@ public class UserMapper {
          user.setEmail(userDTO.getEmail());
          user.setPhoneNumber(userDTO.getPhoneNumber());
         // user.setAdmin(userDTO.setIsAdmin(false));
-         user = userManager.saveUser(user);
          userDTO.setId(user.getId());
 
          return user;
      }
 
-     public User updateRecord(Long id, User uUpdate){
+     public static UserDTO updateDTO(UserDTO userDTO, User user){
 
+         userDTO.setFirstName(user.getFirstName() != null ? user.getFirstName() : userDTO.getFirstName());
+         userDTO.setLastName(user.getLastName() != null ? user.getLastName() : userDTO.getLastName());
+         userDTO.setAge(user.getAge() != 0 ? user.getAge() : userDTO.getAge());
+         userDTO.setGender(user.getGender() != null ? user.getGender() : userDTO.getGender());
+         userDTO.setPseudo(user.getPseudo() != null ? user.getPseudo() : userDTO.getPseudo());
+         userDTO.setPassword(user.getPassword() != null ? user.getPassword() : userDTO.getPassword());
+         userDTO.setEmail(user.getEmail() != null ? user.getEmail() : userDTO.getEmail());
+         userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : userDTO.getPhoneNumber());
 
-         //todo.. setter ect...
-
-        return null;
+        return userDTO;
      }
 
 }

@@ -54,12 +54,12 @@ public class User implements Serializable {
     @Column(name="phone_number")
     private String phoneNumber;
 
-    @Column(name="isadmin")
-    private Boolean admin;
+//    @Column(name="isadmin")
+//    private Boolean admin;
 
     public User(){}
 
-    public User(String firstName, String lastName, int age, String gender, String pseudo, String password, String email, String phoneNumber, Boolean admin) {
+    public User(String firstName, String lastName, int age, String gender, String pseudo, String password, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -68,6 +68,6 @@ public class User implements Serializable {
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.admin = admin;
+       // this.admin = admin;
     }
 }

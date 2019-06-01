@@ -1,18 +1,18 @@
 package truespot.business.contract;
 
 
+import truespot.business.dto.UserDTO;
 import truespot.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserManager {
 
     List<User> findAllUser();
 
-    Optional<User> getUser(Long id);
+    UserDTO getUser(Long id);
 
-    User saveUser(User user);
+    User saveUser(UserDTO userDTO);
 
 //    User findByPseudo(String pseudo);
 

@@ -25,17 +25,11 @@ public class UserController {
     }
 
     @GetMapping(value="/user/{id}")
-    public UserDTO getUser(@PathVariable Long id) {
-        Optional<User> user = userManager.getUser(id);
-        if(user.isPresent()){
-            User userReal = user.get();
-            return userMapper.objectToDTO(userReal);
-        }throw new RuntimeException("user not found");
-    }
+    public UserDTO getUser(@PathVariable Long id) { return userManager.getUser(id); }
 
     @PostMapping(value="/user")
     public User createUser(@RequestBody UserDTO userDTO){
-        return userMapper.dtoToObject(userDTO);
+        return userManager.saveUser(userDTO);
     }
 
     @PutMapping(value = "/user/{id}")
