@@ -36,12 +36,15 @@ public class AreaManagerImpl extends BusinessManagerImpl implements AreaManager 
 
     @Override
     public Area saveArea(AreaDTO areaDTO) {
+        //todo : pour user faire encodage içi.
         Area area = AreaMapper.DTOToObject(areaDTO);
         return getDaoFactory().getAreaRepository().save(area);
     }
 
     @Override
     public void updateArea(Long id, Area area) {
+        AreaDTO areaDTO = getArea(id);
+        AreaMapper.updateDTO(areaDTO, area);
         area.setId(id);
         getDaoFactory().getAreaRepository().save(area);
     }

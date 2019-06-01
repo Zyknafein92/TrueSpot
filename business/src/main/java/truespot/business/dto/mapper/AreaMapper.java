@@ -11,6 +11,7 @@ public class AreaMapper {
 
         AreaDTO areaDTO = new AreaDTO();
 
+        areaDTO.setId(area.getId());
         areaDTO.setName(area.getName());
         areaDTO.setDescription(area.getDescription());
         areaDTO.setOrientation(area.getOrientation());
@@ -29,15 +30,18 @@ public class AreaMapper {
         area.setOrientation(areaDTO.getOrientation());
         area.setRoadNumber(areaDTO.getRoadNumber());
         area.setHeight(areaDTO.getHeight());
+        areaDTO.setId(area.getId());
 
-       // area = areaManager.saveArea(area);
-        areaDTO.setId(area.getId()); //todo : a retirer ? si id non utiluser
         return area;
     }
 
     public static AreaDTO updateDTO (AreaDTO areaDTO, Area area) {
 
         areaDTO.setName(area.getName() != null ? area.getName() : areaDTO.getName());
+        areaDTO.setDescription(area.getDescription()!= null ? area.getDescription() : areaDTO.getDescription());
+        areaDTO.setOrientation(area.getOrientation()!= null ? area.getOrientation() : areaDTO.getOrientation());
+        areaDTO.setRoadNumber(area.getRoadNumber() != 0 ? area.getRoadNumber() : areaDTO.getRoadNumber());
+        areaDTO.setHeight(area.getHeight()!= 0 ? area.getHeight() : areaDTO.getHeight());
 
         return areaDTO;
     }

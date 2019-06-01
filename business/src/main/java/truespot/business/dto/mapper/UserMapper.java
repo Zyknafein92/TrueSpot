@@ -19,10 +19,14 @@ public class UserMapper {
 
          UserDTO userDTO = new UserDTO();
 
-         userDTO.setPseudo(user.getPseudo() != null ? user.getPseudo() : "");
+         userDTO.setFirstName(user.getFirstName() != null ? user.getFirstName() : "");
+         userDTO.setLastName(user.getLastName() != null ? user.getLastName() : "");
          userDTO.setAge(user.getAge());
          userDTO.setGender(user.getGender()!= null ? user.getGender() : "");
+         userDTO.setPseudo(user.getPseudo() != null ? user.getPseudo() : "");
+         userDTO.setPassword(user.getPassword() != null ? user.getPassword() : "");
          userDTO.setEmail(user.getEmail()!= null ? user.getEmail() : "");
+         userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : "");
 
          return userDTO;
      }

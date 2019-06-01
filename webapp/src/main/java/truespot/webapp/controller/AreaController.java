@@ -16,8 +16,6 @@ public class AreaController {
 
     @Autowired
     private AreaManager areaManager;
-    @Autowired
-    private AreaMapper areaMapper;
 
     @GetMapping(value="/area")
     public List<Area> getAreas(){

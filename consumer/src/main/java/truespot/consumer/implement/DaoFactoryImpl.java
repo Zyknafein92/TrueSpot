@@ -14,7 +14,7 @@ public class DaoFactoryImpl implements DaoFactory {
     private RoleRepository roleRepository;
     private SpotRepository spotRepository;
     private TopoRepository topoRepository;
-    private UsersRepository usersRepository;
+    private UserRepository userRepository;
 
 
 
@@ -37,8 +37,8 @@ public class DaoFactoryImpl implements DaoFactory {
     @Override
     public TopoRepository getTopoRepository() { return topoRepository; }
     @Override
-    public UsersRepository getUsersRepository() {
-        return usersRepository;
+    public UserRepository getUserRepository() {
+        return userRepository;
     }
 
     //Setters
@@ -66,6 +66,7 @@ public class DaoFactoryImpl implements DaoFactory {
     public void setRoleRepository(RoleRepository roleRepository){
         this.roleRepository = roleRepository;
     }
+
     @Override
     @Autowired
     public void setSpotRepository(SpotRepository spotRepository) {
@@ -80,8 +81,8 @@ public class DaoFactoryImpl implements DaoFactory {
 
     @Override
     @Autowired
-    public void setUsersRepository(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository; }
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository; }
 
 
 }

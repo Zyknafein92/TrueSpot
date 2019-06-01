@@ -14,6 +14,8 @@ public interface UserManager {
 
     User saveUser(User user);
 
+//    User findByPseudo(String pseudo);
+
     void updateUser(Long id, User user);
 
     void deleteUser(Long id);

@@ -16,7 +16,7 @@ public interface DaoFactory {
     RoleRepository getRoleRepository();
     SpotRepository getSpotRepository();
     TopoRepository getTopoRepository();
-    UsersRepository getUsersRepository();
+    UserRepository getUserRepository();
 
 
 
@@ -33,5 +33,5 @@ public interface DaoFactory {
     @Autowired
     void setTopoRepository(TopoRepository topoRepository);
     @Autowired
-    void setUsersRepository(UsersRepository usersRepository);
+    void setUserRepository(UserRepository userRepository);
 }

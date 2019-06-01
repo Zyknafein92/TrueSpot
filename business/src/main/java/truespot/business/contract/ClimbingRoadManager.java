@@ -1,17 +1,17 @@
 package truespot.business.contract;
 
+import truespot.business.dto.ClimbingRoadDTO;
 import truespot.model.ClimbingRoad;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ClimbingRoadManager {
 
     List<ClimbingRoad> findAllClimbingRoad();
 
-    Optional<ClimbingRoad> getClimbingRoad(Long id);
+    ClimbingRoadDTO getClimbingRoad(Long id);
 
-    ClimbingRoad saveClimbingRoad(ClimbingRoad climbingRoad);
+    ClimbingRoad saveClimbingRoad(ClimbingRoadDTO climbingRoadDTO);
 
     void updateClimbingRoad(Long id, ClimbingRoad climbingRoad);
 

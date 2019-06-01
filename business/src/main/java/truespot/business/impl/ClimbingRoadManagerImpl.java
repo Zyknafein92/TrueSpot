@@ -2,6 +2,8 @@ package truespot.business.impl;
 
 import org.springframework.stereotype.Service;
 import truespot.business.contract.ClimbingRoadManager;
+import truespot.business.dto.ClimbingRoadDTO;
+import truespot.business.dto.mapper.ClimbingRoadMapper;
 import truespot.model.ClimbingRoad;
 
 import java.util.List;
@@ -16,19 +18,38 @@ public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements Clim
     }
 
     @Override
-    public Optional<ClimbingRoad> getClimbingRoad(Long id) {
-        return getDaoFactory().getClimbingRoadRepository().findById(id);
+    public ClimbingRoadDTO getClimbingRoad(Long id) {
+
+        Optional<ClimbingRoad> climbingRoadOptional = getDaoFactory().getClimbingRoadRepository().findById(id);
+
+        ClimbingRoad climbingRoad = null;
+
+        if(climbingRoadOptional.isPresent() ) {
+            climbingRoad = new ClimbingRoad (
+                    climbingRoadOptional.get().getName(),
+                    climbingRoadOptional.get().getDescription(),
+                    climbingRoadOptional.get().getType(),
+                    climbingRoadOptional.get().getNumber(),
+                    climbingRoadOptional.get().getLetter(),
+                    climbingRoadOptional.get().getSymbol()
+            );
+        }
+        return climbingRoad != null ? ClimbingRoadMapper.objectToDTO(climbingRoad) : null;
     }
 
     @Override
-    public ClimbingRoad saveClimbingRoad(ClimbingRoad climbingRoad) {
+    public ClimbingRoad saveClimbingRoad (ClimbingRoadDTO climbingRoadDTO) {
+
+        ClimbingRoad climbingRoad = ClimbingRoadMapper.DTOToObject(climbingRoadDTO);
         return getDaoFactory().getClimbingRoadRepository().save(climbingRoad);
     }
 
     @Override
     public void updateClimbingRoad(Long id, ClimbingRoad climbingRoad) {
-      climbingRoad.setId(id);
-      getDaoFactory().getClimbingRoadRepository().save(climbingRoad);
+        ClimbingRoadDTO climbingRoadDTO = getClimbingRoad(id);
+        ClimbingRoadMapper.updateDTO(climbingRoadDTO, climbingRoad);
+        climbingRoad.setId(id);
+        getDaoFactory().getClimbingRoadRepository().save(climbingRoad);
     }
 
     @Override
