@@ -2,6 +2,8 @@ package truespot.business.impl;
 
 import org.springframework.stereotype.Service;
 import truespot.business.contract.DepartmentManager;
+import truespot.business.dto.DepartmentDTO;
+import truespot.business.dto.mapper.DepartmentMapper;
 import truespot.model.Department;
 
 import java.util.List;
@@ -16,23 +18,18 @@ public class DepartmentManagerImpl extends BusinessManagerImpl implements Depart
     }
 
     @Override
-    public Optional<Department> getDepartment(Long id) {
-        return getDaoFactory().getDepartmentRepository().findById(id);
+    public DepartmentDTO getDepartment(Long id) {
+
+        Optional<Department> departmentOptional = getDaoFactory().getDepartmentRepository().findById(id);
+
+        Department department = null;
+
+        if(departmentOptional.isPresent()){
+            department = new Department(
+                    departmentOptional.get().getName()
+            );
+        }
+        return department != null ? DepartmentMapper.objectToDTO(department) : null;
     }
 
-    @Override
-    public Department saveDepartment(Department department) {
-        return getDaoFactory().getDepartmentRepository().save(department);
-    }
-
-    @Override
-    public void updateDepartment(Long id, Department department) {
-        department.setId(id);
-       getDaoFactory().getDepartmentRepository().save(department);
-    }
-
-    @Override
-    public void deleteDepartment(Long id) {
-        getDaoFactory().getDepartmentRepository().deleteById(id);
-    }
 }

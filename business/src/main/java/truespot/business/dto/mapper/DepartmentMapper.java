@@ -9,24 +9,24 @@ import truespot.model.Department;
 @Component
 public class DepartmentMapper {
 
-    @Autowired
-    private DepartmentManager departmentManager;
 
-    public DepartmentDTO objectToDTO(Department department){
+    public static DepartmentDTO objectToDTO(Department department){
 
         DepartmentDTO departmentDTO = new DepartmentDTO();
+
         departmentDTO.setName(department.getName());
 
         return departmentDTO;
     }
 
-    public Department DTOToObject(DepartmentDTO departmentDTO){
+//    public static Department DTOToObject(DepartmentDTO departmentDTO){
+//
+//        Department department = new Department();
+//
+//        department.setName(departmentDTO.getName());
+//        departmentDTO.setId(department.getId());
+//
+//        return department;
+//    }
 
-        Department department = new Department();
-
-        department.setName(departmentDTO.getName());
-        department = departmentManager.saveDepartment(department);
-        departmentDTO.setId(department.getId());
-        return department;
-    }
 }

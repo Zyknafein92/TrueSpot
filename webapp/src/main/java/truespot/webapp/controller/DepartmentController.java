@@ -15,8 +15,6 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentManager departmentManager;
-    @Autowired
-    private DepartmentMapper departmentMapper;
 
     @GetMapping(value="/department")
     public List<Department> getDepartments(){
@@ -24,30 +22,6 @@ public class DepartmentController {
     }
 
     @GetMapping(value="/department/{id}")
-    public DepartmentDTO getDepartment(@PathVariable Long id) {
-        Optional<Department> department = departmentManager.getDepartment(id);
-        if(department.isPresent()){
-            Department departmentR = department.get();
-            return departmentMapper.objectToDTO(departmentR);
-        }throw new RuntimeException("department not found");
-    }
-
-
-    @PostMapping(value="/department")
-    public Department createDepartment(@RequestBody DepartmentDTO departmentDTO){
-        return departmentMapper.DTOToObject(departmentDTO);
-    }
-
-
-    @PutMapping(value = "/department/{id}")
-    public void updateDepartment(@PathVariable Long id , @RequestBody Department department) {
-        departmentManager.updateDepartment(id,department);
-    }
-
-
-    @DeleteMapping(value= "/department/{id}")
-    public void deleteDepartment(@PathVariable Long id){
-        departmentManager.deleteDepartment(id);
-    }
+    public DepartmentDTO getDepartment(@PathVariable Long id) { return departmentManager.getDepartment(id); }
 
 }
