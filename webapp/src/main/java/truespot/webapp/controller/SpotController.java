@@ -25,17 +25,13 @@ public class SpotController {
 
     @GetMapping(value="/spot/{id}")
     public SpotDTO getSpot(@PathVariable Long id) {
-        Optional<Spot> spot = spotManager.getSpot(id);
-        if(spot.isPresent()){
-            Spot spotReal = spot.get();
-            return spotMapper.objectToDTO(spotReal);
-        }throw new RuntimeException("spot not found");
+       return spotManager.getSpot(id);
     }
 
 
     @PostMapping(value="/spot")
     public Spot createSpot(@RequestBody SpotDTO spotDTO){
-        return spotMapper.dtoToObject(spotDTO);
+        return spotManager.saveSpot(spotDTO);
     }
 
 

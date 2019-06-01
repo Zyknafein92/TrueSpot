@@ -2,12 +2,14 @@ package truespot.business.impl;
 
 import org.springframework.stereotype.Service;
 import truespot.business.contract.SpotManager;
+import truespot.business.dto.SpotDTO;
+import truespot.business.dto.mapper.SpotMapper;
 import truespot.model.Spot;
 
 import java.util.List;
 import java.util.Optional;
 
-// TODO: 10/05/2019 refactor selon area 
+
 @Service
 public class SpotManagerImpl extends BusinessManagerImpl implements SpotManager {
 
@@ -17,17 +19,36 @@ public class SpotManagerImpl extends BusinessManagerImpl implements SpotManager 
     }
 
     @Override
-    public Optional<Spot> getSpot(Long id) {
-        return getDaoFactory().getSpotRepository().findById(id);
+    public SpotDTO getSpot(Long id) {
+
+        Optional<Spot> spotOptional = getDaoFactory().getSpotRepository().findById(id);
+        Spot spot = null;
+
+        if(spotOptional.isPresent()){
+            spot = new Spot(
+            spotOptional.get().getName(),
+            spotOptional.get().getDescription(),
+            spotOptional.get().getNearestCity(),
+            spotOptional.get().getCarAccess(),
+            spotOptional.get().getCarParking(),
+            spotOptional.get().getAccessDescription(),
+            spotOptional.get().getNearestHospital(),
+            spotOptional.get().getSupplyComment()
+            );
+        }
+        return spot != null ? SpotMapper.objectToDTO(spot) : null;
     }
 
     @Override
-    public Spot saveSpot(Spot spot) {
+    public Spot saveSpot(SpotDTO spotDTO) {
+        Spot spot = SpotMapper.dtoToObject(spotDTO);
         return getDaoFactory().getSpotRepository().save(spot);
     }
 
     @Override
     public void updateSpot(Long id, Spot spot) {
+        SpotDTO spotDTO = getSpot(id);
+        SpotMapper.updateDTO(spotDTO, spot);
         spot.setId(id);
         getDaoFactory().getSpotRepository().save(spot);
     }

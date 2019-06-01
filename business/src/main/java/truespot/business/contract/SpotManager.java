@@ -1,17 +1,17 @@
 package truespot.business.contract;
 
+import truespot.business.dto.SpotDTO;
 import truespot.model.Spot;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface SpotManager {
 
     List<Spot> findAllSpot();
 
-    Optional<Spot> getSpot(Long id);
+    SpotDTO getSpot(Long id);
 
-    Spot saveSpot(Spot spot);
+    Spot saveSpot(SpotDTO spotDTO);
 
     void updateSpot(Long id, Spot spot);
 
