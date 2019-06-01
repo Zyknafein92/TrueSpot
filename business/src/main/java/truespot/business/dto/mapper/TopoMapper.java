@@ -12,29 +12,37 @@ public class TopoMapper {
 
     @Autowired
     private TopoManager topoManager;
-    @Autowired
-    private UserManager userManager;
 
-    public TopoDTO objectToDTO (Topo topo) {
+
+    public static TopoDTO objectToDTO (Topo topo) {
 
         TopoDTO topoDTO = new TopoDTO();
 
         topoDTO.setName(topo.getName());
+        topoDTO.setUser(topo.getUser());
         topoDTO.setDepartment(topo.getDepartment());
 
         return topoDTO;
     }
 
-    public Topo dtoToObject (TopoDTO topoDTO){
+    public static Topo dtoToObject (TopoDTO topoDTO){
 
         Topo topo = new Topo();
 
-       // topo.setUser(topoDTO.setUser()));
         topo.setName(topoDTO.getName());
         topo.setDepartment(topoDTO.getDepartment());
-
-        topo = topoManager.saveTopo(topo);
         topoDTO.setId(topoDTO.getId());
+
         return topo;
+    }
+
+    public static TopoDTO updateDTO(TopoDTO topoDTO, Topo topo) {
+
+        topoDTO.setName(topo.getName() != null ? topo.getName() : topoDTO.getName());
+        topoDTO.setUser(topo.getUser() != null ? topo.getUser() : topoDTO.getUser());
+        topoDTO.setDepartment(topo.getDepartment() != null ? topo.getDepartment() : topoDTO.getDepartment());
+
+        return topoDTO;
+
     }
 }

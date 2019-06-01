@@ -1,16 +1,16 @@
 package truespot.business.contract;
 
+import truespot.business.dto.TopoDTO;
 import truespot.model.Topo;
 import java.util.List;
-import java.util.Optional;
 
 public interface TopoManager {
 
     List<Topo> findAllTopo();
 
-    Optional<Topo> getTopo(Long id);
+    TopoDTO getTopo(Long id);
 
-    Topo saveTopo(Topo topo);
+    Topo saveTopo(TopoDTO topoDTO);
 
     void updateTopo(Long id, Topo topo);
 

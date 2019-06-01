@@ -2,6 +2,8 @@ package truespot.business.impl;
 
 import org.springframework.stereotype.Service;
 import truespot.business.contract.TopoManager;
+import truespot.business.dto.TopoDTO;
+import truespot.business.dto.mapper.TopoMapper;
 import truespot.model.Topo;
 
 import java.util.List;
@@ -18,17 +20,33 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
     }
 
     @Override
-    public Optional<Topo> getTopo(Long id) {
-        return getDaoFactory().getTopoRepository().findById(id);
+    public TopoDTO getTopo(Long id) {
+
+        Optional<Topo> topoOptional = getDaoFactory().getTopoRepository().findById(id);
+
+        Topo topo = null;
+
+        if(topoOptional.isPresent()){
+            topo = new Topo(
+                    topoOptional.get().getName(),
+                    topoOptional.get().getUser(),
+                    topoOptional.get().getDepartment()
+            );
+        }
+
+        return topo != null ? TopoMapper.objectToDTO(topo) : null;
     }
 
     @Override
-    public Topo saveTopo(Topo topo) {
+    public Topo saveTopo(TopoDTO topoDTO) {
+        Topo topo = TopoMapper.dtoToObject(topoDTO);
         return getDaoFactory().getTopoRepository().save(topo);
     }
 
     @Override
     public void updateTopo(Long id, Topo topo) {
+        TopoDTO topoDTO = getTopo(id);
+        TopoMapper.updateDTO(topoDTO, topo);
         topo.setId(id);
         getDaoFactory().getTopoRepository().save(topo);
     }

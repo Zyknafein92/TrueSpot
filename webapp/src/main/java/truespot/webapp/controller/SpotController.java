@@ -15,8 +15,7 @@ public class SpotController {
 
     @Autowired
     private SpotManager spotManager;
-    @Autowired
-    private SpotMapper spotMapper;
+
 
     @GetMapping(value="/spot")
     public List<Spot> getSpots(){
