@@ -10,9 +10,6 @@ import truespot.model.Topo;
 @Component
 public class TopoMapper {
 
-    @Autowired
-    private TopoManager topoManager;
-
 
     public static TopoDTO objectToDTO (Topo topo) {
 
