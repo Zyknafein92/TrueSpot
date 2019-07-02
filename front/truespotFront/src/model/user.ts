@@ -25,5 +25,4 @@ export interface User {
     password?: string;
     email?: string;
     phoneNumber?: string;
-    admin?: boolean;
 }

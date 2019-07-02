@@ -10,13 +10,12 @@ public class AreaMapper {
     public static AreaDTO objectToDTO (Area area){
 
         AreaDTO areaDTO = new AreaDTO();
-
-        areaDTO.setId(area.getId());
-        areaDTO.setName(area.getName());
-        areaDTO.setDescription(area.getDescription());
-        areaDTO.setOrientation(area.getOrientation());
-        areaDTO.setRoadNumber(area.getRoadNumber());
-        areaDTO.setHeight(area.getHeight());
+        areaDTO.setId(area.getId() != 0 ? area.getId() : areaDTO.getId());
+        areaDTO.setName(area.getName() != null ? area.getName() : areaDTO.getName());
+        areaDTO.setDescription(area.getDescription() != null ? area.getDescription() : areaDTO.getDescription());
+        areaDTO.setOrientation(area.getOrientation() != null ? area.getOrientation() : areaDTO.getOrientation());
+        areaDTO.setRoadNumber(area.getRoadNumber() != 0 ? area.getRoadNumber() : areaDTO.getRoadNumber());
+        areaDTO.setHeight(area.getHeight() != 0 ? area.getHeight() : areaDTO.getHeight());
 
         return areaDTO;
     }
@@ -25,11 +24,11 @@ public class AreaMapper {
 
         Area area = new Area();
 
-        area.setName(areaDTO.getName());
-        area.setDescription(areaDTO.getDescription());
-        area.setOrientation(areaDTO.getOrientation());
-        area.setRoadNumber(areaDTO.getRoadNumber());
-        area.setHeight(areaDTO.getHeight());
+        area.setName(areaDTO.getName() != null ? areaDTO.getName() : area.getName());
+        area.setDescription(areaDTO.getDescription() != null ? areaDTO.getName() : area.getName());
+        area.setOrientation(areaDTO.getOrientation() != null ? areaDTO.getOrientation() : area.getOrientation());
+        area.setRoadNumber(areaDTO.getRoadNumber() != 0 ? areaDTO.getRoadNumber() : area.getRoadNumber());
+        area.setHeight(areaDTO.getHeight() != 0 ? areaDTO.getHeight() : area.getHeight());
         areaDTO.setId(area.getId());
 
         return area;

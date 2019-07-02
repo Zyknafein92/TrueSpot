@@ -13,6 +13,5 @@
 
 export interface Department {
     id?: number;
-    number?: number;
     name?: string;
 }

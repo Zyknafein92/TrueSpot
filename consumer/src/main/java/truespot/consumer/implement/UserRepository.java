@@ -8,5 +8,6 @@ import truespot.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-//    User findByPseudo(String pseudo);
+    User findByPseudo(String pseudo);
+
 }

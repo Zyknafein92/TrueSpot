@@ -242,10 +242,6 @@
           "type" : "integer",
           "format" : "int64"
         },
-        "number" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
         "name" : {
           "type" : "string"
         }
@@ -260,21 +256,24 @@
         "type" : {
           "type" : "string"
         },
-        "format" : {
+        "description" : {
           "type" : "string"
         },
-        "description" : {
+        "format" : {
           "type" : "string"
         },
         "position" : {
           "type" : "integer",
           "format" : "int32"
         },
+        "example" : {
+          "type" : "object"
+        },
         "xml" : {
           "$ref" : "#/definitions/Xml"
         },
-        "example" : {
-          "type" : "object"
+        "allowEmptyValue" : {
+          "type" : "boolean"
         },
         "title" : {
           "type" : "string"
@@ -284,9 +283,6 @@
           "additionalProperties" : {
             "type" : "object"
           }
-        },
-        "allowEmptyValue" : {
-          "type" : "boolean"
         }
       }
     },
@@ -422,9 +418,6 @@
         },
         "phoneNumber" : {
           "type" : "string"
-        },
-        "admin" : {
-          "type" : "boolean"
         }
       }
     },

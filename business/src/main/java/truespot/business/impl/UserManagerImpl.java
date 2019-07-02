@@ -10,7 +10,7 @@ import truespot.model.User;
 import java.util.List;
 import java.util.Optional;
 
-//todo refactor selon area
+
 @Service
 public class UserManagerImpl extends BusinessManagerImpl implements UserManager {
 
@@ -51,10 +51,10 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     }
 
 
-//    @Override
-//    public User findByPseudo(String pseudo) {
-//        return getDaoFactory().getUserRepository().findByPseudo(pseudo);
-//    }
+    @Override
+    public User findByPseudo(String pseudo) {
+        return getDaoFactory().getUserRepository().findByPseudo(pseudo);
+    }
 
 //    public long createUser(User user) {
 //        user.setPassword(encoder.encode(user.getPassword()));
