@@ -14,12 +14,12 @@ public class ClimbingRoadMapper {
         ClimbingRoadDTO climbingRoadDTO = new ClimbingRoadDTO();
 
         climbingRoadDTO.setId(climbingRoad.getId());
-        climbingRoadDTO.setName(climbingRoad.getName());
-        climbingRoadDTO.setDescription(climbingRoad.getDescription());
-        climbingRoadDTO.setType(climbingRoad.getType());
-        climbingRoadDTO.setNumber(climbingRoad.getNumber());
-        climbingRoadDTO.setLetter(climbingRoad.getLetter());
-        climbingRoadDTO.setSymbol(climbingRoad.getSymbol());
+        climbingRoadDTO.setName(climbingRoad.getName() != null ? climbingRoad.getName() : climbingRoadDTO.getName());
+        climbingRoadDTO.setDescription(climbingRoad.getDescription() != null ? climbingRoad.getDescription() : climbingRoadDTO.getDescription());
+        climbingRoadDTO.setType(climbingRoad.getType() != null ? climbingRoad.getType() : climbingRoadDTO.getType());
+        climbingRoadDTO.setNumber(climbingRoad.getNumber() != 0 ? climbingRoad.getNumber() : climbingRoadDTO.getNumber());
+        climbingRoadDTO.setLetter(climbingRoad.getLetter() != ' ' ? climbingRoad.getLetter() : climbingRoadDTO.getLetter());
+        climbingRoadDTO.setSymbol(climbingRoad.getSymbol() != ' ' ? climbingRoad.getSymbol() : climbingRoadDTO.getSymbol());
 
         return climbingRoadDTO;
     }
@@ -28,12 +28,12 @@ public class ClimbingRoadMapper {
 
         ClimbingRoad climbingRoad = new ClimbingRoad();
 
-        climbingRoad.setName(climbingRoadDTO.getName());
-        climbingRoad.setDescription(climbingRoadDTO.getDescription());
-        climbingRoad.setType(climbingRoadDTO.getType());
-        climbingRoad.setNumber(climbingRoadDTO.getNumber());
-        climbingRoad.setLetter(climbingRoadDTO.getLetter());
-        climbingRoad.setSymbol(climbingRoadDTO.getSymbol());
+        climbingRoad.setName(climbingRoadDTO.getName() != null ? climbingRoadDTO.getName() : climbingRoad.getName());
+        climbingRoad.setDescription(climbingRoadDTO.getDescription() != null ? climbingRoadDTO.getDescription() : climbingRoad.getDescription());
+        climbingRoad.setType(climbingRoadDTO.getType() != null ? climbingRoadDTO.getType() : climbingRoad.getType());
+        climbingRoad.setNumber(climbingRoadDTO.getNumber() != 0 ? climbingRoadDTO.getNumber() : climbingRoad.getNumber());
+        climbingRoad.setLetter(climbingRoadDTO.getLetter() != ' ' ? climbingRoadDTO.getLetter() : climbingRoad.getLetter());
+        climbingRoad.setSymbol(climbingRoadDTO.getSymbol() != ' ' ? climbingRoadDTO.getSymbol() : climbingRoad.getSymbol());
 
         return climbingRoad;
     }
