@@ -15,9 +15,9 @@ public class TopoMapper {
 
         TopoDTO topoDTO = new TopoDTO();
 
-        topoDTO.setName(topo.getName());
-        topoDTO.setUser(topo.getUser());
-        topoDTO.setDepartment(topo.getDepartment());
+        topoDTO.setName(topo.getName() != null ? topo.getName() : topoDTO.getName());
+        topoDTO.setUser(topo.getUser() != null ? topo.getUser() : topoDTO.getUser());
+        topoDTO.setDepartment(topo.getDepartment() != null ? topo.getDepartment() : topoDTO.getDepartment());
 
         return topoDTO;
     }
@@ -26,8 +26,8 @@ public class TopoMapper {
 
         Topo topo = new Topo();
 
-        topo.setName(topoDTO.getName());
-        topo.setDepartment(topoDTO.getDepartment());
+        topo.setName(topoDTO.getName() != null ? topoDTO.getName() : topo.getName());
+        topo.setDepartment(topoDTO.getDepartment() != null ? topoDTO.getDepartment() : topo.getDepartment());
         topoDTO.setId(topoDTO.getId());
 
         return topo;
