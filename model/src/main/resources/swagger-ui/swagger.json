@@ -250,9 +250,21 @@
     "Property" : {
       "type" : "object",
       "properties" : {
+        "readOnly" : {
+          "type" : "boolean"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "format" : {
+          "type" : "string"
+        },
         "position" : {
           "type" : "integer",
           "format" : "int32"
+        },
+        "description" : {
+          "type" : "string"
         },
         "title" : {
           "type" : "string"
@@ -263,26 +275,14 @@
             "type" : "object"
           }
         },
-        "xml" : {
-          "$ref" : "#/definitions/Xml"
+        "allowEmptyValue" : {
+          "type" : "boolean"
         },
         "example" : {
           "type" : "object"
         },
-        "allowEmptyValue" : {
-          "type" : "boolean"
-        },
-        "readOnly" : {
-          "type" : "boolean"
-        },
-        "type" : {
-          "type" : "string"
-        },
-        "description" : {
-          "type" : "string"
-        },
-        "format" : {
-          "type" : "string"
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
         }
       }
     },
