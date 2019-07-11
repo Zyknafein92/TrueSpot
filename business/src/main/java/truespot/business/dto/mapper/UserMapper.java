@@ -1,24 +1,20 @@
 package truespot.business.dto.mapper;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
-import truespot.business.contract.UserManager;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
 
-import java.util.Optional;
 
 @Component
 public class UserMapper {
 
-    @Autowired
-    private UserManager userManager;
+    //todo : Boucle pour ajout des données.
 
      public static UserDTO objectToDTO (User user) {
 
          UserDTO userDTO = new UserDTO();
-
 
          userDTO.setFirstName(user.getFirstName() != null ? user.getFirstName() : userDTO.getFirstName());
          userDTO.setLastName(user.getLastName() != null ? user.getLastName() : userDTO.getLastName());
@@ -28,7 +24,6 @@ public class UserMapper {
          userDTO.setPassword(user.getPassword() != null ? user.getPassword() : userDTO.getPassword());
          userDTO.setEmail(user.getEmail() != null ? user.getEmail() : userDTO.getEmail());
          userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : userDTO.getPhoneNumber());
-
 
          return userDTO;
      }
@@ -45,7 +40,6 @@ public class UserMapper {
          user.setPassword(userDTO.getPassword() != null ? userDTO.getPassword() : user.getPassword());
          user.setEmail(userDTO.getEmail() != null ? userDTO.getEmail() : user.getEmail());
          user.setPhoneNumber(userDTO.getPhoneNumber() != null ? userDTO.getPhoneNumber() : user.getPhoneNumber());
-        // user.setAdmin(userDTO.setIsAdmin(false));
          userDTO.setId(user.getId());
 
          return user;

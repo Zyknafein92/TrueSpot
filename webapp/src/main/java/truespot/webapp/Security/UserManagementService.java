@@ -11,23 +11,24 @@ import truespot.model.User;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static java.util.Collections.emptyList;
+
 @Service
 public class UserManagementService implements UserDetailsService {
 
     UserRepository userRepository;
 
-    public UserManagementService( UserRepository userRepository) {
+    public UserManagementService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         User user = userRepository.findByPseudo(username);
         if (user == null) {
             throw new UsernameNotFoundException("wrong username or password");
         }
-        //todo revoir cette partie
-        return new org.springframework.security.core.userdetails.User(user.getPseudo(), user.getPassword(),
-                username.equals("macdo") ? Arrays.asList(new SimpleGrantedAuthority("ADMIN")) : new ArrayList<>());
+        return new org.springframework.security.core.userdetails.User(user.getPseudo(),user.getPassword(),emptyList());
     }
 }

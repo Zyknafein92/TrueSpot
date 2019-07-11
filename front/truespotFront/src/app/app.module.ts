@@ -23,6 +23,7 @@ import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { CreateAreaComponent } from './components/area/create-area/create-area.component';
 import { ViewAreaComponent } from './components/area/view-area/view-area.component';
 import { ViewListAreaComponent } from './components/area/view-list-area/view-list-area.component';
+import { LogoutComponent } from './components/auth/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ViewListAreaComponent } from './components/area/view-list-area/view-lis
     CreateAreaComponent,
     ViewAreaComponent,
     ViewListAreaComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -250,6 +250,28 @@
     "Property" : {
       "type" : "object",
       "properties" : {
+        "position" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "vendorExtensions" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
+        },
+        "example" : {
+          "type" : "object"
+        },
+        "allowEmptyValue" : {
+          "type" : "boolean"
+        },
         "readOnly" : {
           "type" : "boolean"
         },
@@ -261,28 +283,6 @@
         },
         "format" : {
           "type" : "string"
-        },
-        "position" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "example" : {
-          "type" : "object"
-        },
-        "xml" : {
-          "$ref" : "#/definitions/Xml"
-        },
-        "allowEmptyValue" : {
-          "type" : "boolean"
-        },
-        "title" : {
-          "type" : "string"
-        },
-        "vendorExtensions" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "object"
-          }
         }
       }
     },

@@ -2,6 +2,8 @@ package truespot.business.impl;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.UserManager;
 import truespot.business.dto.UserDTO;
@@ -14,8 +16,8 @@ import java.util.Optional;
 @Service
 public class UserManagerImpl extends BusinessManagerImpl implements UserManager {
 
-//    @Autowired
-//    BCryptPasswordEncoder encoder;
+    @Autowired
+    BCryptPasswordEncoder encoder;
 
 
     @Override
@@ -47,26 +49,23 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     @Override
     public User saveUser(UserDTO userDTO) {
         User user = UserMapper.dtoToObject(userDTO);
-        return getDaoFactory().getUserRepository().save(user);
+        user.setPassword(encoder.encode(user.getPassword()));
+      return getDaoFactory().getUserRepository().save(user);
     }
 
 
     @Override
-    public User findByPseudo(String pseudo) {
+    public User findByPseudo (String pseudo) {
         return getDaoFactory().getUserRepository().findByPseudo(pseudo);
     }
 
-//    public long createUser(User user) {
-//        user.setPassword(encoder.encode(user.getPassword()));
-//        User savedUser = userRepository.save(user);
-//        return savedUser.getId();
-//    }
-//
-//    public String login(User user) {
-//        User foundUser = getDaoFactory().getUserRepository().findByPseudo(user.getPseudo());
-//        return encoder.matches(user.getPassword(), foundUser.getPassword()) ?
-//                "SUCCESS" : "FAILED";
-//    }
+
+    @Override
+    public String login (User user) {
+        User foundUser = getDaoFactory().getUserRepository().findByPseudo(user.getPseudo());
+       return encoder.matches(user.getPassword(), foundUser.getPassword()) ?
+              "SUCCESS" : "FAILED";
+    }
 
     @Override
     public void updateUser(Long id, User user) {

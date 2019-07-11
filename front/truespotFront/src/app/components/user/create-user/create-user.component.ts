@@ -23,7 +23,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   saveuser() {
-    console.log("formsformsformsformsformsformsformsforms")
     console.log(this.forms.value)
     this.userService.saveUser(this.forms)
       .subscribe(

@@ -10,7 +10,7 @@ import {User} from "../../../model/user";
 })
 export class UserService {
 
-  private userUrl = 'http://localhost:8080/user';
+  private userUrl = 'http://localhost:8080/register';
   constructor(private http:HttpClient) { }
 
   saveUser(form: FormGroup): Observable<FormGroup> {

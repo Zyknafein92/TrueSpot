@@ -30,7 +30,7 @@ public class JWTAuthorisationFilter extends BasicAuthenticationFilter {
         }
 
         String username = Jwts.parser()
-                .setSigningKey("SecretKey")
+                .setSigningKey("SecretKey") // changer le secret key.
                 .parseClaimsJws(token.replace("Bearer ", ""))
                 .getBody()
                 .getSubject();
@@ -40,11 +40,9 @@ public class JWTAuthorisationFilter extends BasicAuthenticationFilter {
             return;
         }
 
-//todo : faire les rôles
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username, null,
-                username.equals("macdo") ? Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")) : new ArrayList<>());
-        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
+        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
         chain.doFilter(request, response);
     }
 

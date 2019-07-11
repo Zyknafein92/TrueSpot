@@ -4,20 +4,20 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.UserManager;
-import truespot.business.dto.mapper.UserMapper;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
 
 import java.util.List;
-import java.util.Optional;
+
+
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class UserController {
 
     @Autowired
     private UserManager userManager;
-    @Autowired
-    private UserMapper userMapper;
+
 
     @GetMapping(value="/user")
     public List<User> getUsers(){
@@ -27,7 +27,7 @@ public class UserController {
     @GetMapping(value="/user/{id}")
     public UserDTO getUser(@PathVariable Long id) { return userManager.getUser(id); }
 
-    @PostMapping(value="/user")
+    @PostMapping(value="/register")
     public User createUser(@RequestBody UserDTO userDTO){
         return userManager.saveUser(userDTO);
     }
@@ -42,5 +42,9 @@ public class UserController {
         userManager.deleteUser(id);
     }
 
+    @PostMapping(value="/login")
+    public String login(@PathVariable User user) {
+        return userManager.login(user);
+    }
 
 }
