@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {AuthenticationService} from "../../../services/authentication/authentication.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {first} from "rxjs/operators";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthLoginInfo} from "../../../services/auth/login-info";
+import {AuthService} from "../../../services/auth/auth.service";
+import {TokenStorageService} from "../../../services/auth/token-storage.service";
 
 
 
@@ -14,49 +16,49 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 export class SignInComponent implements OnInit {
 
-  forms: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
-  error = '';
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  private loginInfo: AuthLoginInfo;
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) {}
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
-    this.forms = this.formBuilder.group({
-      pseudo: new FormControl(),
-      password:new FormControl()
-    });
-
-    // reset login status
-  //  this.authenticationService.logout();
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getAuthorities();
+    }
   }
 
-  // convenience getter for easy access to form fields
-  //get f() { return this.forms.controls; }
-
   onSubmit() {
-    console.log("coucou");
-    // this.submitted = true;
-    //
-    // // stop here if form is invalid
-    // if (this.forms.invalid) {
-    //   return;
-    // }
-    //
-    // this.loading = true;
-    // this.authenticationService.login(this.forms.value)
-    //   .pipe(first())
-    //   .subscribe(
-    //     data => {
-    //       this.router.navigate([this.returnUrl]);
-    //     },
-    //     error => {
-    //       this.error = error;
-    //       this.loading = false;
-    //     });
+    console.log(this.form);
+
+    this.loginInfo = new AuthLoginInfo(
+      this.form.pseudo,
+      this.form.password);
+
+    this.authService.attemptAuth(this.loginInfo).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.savePseudo(data.pseudo);
+       this.tokenStorage.saveAuthorities(data.authorities);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getAuthorities();
+        this.reloadPage();
+      },
+      error => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }

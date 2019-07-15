@@ -32,8 +32,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>D:\IdeaProject\workspace\truespot\model\src\main\resources\swagger-ui\swagger.json</inputSpec>
-                            <output>D:\IdeaProject\workspace\truespot\front\truespotFront\src\</output>
+                            <inputSpec>C:\workspace\truespot\model\src\main\resources\swagger-ui\swagger.json</inputSpec>
+                            <output>C:\workspace\truespot\front\truespotFront\src\</output>
                             <language>typescript-angular</language>
                             <generateApis>false</generateApis>
                             <generateSupportingFiles>false</generateSupportingFiles>

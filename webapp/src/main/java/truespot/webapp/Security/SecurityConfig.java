@@ -36,8 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/localhost:5432/truespot").permitAll();
         http.cors();
+        http.csrf().disable();
         http.headers().frameOptions().disable();
-        http.authorizeRequests().antMatchers(HttpMethod.POST,   "/register").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST,   "/login").permitAll();
         http.authorizeRequests().anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))

@@ -16,11 +16,11 @@ export interface Property {
     readOnly?: boolean;
     type?: string;
     format?: string;
-    position?: number;
     description?: string;
+    position?: number;
     title?: string;
     vendorExtensions?: { [key: string]: any; };
-    allowEmptyValue?: boolean;
-    example?: any;
     xml?: Xml;
+    example?: any;
+    allowEmptyValue?: boolean;
 }

@@ -259,12 +259,12 @@
         "format" : {
           "type" : "string"
         },
+        "description" : {
+          "type" : "string"
+        },
         "position" : {
           "type" : "integer",
           "format" : "int32"
-        },
-        "description" : {
-          "type" : "string"
         },
         "title" : {
           "type" : "string"
@@ -275,14 +275,14 @@
             "type" : "object"
           }
         },
-        "allowEmptyValue" : {
-          "type" : "boolean"
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
         },
         "example" : {
           "type" : "object"
         },
-        "xml" : {
-          "$ref" : "#/definitions/Xml"
+        "allowEmptyValue" : {
+          "type" : "boolean"
         }
       }
     },
