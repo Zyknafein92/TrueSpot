@@ -2,8 +2,10 @@ package truespot.business.dto.mapper;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import truespot.model.Role;
+import truespot.business.contract.RoleManager;
+import truespot.consumer.implement.RoleRepository;
 import truespot.model.RoleName;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
@@ -26,8 +28,6 @@ public class UserMapper {
          userDTO.setPassword(user.getPassword() != null ? user.getPassword() : userDTO.getPassword());
          userDTO.setEmail(user.getEmail() != null ? user.getEmail() : userDTO.getEmail());
          userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : userDTO.getPhoneNumber());
-
-
          return userDTO;
      }
 
@@ -43,6 +43,7 @@ public class UserMapper {
          user.setPassword(userDTO.getPassword() != null ? userDTO.getPassword() : user.getPassword());
          user.setEmail(userDTO.getEmail() != null ? userDTO.getEmail() : user.getEmail());
          user.setPhoneNumber(userDTO.getPhoneNumber() != null ? userDTO.getPhoneNumber() : user.getPhoneNumber());
+
          userDTO.setId(user.getId());
 
          return user;
@@ -58,6 +59,7 @@ public class UserMapper {
          userDTO.setPassword(user.getPassword() != null ? user.getPassword() : userDTO.getPassword());
          userDTO.setEmail(user.getEmail() != null ? user.getEmail() : userDTO.getEmail());
          userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : userDTO.getPhoneNumber());
+
 
         return userDTO;
      }

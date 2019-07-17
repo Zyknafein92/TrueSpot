@@ -3,17 +3,12 @@ package truespot.model;
 
 import io.swagger.annotations.ApiModel;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.util.StringUtils;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+
 
 @ApiModel(value = "User")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen")
@@ -76,6 +71,5 @@ public class User implements Serializable {
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-       // this.admin = admin;
     }
 }

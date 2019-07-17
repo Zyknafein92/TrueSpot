@@ -41,6 +41,7 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
                     userOptional.get().getPassword(),
                     userOptional.get().getEmail(),
                     userOptional.get().getPhoneNumber());
+                    userOptional.get().getRoles();
         }
         return user != null ? UserMapper.objectToDTO(user) : null;
 
