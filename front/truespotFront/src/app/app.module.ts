@@ -18,7 +18,6 @@ import { ViewSpotComponent } from './components/spot/view-spot/view-spot.compone
 import { CreateRoadComponent } from './components/road/create-road/create-road.component';
 import { ViewRoadComponent } from './components/road/view-road/view-road.component';
 import { ViewListRoadComponent } from './components/road/view-list-road/view-list-road.component';
-import { ViewListDepartmentComponent } from './components/department/view-list-department/view-list-department.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { CreateAreaComponent } from './components/area/create-area/create-area.component';
 import { ViewAreaComponent } from './components/area/view-area/view-area.component';
@@ -40,7 +39,6 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
     CreateRoadComponent,
     ViewRoadComponent,
     ViewListRoadComponent,
-    ViewListDepartmentComponent,
     SignInComponent,
     CreateAreaComponent,
     ViewAreaComponent,

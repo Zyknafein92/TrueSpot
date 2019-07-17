@@ -7,6 +7,7 @@ import {CreateRoadComponent} from "./components/road/create-road/create-road.com
 import {CreateTopoComponent} from "./components/topo/create-topo/create-topo.component";
 import {SignInComponent} from "./components/auth/sign-in/sign-in.component";
 import {LogoutComponent} from "./components/auth/logout/logout.component";
+import {CreateSpotComponent} from "./components/spot/create-spot/create-spot.component";
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'createUser', component: CreateUserComponent},
   {path: 'view-profil', component: ViewProfilComponent},
   {path: 'createArea', component: CreateAreaComponent},
+  {path: 'createSpot', component: CreateSpotComponent},
   {path: 'createRoad', component: CreateRoadComponent},
   {path: 'createTopo', component:CreateTopoComponent},
   {path: 'sign-in', component: SignInComponent},

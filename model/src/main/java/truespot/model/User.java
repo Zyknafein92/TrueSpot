@@ -3,10 +3,17 @@ package truespot.model;
 
 import io.swagger.annotations.ApiModel;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @ApiModel(value = "User")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen")
@@ -24,8 +31,11 @@ public class User implements Serializable {
     @Column(name="user_id")
     private long id;
 
-    @OneToMany()
-    private List<Role> roles;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Topo> topo;
@@ -54,8 +64,6 @@ public class User implements Serializable {
     @Column(name="phone_number")
     private String phoneNumber;
 
-//    @Column(name="isadmin")
-//    private Boolean admin;
 
     public User(){}
 

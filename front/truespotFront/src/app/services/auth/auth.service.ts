@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { JwtResponse } from './jwt-response';
 import { AuthLoginInfo } from './login-info';
-import { SignUpInfo } from './signup-info';
+import {CreateUserComponent} from "../../components/user/create-user/create-user.component";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,17 +15,17 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private loginUrl = 'http://localhost:8080/login';
-  private signupUrl = 'http://localhost:8080/register';
+  private loginURL = 'http://localhost:8080/login';
+  private registerURL = 'http://localhost:8080/register';
 
   constructor(private http: HttpClient) {
   }
 
   attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
-    return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
+    return this.http.post<JwtResponse>(this.loginURL, credentials, httpOptions);
   }
 
-  signUp(info: SignUpInfo): Observable<string> {
-    return this.http.post<string>(this.signupUrl, info, httpOptions);
+  register(info: CreateUserComponent): Observable<string> {
+    return this.http.post<string>(this.registerURL, info, httpOptions);
   }
 }
