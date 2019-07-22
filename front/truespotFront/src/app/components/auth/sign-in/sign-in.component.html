@@ -3,8 +3,7 @@
 </div>
 
 <ng-template #loggedOut>
-  <div class="container">
-  <div class="row col-md6">
+  <div class="row col-sm-6" style="max-width:350px;">
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
         <label for="pseudo">Pseudo</label>
@@ -30,10 +29,8 @@
         </div>
       </div>
     </form>
-    <div class="form-group">
+    <hr />
     <p>Don't have an account?</p>
-    <a href="createUser" class="btn btn-success">Register</a>
-    </div>
-  </div>
+    <a href="signup" class="btn btn-success">Sign Up</a>
   </div>
 </ng-template>

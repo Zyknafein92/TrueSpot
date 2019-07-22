@@ -11,6 +11,8 @@ import java.io.Serializable;
 @ApiModel(value = "Role")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen")
 @Entity
+@Getter
+@Setter
 @Table(name = "roles")
 public class Role implements Serializable {
 
@@ -25,23 +27,4 @@ public class Role implements Serializable {
 
     public Role() {}
 
-    public Role(RoleName name) {
-        this.name = name;
-    }
-
-    public RoleName getName() {
-        return name;
-    }
-
-    public void setName(RoleName name) {
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

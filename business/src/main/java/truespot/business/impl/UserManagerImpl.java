@@ -8,9 +8,15 @@ import org.springframework.stereotype.Service;
 import truespot.business.contract.UserManager;
 import truespot.business.dto.UserDTO;
 import truespot.business.dto.mapper.UserMapper;
+import truespot.consumer.implement.RoleRepository;
+import truespot.model.Role;
+import truespot.model.RoleName;
 import truespot.model.User;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -18,6 +24,9 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
 
     @Autowired
     BCryptPasswordEncoder encoder;
+
+    @Autowired
+    RoleRepository roleRepository;
 
 
     @Override
@@ -51,6 +60,7 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     public User saveUser(UserDTO userDTO) {
         User user = UserMapper.dtoToObject(userDTO);
         user.setPassword(encoder.encode(user.getPassword()));
+
       return getDaoFactory().getUserRepository().save(user);
     }
 

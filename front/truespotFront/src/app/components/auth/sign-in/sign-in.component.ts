@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {first} from "rxjs/operators";
-import {ActivatedRoute, Router} from "@angular/router";
 import {AuthLoginInfo} from "../../../services/auth/login-info";
 import {AuthService} from "../../../services/auth/auth.service";
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
@@ -41,6 +38,7 @@ export class SignInComponent implements OnInit {
 
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
+        console.log(this.loginInfo);
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.savePseudo(data.pseudo);
        this.tokenStorage.saveAuthorities(data.authorities);

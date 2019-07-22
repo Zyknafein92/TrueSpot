@@ -2,10 +2,7 @@ package truespot.business.dto.mapper;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import truespot.business.contract.RoleManager;
-import truespot.consumer.implement.RoleRepository;
 import truespot.model.RoleName;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
