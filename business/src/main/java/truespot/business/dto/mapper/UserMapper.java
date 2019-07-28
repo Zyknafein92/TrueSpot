@@ -3,7 +3,6 @@ package truespot.business.dto.mapper;
 
 
 import org.springframework.stereotype.Component;
-import truespot.model.RoleName;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
 

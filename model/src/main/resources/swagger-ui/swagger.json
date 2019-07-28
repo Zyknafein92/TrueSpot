@@ -41,33 +41,6 @@
         }
       }
     },
-    "/api/authlogininfo" : {
-      "get" : {
-        "tags" : [ "data" ],
-        "summary" : "",
-        "description" : "",
-        "operationId" : "authlogininfo",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/AuthLoginInfo"
-              }
-            }
-          },
-          "400" : {
-            "description" : "Bad Request ",
-            "schema" : {
-              "$ref" : "#/definitions/AuthLoginInfo"
-            }
-          }
-        }
-      }
-    },
     "/api/department" : {
       "get" : {
         "tags" : [ "data" ],
@@ -231,17 +204,6 @@
         }
       }
     },
-    "AuthLoginInfo" : {
-      "type" : "object",
-      "properties" : {
-        "pseudo" : {
-          "type" : "string"
-        },
-        "password" : {
-          "type" : "string"
-        }
-      }
-    },
     "ClimbingRoad" : {
       "type" : "object",
       "properties" : {
@@ -297,21 +259,21 @@
         "format" : {
           "type" : "string"
         },
-        "description" : {
-          "type" : "string"
-        },
         "position" : {
           "type" : "integer",
           "format" : "int32"
         },
-        "xml" : {
-          "$ref" : "#/definitions/Xml"
+        "description" : {
+          "type" : "string"
         },
         "example" : {
           "type" : "object"
         },
         "allowEmptyValue" : {
           "type" : "boolean"
+        },
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
         },
         "vendorExtensions" : {
           "type" : "object",

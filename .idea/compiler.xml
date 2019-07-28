@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="consumer" />
-        <module name="model" />
         <module name="business" />
+        <module name="model" />
+        <module name="consumer" />
         <module name="front" />
         <module name="webapp" />
       </profile>
@@ -19,7 +19,7 @@
       <module name="front" target="1.8" />
       <module name="model" target="1.8" />
       <module name="truespot" target="1.8" />
-      <module name="webapp" target="1.7" />
+      <module name="webapp" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

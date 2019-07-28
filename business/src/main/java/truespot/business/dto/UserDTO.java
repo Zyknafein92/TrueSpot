@@ -1,13 +1,16 @@
 package truespot.business.dto;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import truespot.model.Role;
 import truespot.model.RoleName;
+import truespot.model.User;
 
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Data
 public class UserDTO {
@@ -23,4 +26,5 @@ public class UserDTO {
     private String password;
     private String email;
     private String phoneNumber;
+
 }

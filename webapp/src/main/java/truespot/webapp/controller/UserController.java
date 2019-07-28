@@ -2,18 +2,19 @@ package truespot.webapp.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.UserManager;
-import truespot.model.ApiError;
-import truespot.model.AuthLoginInfo;
-import truespot.model.JwtResponse;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
-import truespot.webapp.configuration.JwtAuthenticationFilter;
-import truespot.webapp.configuration.JwtTokenUtil;
-import truespot.webapp.configuration.model.AuthToken;
+import truespot.webapp.Security.jwt.JwtProvider;
+import truespot.webapp.Security.jwt.JwtResponse;
+
 
 import java.util.List;
 
@@ -27,8 +28,11 @@ public class UserController {
     private UserManager userManager;
 
     @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-    private JwtAuthenticationFilter jWTAuthenticationFilter;
+    private JwtProvider jwtProvider;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
 
 
     @GetMapping(value="/user")
@@ -54,39 +58,17 @@ public class UserController {
         userManager.deleteUser(id);
     }
 
-   //@PostMapping(value="/login")
-  @RequestMapping(value = "/login", method = RequestMethod.POST)
-   public JwtResponse login(@RequestBody User user) {
-        System.out.println("USER TOKEN "+  user.getPseudo());
+    @PostMapping(value="/login")
+    public JwtResponse login (@RequestBody User user) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(user.getPseudo(), user.getPassword()));
 
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
-      final String token = jwtTokenUtil.generateToken(user);
-      System.out.println("TOKEN:" + token);
-      JwtResponse jwtResponse = new JwtResponse();
-      jwtResponse.setAccessToken(token);
-      jwtResponse.setPseudo(user.getPseudo());
-      jwtResponse.setType("ADMIN");
-      jwtResponse.setAuthorities(new String[1]);
+        String jwt = jwtProvider.generateJwtToken(authentication);
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-     /* if (token == null) {
-          ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, " EROOOOOOOOOOOOOOO");
-          return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
-          //return new ResponseEntity(HttpStatus.NOT_FOUND);
-      } else {
-          System.out.println("TOKEN:" + token);
-          JwtResponse jwtResponse = new JwtResponse();
-          jwtResponse.setAccessToken(token);
-          jwtResponse.setPseudo(user.getPseudo());
-          jwtResponse.setType("ADMIN");
-          jwtResponse.setAuthorities(new String[1]);
-          return ResponseEntity.ok(new AuthToken(token, user.getPseudo());
-      }*/
-
-
-        return jwtResponse;
-       // return userManager.login(user);
-       //this.jWTAuthenticationFilter = new JwtAuthenticationFilter();
-      // return this.jWTAuthenticationFilter .doGenerateToken();
+        return new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities());
     }
-
 }
+

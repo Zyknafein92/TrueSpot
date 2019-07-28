@@ -15,7 +15,15 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name="User", schema= "public")
+@Table(name="User", schema= "public", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "pseudo"
+        }),
+        @UniqueConstraint(columnNames = {
+                "email"
+        })
+})
+
 public class User implements Serializable {
 
  //todo : ajouter 2 arraylist : demande de pret et prêté a pour le prêt de topo.
@@ -72,4 +80,5 @@ public class User implements Serializable {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+
 }

@@ -83,16 +83,7 @@ public interface DataApi {
     })
     Response user();
 
-    @GET
-    @Path("/authlogininfo")
-    @Consumes({"application/json"})
-    @Produces({"application/json"})
-    @ApiOperation(value = "", tags = {"data"})
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success", response = AuthLoginInfo.class, responseContainer = "List"),
-            @ApiResponse(code = 400, message = "Bad Request ", response = AuthLoginInfo.class)
-    })
-    Response authlogininfo();
+
 
     //post
     //login

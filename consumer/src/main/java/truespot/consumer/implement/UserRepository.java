@@ -9,5 +9,7 @@ import truespot.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByPseudo(String pseudo);
+    Boolean existsByPseudo(String pseudo);
+    Boolean existsByEmail(String email);
 
 }
