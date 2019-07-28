@@ -41,6 +41,33 @@
         }
       }
     },
+    "/api/authlogininfo" : {
+      "get" : {
+        "tags" : [ "data" ],
+        "summary" : "",
+        "description" : "",
+        "operationId" : "authlogininfo",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/AuthLoginInfo"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request ",
+            "schema" : {
+              "$ref" : "#/definitions/AuthLoginInfo"
+            }
+          }
+        }
+      }
+    },
     "/api/department" : {
       "get" : {
         "tags" : [ "data" ],
@@ -204,6 +231,17 @@
         }
       }
     },
+    "AuthLoginInfo" : {
+      "type" : "object",
+      "properties" : {
+        "pseudo" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        }
+      }
+    },
     "ClimbingRoad" : {
       "type" : "object",
       "properties" : {
@@ -266,15 +304,6 @@
           "type" : "integer",
           "format" : "int32"
         },
-        "title" : {
-          "type" : "string"
-        },
-        "vendorExtensions" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "object"
-          }
-        },
         "xml" : {
           "$ref" : "#/definitions/Xml"
         },
@@ -283,6 +312,15 @@
         },
         "allowEmptyValue" : {
           "type" : "boolean"
+        },
+        "vendorExtensions" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "title" : {
+          "type" : "string"
         }
       }
     },
@@ -317,7 +355,8 @@
           "format" : "int64"
         },
         "name" : {
-          "type" : "string"
+          "type" : "string",
+          "enum" : [ "ROLE_USER", "ROLE_ADMIN" ]
         }
       }
     },
@@ -384,6 +423,7 @@
         },
         "roles" : {
           "type" : "array",
+          "uniqueItems" : true,
           "items" : {
             "$ref" : "#/definitions/Role"
           }

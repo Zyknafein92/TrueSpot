@@ -74,6 +74,8 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     @Override
     public String login (User user) {
         User foundUser = getDaoFactory().getUserRepository().findByPseudo(user.getPseudo());
+        String data =  encoder.matches(user.getPassword(), foundUser.getPassword()) ? "SUCCESS" : "FAILED";
+        System.out.println("TOTOTOOTOT: "+data);
        return encoder.matches(user.getPassword(), foundUser.getPassword()) ?
               "SUCCESS" : "FAILED";
     }

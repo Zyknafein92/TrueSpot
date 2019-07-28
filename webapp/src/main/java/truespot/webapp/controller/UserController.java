@@ -2,10 +2,18 @@ package truespot.webapp.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.UserManager;
+import truespot.model.ApiError;
+import truespot.model.AuthLoginInfo;
+import truespot.model.JwtResponse;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
+import truespot.webapp.configuration.JwtAuthenticationFilter;
+import truespot.webapp.configuration.JwtTokenUtil;
+import truespot.webapp.configuration.model.AuthToken;
 
 import java.util.List;
 
@@ -17,6 +25,10 @@ public class UserController {
 
     @Autowired
     private UserManager userManager;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+    private JwtAuthenticationFilter jWTAuthenticationFilter;
 
 
     @GetMapping(value="/user")
@@ -42,9 +54,39 @@ public class UserController {
         userManager.deleteUser(id);
     }
 
-    @PostMapping(value="/login")
-    public String login(@PathVariable User user) {
-        return userManager.login(user);
+   //@PostMapping(value="/login")
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
+   public JwtResponse login(@RequestBody User user) {
+        System.out.println("USER TOKEN "+  user.getPseudo());
+
+
+      final String token = jwtTokenUtil.generateToken(user);
+      System.out.println("TOKEN:" + token);
+      JwtResponse jwtResponse = new JwtResponse();
+      jwtResponse.setAccessToken(token);
+      jwtResponse.setPseudo(user.getPseudo());
+      jwtResponse.setType("ADMIN");
+      jwtResponse.setAuthorities(new String[1]);
+
+     /* if (token == null) {
+          ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, " EROOOOOOOOOOOOOOO");
+          return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+          //return new ResponseEntity(HttpStatus.NOT_FOUND);
+      } else {
+          System.out.println("TOKEN:" + token);
+          JwtResponse jwtResponse = new JwtResponse();
+          jwtResponse.setAccessToken(token);
+          jwtResponse.setPseudo(user.getPseudo());
+          jwtResponse.setType("ADMIN");
+          jwtResponse.setAuthorities(new String[1]);
+          return ResponseEntity.ok(new AuthToken(token, user.getPseudo());
+      }*/
+
+
+        return jwtResponse;
+       // return userManager.login(user);
+       //this.jWTAuthenticationFilter = new JwtAuthenticationFilter();
+      // return this.jWTAuthenticationFilter .doGenerateToken();
     }
 
 }

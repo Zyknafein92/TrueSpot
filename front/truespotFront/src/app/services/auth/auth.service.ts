@@ -3,11 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { JwtResponse } from './jwt-response';
-import { AuthLoginInfo } from './login-info';
 import {CreateUserComponent} from "../../components/user/create-user/create-user.component";
 
+import {AuthLoginInfo} from "../../../model/authLoginInfo";
+
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  //headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': ''})
 };
 
 @Injectable({

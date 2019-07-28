@@ -36,12 +36,13 @@ export class SignInComponent implements OnInit {
       this.form.pseudo,
       this.form.password);
 
+
     this.authService.attemptAuth(this.loginInfo).subscribe(
-      data => {
-        console.log(this.loginInfo);
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.savePseudo(data.pseudo);
-       this.tokenStorage.saveAuthorities(data.authorities);
+      response => {
+        console.log("TOTOTOTO : ",response);
+        this.tokenStorage.saveToken(response.accessToken);
+        this.tokenStorage.savePseudo(response.pseudo);
+       this.tokenStorage.saveAuthorities(response.authorities);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
@@ -49,7 +50,7 @@ export class SignInComponent implements OnInit {
         this.reloadPage();
       },
       error => {
-        console.log(error);
+        console.log("errorerror:",error);
         this.errorMessage = error.error.message;
         this.isLoginFailed = true;
       }
