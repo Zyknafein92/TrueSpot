@@ -10,12 +10,12 @@ import java.util.Collection;
 public class JwtResponse {
     private String token;
     private String type = "Bearer";
-    private String username;
+    private String pseudo;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtResponse(String accessToken, String username, Collection<? extends GrantedAuthority> authorities) {
+    public JwtResponse(String accessToken, String pseudo, Collection<? extends GrantedAuthority> authorities) {
         this.token = accessToken;
-        this.username = username;
+        this.pseudo = pseudo;
         this.authorities = authorities;
     }
 
@@ -35,12 +35,12 @@ public class JwtResponse {
         this.type = tokenType;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPseudo() {
+        return pseudo;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {

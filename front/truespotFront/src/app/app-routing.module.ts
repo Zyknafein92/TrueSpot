@@ -8,6 +8,7 @@ import {CreateTopoComponent} from "./components/topo/create-topo/create-topo.com
 import {SignInComponent} from "./components/auth/sign-in/sign-in.component";
 import {LogoutComponent} from "./components/auth/logout/logout.component";
 import {CreateSpotComponent} from "./components/spot/create-spot/create-spot.component";
+import {HomeComponent} from "./components/home/home.component";
 
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'createRoad', component: CreateRoadComponent},
   {path: 'createTopo', component:CreateTopoComponent},
   {path: 'sign-in', component: SignInComponent},
-  {path: 'logout', component: LogoutComponent}
+  {path: 'logout', component: LogoutComponent},
+  {path: 'home', component: HomeComponent}
 ];
 
 @NgModule({

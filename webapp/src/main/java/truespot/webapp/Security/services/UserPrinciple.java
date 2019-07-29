@@ -16,17 +16,17 @@ public class UserPrinciple implements UserDetails {
 
     private Long id;
 
-    private String pseudo;
+    private String username;
 
     @JsonIgnore
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrinciple(Long id, String pseudo, String password,
+    public UserPrinciple(Long id, String username, String password,
                          Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.pseudo = pseudo;
+        this.username = username;
         this.password = password;
         this.authorities = authorities;
     }
@@ -48,9 +48,11 @@ public class UserPrinciple implements UserDetails {
         return id;
     }
 
+
+
     @Override
     public String getUsername() {
-        return pseudo;
+        return username;
     }
 
     @Override

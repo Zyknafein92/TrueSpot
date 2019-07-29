@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthLoginInfo} from "../../../services/auth/login-info";
 import {AuthService} from "../../../services/auth/auth.service";
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
+import {AuthLoginInfo} from "../../../services/auth/login-info";
+
 
 
 
@@ -39,15 +40,16 @@ export class SignInComponent implements OnInit {
 
     this.authService.attemptAuth(this.loginInfo).subscribe(
       response => {
-        console.log("TOTOTOTO : ",response);
         this.tokenStorage.saveToken(response.accessToken);
         this.tokenStorage.savePseudo(response.pseudo);
-       this.tokenStorage.saveAuthorities(response.authorities);
+        this.tokenStorage.saveAuthorities(response.authorities);
+        console.log(response.pseudo);
+        console.log(response.accessToken + " " + response.authorities);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-        this.reloadPage();
+      //  this.reloadPage();
       },
       error => {
         console.log("errorerror:",error);
@@ -57,7 +59,7 @@ export class SignInComponent implements OnInit {
     );
   }
 
-  reloadPage() {
-    window.location.reload();
-  }
+ // reloadPage() {
+ //   window.location.reload();
+//  }
 }

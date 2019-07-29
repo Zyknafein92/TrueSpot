@@ -3,19 +3,14 @@ package truespot.business.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import truespot.business.ResponseMessage;
 import truespot.business.contract.UserManager;
 import truespot.business.dto.UserDTO;
 import truespot.business.dto.mapper.UserMapper;
 import truespot.consumer.implement.RoleRepository;
+import truespot.model.Role;
+import truespot.model.RoleName;
 import truespot.model.User;
 import java.util.List;
 import java.util.Optional;
@@ -61,6 +56,8 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     @Override
     public User saveUser(UserDTO userDTO) {
         User user = UserMapper.dtoToObject(userDTO);
+        Role userole = new Role(RoleName.ROLE_USER);
+        user.getRoles().add(userole);
         user.setPassword(encoder.encode(user.getPassword()));
       return getDaoFactory().getUserRepository().save(user);
     }
@@ -72,14 +69,13 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     }
 
 
-    @Override
-    public String login (User user) {
-        User foundUser = getDaoFactory().getUserRepository().findByPseudo(user.getPseudo());
-
-       return encoder.matches(user.getPassword(), foundUser.getPassword()) ?
-              "SUCCESS" : "FAILED";
-
-    }
+//    @Override
+//    public String login (User user) {
+//        User foundUser = getDaoFactory().getUserRepository().findByPseudo(user.getPseudo());
+//        return encoder.matches(user.getPassword(), foundUser.getPassword()) ?
+//              "SUCCESS" : "FAILED";
+//
+//    }
 
     @Override
     public void updateUser(Long id, User user) {

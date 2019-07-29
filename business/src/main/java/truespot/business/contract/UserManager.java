@@ -16,7 +16,7 @@ public interface UserManager {
 
     User findByPseudo(String pseudo);
 
-    String login (User user);
+   // String login (User user);
 
     void updateUser(Long id, User user);
 

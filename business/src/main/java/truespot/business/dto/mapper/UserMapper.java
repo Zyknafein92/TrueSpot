@@ -3,8 +3,12 @@ package truespot.business.dto.mapper;
 
 
 import org.springframework.stereotype.Component;
+import truespot.model.Role;
+import truespot.model.RoleName;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
+
+import java.util.HashSet;
 
 
 @Component
@@ -16,6 +20,7 @@ public class UserMapper {
 
          UserDTO userDTO = new UserDTO();
 
+
          userDTO.setFirstName(user.getFirstName() != null ? user.getFirstName() : userDTO.getFirstName());
          userDTO.setLastName(user.getLastName() != null ? user.getLastName() : userDTO.getLastName());
          userDTO.setAge(user.getAge() != 0 ? user.getAge() : userDTO.getAge());
@@ -24,6 +29,7 @@ public class UserMapper {
          userDTO.setPassword(user.getPassword() != null ? user.getPassword() : userDTO.getPassword());
          userDTO.setEmail(user.getEmail() != null ? user.getEmail() : userDTO.getEmail());
          userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : userDTO.getPhoneNumber());
+         userDTO.setRoles(user.getRoles() != null ? user.getRoles() : userDTO.getRoles());
          return userDTO;
      }
 
@@ -39,7 +45,7 @@ public class UserMapper {
          user.setPassword(userDTO.getPassword() != null ? userDTO.getPassword() : user.getPassword());
          user.setEmail(userDTO.getEmail() != null ? userDTO.getEmail() : user.getEmail());
          user.setPhoneNumber(userDTO.getPhoneNumber() != null ? userDTO.getPhoneNumber() : user.getPhoneNumber());
-
+         user.setRoles(userDTO.getRoles() != null ? userDTO.getRoles() : user.getRoles());
          userDTO.setId(user.getId());
 
          return user;
@@ -55,7 +61,7 @@ public class UserMapper {
          userDTO.setPassword(user.getPassword() != null ? user.getPassword() : userDTO.getPassword());
          userDTO.setEmail(user.getEmail() != null ? user.getEmail() : userDTO.getEmail());
          userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : userDTO.getPhoneNumber());
-
+         userDTO.setRoles(user.getRoles() != null ? user.getRoles() : userDTO.getRoles());
 
         return userDTO;
      }
