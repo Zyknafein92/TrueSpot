@@ -10,11 +10,13 @@ import {User} from "../../../model/user";
 })
 export class UserService {
 
-  private userUrl = 'http://localhost:8080/register';
+  private userRegisterUrl = 'http://localhost:8080/register';
+  private userUrl = 'http://localhost:8080/user';
+
   constructor(private http:HttpClient) { }
 
   saveUser(form: FormGroup): Observable<FormGroup> {
-    return this.http.post<FormGroup>(this.userUrl, form.value);
+    return this.http.post<FormGroup>(this.userRegisterUrl, form.value);
   }
 
   getUser(id:number){

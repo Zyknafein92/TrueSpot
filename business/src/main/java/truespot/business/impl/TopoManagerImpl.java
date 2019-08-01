@@ -1,9 +1,11 @@
 package truespot.business.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.TopoManager;
 import truespot.business.dto.TopoDTO;
 import truespot.business.dto.mapper.TopoMapper;
+import truespot.model.Department;
 import truespot.model.Topo;
 
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.Optional;
 @Service
 public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager {
 
+    @Autowired
+    DepartmentManagerImpl departmentManager;
 
     @Override
     public List<Topo> findAllTopo() {

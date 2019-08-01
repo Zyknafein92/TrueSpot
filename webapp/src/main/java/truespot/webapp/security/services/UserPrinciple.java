@@ -48,8 +48,6 @@ public class UserPrinciple implements UserDetails {
         return id;
     }
 
-
-
     @Override
     public String getUsername() {
         return username;

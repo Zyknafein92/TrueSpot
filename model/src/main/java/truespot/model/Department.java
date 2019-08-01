@@ -1,6 +1,7 @@
 package truespot.model;
 
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 

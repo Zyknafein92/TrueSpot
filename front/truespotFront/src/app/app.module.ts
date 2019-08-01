@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestUserComponent } from './test-user/test-user.component';
-import {TestService} from "./services/test/test.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
@@ -24,11 +22,11 @@ import { ViewAreaComponent } from './components/area/view-area/view-area.compone
 import { ViewListAreaComponent } from './components/area/view-list-area/view-list-area.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
+import {httpInterceptorProviders} from "./services/auth/auth-interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestUserComponent,
     CreateUserComponent,
     ViewProfilComponent,
     ViewListUsersComponent,
@@ -54,7 +52,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [TestService],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

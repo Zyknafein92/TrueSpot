@@ -1,12 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import {SpotService} from "./spot-service";
 
-import { TestService } from './test.service';
 
-describe('TestService', () => {
+
+describe('SpotService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TestService = TestBed.get(TestService);
+    const service: SpotService = TestBed.get(SpotService);
     expect(service).toBeTruthy();
   });
 });

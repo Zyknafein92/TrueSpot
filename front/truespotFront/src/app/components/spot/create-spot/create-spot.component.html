@@ -1,3 +1,166 @@
-<p>
-  create-spot works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="well-block">
+        <div class="well-title">
+          <h1> Description du site de grimpe </h1>
+        </div>
+
+
+        <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveSpot()">
+
+          <h2>Informations générales</h2>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group"
+                   [class.has-success]="forms.get('name').valid"
+                   [class.has-error]="forms.get('name').invalid && forms.get('name').touched">
+                <label class="control-label">Nom:</label>
+                <input class="form-control"
+                       type="text"
+                       name="name"
+                       placeholder="Nom du site"
+                       formControlName="name"
+                       required minlength="2">
+              </div>
+            </div>
+
+
+
+            <div class="col-md-4">
+              <div class="form-group"
+                   [class.has-success]="forms.get('nearestCity').valid"
+                   [class.has-error]="forms.get('nearestCity').invalid && forms.get('nearestCity').touched">
+                <label class="control-label">Ville la plus proche:</label>
+                <input class="form-control"
+                       type="text"
+                       name="nearestCity"
+                       placeholder="Nom de la ville la plus proche"
+                       formControlName="nearestCity"
+                       required minlength="2">
+              </div>
+            </div>
+      </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group"
+                   [class.has-success]="forms.get('description').valid"
+                   [class.has-error]="forms.get('description').invalid && forms.get('description').touched">
+                <label class="control-label">Description du site:</label>
+                <textarea class="form-control input-md"
+                          type="text"
+                          rows="5"
+                          name="description"
+                          placeholder="Une rapide description du site"
+                          formControlName="description"
+                          required
+                          minlength="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <h2> Accès au site :</h2>
+
+          <div class="row">
+          <div class="col-md-2">
+            <label> Accès en voiture :</label>
+            <div class="form-group"
+                 [class.has-success]="forms.get('carAccess').valid"
+                 [class.has-error]="forms.get('carAccess').invalid && forms.get('carAccess').touched">
+              <div class="form-group">
+                <select class="browser-default custom-select" formControlName="carAccess">
+                  <option [value]="true">Oui</option>
+                  <option [value]="false">Non</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <label> Parking :</label>
+            <div class="form-group"
+                 [class.has-success]="forms.get('carParking').valid"
+                 [class.has-error]="forms.get('carParking').invalid && forms.get('carParking').touched">
+              <div class="form-group">
+                <select class="browser-default custom-select" formControlName="carParking">
+                  <option [value]="true">Oui</option>
+                  <option [value]="false">Non</option>
+                </select>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group"
+                   [class.has-success]="forms.get('accessDescription').valid"
+                   [class.has-error]="forms.get('accessDescription').invalid && forms.get('accessDescription').touched">
+                <label class="control-label">Description l'accès au site:</label>
+                <textarea class="form-control input-md"
+                          type="text"
+                          rows="5"
+                          name="accessDescription"
+                          placeholder="Une rapide description de l'accès au site..."
+                          formControlName="accessDescription"
+                          required
+                          minlength="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <h2> Ravitaillement et soins :</h2>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group"
+                   [class.has-success]="forms.get('nearestHospital').valid"
+                   [class.has-error]="forms.get('nearestHospital').invalid && forms.get('nearestHospital').touched">
+                <label class="control-label">Nom de l'Hopital le plus proche:</label>
+                <input class="form-control"
+                       type="text"
+                       name="nearestHospital"
+                       placeholder="Nom du l'hopital"
+                       formControlName="nearestHospital"
+                       required minlength="2">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group"
+                   [class.has-success]="forms.get('supplyComment').valid"
+                   [class.has-error]="forms.get('supplyComment').invalid && forms.get('supplyComment').touched">
+                <label class="control-label">Lieu de ravitaillement :</label>
+                <textarea class="form-control input-md"
+                          type="text"
+                          rows="10"
+                          name="supplyComment"
+                          placeholder="exemple : Intermarché du coin : adresse...."
+                          formControlName="supplyComment"
+                          required
+                          minlength="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <button
+                type="submit"
+                class="btn btn-primary" [disabled]="forms.invalid">Valider
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

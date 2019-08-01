@@ -3,6 +3,7 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.TopoManager;
+import truespot.business.dto.DepartmentDTO;
 import truespot.business.dto.mapper.TopoMapper;
 import truespot.model.Topo;
 import truespot.business.dto.TopoDTO;
@@ -27,7 +28,7 @@ public class TopoController {
 
 
     @PostMapping(value="/topo")
-    public Topo createTopo(@RequestBody TopoDTO topoDTO){
+    public Topo createTopo(@RequestBody TopoDTO topoDTO) {
         return topoManager.saveTopo(topoDTO);
     }
 

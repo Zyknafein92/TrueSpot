@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Topo} from "../../../../model/topo";
 import {TopoService} from "../../../services/topo/topo.service";
+import {DepartmentService} from "../../../services/department/department.service";
+import {Department} from "../../../../model/department";
+import {User} from "../../../../model/user";
 
 @Component({
   selector: 'app-create-topo',
@@ -12,18 +15,23 @@ export class CreateTopoComponent implements OnInit {
 
   forms: FormGroup;
   topo: Topo;
+  department: Department;
+  departments: Department;
 
 
-  constructor(private topoService: TopoService, private formBuilder: FormBuilder){
+
+  constructor(private topoService: TopoService, private departmentService :DepartmentService, private formBuilder: FormBuilder){
   }
 
   ngOnInit() {
     this.initForm();
+    this.initDepartmentList();
   }
 
+
   saveTopo() {
-    console.log("formsformsformsformsformsformsformsforms")
-    console.log(this.forms.value)
+    console.log(this.forms.value);
+
     this.topoService.saveTopo(this.forms)
       .subscribe(
         response => this.forms)
@@ -32,12 +40,15 @@ export class CreateTopoComponent implements OnInit {
 
   private initForm() {
     this.forms = this.formBuilder.group({
-        name: new FormControl(),
-        department: new FormControl()
-        //user //todo: Une fois l'auth fait, rajouter l'utilisateur et photo ?
-      });
+      name: new FormControl(),
+      department : new FormControl(),
+    });
   }
 
-
+  private initDepartmentList() {
+    this.departmentService.getDepartments().subscribe(
+      res =>{this.departments = res;}
+    );
+  }
 
 }

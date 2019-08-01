@@ -23,8 +23,6 @@ public class Topo implements Serializable {
     @Column(name = "name")
     private String name;
 
-
-
     @ManyToOne
     private User user;
 

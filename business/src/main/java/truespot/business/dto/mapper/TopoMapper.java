@@ -16,8 +16,8 @@ public class TopoMapper {
         TopoDTO topoDTO = new TopoDTO();
 
         topoDTO.setName(topo.getName() != null ? topo.getName() : topoDTO.getName());
-        topoDTO.setUser(topo.getUser() != null ? topo.getUser() : topoDTO.getUser());
-        topoDTO.setDepartment(topo.getDepartment() != null ? topo.getDepartment() : topoDTO.getDepartment());
+        topoDTO.setUser(topo.getUser() != null ? UserMapper.objectToDTO(topo.getUser()) : null);
+        topoDTO.setDepartment(topo.getDepartment() != null ? DepartmentMapper.objectToDTO(topo.getDepartment()) : null);
 
         return topoDTO;
     }
@@ -27,7 +27,9 @@ public class TopoMapper {
         Topo topo = new Topo();
 
         topo.setName(topoDTO.getName() != null ? topoDTO.getName() : topo.getName());
-        topo.setDepartment(topoDTO.getDepartment() != null ? topoDTO.getDepartment() : topo.getDepartment());
+      // topo.setDepartment(topoDTO.getDepartment() != null ? topoDTO.getDepartment() : topo.getDepartment());
+        topo.setUser(topoDTO.getUser() != null ? UserMapper.dtoToObject(topoDTO.getUser()) : null);
+        topo.setDepartment(topoDTO.getDepartment() != null ? DepartmentMapper.DTOToObject(topoDTO.getDepartment()) : null);
         topoDTO.setId(topoDTO.getId());
 
         return topo;
@@ -36,8 +38,8 @@ public class TopoMapper {
     public static TopoDTO updateDTO(TopoDTO topoDTO, Topo topo) {
 
         topoDTO.setName(topo.getName() != null ? topo.getName() : topoDTO.getName());
-        topoDTO.setUser(topo.getUser() != null ? topo.getUser() : topoDTO.getUser());
-        topoDTO.setDepartment(topo.getDepartment() != null ? topo.getDepartment() : topoDTO.getDepartment());
+        topoDTO.setUser(topo.getUser() != null ? UserMapper.objectToDTO(topo.getUser()) : null);
+        topoDTO.setDepartment(topo.getDepartment() != null ? DepartmentMapper.objectToDTO(topo.getDepartment()) : null);
 
         return topoDTO;
 

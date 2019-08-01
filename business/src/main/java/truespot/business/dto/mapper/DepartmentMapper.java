@@ -14,19 +14,20 @@ public class DepartmentMapper {
 
         DepartmentDTO departmentDTO = new DepartmentDTO();
 
+        departmentDTO.setId(department.getId());
         departmentDTO.setName(department.getName());
 
         return departmentDTO;
     }
 
-//    public static Department DTOToObject(DepartmentDTO departmentDTO){
-//
-//        Department department = new Department();
-//
-//        department.setName(departmentDTO.getName());
-//        departmentDTO.setId(department.getId());
-//
-//        return department;
-//    }
+    public static Department DTOToObject(DepartmentDTO departmentDTO){
+
+        Department department = new Department();
+
+        department.setName(departmentDTO.getName());
+        departmentDTO.setId(department.getId());
+
+        return department;
+    }
 
 }
