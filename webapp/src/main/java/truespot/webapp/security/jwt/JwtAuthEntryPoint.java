@@ -1,4 +1,4 @@
-package truespot.webapp.Security.jwt;
+package truespot.webapp.security.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

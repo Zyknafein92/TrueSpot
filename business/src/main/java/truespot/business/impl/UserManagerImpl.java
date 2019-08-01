@@ -12,9 +12,11 @@ import truespot.consumer.implement.RoleRepository;
 import truespot.model.Role;
 import truespot.model.RoleName;
 import truespot.model.User;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.Set;
 
 
 @Service
@@ -47,7 +49,6 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
                     userOptional.get().getPassword(),
                     userOptional.get().getEmail(),
                     userOptional.get().getPhoneNumber());
-                    userOptional.get().getRoles();
         }
         return user != null ? UserMapper.objectToDTO(user) : null;
 
@@ -56,8 +57,15 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     @Override
     public User saveUser(UserDTO userDTO) {
         User user = UserMapper.dtoToObject(userDTO);
-        Role userole = new Role(RoleName.ROLE_USER);
-        user.getRoles().add(userole);
+        Role userRole = roleRepository.findByName(RoleName.ROLE_USER);
+     //   Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN);
+        Set<Role> roles = new HashSet<>();
+
+        if(user.getRoles().isEmpty()){
+            roles.add(userRole);
+        }
+
+        user.setRoles(roles);
         user.setPassword(encoder.encode(user.getPassword()));
       return getDaoFactory().getUserRepository().save(user);
     }
@@ -68,14 +76,6 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
         return getDaoFactory().getUserRepository().findByPseudo(pseudo);
     }
 
-
-//    @Override
-//    public String login (User user) {
-//        User foundUser = getDaoFactory().getUserRepository().findByPseudo(user.getPseudo());
-//        return encoder.matches(user.getPassword(), foundUser.getPassword()) ?
-//              "SUCCESS" : "FAILED";
-//
-//    }
 
     @Override
     public void updateUser(Long id, User user) {

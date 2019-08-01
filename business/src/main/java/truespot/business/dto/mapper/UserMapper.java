@@ -2,24 +2,30 @@ package truespot.business.dto.mapper;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import truespot.consumer.implement.RoleRepository;
 import truespot.model.Role;
 import truespot.model.RoleName;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
 
 import java.util.HashSet;
+import java.util.Set;
 
 
 @Component
 public class UserMapper {
+
+
+    @Autowired
+    RoleRepository roleRepository;
 
     //todo : Boucle pour ajout des données.
 
      public static UserDTO objectToDTO (User user) {
 
          UserDTO userDTO = new UserDTO();
-
 
          userDTO.setFirstName(user.getFirstName() != null ? user.getFirstName() : userDTO.getFirstName());
          userDTO.setLastName(user.getLastName() != null ? user.getLastName() : userDTO.getLastName());

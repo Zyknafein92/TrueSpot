@@ -1,4 +1,4 @@
-package truespot.webapp.Security.jwt;
+package truespot.webapp.security.jwt;
 
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-import truespot.webapp.Security.services.UserPrinciple;
+import truespot.webapp.security.services.UserPrinciple;
 
 import java.util.Date;
 

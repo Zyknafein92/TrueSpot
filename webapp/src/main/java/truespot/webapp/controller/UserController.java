@@ -2,7 +2,6 @@ package truespot.webapp.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.UserManager;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
-import truespot.webapp.Security.jwt.JwtProvider;
-import truespot.webapp.Security.jwt.JwtResponse;
+import truespot.webapp.security.jwt.JwtProvider;
+import truespot.webapp.security.jwt.JwtResponse;
 
 
 import java.util.List;

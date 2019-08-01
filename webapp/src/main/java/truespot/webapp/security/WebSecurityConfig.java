@@ -1,4 +1,4 @@
-package truespot.webapp.Security;
+package truespot.webapp.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +13,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import truespot.webapp.Security.jwt.JwtAuthEntryPoint;
-import truespot.webapp.Security.jwt.JwtAuthTokenFilter;
-import truespot.webapp.Security.services.UserDetailsServiceImpl;
+import truespot.webapp.security.jwt.JwtAuthEntryPoint;
+import truespot.webapp.security.jwt.JwtAuthTokenFilter;
+import truespot.webapp.security.services.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity

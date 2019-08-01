@@ -1,4 +1,4 @@
-package truespot.webapp.Security.services;
+package truespot.webapp.security.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,4 +1,4 @@
-package truespot.webapp.Security.services;
+package truespot.webapp.security.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
