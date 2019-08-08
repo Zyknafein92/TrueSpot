@@ -24,11 +24,11 @@
             </div>
           </div>
 
-          <label> Choisissez un département :</label>
+          <label> Choisissez un département : </label>
           <label>
             <select name="department" class="form-control select"  formControlName="department">
-              <option *ngFor="let department of departments" [ngValue]="department.id" >
-                {{ department.name }}
+              <option *ngFor="let department of departments" [ngValue]="department" >
+                {{ department.id }}  {{department.name }}
               </option>
             </select>
           </label>

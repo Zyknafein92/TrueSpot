@@ -3,11 +3,18 @@ package truespot.business.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.TopoManager;
+import truespot.business.dto.DepartmentDTO;
 import truespot.business.dto.TopoDTO;
+import truespot.business.dto.TopoDTOContext;
+import truespot.business.dto.UserDTO;
+import truespot.business.dto.mapper.DepartmentMapper;
 import truespot.business.dto.mapper.TopoMapper;
+import truespot.business.dto.mapper.UserMapper;
 import truespot.model.Department;
 import truespot.model.Topo;
+import truespot.model.User;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,8 +49,27 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
     }
 
     @Override
-    public Topo saveTopo(TopoDTO topoDTO) {
-        Topo topo = TopoMapper.dtoToObject(topoDTO);
+    public Topo saveTopo(TopoDTOContext topoDTOContext) {
+
+        User user = getDaoFactory().getUserRepository().findByPseudo(topoDTOContext.getUserPseudo());
+        Department department = getDaoFactory().getDepartmentRepository().getOne(topoDTOContext.getIdDepartment());
+
+        Topo topo = new Topo();
+        topo.setName(topoDTOContext.getName());
+        topo.setUser(user);
+        topo.setDepartment(department);
+
+//        TopoDTO topoDTO = new TopoDTO();
+//
+//        topoDTO.setName(topoDTOContext.getName());
+//        UserDTO userDTO = UserMapper.objectToDTO(user);
+//        topoDTO.setUser(userDTO);
+//        topoDTO.getUser().setRoles(new HashSet<>());
+//        topoDTO.setDepartment(DepartmentMapper.objectToDTO(department));
+//        Topo topo = TopoMapper.dtoToObject(topoDTO);
+//        topo.setUser(user);
+//        Topo topo1 = getDaoFactory().getTopoRepository().save(topo);
+//        System.out.println(topo1);
         return getDaoFactory().getTopoRepository().save(topo);
     }
 

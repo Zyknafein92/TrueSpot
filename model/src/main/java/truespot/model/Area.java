@@ -19,7 +19,7 @@ public class Area implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name ="area_id")
-    private long id;
+    private Long id;
 
    // private Spot spot;
 

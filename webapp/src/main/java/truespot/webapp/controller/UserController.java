@@ -2,6 +2,7 @@ package truespot.webapp.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -43,7 +44,7 @@ public class UserController {
     public UserDTO getUser(@PathVariable Long id) { return userManager.getUser(id); }
 
     @PostMapping(value="/register")
-    public User createUser(@RequestBody UserDTO userDTO){
+    public ResponseEntity<Object> createUser(@RequestBody UserDTO userDTO){
         return userManager.saveUser(userDTO);
     }
 

@@ -13,10 +13,13 @@ public class JwtResponse {
     private Collection<? extends GrantedAuthority> authorities;
 
     public JwtResponse(String accessToken, String pseudo, Collection<? extends GrantedAuthority> authorities) {
+
         this.token = accessToken;
         this.pseudo = pseudo;
         this.authorities = authorities;
     }
+
+
 
     public String getAccessToken() {
         return token;

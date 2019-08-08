@@ -1,5 +1,8 @@
 package truespot.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,18 +16,23 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name="topo", schema="public")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Topo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "topo_id")
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    //@JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private User user;
+
 
     @OneToOne
     private Department department;

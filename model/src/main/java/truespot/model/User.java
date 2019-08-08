@@ -1,11 +1,13 @@
 package truespot.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Set;
 
@@ -15,14 +17,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name="User", schema= "public", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {
-                "pseudo"
-        }),
-        @UniqueConstraint(columnNames = {
-                "email"
-        })
-})
+@Table(name="User", schema= "public")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
 public class User implements Serializable {
 
@@ -32,16 +28,22 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
-    private long id;
+    private Long id;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+//    @ElementCollection
+//    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+//    @Column(name = "role_id")
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Topo> topo;
+
+   // @JsonManagedReference
+    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column(name="topo_id")
+    private List<Topo> topo;*/
 
     @Column(name="first_name")
     private String firstName;
@@ -79,6 +81,6 @@ public class User implements Serializable {
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-
     }
+
 }

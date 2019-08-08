@@ -1,6 +1,8 @@
 package truespot.business.contract;
 
+import truespot.business.dto.DepartmentDTO;
 import truespot.business.dto.TopoDTO;
+import truespot.business.dto.TopoDTOContext;
 import truespot.model.Topo;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public interface TopoManager {
 
     TopoDTO getTopo(Long id);
 
-    Topo saveTopo(TopoDTO topoDTO);
+    Topo saveTopo(TopoDTOContext topoDTOContext);
 
     void updateTopo(Long id, Topo topo);
 

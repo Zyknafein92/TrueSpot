@@ -110,7 +110,7 @@
               <div class="form-group"
                    [class.has-success]="forms.get('pseudo').valid"
                    [class.has-error]="forms.get('pseudo').invalid && forms.get('pseudo').touched">
-                <label class="control-label">Pseudo</label>
+                <label class="control-label">Pseudo: <span class="badge-danger rounded-circle" *ngIf="messagError">{{messagError}}</span></label>
                 <input class="form-control input-md"
                        type="text"
                        name="pseudo"

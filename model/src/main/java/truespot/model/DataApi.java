@@ -83,6 +83,17 @@ public interface DataApi {
     })
     Response user();
 
+    @GET
+    @Path("/ApiError")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = ApiError.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = ApiError.class)
+    })
+    Response ApiError();
+
 
 
     //post

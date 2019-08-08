@@ -15,6 +15,7 @@ export class CreateUserComponent implements OnInit {
   user: User;
   files: FileList;
   file_src: string;
+  messagError: string;
 
   constructor(private userService:UserService, private formBuilder: FormBuilder) { }
 
@@ -26,8 +27,13 @@ export class CreateUserComponent implements OnInit {
     console.log(this.forms.value)
     this.userService.saveUser(this.forms)
       .subscribe(
-        response => this.forms)
-
+        response => {
+          console.log("response: ", response);
+        },
+      err => {
+        console.log("EROOROROROROOROROROORORORO: ", err.error.message);
+        this.messagError = err.error.message;
+      })
   }
 
   private initForm(){

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.TopoManager;
 import truespot.business.dto.DepartmentDTO;
+import truespot.business.dto.TopoDTOContext;
 import truespot.business.dto.mapper.TopoMapper;
 import truespot.model.Topo;
 import truespot.business.dto.TopoDTO;
@@ -23,20 +24,28 @@ public class TopoController {
         return topoManager.findAllTopo();
     }
 
-    @GetMapping(value="/topo/{id}")
-    public TopoDTO getTopo(@PathVariable Long id) { return topoManager.getTopo(id); }
 
 
-    @PostMapping(value="/topo")
-    public Topo createTopo(@RequestBody TopoDTO topoDTO) {
-        return topoManager.saveTopo(topoDTO);
+    @RequestMapping(value = "/topo/getTopo", method = RequestMethod.GET)
+    public TopoDTO getTopo(
+            @RequestParam(name = "id", defaultValue = "") String id) {
+        return topoManager.getTopo(new Long(id));
+   }
+
+   // @PostMapping(value="/topo")
+    @RequestMapping(value = "/topo", method = RequestMethod.POST)
+    public Topo createTopo(@RequestBody TopoDTOContext topoDTOContext) {
+        return topoManager.saveTopo(topoDTOContext);
     }
 
 
     @PutMapping(value = "/topo/{id}")
     public void updateTopo(@PathVariable Long id , @RequestBody Topo topo) {
         topoManager.updateTopo(id,topo);
+
     }
+
+
 
 
     @DeleteMapping(value= "/topo/{id}")

@@ -7,7 +7,7 @@ import truespot.model.Topo;
 public class SpotDTO
 {
     private Long id;
-    private Topo topo;
+    private TopoDTO topo;
     private String name;
     private String description;
     private String nearestCity;

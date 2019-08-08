@@ -1,5 +1,7 @@
 package truespot.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +17,7 @@ import java.io.Serializable;
 @Getter
 @Entity
 @Table(name="department", schema="public")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Department implements Serializable {
 
     @Id

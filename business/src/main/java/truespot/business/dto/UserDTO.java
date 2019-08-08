@@ -1,5 +1,6 @@
 package truespot.business.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,9 +14,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserDTO {
 
-    private long id;
+    private Long id;
     private List<TopoDTO> topo;
     private Set<Role> roles = new HashSet<>();
     private String firstName;

@@ -18,7 +18,7 @@ public class ClimbingRoad implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name="area_id")
     private Area area;

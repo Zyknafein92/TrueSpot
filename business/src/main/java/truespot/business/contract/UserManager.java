@@ -1,6 +1,7 @@
 package truespot.business.contract;
 
 
+import org.springframework.http.ResponseEntity;
 import truespot.business.dto.UserDTO;
 import truespot.model.User;
 
@@ -12,7 +13,7 @@ public interface UserManager {
 
     UserDTO getUser(Long id);
 
-    User saveUser(UserDTO userDTO);
+    ResponseEntity<Object> saveUser(UserDTO userDTO);
 
     User findByPseudo(String pseudo);
 

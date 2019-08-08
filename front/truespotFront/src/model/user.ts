@@ -10,13 +10,11 @@
  * Do not edit the class manually.
  */
 import { Role } from './role';
-import { Topo } from './topo';
 
 
 export interface User {
     id?: number;
     roles?: Array<Role>;
-    topo?: Array<Topo>;
     firstName?: string;
     lastName?: string;
     age?: number;
