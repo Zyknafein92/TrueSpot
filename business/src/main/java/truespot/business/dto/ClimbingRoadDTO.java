@@ -6,6 +6,7 @@ import lombok.Data;
 public class ClimbingRoadDTO {
 
     private Long id;
+    private String idArea;
     private String name;
     private String description;
     private String type;

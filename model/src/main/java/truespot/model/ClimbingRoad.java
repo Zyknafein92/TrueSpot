@@ -1,5 +1,6 @@
 package truespot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,8 +15,9 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Table(name="climbing_road", schema="public")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ClimbingRoad implements Serializable {
-
+ //Many ton one area
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;

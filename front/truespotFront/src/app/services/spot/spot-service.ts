@@ -18,7 +18,7 @@ export class SpotService {
     return this.http.post<FormGroup>(this.spotUrl, forms.value);
   }
 
-  getArea(id: number) {
+  getSpot(id: number) {
     return this.http.get<Area>(this.spotUrl + '/' + id);
   }
 

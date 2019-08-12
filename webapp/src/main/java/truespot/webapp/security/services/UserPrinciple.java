@@ -23,9 +23,9 @@ public class UserPrinciple implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrinciple(Long id, String username, String password,
+    public UserPrinciple(String username, String password,
                          Collection<? extends GrantedAuthority> authorities) {
-        this.id = id;
+
         this.username = username;
         this.password = password;
         this.authorities = authorities;
@@ -37,16 +37,13 @@ public class UserPrinciple implements UserDetails {
         ).collect(Collectors.toList());
 
         return new UserPrinciple(
-                user.getId(),
                 user.getPseudo(),
                 user.getPassword(),
                 authorities
         );
     }
 
-    public Long getId() {
-        return id;
-    }
+
 
     @Override
     public String getUsername() {

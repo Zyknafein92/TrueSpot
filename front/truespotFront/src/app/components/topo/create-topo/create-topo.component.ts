@@ -33,14 +33,19 @@ export class CreateTopoComponent implements OnInit {
 
 
   saveTopo() {
-    this.topoService.saveTopo(this.forms)
+  /*  localStorage.setItem("CURRENT_TOPO",this.forms.value)
+    this.router.navigateByUrl("/topo/spot/add-spot")
+
+     const testClasseNeed = {"topoDTOContext" : localStorage.getItem("CURRENT_TOPO"), "spotDTO": localStorage.getItem("CURRENT_SPOT")}*/
+    this.topoService.saveTopo(this.forms.value)
       .subscribe(
         response => {
-          this.router.navigateByUrl("/topo/view-topo/"+response.id)
+          this.router.navigateByUrl("/topo/spot/add-spot/"+response.id)
+         // this.router.navigateByUrl("/topo/view-topo/"+response.id)
           console.log("response: ", response);
         },
         err => {
-          console.log("erro: ", err.error.message);
+          console.log("error: ", err.error.message);
         })
 
   }

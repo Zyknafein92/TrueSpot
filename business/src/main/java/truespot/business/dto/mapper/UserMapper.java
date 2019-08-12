@@ -1,27 +1,12 @@
 package truespot.business.dto.mapper;
 
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import truespot.consumer.implement.RoleRepository;
-import truespot.model.Role;
-import truespot.model.RoleName;
 import truespot.model.User;
 import truespot.business.dto.UserDTO;
 
-import java.util.HashSet;
-import java.util.Set;
-
-
 @Component
 public class UserMapper {
-
-
-    @Autowired
-    RoleRepository roleRepository;
-
-    //todo : Boucle pour ajout des données.
 
      public static UserDTO objectToDTO (User user) {
 

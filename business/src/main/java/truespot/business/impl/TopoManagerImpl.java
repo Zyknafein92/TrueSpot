@@ -51,27 +51,37 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
     @Override
     public Topo saveTopo(TopoDTOContext topoDTOContext) {
 
+
         User user = getDaoFactory().getUserRepository().findByPseudo(topoDTOContext.getUserPseudo());
         Department department = getDaoFactory().getDepartmentRepository().getOne(topoDTOContext.getIdDepartment());
 
-        Topo topo = new Topo();
-        topo.setName(topoDTOContext.getName());
-        topo.setUser(user);
-        topo.setDepartment(department);
-
-//        TopoDTO topoDTO = new TopoDTO();
-//
-//        topoDTO.setName(topoDTOContext.getName());
-//        UserDTO userDTO = UserMapper.objectToDTO(user);
-//        topoDTO.setUser(userDTO);
-//        topoDTO.getUser().setRoles(new HashSet<>());
-//        topoDTO.setDepartment(DepartmentMapper.objectToDTO(department));
-//        Topo topo = TopoMapper.dtoToObject(topoDTO);
+//        Topo topo = new Topo();
+//        topo.setName(topoDTOContext.getName());
 //        topo.setUser(user);
-//        Topo topo1 = getDaoFactory().getTopoRepository().save(topo);
-//        System.out.println(topo1);
+//        topo.setDepartment(department);
+
+        TopoDTO topoDTO = new TopoDTO();
+
+        topoDTO.setName(topoDTOContext.getName());
+        UserDTO userDTO = UserMapper.objectToDTO(user);
+        topoDTO.setUser(userDTO);
+        topoDTO.getUser().setRoles(new HashSet<>());
+        topoDTO.setDepartment(DepartmentMapper.objectToDTO(department));
+        Topo topo = TopoMapper.dtoToObject(topoDTO);
+        topo.setUser(user);
+
+
         return getDaoFactory().getTopoRepository().save(topo);
     }
+
+//    @Override
+//    public Boolean process(TestClasseNeed testClasseNeed) {
+//
+//        //call service creation topo => il te retourne un topo
+//
+//        // call service creation Sport => il te retourne un spot
+//
+//    }
 
     @Override
     public void updateTopo(Long id, Topo topo) {

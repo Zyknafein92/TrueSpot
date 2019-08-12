@@ -1,5 +1,6 @@
 package truespot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,15 +14,13 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name="spot", schema="public")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Spot implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "spot_id")
     private Long id;
-
-    @Column(name="topo_id")
-    private Topo topo;
 
     @Column(name="name")
     private String name;
@@ -39,6 +38,10 @@ public class Spot implements Serializable {
     private String nearestHospital;
     @Column(name="supply_comment")
     private String supplyComment;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "topo_id", referencedColumnName = "topo_id", nullable = false)
+    private Topo topo;
 
     public Spot() {
     }

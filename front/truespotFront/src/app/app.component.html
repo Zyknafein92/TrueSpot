@@ -1,16 +1,23 @@
 
 
+<!--<app-create-topo *ngIf="isTopo==true"></app-create-topo>-->
+<!--<app-create-spot *ngIf="isSpot==true"></app-create-spot>-->
+<!--<app-create-area *ngIf="isAre==true"></app-create-area>-->
+<!--<app-create-road *ngIf="isRoad==true"></app-create-road>-->
+
+
+
     <nav class="navbar navbar-fixed-top navbar-dark bg-dark">
       <div class="align-baseline">
         <a class="navbar-brand">TrueSpot</a>
         <ul class="nav navbar-dark" routerLinkActive="active" a>
           <li class="nav-item"><a class="nav-link" routerLink="/createUser">Créer un compte</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/topo/ajout-topo" >Créer un topo</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/topo/add-topo" >Créer un topo</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/createSpot">Créer un spot</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/createArea">Créer un secteur</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/createRoad">Créer une voie</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/sign-in">S'identifier</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="/logout">Se déconnecter</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/myprofil">Profil</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/home">Token</a></li>
         </ul>
       </div>

@@ -1,5 +1,6 @@
 package truespot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name= "area", schema="public")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Area implements Serializable {
 
     @Id
@@ -21,7 +23,9 @@ public class Area implements Serializable {
     @Column(name ="area_id")
     private Long id;
 
-   // private Spot spot;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "spot_id", referencedColumnName = "spot_id", nullable = false)
+    private Spot spot;
 
     @Column(name="name")
     private String name;

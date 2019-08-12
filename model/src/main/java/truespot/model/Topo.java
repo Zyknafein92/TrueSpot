@@ -27,12 +27,8 @@ public class Topo implements Serializable {
     @Column(name = "name")
     private String name;
 
-    //@JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL)
-    //@ManyToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // ajout fetch
     private User user;
-
 
     @OneToOne
     private Department department;

@@ -41,7 +41,14 @@ public class UserController {
     }
 
     @GetMapping(value="/user/{id}")
-    public UserDTO getUser(@PathVariable Long id) { return userManager.getUser(id); }
+    public UserDTO getUser(@PathVariable Long id) {
+        return userManager.getUser(id); }
+
+    @GetMapping(value="/user/myprofil")
+    public User getProfil(@RequestParam(name = "pseudo", defaultValue = "") String pseudo){
+        User user = userManager.findByPseudo(pseudo);
+        return user;
+    }
 
     @PostMapping(value="/register")
     public ResponseEntity<Object> createUser(@RequestBody UserDTO userDTO){

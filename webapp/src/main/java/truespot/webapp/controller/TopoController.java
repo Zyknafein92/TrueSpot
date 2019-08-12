@@ -27,8 +27,7 @@ public class TopoController {
 
 
     @RequestMapping(value = "/topo/getTopo", method = RequestMethod.GET)
-    public TopoDTO getTopo(
-            @RequestParam(name = "id", defaultValue = "") String id) {
+    public TopoDTO getTopo(@RequestParam(name = "id", defaultValue = "") String id) {
         return topoManager.getTopo(new Long(id));
    }
 
@@ -38,6 +37,11 @@ public class TopoController {
         return topoManager.saveTopo(topoDTOContext);
     }
 
+//    // @PostMapping(value="/topo")
+//    @RequestMapping(value = "/topo", method = RequestMethod.POST)
+//    public Topo tesTopo(@RequestBody testClasseNeed topoDTOCo) {
+//        return topoManager.saveTopo(topoDTOContext);
+//    }
 
     @PutMapping(value = "/topo/{id}")
     public void updateTopo(@PathVariable Long id , @RequestBody Topo topo) {

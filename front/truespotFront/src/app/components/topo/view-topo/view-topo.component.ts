@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Topo} from "../../../../model/topo";
 import {TopoService} from "../../../services/topo/topo.service";
+import {Topo} from "../../../../model/topo";
+
+
 
 @Component({
   selector: 'app-view-topo',
@@ -9,9 +11,11 @@ import {TopoService} from "../../../services/topo/topo.service";
   styleUrls: ['./view-topo.component.css']
 })
 export class ViewTopoComponent implements OnInit {
+
   private sub: any;
-  idTopo:string;
-  topo:Topo;
+  idTopo: string;
+  topo : Topo;
+
 
   constructor(private route: ActivatedRoute, private topoService: TopoService) { }
 
@@ -25,15 +29,17 @@ export class ViewTopoComponent implements OnInit {
   }
 
   getTopo(){
-
     this.topoService.getTopo(this.idTopo)
       .subscribe(
         response => {
+          this.topo = response;
           console.log("response: ", response);
         },
         err => {
-          console.log("erro: ", err);
+          console.log("error: ", err);
         })
 
   }
+
+
 }

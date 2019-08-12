@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import truespot.business.contract.ClimbingRoadManager;
 import truespot.business.dto.ClimbingRoadDTO;
 import truespot.business.dto.mapper.ClimbingRoadMapper;
+import truespot.model.Area;
 import truespot.model.ClimbingRoad;
 
 import java.util.List;
@@ -40,7 +41,10 @@ public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements Clim
     @Override
     public ClimbingRoad saveClimbingRoad (ClimbingRoadDTO climbingRoadDTO) {
 
+        Area area = getDaoFactory().getAreaRepository().getOne(new Long(climbingRoadDTO.getIdArea()));
         ClimbingRoad climbingRoad = ClimbingRoadMapper.DTOToObject(climbingRoadDTO);
+        climbingRoad.setArea(area);
+
         return getDaoFactory().getClimbingRoadRepository().save(climbingRoad);
     }
 

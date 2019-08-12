@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import truespot.business.contract.SpotManager;
 import truespot.business.dto.SpotDTO;
 import truespot.business.dto.mapper.SpotMapper;
+import truespot.business.dto.mapper.TopoMapper;
 import truespot.model.Spot;
+import truespot.model.Topo;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +43,9 @@ public class SpotManagerImpl extends BusinessManagerImpl implements SpotManager 
 
     @Override
     public Spot saveSpot(SpotDTO spotDTO) {
+        Topo topo = getDaoFactory().getTopoRepository().getOne(new Long(spotDTO.getIdTopo()));
         Spot spot = SpotMapper.dtoToObject(spotDTO);
+        spot.setTopo(topo);
         return getDaoFactory().getSpotRepository().save(spot);
     }
 

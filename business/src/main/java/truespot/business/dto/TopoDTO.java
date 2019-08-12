@@ -20,10 +20,4 @@ public class TopoDTO {
     private UserDTO user;
     private DepartmentDTO department;
 
-
-//    @JsonProperty("department")
-//    private void unpackNested(Long department) {
-//        this.department = new DepartmentDTO();
-//        this.department.setId(department);
-//    }
 }

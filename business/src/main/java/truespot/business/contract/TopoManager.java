@@ -17,4 +17,6 @@ public interface TopoManager {
     void updateTopo(Long id, Topo topo);
 
     void deleteTopo(Long id);
+
+    //Boolean process(TestClasseNeed testClasseNeed );
 }
