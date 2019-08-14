@@ -33,7 +33,7 @@ export class CreateSpotComponent implements OnInit {
     this.spotService.saveSpot(this.forms)
       .subscribe(
         response => {
-          this.router.navigateByUrl("/topo/area/add-area/"+response.id)
+          this.router.navigateByUrl("/topo/area/add-area/"+response.id);
           console.log("response: ", response);
         },
         err => {
