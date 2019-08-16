@@ -12,8 +12,6 @@ public class BusinessManagerImpl extends BusinessManager {
     private AreaManager areaManager;
     private ClimbingRoadManager climbingRoadManager;
     private DepartmentManager departmentManager;
-
-    private SpotManager spotManager;
     private TopoManager topoManager;
     private UserManager userManager;
 
@@ -25,10 +23,6 @@ public class BusinessManagerImpl extends BusinessManager {
     public ClimbingRoadManager getClimbingRoadManager() { return climbingRoadManager;}
 
     public DepartmentManager getDepartmentManager() { return departmentManager; }
-
-
-
-    public SpotManager getSpotManager() { return spotManager; }
 
     public TopoManager getTopoManager() { return topoManager; }
 
@@ -46,10 +40,6 @@ public class BusinessManagerImpl extends BusinessManager {
 
     @Autowired
     public void setDepartmentManager(DepartmentManager departmentManager) { this.departmentManager = departmentManager; }
-
-
-    @Autowired
-    public void setSpotManager(SpotManager spotManager) { this.spotManager = spotManager; }
 
     @Autowired
     public void setTopoManager(TopoManager topoManager) { this.topoManager = topoManager; }

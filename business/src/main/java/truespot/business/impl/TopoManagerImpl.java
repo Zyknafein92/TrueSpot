@@ -41,7 +41,14 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
             topo = new Topo(
                     topoOptional.get().getName(),
                     topoOptional.get().getUser(),
-                    topoOptional.get().getDepartment()
+                    topoOptional.get().getDepartment(),
+                    topoOptional.get().getDescription(),
+                    topoOptional.get().getNearestCity(),
+                    topoOptional.get().getCarAccess(),
+                    topoOptional.get().getCarParking(),
+                    topoOptional.get().getAccessDescription(),
+                    topoOptional.get().getNearestHospital(),
+                    topoOptional.get().getSupplyComment()
             );
         }
 
@@ -55,11 +62,6 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         User user = getDaoFactory().getUserRepository().findByPseudo(topoDTOContext.getUserPseudo());
         Department department = getDaoFactory().getDepartmentRepository().getOne(topoDTOContext.getIdDepartment());
 
-//        Topo topo = new Topo();
-//        topo.setName(topoDTOContext.getName());
-//        topo.setUser(user);
-//        topo.setDepartment(department);
-
         TopoDTO topoDTO = new TopoDTO();
 
         topoDTO.setName(topoDTOContext.getName());
@@ -67,6 +69,14 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         topoDTO.setUser(userDTO);
         topoDTO.getUser().setRoles(new HashSet<>());
         topoDTO.setDepartment(DepartmentMapper.objectToDTO(department));
+        topoDTO.setDescription(topoDTOContext.getDescription());
+        topoDTO.setNearestCity(topoDTOContext.getNearestCity());
+        topoDTO.setCarAccess(topoDTOContext.getCarAccess());
+        topoDTO.setCarParking(topoDTOContext.getCarParking());
+        topoDTO.setAccessDescription(topoDTOContext.getAccessDescription());
+        topoDTO.setNearestHospital(topoDTOContext.getNearestHospital());
+        topoDTO.setSupplyComment(topoDTOContext.getSupplyComment());
+
         Topo topo = TopoMapper.dtoToObject(topoDTO);
         topo.setUser(user);
 

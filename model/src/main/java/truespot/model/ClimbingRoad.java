@@ -17,12 +17,13 @@ import java.io.Serializable;
 @Table(name="climbing_road", schema="public")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ClimbingRoad implements Serializable {
- //Many ton one area
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="area_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "area_id", referencedColumnName = "area_id", nullable = false)
     private Area area;
 
     @Column(name="name")

@@ -122,33 +122,6 @@
         }
       }
     },
-    "/api/spot" : {
-      "get" : {
-        "tags" : [ "data" ],
-        "summary" : "",
-        "description" : "",
-        "operationId" : "spot",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
-        "responses" : {
-          "200" : {
-            "description" : "Success",
-            "schema" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/definitions/Spot"
-              }
-            }
-          },
-          "400" : {
-            "description" : "Bad Request ",
-            "schema" : {
-              "$ref" : "#/definitions/Spot"
-            }
-          }
-        }
-      }
-    },
     "/api/topo" : {
       "get" : {
         "tags" : [ "data" ],
@@ -230,6 +203,9 @@
           "type" : "integer",
           "format" : "int64"
         },
+        "topo" : {
+          "$ref" : "#/definitions/Topo"
+        },
         "name" : {
           "type" : "string"
         },
@@ -295,11 +271,21 @@
     "Property" : {
       "type" : "object",
       "properties" : {
+        "vendorExtensions" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
         "readOnly" : {
           "type" : "boolean"
         },
         "type" : {
           "type" : "string"
+        },
+        "position" : {
+          "type" : "integer",
+          "format" : "int32"
         },
         "format" : {
           "type" : "string"
@@ -307,27 +293,17 @@
         "description" : {
           "type" : "string"
         },
-        "position" : {
-          "type" : "integer",
-          "format" : "int32"
+        "title" : {
+          "type" : "string"
+        },
+        "xml" : {
+          "$ref" : "#/definitions/Xml"
         },
         "allowEmptyValue" : {
           "type" : "boolean"
         },
         "example" : {
           "type" : "object"
-        },
-        "xml" : {
-          "$ref" : "#/definitions/Xml"
-        },
-        "vendorExtensions" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "object"
-          }
-        },
-        "title" : {
-          "type" : "string"
         }
       }
     },
@@ -367,18 +343,21 @@
         }
       }
     },
-    "Spot" : {
+    "Topo" : {
       "type" : "object",
       "properties" : {
         "id" : {
           "type" : "integer",
           "format" : "int64"
         },
-        "topo" : {
-          "$ref" : "#/definitions/Topo"
-        },
         "name" : {
           "type" : "string"
+        },
+        "user" : {
+          "$ref" : "#/definitions/User"
+        },
+        "department" : {
+          "$ref" : "#/definitions/Department"
         },
         "description" : {
           "type" : "string"
@@ -400,24 +379,6 @@
         },
         "supplyComment" : {
           "type" : "string"
-        }
-      }
-    },
-    "Topo" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "name" : {
-          "type" : "string"
-        },
-        "user" : {
-          "$ref" : "#/definitions/User"
-        },
-        "department" : {
-          "$ref" : "#/definitions/Department"
         }
       }
     },

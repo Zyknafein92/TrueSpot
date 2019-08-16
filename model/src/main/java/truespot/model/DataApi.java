@@ -51,17 +51,6 @@ public interface DataApi {
     Response department();
 
     @GET
-    @Path("/spot")
-    @Consumes({"application/json"})
-    @Produces({"application/json"})
-    @ApiOperation(value = "", tags = {"data"})
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success", response = Spot.class, responseContainer = "List"),
-            @ApiResponse(code = 400, message = "Bad Request ", response = Spot.class)
-    })
-    Response spot();
-
-    @GET
     @Path("/topo")
     @Consumes({"application/json"})
     @Produces({"application/json"})
@@ -93,11 +82,6 @@ public interface DataApi {
             @ApiResponse(code = 400, message = "Bad Request ", response = ApiError.class)
     })
     Response ApiError();
-
-
-
-    //post
-    //login
 
 }
 

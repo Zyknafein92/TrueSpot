@@ -24,8 +24,8 @@ public class Area implements Serializable {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "spot_id", referencedColumnName = "spot_id", nullable = false)
-    private Spot spot;
+    @JoinColumn(name = "topo_id", referencedColumnName = "topo_id", nullable = false)
+    private Topo topo;
 
     @Column(name="name")
     private String name;

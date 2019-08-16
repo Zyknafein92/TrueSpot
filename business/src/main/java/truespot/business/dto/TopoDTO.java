@@ -19,5 +19,12 @@ public class TopoDTO {
     private String name;
     private UserDTO user;
     private DepartmentDTO department;
+    private String description;
+    private String nearestCity;
+    private Boolean carAccess;
+    private Boolean carParking;
+    private String accessDescription;
+    private String nearestHospital;
+    private String supplyComment;
 
 }

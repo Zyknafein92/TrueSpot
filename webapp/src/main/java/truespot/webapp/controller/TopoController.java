@@ -31,11 +31,13 @@ public class TopoController {
         return topoManager.getTopo(new Long(id));
    }
 
-   // @PostMapping(value="/topo")
+
     @RequestMapping(value = "/topo", method = RequestMethod.POST)
     public Topo createTopo(@RequestBody TopoDTOContext topoDTOContext) {
         return topoManager.saveTopo(topoDTOContext);
     }
+
+
 
 //    // @PostMapping(value="/topo")
 //    @RequestMapping(value = "/topo", method = RequestMethod.POST)
@@ -48,9 +50,6 @@ public class TopoController {
         topoManager.updateTopo(id,topo);
 
     }
-
-
-
 
     @DeleteMapping(value= "/topo/{id}")
     public void deleteTopo(@PathVariable Long id){

@@ -9,10 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Topo } from './topo';
 
 
 export interface Area {
     id?: number;
+    topo?: Topo;
     name?: string;
     description?: string;
     orientation?: string;

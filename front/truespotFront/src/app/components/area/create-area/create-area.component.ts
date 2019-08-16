@@ -16,14 +16,14 @@ export class CreateAreaComponent implements OnInit {
 
   forms: FormGroup;
   area: Area;
-  idSpot: string;
+  idTopo: string;
   private sub: any;
   constructor(private areaService:AreaService, private formBuilder: FormBuilder,
               private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.idSpot = params['idSpot']; // (+) converts string 'id' to a number
+      this.idTopo = params['idTopo']; // (+) converts string 'id' to a number
     });
     this.initForm();
   }
@@ -33,6 +33,7 @@ export class CreateAreaComponent implements OnInit {
     this.areaService.saveArea(this.forms)
       .subscribe(
         response => {
+          // @ts-ignore
           this.router.navigateByUrl("/topo/road/add-road/"+response.id)
           console.log("response: ", response);
         },
@@ -49,7 +50,7 @@ export class CreateAreaComponent implements OnInit {
         orientation  : new FormControl(),
         roadNumber: new FormControl(),
         height: new FormControl(),
-        idSpot: this.idSpot
+        idTopo: this.idTopo,
       }
     );
   }

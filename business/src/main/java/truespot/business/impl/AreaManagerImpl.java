@@ -5,7 +5,8 @@ import truespot.business.contract.AreaManager;
 import truespot.business.dto.AreaDTO;
 import truespot.business.dto.mapper.AreaMapper;
 import truespot.model.Area;
-import truespot.model.Spot;
+import truespot.model.Topo;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -38,9 +39,10 @@ public class AreaManagerImpl extends BusinessManagerImpl implements AreaManager 
 
     @Override
     public Area saveArea(AreaDTO areaDTO) {
-        Spot spot = getDaoFactory().getSpotRepository().getOne(new Long(areaDTO.getIdSpot()));
+       Topo topo = getDaoFactory().getTopoRepository().getOne(new Long(areaDTO.getIdTopo()));
+
         Area area = AreaMapper.DTOToObject(areaDTO);
-        area.setSpot(spot);
+        area.setTopo(topo);
         return getDaoFactory().getAreaRepository().save(area);
     }
 

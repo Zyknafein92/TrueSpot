@@ -18,4 +18,11 @@ export interface Topo {
     name?: string;
     user?: User;
     department?: Department;
+    description?: string;
+    nearestCity?: string;
+    carAccess?: boolean;
+    carParking?: boolean;
+    accessDescription?: string;
+    nearestHospital?: string;
+    supplyComment?: string;
 }

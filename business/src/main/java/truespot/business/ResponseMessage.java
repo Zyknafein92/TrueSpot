@@ -1,6 +1,6 @@
 package truespot.business;
 
-import org.springframework.stereotype.Service;
+
 
 
 public class ResponseMessage {
