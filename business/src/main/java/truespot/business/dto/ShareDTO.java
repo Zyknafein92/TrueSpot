@@ -9,6 +9,6 @@ public class ShareDTO {
     private Long id;
     private String idUserOwner;
     private String idUserReceiver;
-    private String idTopo;
+    private Long idTopo;
 
 }

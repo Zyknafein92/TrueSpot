@@ -33,9 +33,7 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-
-
-    @GetMapping(value="/user")
+    @GetMapping(value="/users")
     public List<User> getUsers(){
         return userManager.findAllUser();
     }

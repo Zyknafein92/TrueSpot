@@ -1,6 +1,6 @@
 package truespot.business.contract;
 
-import truespot.business.dto.DepartmentDTO;
+
 import truespot.business.dto.TopoDTO;
 import truespot.business.dto.TopoDTOContext;
 import truespot.model.Topo;

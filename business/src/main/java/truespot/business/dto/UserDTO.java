@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 public class UserDTO {
 
     private Long id;
-    private List<TopoDTO> topo;
     private Set<Role> roles = new HashSet<>();
     private String firstName;
     private String lastName;
