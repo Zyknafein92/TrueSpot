@@ -30,12 +30,10 @@ public class ClimbingRoadController {
         return climbingRoadManager.saveClimbingRoad(climbingRoadDTO);
     }
 
-
     @PutMapping(value = "/road/{id}")
     public void updateClimbingRoad(@PathVariable Long id , @RequestBody ClimbingRoad climbingRoad) {
         climbingRoadManager.updateClimbingRoad(id,climbingRoad);
     }
-
 
     @DeleteMapping(value= "/road/{id}")
     public void deleteClimbingRoad(@PathVariable Long id){ climbingRoadManager.deleteClimbingRoad(id); }

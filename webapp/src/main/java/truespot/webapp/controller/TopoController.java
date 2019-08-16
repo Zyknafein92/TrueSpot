@@ -3,14 +3,12 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.TopoManager;
-import truespot.business.dto.DepartmentDTO;
 import truespot.business.dto.TopoDTOContext;
-import truespot.business.dto.mapper.TopoMapper;
 import truespot.model.Topo;
 import truespot.business.dto.TopoDTO;
 
 import java.util.List;
-import java.util.Optional;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class TopoController {
@@ -36,8 +34,6 @@ public class TopoController {
     public Topo createTopo(@RequestBody TopoDTOContext topoDTOContext) {
         return topoManager.saveTopo(topoDTOContext);
     }
-
-
 
 //    // @PostMapping(value="/topo")
 //    @RequestMapping(value = "/topo", method = RequestMethod.POST)

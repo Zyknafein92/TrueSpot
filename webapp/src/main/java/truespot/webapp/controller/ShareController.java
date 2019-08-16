@@ -15,28 +15,28 @@ public class ShareController {
     @Autowired
     ShareManager shareManager;
 
-    @GetMapping(value="/topo/sharedTopos")
+    @GetMapping(value="/topo/shareTopos")
     public List<Share> getSharedTopos(){
         return shareManager.findAllShare();
     }
 
-    @RequestMapping(value = "/topo/sharedTopo/{id}", method = RequestMethod.GET)
-    public ShareDTO getSharedTopo(@RequestParam(name = "id", defaultValue = "") String id) {
-        return ShareManager.getShare(new Long(id));
+    @RequestMapping(value = "/topo/share/{id}", method = RequestMethod.GET)
+    public Share getSharedTopo(@RequestParam(name = "id", defaultValue = "") String id) {
+        return shareManager.getShare(new Long(id));
     }
 
-    @RequestMapping(value = "/topo/sharedTopo", method = RequestMethod.POST)
+    @RequestMapping(value = "/topo/share", method = RequestMethod.POST)
     public Share createShare(@RequestBody ShareDTO shareDTO) {
-        return ShareManager.saveShare(shareDTO);
+        return shareManager.saveShare(shareDTO);
     }
 
-    @PutMapping(value = "/topo/{id}")
+    @PutMapping(value = "/topo/share/{id}")
     public void updateShare(@PathVariable Long id , @RequestBody Share share) {
-        ShareManager.updateShare(id,share);
+        shareManager.updateShare(id,share);
     }
 
-    @DeleteMapping(value= "/topo/{id}")
+    @DeleteMapping(value= "/topo/share/{id}")
     public void deleteShare(@PathVariable Long id){
-        ShareManager.deleteShare(id);
+        shareManager.deleteShare(id);
     }
 }
