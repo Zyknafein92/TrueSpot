@@ -22,9 +22,6 @@ import java.util.Set;
 
 public class User implements Serializable {
 
- //todo : ajouter 2 arraylist : demande de pret et prêté a pour le prêt de topo.
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
@@ -35,15 +32,6 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-//    @ElementCollection
-//    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-//    @Column(name = "role_id")
-
-
-   // @JsonManagedReference
-    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Column(name="topo_id")
-    private List<Topo> topo;*/
 
     @Column(name="first_name")
     private String firstName;

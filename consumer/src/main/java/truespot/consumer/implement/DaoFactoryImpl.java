@@ -12,12 +12,10 @@ public class DaoFactoryImpl implements DaoFactory {
     private ClimbingRoadRepository climbingRoadRepository;
     private DepartmentRepository departmentRepository;
     private RoleRepository roleRepository;
+    private ShareRepository shareRepository;
     private TopoRepository topoRepository;
+    private UserMessageRepository userMessageRepository;
     private UserRepository userRepository;
-
-
-
-
 
 
     // Getters
@@ -31,16 +29,18 @@ public class DaoFactoryImpl implements DaoFactory {
     public DepartmentRepository getDepartmentRepository() { return departmentRepository; }
     @Override
     public RoleRepository getRoleRepository() {return roleRepository;}
-
+    @Override
+    public ShareRepository getShareRepository() {return shareRepository; }
     @Override
     public TopoRepository getTopoRepository() { return topoRepository; }
+    @Override
+    public UserMessageRepository getUserMessageRepository() { return userMessageRepository; }
     @Override
     public UserRepository getUserRepository() {
         return userRepository;
     }
 
     //Setters
-
 
     @Override
     @Autowired
@@ -67,14 +67,22 @@ public class DaoFactoryImpl implements DaoFactory {
 
     @Override
     @Autowired
+    public void setShareRepository(ShareRepository shareRepository) { this.shareRepository = shareRepository; }
+
+    @Override
+    @Autowired
     public void setTopoRepository(TopoRepository topoRepository) {
         this.topoRepository = topoRepository;
+    }
+
+    @Override
+    public void setUserMessageRepository(UserMessageRepository userMessageRepository) {
+        this.userMessageRepository = userMessageRepository;
     }
 
     @Override
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository; }
-
 
 }

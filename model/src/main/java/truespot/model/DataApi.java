@@ -83,6 +83,28 @@ public interface DataApi {
     })
     Response ApiError();
 
+    @GET
+    @Path("/UserMessage")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = UserMessage.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = UserMessage.class)
+    })
+    Response UserMessage();
+
+    @GET
+    @Path("/Share")
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    @ApiOperation(value = "", tags = {"data"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = Share.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad Request ", response = Share.class)
+    })
+    Response Share();
+
 }
 
 

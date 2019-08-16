@@ -3,8 +3,7 @@ package truespot.consumer.contract;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import truespot.consumer.implement.*;
-
-
+import truespot.model.UserMessage;
 
 
 public interface DaoFactory {
@@ -14,8 +13,9 @@ public interface DaoFactory {
     ClimbingRoadRepository getClimbingRoadRepository();
     DepartmentRepository getDepartmentRepository();
     RoleRepository getRoleRepository();
-//    SpotRepository getSpotRepository();
+    ShareRepository getShareRepository();
     TopoRepository getTopoRepository();
+    UserMessageRepository getUserMessageRepository();
     UserRepository getUserRepository();
 
 
@@ -28,10 +28,12 @@ public interface DaoFactory {
     void setDepartmentRepository(DepartmentRepository departmentRepository);
     @Autowired
     void setRoleRepository(RoleRepository roleRepository);
-//    @Autowired
-//    void setSpotRepository(SpotRepository spotRepository);
+    @Autowired
+    void setShareRepository(ShareRepository shareRepository);
     @Autowired
     void setTopoRepository(TopoRepository topoRepository);
+    @Autowired
+    void setUserMessageRepository(UserMessageRepository userMessageRepository);
     @Autowired
     void setUserRepository(UserRepository userRepository);
 }
