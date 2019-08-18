@@ -43,7 +43,6 @@ export class TopoService {
     return this.http.put<Topo>(this.topoUrl + '/topo/{id}', {
       "name": form.get("name").value,
       "idDepartment": form.get("department").value.id,
-      "userPseudo": this.tokenStorage.getPseudo(),
       "description" : form.get("description").value,
       "nearestCity" : form.get("nearestCity").value,
       "carAccess" : form.get("carAccess").value,

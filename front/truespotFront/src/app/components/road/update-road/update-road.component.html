@@ -5,15 +5,13 @@
         <div class="well-title">
 
           <div class="panel panel-primary">
-            <div class="panel-heading"><h3>Créer une voie :</h3></div>
+            <div class="panel-heading"><h3>Mettre à jour une voie :</h3></div>
             <div class="panel-body">
-              <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveRoad()">
+              <form #f="ngForm" [formGroup]="forms" (ngSubmit)="updateRoad()">
 
                 <div class="row">
                   <div class="col-md-2">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('name').valid"
-                         [class.has-error]="forms.get('name').invalid && forms.get('name').touched">
+                    <div class="form-group">
                       <label class="control-label">Nom:</label>
                       <input class="form-control"
                              type="text"
@@ -26,9 +24,7 @@
 
                   <div class="col-md-2">
                     <label class="control-label">Type de la voie:</label>
-                    <div class="form-group"
-                         [class.has-success]="forms.get('type').valid"
-                         [class.has-error]="forms.get('type').invalid && forms.get('type').touched">
+                    <div class="form-group">
                       <select class="browser-default custom-select"  formControlName="type">
                         <option value="Bloc">Bloc</option>
                         <option value="Voie">Voie</option>
@@ -39,15 +35,17 @@
                     </div>
                   </div>
                 </div>
+
                 <br>
+
                 <h5>Cotation de la voie:</h5>
+
                 <br>
+
                 <div class="row">
                   <div class="col-md-2">
                     <label class="control-label">Chiffre:</label>
-                    <div class="form-group"
-                         [class.has-success]="forms.get('number').valid"
-                         [class.has-error]="forms.get('number').invalid && forms.get('number').touched">
+                    <div class="form-group">
                       <select class="browser-default custom-select"  formControlName="number">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -63,9 +61,7 @@
                   </div>
 
                   <div class="col-md-2">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('letter').valid"
-                         [class.has-error]="forms.get('letter').invalid && forms.get('letter').touched">
+                    <div class="form-group">
                       <label class="control-label">Lettre:</label>
                       <select class="browser-default custom-select" formControlName="letter">
                         <option value="null"></option>
@@ -77,9 +73,7 @@
                   </div>
 
                   <div class="col-md-2">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('symbol').valid"
-                         [class.has-error]="forms.get('symbol').invalid && forms.get('symbol').touched">
+                    <div class="form-group">
                       <label class="control-label">Symbole:</label>
                       <select class="browser-default custom-select" formControlName="symbol">
                         <option value="null"></option>
@@ -88,13 +82,12 @@
                       </select>
                     </div>
                   </div>
+
                 </div>
                 <br>
                 <h5>Description :</h5>
                 <br>
-                <div class="form-group"
-                     [class.has-success]="forms.get('description').valid"
-                     [class.has-error]="forms.get('description').invalid && forms.get('description').touched">
+                <div class="form-group">
           <textarea class="form-control input-md"
                     type="text"
                     rows="5"
@@ -110,7 +103,7 @@
                   <div class="form-group">
                     <button
                       type="submit"
-                      class="btn btn-primary"[disabled]="forms.invalid">Valider
+                      class="btn btn-primary">Mettre à joure
                     </button>
                   </div>
                 </div>

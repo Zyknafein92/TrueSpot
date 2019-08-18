@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewListRoadComponent } from './view-list-road.component';
+import { UpdateRoadComponent } from './update-road.component';
 
-describe('ViewListRoadComponent', () => {
-  let component: ViewListRoadComponent;
-  let fixture: ComponentFixture<ViewListRoadComponent>;
+describe('UpdateRoadComponent', () => {
+  let component: UpdateRoadComponent;
+  let fixture: ComponentFixture<UpdateRoadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewListRoadComponent ]
+      declarations: [ UpdateRoadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewListRoadComponent);
+    fixture = TestBed.createComponent(UpdateRoadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

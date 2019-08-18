@@ -12,16 +12,15 @@ import { CreateTopoComponent } from './components/topo/create-topo/create-topo.c
 import { ViewTopoComponent } from './components/topo/view-topo/view-topo.component';
 import { ViewListTopoComponent } from './components/topo/view-list-topo/view-list-topo.component';
 import { CreateRoadComponent } from './components/road/create-road/create-road.component';
-import { ViewRoadComponent } from './components/road/view-road/view-road.component';
-import { ViewListRoadComponent } from './components/road/view-list-road/view-list-road.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { CreateAreaComponent } from './components/area/create-area/create-area.component';
-
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import {httpInterceptorProviders} from "./services/auth/auth-interceptor";
 import { UdapteTopoComponent } from './components/topo/udapte-topo/udapte-topo.component';
 import { UpdateAreaComponent } from './components/area/update-area/update-area.component';
+import { UpdateRoadComponent } from './components/road/update-road/update-road.component';
+import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -33,14 +32,14 @@ import { UpdateAreaComponent } from './components/area/update-area/update-area.c
     ViewTopoComponent,
     ViewListTopoComponent,
     CreateRoadComponent,
-    ViewRoadComponent,
-    ViewListRoadComponent,
     SignInComponent,
     CreateAreaComponent,
     LogoutComponent,
     HomeComponent,
     UdapteTopoComponent,
     UpdateAreaComponent,
+    UpdateRoadComponent,
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,

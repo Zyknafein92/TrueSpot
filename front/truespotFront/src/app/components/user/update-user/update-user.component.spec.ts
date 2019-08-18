@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewRoadComponent } from './view-road.component';
+import { UpdateUserComponent } from './update-user.component';
 
-describe('ViewRoadComponent', () => {
-  let component: ViewRoadComponent;
-  let fixture: ComponentFixture<ViewRoadComponent>;
+describe('UpdateUserComponent', () => {
+  let component: UpdateUserComponent;
+  let fixture: ComponentFixture<UpdateUserComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewRoadComponent ]
+      declarations: [ UpdateUserComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewRoadComponent);
+    fixture = TestBed.createComponent(UpdateUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
