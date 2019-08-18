@@ -18,6 +18,7 @@ export class CreateAreaComponent implements OnInit {
   area: Area;
   idTopo: string;
   private sub: any;
+
   constructor(private areaService:AreaService, private formBuilder: FormBuilder,
               private route: ActivatedRoute,private router: Router) { }
 

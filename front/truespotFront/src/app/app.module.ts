@@ -16,11 +16,12 @@ import { ViewRoadComponent } from './components/road/view-road/view-road.compone
 import { ViewListRoadComponent } from './components/road/view-list-road/view-list-road.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { CreateAreaComponent } from './components/area/create-area/create-area.component';
-import { ViewAreaComponent } from './components/area/view-area/view-area.component';
-import { ViewListAreaComponent } from './components/area/view-list-area/view-list-area.component';
+
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import {httpInterceptorProviders} from "./services/auth/auth-interceptor";
+import { UdapteTopoComponent } from './components/topo/udapte-topo/udapte-topo.component';
+import { UpdateAreaComponent } from './components/area/update-area/update-area.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +37,10 @@ import {httpInterceptorProviders} from "./services/auth/auth-interceptor";
     ViewListRoadComponent,
     SignInComponent,
     CreateAreaComponent,
-    ViewAreaComponent,
-    ViewListAreaComponent,
     LogoutComponent,
     HomeComponent,
+    UdapteTopoComponent,
+    UpdateAreaComponent,
   ],
   imports: [
     BrowserModule,

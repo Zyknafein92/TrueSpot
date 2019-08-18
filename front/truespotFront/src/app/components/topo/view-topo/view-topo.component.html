@@ -1,132 +1,70 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="well-block">
-        <div class="well-title">
-
-
-          <div class="row">
-            <div class="col-md-6"> <h1>{{topo.name}}</h1> </div>
-            <div class="col-md-6"> <h1>{{topo.department.name}}</h1> </div>
-          </div>
-
+<div class="card">
+  <div class="card-header">
+    <h1>{{topo.department.id}}</h1><h1>{{topo.department.name}}</h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Informations générales :</h5>
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Nom du site :</h5>
+          <p class="card-text">{{topo.name}}</p>
           <br>
-          <h2>Informations générales</h2>
-          <br>
-          <div class="row">
-
-            <div class="col-md-4">
-              <label>Nom du site :</label>
-              <p>test</p>
-            </div>
-
-            <div class="col-md-4">
-              <label>Ville la plus proche :</label>
-              <p>Ville</p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <label>Description du site :</label>
-              <p>Description du site....</p>
-            </div>
-          </div>
-
-          <br>
-          <h4> Accès au site :</h4>
-          <br>
-
-          <div class="row">
-            <div class="col-md-2">
-              <label> Accès en voiture :</label>
-              <p>boolean</p>
-            </div>
-
-            <div class="col-md-2">
-              <label> Parking :</label>
-              <p>boolean</p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-8">
-              <label> Description de l'accès au site :</label>
-              <p> description accès....</p>
-            </div>
-          </div>
-
-          <br>
-          <h4> Ravitaillement et soins :</h4>
-          <br>
-
-          <div class="row">
-            <div class="col-md-4">
-              <label>Hopital le plus proche :</label>
-              <p>hopital</p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-8">
-              <label>Ravitaillement :</label>
-              <p>Ravitaillement....</p>
-            </div>
-          </div>
-
-          <br>
-          <h2> Secteurs de grimpe :</h2>
-          <br>
-
-          <div class="row">
-            <div class="col-md-6">
-              <label>Nom :</label>
-              <p>Nom</p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-2">
-              <label>Nombre de voie :</label>
-              <p>Nombre de voie </p>
-            </div>
-
-            <div class="col-md-2">
-              <label>Orientation :</label>
-              <p>Orientation</p>
-            </div>
-
-            <div class="col-md-2  ">
-              <label>Hauteur estimée :</label>
-              <p>Hauteur estimée</p>
-            </div>
-
-          </div>
-
-          <div class="row">
-            <div class="col-md-8">
-              <label>Description :</label>
-              <p>Description</p>
-            </div>
-          </div>
-
-
-            <p>Liste des voies.....</p>
-
-
-            <div class="row">
-              <div class="col-md-4">
-                <p><strong>bouton ajouter secteur</strong></p>
-              </div>
-              <div class="col-md-4">
-                <p><strong>bouton ajouter voie</strong></p>
-              </div>
-            </div>
-
-          </div>
+          <h5 class="card-title">Ville la plus proche :</h5>
+          <p class="card-text">{{topo.nearestCity}}</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Description du site :</h5>
+          <p class="card-text">{{topo.description}}</p>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="card-body">
+    <h5 class="card-title">Accès au site :</h5>
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Accès en voiture :</h5>
+          <p class="card-text">{{topo.carAccess}}</p>
+          <br>
+          <h5 class="card-title">Parking :</h5> <span></span>
+          <p class="card-text">{{topo.carParking}}</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Description de l'accès au site :</h5>
+          <p class="card-text">{{topo.accessDescription}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">Ravitaillement et soins :</h5>
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Hopital le plus proche :</h5>
+          <p class="card-text">{{topo.nearestHospital}}</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ravitaillement :</h5>
+          <p class="card-text">{{topo.supplyComment}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
 
 

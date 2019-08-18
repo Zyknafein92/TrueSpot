@@ -53,9 +53,12 @@ public class Topo implements Serializable {
     @Column(name="supply_comment")
     private String supplyComment;
 
+    @Column(name="is_Share")
+    private Boolean shared;
+
     public Topo(){}
 
-    public Topo(String name, User user, Department department, String description, String nearestCity, Boolean carAccess, Boolean carParking, String accessDescription, String nearestHospital, String supplyComment) {
+    public Topo(String name, User user, Department department, String description, String nearestCity, Boolean carAccess, Boolean carParking, String accessDescription, String nearestHospital, String supplyComment,Boolean shared) {
         this.name = name;
         this.user = user;
         this.department = department;
@@ -66,6 +69,7 @@ public class Topo implements Serializable {
         this.accessDescription = accessDescription;
         this.nearestHospital = nearestHospital;
         this.supplyComment = supplyComment;
+        this.shared = shared;
     }
 
 }

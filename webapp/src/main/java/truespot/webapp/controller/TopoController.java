@@ -22,24 +22,26 @@ public class TopoController {
         return topoManager.findAllTopo();
     }
 
+    @RequestMapping(value = "/topo/getByUser/", method = RequestMethod.GET)
+    public List<Topo> getTopoByUser(@RequestParam(name = "pseudo", defaultValue = "") String pseudo) {
+        return topoManager.findAllByUser_Pseudo(pseudo);
+    }
+
+    @RequestMapping(value = "/topo/getByDepartment/", method = RequestMethod.GET)
+    public List<Topo> getTopoByDepartment(@RequestParam(name = "id", defaultValue = "") String id) {
+        return topoManager.findAllByDepartment_Id(new Long(id));
+    }
 
 
-    @RequestMapping(value = "/topo/getTopo", method = RequestMethod.GET)
+    @RequestMapping(value = "/topo/getTopo/", method = RequestMethod.GET)
     public TopoDTO getTopo(@RequestParam(name = "id", defaultValue = "") String id) {
         return topoManager.getTopo(new Long(id));
    }
-
 
     @RequestMapping(value = "/topo", method = RequestMethod.POST)
     public Topo createTopo(@RequestBody TopoDTOContext topoDTOContext) {
         return topoManager.saveTopo(topoDTOContext);
     }
-
-//    // @PostMapping(value="/topo")
-//    @RequestMapping(value = "/topo", method = RequestMethod.POST)
-//    public Topo tesTopo(@RequestBody testClasseNeed topoDTOCo) {
-//        return topoManager.saveTopo(topoDTOContext);
-//    }
 
     @PutMapping(value = "/topo/{id}")
     public void updateTopo(@PathVariable Long id , @RequestBody Topo topo) {

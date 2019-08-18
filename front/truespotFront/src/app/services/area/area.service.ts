@@ -22,4 +22,8 @@ export class AreaService {
   getArea(id: number) {
     return this.http.get<Area>(this.areaUrl + '/' + id);
   }
+
+  updateArea(form: FormGroup, id: number): Observable<FormGroup>{
+    return this.http.put<FormGroup>(this.areaUrl + '/' + id, form.value);
+  }
 }

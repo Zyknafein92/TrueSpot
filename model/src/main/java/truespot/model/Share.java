@@ -22,13 +22,16 @@ public class Share {
     @Column(name="share_id")
     private Long id;
 
-    @Column(name="user_owner_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_owner_id", referencedColumnName = "user_id", nullable = false)
     private User userOwner;
 
-    @Column(name="user_receiver_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_receiver_id", referencedColumnName = "user_id", nullable = false)
     private User userReceiver;
 
-    @Column(name="share_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "topo_id", referencedColumnName = "topo_id", nullable = false)
     private Topo topo;
 
     public Share() {}

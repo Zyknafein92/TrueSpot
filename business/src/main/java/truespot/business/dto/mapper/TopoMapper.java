@@ -29,7 +29,7 @@ public class TopoMapper {
         topoDTO.setAccessDescription(topo.getAccessDescription() != null ? topo.getAccessDescription() : topoDTO.getAccessDescription());
         topoDTO.setNearestHospital(topo.getNearestHospital() != null ? topo.getNearestHospital() : topoDTO.getNearestHospital());
         topoDTO.setSupplyComment(topo.getSupplyComment() != null ? topo.getSupplyComment() : topoDTO.getSupplyComment());
-
+        topoDTO.setShared(topo.getShared() != null ? topo.getShared() : topoDTO.getShared());
 
         return topoDTO;
     }
@@ -49,6 +49,7 @@ public class TopoMapper {
         topo.setAccessDescription(topoDTO.getAccessDescription() != null ? topoDTO.getAccessDescription() : topo.getAccessDescription());
         topo.setNearestHospital(topoDTO.getNearestHospital() != null ? topoDTO.getNearestHospital() : topo.getNearestHospital());
         topo.setSupplyComment(topoDTO.getSupplyComment() != null ? topoDTO.getSupplyComment() : topo.getSupplyComment());
+        topo.setShared(topoDTO.getShared() != null ? topoDTO.getShared() : topo.getShared());
         topoDTO.setId(topo.getId());
 
         return topo;
@@ -66,6 +67,7 @@ public class TopoMapper {
         topoDTO.setAccessDescription(topo.getAccessDescription()!= null ? topo.getAccessDescription() : topoDTO.getAccessDescription());
         topoDTO.setNearestHospital(topo.getNearestHospital()!= null ? topo.getNearestHospital() : topoDTO.getNearestHospital());
         topoDTO.setSupplyComment(topo.getSupplyComment()!= null ? topo.getSupplyComment() : topoDTO.getSupplyComment());
+        topoDTO.setShared(topo.getShared() != null ? topo.getShared() : topoDTO.getShared());
 
         return topoDTO;
 

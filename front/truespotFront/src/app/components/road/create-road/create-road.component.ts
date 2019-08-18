@@ -29,13 +29,20 @@ export class CreateRoadComponent implements OnInit {
   }
 
   saveRoad() {
-    console.log(this.forms.value)
+    console.log(this.forms.value);
     this.roadService.saveRoad(this.forms)
       .subscribe(
-        response => this.forms)
+        response => {
+          // @ts-ignore
+          this.router.navigateByUrl("/topo/view-topo/"+response.id);
+          console.log("reponse: ", response);
+        }),
+      err => {
+        console.log("error: ", err.error.message);
+      }
   }
 
-  private initform() {
+private initform() {
     this.forms = this.formBuilder.group(
       {
         name: new FormControl(),

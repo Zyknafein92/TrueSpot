@@ -37,7 +37,7 @@ const appRoutes: Routes = [
         component: CreateTopoComponent,
       },
       {
-        path: 'view-topo/:idTopo',
+        path: 'view-topo/:idRoad',
         component: ViewTopoComponent,
       },
       {
@@ -57,7 +57,7 @@ const appRoutes: Routes = [
             component: CreateRoadComponent,
           },
         ]
-      }
+      },
     ]
   },
 

@@ -4,91 +4,85 @@
       <div class="well-block">
         <div class="well-title">
 
-
-          <h1> Mes informations : </h1><br>
-
-
-          <div class="row">
-            <div class="col-md-4">
-              <label for="firstName">Prénom :<i class="mandatory-star"></i></label>
-              <div class="d-md-table-row">
-                <input class="form-control noselect"  id="firstName" name="firstName" readonly type="text" value="{{user.firstName}}" />
-              </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Mon compte :</h3>
             </div>
+            <div class="card-body">
+              <h5 class="card-title">Mes informations :</h5>
+              <div class="card-deck">
 
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="LastName">Nom :<i class="mandatory-star"></i></label>
-                <div class="d-md-table-row">
-                  <input class="form-control noselect"  id="lastName" name="lastName"  readonly type="text" value="{{user.lastName}}" />
-                </div>
-              </div>
-            </div>
-          </div>
+                <div class="card">
+                  <div class="card-body">
 
-          <div class="row">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <h5 class="card-title">Nom:</h5>
+                        <p class="card-text">{{user.lastName}}</p>
+                      </div>
 
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="Gender">Genre :<i class="mandatory-star"></i></label>
-                <div class="position-relative">
-                  <input class="form-control noselect"  id="gender" name="gender" readonly type="text" value="{{user.gender}}" />
-                </div>
-              </div>
-            </div>
+                      <div class="col-md-3">
+                        <h5 class="card-title">Prénom:</h5>
+                        <p class="card-text">{{user.firstName}}</p>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <h5 class="card-title">Sexe :</h5>
+                        <p class="card-text">{{user.gender}}</p>
+                      </div>
 
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="Age">Age :<i class="mandatory-star"></i></label>
-                <div class="position-relative">
-                  <input class="form-control noselect"  id="age" name="age" readonly type="text" value="{{user.age}}" />
-                </div>
-              </div>
-            </div>
+                      <div class="col-md-3">
+                        <h5 class="card-title">Date de naissance : </h5>
+                        <p class="card-text">{{user.age}}</p>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <h5 class="card-title">Pseudo :</h5>
+                        <p class="card-text">{{user.pseudo}}</p>
+                      </div>
+                    </div>
 
-          </div>
-
-          <div class="row">
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="PhoneNumber">Numéro de téléphone :<i class="mandatory-star"></i></label>
-                <div class="position-relative">
-                  <input class="form-control noselect"  id="phoneNumber" name="phoneNumber"  type="text" value="{{user.phoneNumber}}" />
+                  </div>
                 </div>
               </div>
             </div>
 
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="Email">Email :<i class="mandatory-star"></i></label>
-                <div class="position-relative">
-                  <input class="form-control noselect"  id="email" name="email"  type="text" value="{{user.email}}" />
+            <div class="card-body">
+              <h5 class="card-title">Mes coordonnées :</h5>
+              <div class="card-deck">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Téléphone :</h5>
+                    <p class="card-text">{{user.phoneNumber}}</p>
+                    <br>
+                    <h5 class="card-title">Email :</h5> <span></span>
+                    <p class="card-text">{{user.email}}</p>
+                  </div>
                 </div>
               </div>
             </div>
 
           </div>
+          <br>
 
-
-          <div class="form-group">
-            <label for="Pseudo">Pseudo:<i class="mandatory-star"></i></label>
-            <div class="position-relative">
-              <input class="form-control noselect"  id="pseudo" name="pseudo"  type="text" value="{{user.pseudo}}" />
+          <div class="card">
+            <div class="card-header">
+              <h3> Ma liste de  topos :</h3>
             </div>
 
           </div>
-          <div class="form-group">
-            <label for="Password">Password :<i class="mandatory-star"></i></label>
-            <div class="position-relative">
-              <input class="form-control noselect"  id="password" name="password"  type="text" value="{{user.password}}" />
-            </div>
 
-          </div>
+
+
 
         </div>
       </div>
     </div>
   </div>
 </div>
+
+

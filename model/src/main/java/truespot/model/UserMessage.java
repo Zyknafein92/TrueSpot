@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @ApiModel(value = "UserMessage")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen")
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="User_message", schema= "public")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class UserMessage {
 
     @Id
@@ -21,11 +23,20 @@ public class UserMessage {
     @Column(name="user_messsage_id")
     private Long id;
 
-    @Column(name="user_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private User user;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "topo_id", referencedColumnName = "topo_id", nullable = false)
+    private Topo topo;
 
     @Column(name="message")
     private String message;
+
+    @Column(name="date")
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     public UserMessage() {}
 

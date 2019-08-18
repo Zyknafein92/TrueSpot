@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TopoService} from "../../../services/topo/topo.service";
 import {Topo} from "../../../../model/topo";
+import {RoadService} from "../../../services/road/roadservice";
+import {Area} from "../../../../model/area";
+import {ClimbingRoad} from "../../../../model/climbingRoad";
 
 
 
@@ -13,33 +16,47 @@ import {Topo} from "../../../../model/topo";
 export class ViewTopoComponent implements OnInit {
 
   private sub: any;
-  idTopo: string;
+  idRoad: string;
   topo : Topo;
+  area: Area;
+  road: ClimbingRoad;
 
 
-  constructor(private route: ActivatedRoute, private topoService: TopoService) { }
+  constructor(private route: ActivatedRoute, private topoService: TopoService, private roadService: RoadService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.idTopo = params['idTopo']; // (+) converts string 'id' to a number
+      this.idRoad = params['idRoad']; // (+) converts string 'id' to a number
     });
+    console.log("idRoad: ",this.idRoad);
 
-    console.log("IDTOPO: ",this.idTopo);
-    this.getTopo();
+    this.getRoad();
+
   }
 
-  getTopo(){
-    this.topoService.getTopo(this.idTopo)
+  // getTopo(){
+  //   this.topoService.getTopo(this.idTopo)
+  //     .subscribe(
+  //       response => {
+  //         this.topo = response;
+  //         console.log("response: ", response);
+  //       },
+  //       err => {
+  //         console.log("error: ", err);
+  //       })
+  //
+  // }
+
+  getRoad() {
+    console.log(" getRoad :idRoad", this.idRoad);
+    this.roadService.getRoad(this.idRoad)
       .subscribe(
         response => {
-          this.topo = response;
-          console.log("response: ", response);
-        },
-        err => {
-          console.log("error: ", err);
-        })
-
+          console.log("reponse idRoad: ", response);
+        }),
+      err => {
+        console.log("error: ", err.error.message);
+      }
   }
-
 
 }

@@ -3,7 +3,6 @@ package truespot.business.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.TopoManager;
-import truespot.business.dto.DepartmentDTO;
 import truespot.business.dto.TopoDTO;
 import truespot.business.dto.TopoDTOContext;
 import truespot.business.dto.UserDTO;
@@ -14,11 +13,12 @@ import truespot.model.Department;
 import truespot.model.Topo;
 import truespot.model.User;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
-// TODO: 10/05/2019 refactor selon area 
+
 @Service
 public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager {
 
@@ -29,6 +29,17 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
     public List<Topo> findAllTopo() {
         return getDaoFactory().getTopoRepository().findAll();
     }
+
+    @Override
+    public List<Topo> findAllByUser_Pseudo(String pseudo) {
+        return getDaoFactory().getTopoRepository().findAllByUser_Pseudo(pseudo);
+    }
+
+    @Override
+    public List<Topo> findAllByDepartment_Id(Long id) {
+        return getDaoFactory().getTopoRepository().findAllByDepartment_Id(id);
+    }
+
 
     @Override
     public TopoDTO getTopo(Long id) {
@@ -48,7 +59,8 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
                     topoOptional.get().getCarParking(),
                     topoOptional.get().getAccessDescription(),
                     topoOptional.get().getNearestHospital(),
-                    topoOptional.get().getSupplyComment()
+                    topoOptional.get().getSupplyComment(),
+                    topoOptional.get().getShared()
             );
         }
 
@@ -84,14 +96,6 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         return getDaoFactory().getTopoRepository().save(topo);
     }
 
-//    @Override
-//    public Boolean process(TestClasseNeed testClasseNeed) {
-//
-//        //call service creation topo => il te retourne un topo
-//
-//        // call service creation Sport => il te retourne un spot
-//
-//    }
 
     @Override
     public void updateTopo(Long id, Topo topo) {

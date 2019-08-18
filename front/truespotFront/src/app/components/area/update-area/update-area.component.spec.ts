@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewListAreaComponent } from './view-list-area.component';
+import { UpdateAreaComponent } from './update-area.component';
 
-describe('ViewListAreaComponent', () => {
-  let component: ViewListAreaComponent;
-  let fixture: ComponentFixture<ViewListAreaComponent>;
+describe('UpdateAreaComponent', () => {
+  let component: UpdateAreaComponent;
+  let fixture: ComponentFixture<UpdateAreaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewListAreaComponent ]
+      declarations: [ UpdateAreaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewListAreaComponent);
+    fixture = TestBed.createComponent(UpdateAreaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
