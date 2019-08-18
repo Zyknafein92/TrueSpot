@@ -9,6 +9,7 @@ import {CreateAreaComponent} from "./components/area/create-area/create-area.com
 import {CreateRoadComponent} from "./components/road/create-road/create-road.component";
 import {CreateUserComponent} from "./components/user/create-user/create-user.component";
 import {ViewProfilComponent} from "./components/user/view-profil/view-profil.component";
+import {UpdateAreaComponent} from "./components/area/update-area/update-area.component";
 
 
 const appRoutes: Routes = [
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'home', component: HomeComponent},
   {path: 'myprofil', component: ViewProfilComponent},
+  {path: 'updateArea', component: UpdateAreaComponent},
 
   {
     path: 'topo',
