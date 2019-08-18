@@ -8,7 +8,7 @@ import {ViewTopoComponent} from "./components/topo/view-topo/view-topo.component
 import {CreateAreaComponent} from "./components/area/create-area/create-area.component";
 import {CreateRoadComponent} from "./components/road/create-road/create-road.component";
 import {CreateUserComponent} from "./components/user/create-user/create-user.component";
-import {ViewProfilComponent} from "./components/user/view-profil/view-profil.component";
+import {ViewMyprofilComponent} from "./components/user/view-myprofil/view-myprofil.component";
 import {UpdateAreaComponent} from "./components/area/update-area/update-area.component";
 
 
@@ -17,14 +17,14 @@ const appRoutes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'home', component: HomeComponent},
   {path: 'createUser', component: CreateUserComponent},
-  {path: 'view-profil', component: ViewProfilComponent},
+  {path: 'view-profil', component: ViewMyprofilComponent},
   {path: 'createArea', component: CreateAreaComponent},
   {path: 'createRoad', component: CreateRoadComponent},
   {path: 'createTopo', component:CreateTopoComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'myprofil', component: ViewProfilComponent},
+  {path: 'myprofil', component: ViewMyprofilComponent},
   {path: 'updateArea', component: UpdateAreaComponent},
 
   {
@@ -65,27 +65,9 @@ const appRoutes: Routes = [
 
   {
     path: '',
-    redirectTo: '/topo/add-topo',
+    redirectTo: '/',
     pathMatch: 'full'
   },
-
-  // {
-  //   path: '',
-  //   redirectTo: '/topo/create-spot',
-  //   pathMatch: 'full'
-  // },
-  //
-  // {
-  //   path: '',
-  //   redirectTo: '/topo/create-area',
-  //   pathMatch: 'full'
-  // },
-  //
-  // {
-  //   path: '',
-  //   redirectTo: '/topo/create-road',
-  //   pathMatch: 'full'
-  // }
 
 ];
 

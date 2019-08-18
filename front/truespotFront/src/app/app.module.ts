@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
-import { ViewProfilComponent } from './components/user/view-profil/view-profil.component';
+import { ViewMyprofilComponent } from './components/user/view-myprofil/view-myprofil.component';
 import { ViewListUsersComponent } from './components/user/view-list-users/view-list-users.component';
 import { CreateTopoComponent } from './components/topo/create-topo/create-topo.component';
 import { ViewTopoComponent } from './components/topo/view-topo/view-topo.component';
@@ -21,12 +21,13 @@ import { UdapteTopoComponent } from './components/topo/udapte-topo/udapte-topo.c
 import { UpdateAreaComponent } from './components/area/update-area/update-area.component';
 import { UpdateRoadComponent } from './components/road/update-road/update-road.component';
 import { UpdateUserComponent } from './components/user/update-user/update-user.component';
+import { ViewUserprofilComponent } from './components/user/view-userprofil/view-userprofil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateUserComponent,
-    ViewProfilComponent,
+    ViewMyprofilComponent,
     ViewListUsersComponent,
     CreateTopoComponent,
     ViewTopoComponent,
@@ -40,6 +41,7 @@ import { UpdateUserComponent } from './components/user/update-user/update-user.c
     UpdateAreaComponent,
     UpdateRoadComponent,
     UpdateUserComponent,
+    ViewUserprofilComponent,
   ],
   imports: [
     BrowserModule,

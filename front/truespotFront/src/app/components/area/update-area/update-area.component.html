@@ -3,93 +3,98 @@
     <div class="col-lg-12">
       <div class="well-block">
         <div class="well-title">
-          <h2>Mettre à jour un secteur :</h2><br>
-        </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading"><h3>Mettre à jour un secteur :</h3></div>
+            <div class="panel-body">
+
+              <form #f="ngForm" [formGroup]="forms" (ngSubmit)="updateArea()">
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Nom:</label>
+                      <input class="form-control"
+                             type="text"
+                             name="name"
+                             placeholder="Nom du secteur"
+                             formControlName="name"
+                             required minlength="2">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Description:</label>
+                      <input class="form-control input-md"
+                             type="text"
+                             name="description"
+                             placeholder="Description du secteur"
+                             formControlName="description"
+                             required
+                             minlength="2">
+                    </div>
+                  </div>
 
 
-        <form #f="ngForm" [formGroup]="forms" (ngSubmit)="updateArea()">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="orientation" class="control-label">Orientation du secteur:</label>
+                      <input required
+                             id="orientation"
+                             name="orientation"
+                             type="text"
+                             class="form-control"
+                             formControlName="orientation"
+                             placeholder="Nord, Nord-est">
+                    </div>
+                  </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="control-label">Nom:</label>
-                <input class="form-control"
-                       type="text"
-                       name="name"
-                       placeholder="Nom du secteur"
-                       formControlName="name"
-                       required minlength="2">
-              </div>
-            </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="control-label">Nombre de voie:</label>
+                      <input class="form-control input-md"
+                             type="number"
+                             name="roadNumber"
+                             placeholder="1..2.."
+                             formControlName="roadNumber"
+                             autocapitalize="on"
+                             spellcheck="on"
+                             required
+                             minlength="10">
+                    </div>
 
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="control-label">Description:</label>
-                <input class="form-control input-md"
-                       type="text"
-                       name="description"
-                       placeholder="Description du secteur"
-                       formControlName="description"
-                       required
-                       minlength="2">
-              </div>
-            </div>
-
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label for="orientation" class="control-label">Orientation du secteur:</label>
-                <input required
-                       id="orientation"
-                       name="orientation"
-                       type="text"
-                       class="form-control"
-                       formControlName="orientation"
-                       placeholder="Nord, Nord-est">
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="form-group">
-                <label class="control-label">Nombre de voie:</label>
-                <input class="form-control input-md"
-                       type="number"
-                       name="roadNumber"
-                       placeholder="1..2.."
-                       formControlName="roadNumber"
-                       autocapitalize="on"
-                       spellcheck="on"
-                       required
-                       minlength="10">
-              </div>
-
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label class="control-label">Hauteur estimée:</label>
-                <input class="form-control input-md"
-                       type="number"
-                       name="height"
-                       placeholder="Hauteur estimée"
-                       formControlName="height"
-                       autocapitalize="on"
-                       spellcheck="on"
-                       required
-                       minlength="10">
-              </div>
-            </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="control-label">Hauteur estimée:</label>
+                      <input class="form-control input-md"
+                             type="number"
+                             name="height"
+                             placeholder="Hauteur estimée"
+                             formControlName="height"
+                             autocapitalize="on"
+                             spellcheck="on"
+                             required
+                             minlength="10">
+                    </div>
+                  </div>
 
 
-            <div class="col-md-12">
-              <div class="form-group">
-                <button
-                  type="submit"
-                  class="btn btn-primary">Valider
-                </button>
-              </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <button
+                        type="submit"
+                        class="btn btn-primary">Valider
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
-        </form>
+
+        </div>
       </div>
     </div>
   </div>

@@ -5,15 +5,14 @@
         <div class="well-title">
 
           <div class="panel panel-primary">
-            <div class="panel-heading"><h3>Création d'un topo :</h3></div>
+            <div class="panel-heading"><h3>Mettre à jour un topo :</h3></div>
             <div class="panel-body">
-              <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveTopo()">
+
+              <form #f="ngForm" [formGroup]="forms" (ngSubmit)="updateTopo()">
 
                 <div class="row">
                   <div class="col-md-2">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('name').valid"
-                         [class.has-error]="forms.get('name').invalid && forms.get('name').touched">
+                    <div class="form-group">
                       <label class="control-label">Nom:</label>
                       <input class="form-control"
                              type="text"
@@ -37,13 +36,11 @@
                 </div>
                 <br>
                 <h2>Informations générales</h2><br>
-
+                <br>
                 <div class="row">
 
                   <div class="col-md-4">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('nearestCity').valid"
-                         [class.has-error]="forms.get('nearestCity').invalid && forms.get('nearestCity').touched">
+                    <div class="form-group">
                       <label class="control-label">Ville la plus proche:</label>
                       <input class="form-control"
                              type="text"
@@ -57,9 +54,7 @@
 
                 <div class="row">
                   <div class="col-md-8">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('description').valid"
-                         [class.has-error]="forms.get('description').invalid && forms.get('description').touched">
+                    <div class="form-group">
                       <label class="control-label">Description du site:</label>
                       <textarea class="form-control input-md"
                                 type="text"
@@ -75,13 +70,11 @@
                 </div>
                 <br>
                 <h2>Accès au site</h2><br>
-
+                <br>
                 <div class="row">
                   <div class="col-md-2">
                     <label> Accès en voiture :</label>
-                    <div class="form-group"
-                         [class.has-success]="forms.get('carAccess').valid"
-                         [class.has-error]="forms.get('carAccess').invalid && forms.get('carAccess').touched">
+                    <div class="form-group">
                       <div class="form-group">
                         <select class="browser-default custom-select" formControlName="carAccess">
                           <option [value]="true">Oui</option>
@@ -93,9 +86,7 @@
 
                   <div class="col-md-2">
                     <label> Parking :</label>
-                    <div class="form-group"
-                         [class.has-success]="forms.get('carParking').valid"
-                         [class.has-error]="forms.get('carParking').invalid && forms.get('carParking').touched">
+                    <div class="form-group">
                       <div class="form-group">
                         <select class="browser-default custom-select" formControlName="carParking">
                           <option [value]="true">Oui</option>
@@ -108,9 +99,7 @@
 
                 <div class="row">
                   <div class="col-md-8">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('accessDescription').valid"
-                         [class.has-error]="forms.get('accessDescription').invalid && forms.get('accessDescription').touched">
+                    <div class="form-group">
                       <label class="control-label">Description l'accès au site:</label>
                       <textarea class="form-control input-md"
                                 type="text"
@@ -124,14 +113,12 @@
                     </div>
                   </div>
                 </div>
-                <br>
+               <br>
                 <h2> Ravitaillement et soins</h2><br>
-
+                <br>
                 <div class="row">
                   <div class="col-md-4">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('nearestHospital').valid"
-                         [class.has-error]="forms.get('nearestHospital').invalid && forms.get('nearestHospital').touched">
+                    <div class="form-group">
                       <label class="control-label">Nom de l'Hopital le plus proche:</label>
                       <input class="form-control"
                              type="text"
@@ -145,9 +132,7 @@
 
                 <div class="row">
                   <div class="col-md-8">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('supplyComment').valid"
-                         [class.has-error]="forms.get('supplyComment').invalid && forms.get('supplyComment').touched">
+                    <div class="form-group">
                       <label class="control-label">Lieu de ravitaillement :</label>
                       <textarea class="form-control input-md"
                                 type="text"
@@ -170,7 +155,7 @@
                     <div class="form-group">
                       <button
                         type="submit"
-                        class="btn btn-primary"[disabled]="forms.invalid">Valider
+                        class="btn btn-primary">Mettre à jour le topo
                       </button>
                     </div>
                   </div>

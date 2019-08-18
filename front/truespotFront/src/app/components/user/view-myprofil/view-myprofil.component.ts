@@ -6,10 +6,10 @@ import {TokenStorageService} from "../../../services/auth/token-storage.service"
 
 @Component({
   selector: 'app-view-profile',
-  templateUrl: './view-profil.component.html',
-  styleUrls: ['./view-profil.component.css']
+  templateUrl: './view-myprofil.component.html',
+  styleUrls: ['./view-myprofil.component.css']
 })
-export class ViewProfilComponent implements OnInit {
+export class ViewMyprofilComponent implements OnInit {
 
   forms: FormGroup;
   user: User;
