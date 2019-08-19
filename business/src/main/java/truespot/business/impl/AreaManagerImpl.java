@@ -29,7 +29,6 @@ public class AreaManagerImpl extends BusinessManagerImpl implements AreaManager 
                     areaOptional.get().getName(),
                     areaOptional.get().getDescription(),
                     areaOptional.get().getOrientation(),
-                    areaOptional.get().getRoadNumber(),
                     areaOptional.get().getHeight()
             );
         }

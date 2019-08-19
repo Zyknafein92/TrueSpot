@@ -10,7 +10,6 @@ public class AreaDTO {
     private String name;
     private String description;
     private String orientation;
-    private int roadNumber;
     private int height;
 
 }

@@ -33,18 +33,15 @@ public class Area implements Serializable {
     private String description;
     @Column(name="orientation")
     private String orientation;
-    @Column(name="road_number")
-    private int roadNumber;
     @Column(name="height")
     private int height;
 
     public Area() {}
 
-    public Area(String name, String description, String orientation, int roadNumber, int height) {
+    public Area(String name, String description, String orientation,  int height) {
         this.name = name;
         this.description = description;
         this.orientation = orientation;
-        this.roadNumber = roadNumber;
         this.height = height;
     }
 

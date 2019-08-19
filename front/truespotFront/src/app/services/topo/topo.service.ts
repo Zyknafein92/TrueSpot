@@ -13,13 +13,13 @@ export class TopoService {
 
   private topoUrl = 'http://localhost:8080/topo';
 
-  constructor(private http:HttpClient, private tokenStorage: TokenStorageService) { }
+  constructor(private http:HttpClient, private token: TokenStorageService) { }
 
   saveTopo(form: FormGroup): Observable<Topo> {
     return this.http.post<Topo>(this.topoUrl, {
       "name": form.get("name").value,
       "idDepartment": form.get("department").value.id,
-      "userPseudo": this.tokenStorage.getPseudo(),
+      "userPseudo": this.token.getPseudo(),
       "description" : form.get("description").value,
       "nearestCity" : form.get("nearestCity").value,
       "carAccess" : form.get("carAccess").value,
@@ -37,6 +37,14 @@ export class TopoService {
         params: new HttpParams()
           .set('id', id),
       });
+  }
+
+  getTopoByUser(pseudo : string) {
+    console.log("pseudoUser ", pseudo);
+    return this.http.get<Topo>(this.topoUrl + '/topo/getByUser/',     {
+      params : new HttpParams()
+        .set('pseudo', this.token.getPseudo())
+    });
   }
 
   updateTopo(form: FormGroup) : Observable<Topo>{

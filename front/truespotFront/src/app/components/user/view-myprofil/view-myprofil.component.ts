@@ -3,6 +3,9 @@ import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../../model/user";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
+import {Topo} from "../../../../model/topo";
+import {Department} from "../../../../model/department";
+import {TopoService} from "../../../services/topo/topo.service";
 
 @Component({
   selector: 'app-view-profile',
@@ -13,13 +16,16 @@ export class ViewMyprofilComponent implements OnInit {
 
   forms: FormGroup;
   user: User;
+  topo: Topo;
+  department: Department;
   files: FileList;
   file_src: string;
 
-  constructor( private userService:UserService, private formBuilder: FormBuilder, private token: TokenStorageService) { }
+  constructor( private userService:UserService, private formBuilder: FormBuilder, private token: TokenStorageService, private toposervice:TopoService) { }
 
   ngOnInit() {
     this.initProfil(this.token);
+    this.initTopos(this.token);
   }
 
   initProfil(token : TokenStorageService){
@@ -29,6 +35,13 @@ export class ViewMyprofilComponent implements OnInit {
         this.user = res;
       }
     );
+  }
+  initTopos(token : TokenStorageService){
+    this.toposervice.getTopoByUser(this.token.getPseudo()).subscribe(
+      res => {
+        this.topo = res;
+      }
+    )
   }
 
 }

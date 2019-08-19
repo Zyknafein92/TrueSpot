@@ -33,7 +33,6 @@ export class UpdateAreaComponent implements OnInit {
         name: this.area.name,
         description: this.area.description,
         orientation  : this.area.orientation,
-        roadNumber: this.area.roadNumber,
         height: this.area.height,
         idTopo: this.idTopo,
       }

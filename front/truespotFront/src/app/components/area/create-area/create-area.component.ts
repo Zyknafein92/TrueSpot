@@ -49,7 +49,6 @@ export class CreateAreaComponent implements OnInit {
         name: new FormControl(),
         description: new FormControl(),
         orientation  : new FormControl(),
-        roadNumber: new FormControl(),
         height: new FormControl(),
         idTopo: this.idTopo,
       }

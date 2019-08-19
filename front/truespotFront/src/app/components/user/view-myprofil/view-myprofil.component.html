@@ -72,8 +72,21 @@
           <div class="card">
             <div class="card-header">
               <h3> Ma liste de  topos :</h3>
+              <div class="card-body">
+              <table class="table">
+                <tr>
+                  <th>Nom du topo</th>
+                  <th>Numéro du département</th>
+                  <th>Nom du département</th>
+                </tr>
+                <tr *ngFor="let topo of topos">
+                  <td>{{topo.name}}</td>
+                  <td>{{topo.department.name}}</td>
+                  <td>{{topo.department.id}}</td>
+                </tr>
+              </table>
             </div>
-
+            </div>
           </div>
 
 

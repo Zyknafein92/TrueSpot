@@ -14,7 +14,6 @@ public class AreaMapper {
         areaDTO.setName(area.getName() != null ? area.getName() : areaDTO.getName());
         areaDTO.setDescription(area.getDescription() != null ? area.getDescription() : areaDTO.getDescription());
         areaDTO.setOrientation(area.getOrientation() != null ? area.getOrientation() : areaDTO.getOrientation());
-        areaDTO.setRoadNumber(area.getRoadNumber() != 0 ? area.getRoadNumber() : areaDTO.getRoadNumber());
         areaDTO.setHeight(area.getHeight() != 0 ? area.getHeight() : areaDTO.getHeight());
 
         return areaDTO;
@@ -27,7 +26,6 @@ public class AreaMapper {
         area.setName(areaDTO.getName() != null ? areaDTO.getName() : area.getName());
         area.setDescription(areaDTO.getDescription() != null ? areaDTO.getName() : area.getName());
         area.setOrientation(areaDTO.getOrientation() != null ? areaDTO.getOrientation() : area.getOrientation());
-        area.setRoadNumber(areaDTO.getRoadNumber() != 0 ? areaDTO.getRoadNumber() : area.getRoadNumber());
         area.setHeight(areaDTO.getHeight() != 0 ? areaDTO.getHeight() : area.getHeight());
         areaDTO.setId(area.getId());
 
@@ -39,7 +37,6 @@ public class AreaMapper {
         areaDTO.setName(area.getName() != null ? area.getName() : areaDTO.getName());
         areaDTO.setDescription(area.getDescription()!= null ? area.getDescription() : areaDTO.getDescription());
         areaDTO.setOrientation(area.getOrientation()!= null ? area.getOrientation() : areaDTO.getOrientation());
-        areaDTO.setRoadNumber(area.getRoadNumber() != 0 ? area.getRoadNumber() : areaDTO.getRoadNumber());
         areaDTO.setHeight(area.getHeight()!= 0 ? area.getHeight() : areaDTO.getHeight());
 
         return areaDTO;

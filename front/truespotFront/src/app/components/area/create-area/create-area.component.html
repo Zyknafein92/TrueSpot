@@ -56,23 +56,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4">
-                    <div class="form-group"
-                         [class.has-success]="forms.get('roadNumber').valid"
-                         [class.has-error]="forms.get('roadNumber').invalid && forms.get('roadNumber').touched">
-                      <label class="control-label">Nombre de voie:</label>
-                      <input class="form-control input-md"
-                             type="number"
-                             name="roadNumber"
-                             placeholder="1..2.."
-                             formControlName="roadNumber"
-                             autocapitalize="on"
-                             spellcheck="on"
-                             required
-                             minlength="10">
-                    </div>
 
-                  </div>
                   <div class="col-md-4">
                     <div class="form-group"
                          [class.has-success]="forms.get('height').valid"
