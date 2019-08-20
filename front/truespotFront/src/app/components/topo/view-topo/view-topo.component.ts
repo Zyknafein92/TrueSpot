@@ -18,7 +18,7 @@ export class ViewTopoComponent implements OnInit {
   private sub: any;
   idRoad: string;
   topo : Topo;
-  area: Area;
+  areas: any;
   road: ClimbingRoad;
 
 
@@ -28,8 +28,6 @@ export class ViewTopoComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.idRoad = params['idRoad']; // (+) converts string 'id' to a number
     });
-    console.log("idRoad: ",this.idRoad);
-
     this.getRoad();
 
   }
@@ -52,7 +50,9 @@ export class ViewTopoComponent implements OnInit {
     this.roadService.getRoad(this.idRoad)
       .subscribe(
         response => {
-          console.log("reponse idRoad: ", response);
+          this.road = response;
+          this.areas = this.road.area;
+          console.log("reponse ROAD: ", response);
         }),
       err => {
         console.log("error: ", err.error.message);

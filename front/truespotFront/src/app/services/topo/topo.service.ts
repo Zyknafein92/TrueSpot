@@ -13,6 +13,7 @@ export class TopoService {
 
   private topoUrl = 'http://localhost:8080/topo';
 
+
   constructor(private http:HttpClient, private token: TokenStorageService) { }
 
   saveTopo(form: FormGroup): Observable<Topo> {
@@ -45,6 +46,10 @@ export class TopoService {
       params : new HttpParams()
         .set('pseudo', this.token.getPseudo())
     });
+  }
+
+  getAllTopo(){
+    return this.http.get<Topo>('http://localhost:8080/getAllTopos');
   }
 
   updateTopo(form: FormGroup) : Observable<Topo>{

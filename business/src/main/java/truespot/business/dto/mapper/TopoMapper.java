@@ -1,15 +1,10 @@
 package truespot.business.dto.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
-import truespot.business.contract.TopoManager;
-import truespot.business.contract.UserManager;
-import truespot.business.dto.DepartmentDTO;
 import truespot.business.dto.TopoDTO;
-import truespot.business.dto.UserDTO;
-import truespot.model.Department;
 import truespot.model.Topo;
-import truespot.model.User;
+
 
 @Component
 public class TopoMapper {
@@ -30,6 +25,7 @@ public class TopoMapper {
         topoDTO.setNearestHospital(topo.getNearestHospital() != null ? topo.getNearestHospital() : topoDTO.getNearestHospital());
         topoDTO.setSupplyComment(topo.getSupplyComment() != null ? topo.getSupplyComment() : topoDTO.getSupplyComment());
         topoDTO.setShared(topo.getShared() != null ? topo.getShared() : topoDTO.getShared());
+        topoDTO.setRelease_Date(topo.getReleaseDate() != null ? topo.getReleaseDate() : topoDTO.getRelease_Date());
 
         return topoDTO;
     }
@@ -50,6 +46,7 @@ public class TopoMapper {
         topo.setNearestHospital(topoDTO.getNearestHospital() != null ? topoDTO.getNearestHospital() : topo.getNearestHospital());
         topo.setSupplyComment(topoDTO.getSupplyComment() != null ? topoDTO.getSupplyComment() : topo.getSupplyComment());
         topo.setShared(topoDTO.getShared() != null ? topoDTO.getShared() : topo.getShared());
+        topo.setReleaseDate(topoDTO.getRelease_Date() != null ? topoDTO.getRelease_Date() : topo.getReleaseDate());
         topoDTO.setId(topo.getId());
 
         return topo;
@@ -68,6 +65,7 @@ public class TopoMapper {
         topoDTO.setNearestHospital(topo.getNearestHospital()!= null ? topo.getNearestHospital() : topoDTO.getNearestHospital());
         topoDTO.setSupplyComment(topo.getSupplyComment()!= null ? topo.getSupplyComment() : topoDTO.getSupplyComment());
         topoDTO.setShared(topo.getShared() != null ? topo.getShared() : topoDTO.getShared());
+        topoDTO.setRelease_Date(topo.getReleaseDate() != null ? topo.getReleaseDate() : topoDTO.getRelease_Date());
 
         return topoDTO;
 

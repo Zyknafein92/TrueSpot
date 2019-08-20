@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 
 @Data
@@ -19,6 +20,7 @@ public class TopoDTO {
     private String name;
     private UserDTO user;
     private DepartmentDTO department;
+    private Date release_Date;
     private String description;
     private String nearestCity;
     private Boolean carAccess;

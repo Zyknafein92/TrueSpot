@@ -27,7 +27,7 @@ public class ClimbingRoadController {
 //    }
 
     @RequestMapping(value = "/road/getRoad", method = RequestMethod.GET)
-    public ClimbingRoadDTO getRoad(@RequestParam(name = "id", defaultValue = "") String id) {
+    public ClimbingRoad getRoad(@RequestParam(name = "id", defaultValue = "") String id) {
         return climbingRoadManager.getClimbingRoad(new Long(id));
     }
 
@@ -37,8 +37,8 @@ public class ClimbingRoadController {
     }
 
     @PutMapping(value = "/road/{id}")
-    public void updateClimbingRoad(@PathVariable Long id , @RequestBody ClimbingRoad climbingRoad) {
-        climbingRoadManager.updateClimbingRoad(id,climbingRoad);
+    public void updateClimbingRoad(@RequestBody ClimbingRoadDTO climbingRoadDTO) {
+        climbingRoadManager.updateClimbingRoad(climbingRoadDTO);
     }
 
     @DeleteMapping(value= "/road/{id}")

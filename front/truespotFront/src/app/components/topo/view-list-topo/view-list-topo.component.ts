@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {TopoService} from "../../../services/topo/topo.service";
 
 @Component({
   selector: 'app-view-list-topo',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewListTopoComponent implements OnInit {
 
-  constructor() { }
+  topos : any;
+
+  constructor(private route: ActivatedRoute, private topoService: TopoService) { }
 
   ngOnInit() {
+    this.getAllTopos();
   }
 
+  getAllTopos() {
+    this.topoService.getAllTopo()
+      .subscribe(
+        response => {
+          this.topos = response;
+          console.log("reponse Topos: ", response);
+        }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+  }
 }

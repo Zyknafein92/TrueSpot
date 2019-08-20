@@ -10,6 +10,7 @@ import {CreateRoadComponent} from "./components/road/create-road/create-road.com
 import {CreateUserComponent} from "./components/user/create-user/create-user.component";
 import {ViewMyprofilComponent} from "./components/user/view-myprofil/view-myprofil.component";
 import {UpdateAreaComponent} from "./components/area/update-area/update-area.component";
+import {ViewListTopoComponent} from "./components/topo/view-list-topo/view-list-topo.component";
 
 
 const appRoutes: Routes = [
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'myprofil', component: ViewMyprofilComponent},
   {path: 'updateArea', component: UpdateAreaComponent},
+  {path: 'ViewTopos', component: ViewListTopoComponent},
 
   {
     path: 'topo',

@@ -1,6 +1,8 @@
 package truespot.consumer.implement;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import truespot.model.Department;
 import truespot.model.Topo;
@@ -11,6 +13,8 @@ import java.util.List;
 @Repository
 public interface TopoRepository extends JpaRepository <Topo, Long> {
 
-    List<Topo> findAllByUser_Pseudo(String pseudo);
+    @Query("select t from Topo t,User u where  t.user.id = u.id and u.pseudo =:pseudo")
+    List<Topo> findAllByUser_Pseudo(@Param("pseudo") String pseudo);
+
     List<Topo> findAllByDepartment_Id(Long id);
 }

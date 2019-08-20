@@ -45,7 +45,7 @@ export class CreateUserComponent implements OnInit {
           Validators.required,
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])),
-        age: new FormControl(),
+        birthDate: new FormControl(),
         phoneNumber: new FormControl('', Validators.compose([
           Validators.required,
           Validators.pattern('^[0-9]{10}$')

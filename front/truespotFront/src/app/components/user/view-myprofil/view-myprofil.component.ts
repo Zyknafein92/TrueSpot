@@ -16,7 +16,7 @@ export class ViewMyprofilComponent implements OnInit {
 
   forms: FormGroup;
   user: User;
-  topo: Topo;
+  topos: any;
   department: Department;
   files: FileList;
   file_src: string;
@@ -31,7 +31,6 @@ export class ViewMyprofilComponent implements OnInit {
   initProfil(token : TokenStorageService){
     this.userService.getProfil(this.token.getPseudo()).subscribe(
       res => {
-        console.log(res);
         this.user = res;
       }
     );
@@ -39,7 +38,7 @@ export class ViewMyprofilComponent implements OnInit {
   initTopos(token : TokenStorageService){
     this.toposervice.getTopoByUser(this.token.getPseudo()).subscribe(
       res => {
-        this.topo = res;
+        this.topos = res;
       }
     )
   }

@@ -53,6 +53,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
                     topoOptional.get().getName(),
                     topoOptional.get().getUser(),
                     topoOptional.get().getDepartment(),
+                    topoOptional.get().getReleaseDate(),
                     topoOptional.get().getDescription(),
                     topoOptional.get().getNearestCity(),
                     topoOptional.get().getCarAccess(),

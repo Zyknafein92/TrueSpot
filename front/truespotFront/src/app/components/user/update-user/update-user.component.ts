@@ -32,7 +32,7 @@ export class UpdateUserComponent implements OnInit {
         //   Validators.required,
         //   Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         // ])),
-        // age: this.user.age,
+        birthDate: this.user.birthDate,
         // phoneNumber: this.user.phoneNumber('', Validators.compose([
         //   Validators.required,
         //   Validators.pattern('^[0-9]{10}$')

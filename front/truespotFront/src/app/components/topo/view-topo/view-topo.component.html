@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h1>{{topo.department.id}}</h1><h1>{{topo.department.name}}</h1>
+    <h1>{{road.area.topo.department.id}}</h1><h1>{{road.area.topo.department.name}}</h1><h1>{{road.area.topo.releaseDate}}</h1>
   </div>
   <div class="card-body">
     <h5 class="card-title">Informations générales :</h5>
@@ -8,16 +8,16 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Nom du site :</h5>
-          <p class="card-text">{{topo.name}}</p>
+          <p class="card-text">{{road.area.topo.name}}</p>
           <br>
           <h5 class="card-title">Ville la plus proche :</h5>
-          <p class="card-text">{{topo.nearestCity}}</p>
+          <p class="card-text">{{road.area.topo.nearestCity}}</p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Description du site :</h5>
-          <p class="card-text">{{topo.description}}</p>
+          <p class="card-text">{{road.area.topo.description}}</p>
         </div>
       </div>
     </div>
@@ -29,16 +29,16 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Accès en voiture :</h5>
-          <p class="card-text">{{topo.carAccess}}</p>
+          <p class="card-text">{{road.area.topo.carAccess}}</p>
           <br>
           <h5 class="card-title">Parking :</h5> <span></span>
-          <p class="card-text">{{topo.carParking}}</p>
+          <p class="card-text">{{road.area.topo.carParking}}</p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Description de l'accès au site :</h5>
-          <p class="card-text">{{topo.accessDescription}}</p>
+          <p class="card-text">{{road.area.topo.accessDescription}}</p>
         </div>
       </div>
     </div>
@@ -50,13 +50,13 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Hopital le plus proche :</h5>
-          <p class="card-text">{{topo.nearestHospital}}</p>
+          <p class="card-text">{{road.area.topo.nearestHospital}}</p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Ravitaillement :</h5>
-          <p class="card-text">{{topo.supplyComment}}</p>
+          <p class="card-text">{{road.area.topo.supplyComment}}</p>
         </div>
       </div>
     </div>
@@ -67,19 +67,18 @@
       <h3> Secteurs :</h3>
     </div>
       <div class="card-body">
-        <table class="table">
+        <table class="table" >
           <tr>
             <th>Nom du secteur</th>
             <th>Orientation</th>
             <th>Hauteur</th>
             <th>Description</th>
           </tr>
-          <tr *ngFor="let area of areas">
-            <td>{{area.name}}</td>
-            <td>{{area.orientation}}</td>
-            <td>{{area.height}}</td>
-            <td>{{area.description}}</td>
-          </tr>
+          <tr>
+            <td>{{road.area.name}}</td>
+            <td>{{road.area.orientation}}</td>
+            <td>{{road.area.height}}</td>
+            <td>{{road.area.description}}</td>
         </table>
       </div>
     </div>

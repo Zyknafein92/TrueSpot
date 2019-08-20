@@ -18,7 +18,7 @@ export class RoadService {
     return this.http.post<FormGroup>(this.roadUrl, form.value);
   }
 
-  getRoad(idRoad: string) {
+  getRoad(idRoad: string) :Observable<ClimbingRoad>{
     console.log("idRoad: ", idRoad)
     return this.http.get<ClimbingRoad>( this.roadUrl + '/getRoad',
       {

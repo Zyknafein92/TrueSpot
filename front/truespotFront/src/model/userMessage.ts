@@ -10,13 +10,13 @@
  * Do not edit the class manually.
  */
 import { Topo } from './topo';
+import { User } from './user';
 
 
-export interface Area {
+export interface UserMessage {
     id?: number;
+    user?: User;
     topo?: Topo;
-    name?: string;
-    description?: string;
-    orientation?: string;
-    height?: number;
+    message?: string;
+    date?: Date;
 }

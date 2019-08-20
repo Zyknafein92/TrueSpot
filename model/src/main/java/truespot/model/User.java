@@ -2,13 +2,12 @@ package truespot.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.swagger.annotations.ApiModel;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
-
-import java.util.List;
+import java.util.Date;
 import java.util.Set;
 
 
@@ -39,8 +38,9 @@ public class User implements Serializable {
     @Column(name="last_name")
     private String lastName;
 
-    @Column(name="age")
-    private int age;
+    @Column(name="birth_date")
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
 
     @Column(name="gender")
     private String gender;
@@ -60,10 +60,10 @@ public class User implements Serializable {
 
     public User(){}
 
-    public User(String firstName, String lastName, int age, String gender, String pseudo, String password, String email, String phoneNumber) {
+    public User(String firstName, String lastName, Date birthDate, String gender, String pseudo, String password, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.birthDate = birthDate;
         this.gender = gender;
         this.pseudo = pseudo;
         this.password = password;

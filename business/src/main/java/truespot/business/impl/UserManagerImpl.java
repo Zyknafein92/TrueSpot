@@ -46,7 +46,7 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
             user = new User (
                     userOptional.get().getFirstName(),
                     userOptional.get().getLastName(),
-                    userOptional.get().getAge(),
+                    userOptional.get().getBirthDate(),
                     userOptional.get().getGender(),
                     userOptional.get().getPseudo(),
                     userOptional.get().getPassword(),
@@ -64,7 +64,6 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
             if (userFind == null){
                 User user = UserMapper.dtoToObject(userDTO);
                 Role userRole = roleRepository.findByName(RoleName.ROLE_USER);
-                Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN);
                 Set<Role> roles = new HashSet<>();
 
                 if(user.getRoles().isEmpty()){

@@ -17,7 +17,7 @@ public class TopoController {
     private TopoManager topoManager;
 
 
-    @GetMapping(value="/topo")
+    @GetMapping(value="/getAllTopos")
     public List<Topo> getTopos(){
         return topoManager.findAllTopo();
     }

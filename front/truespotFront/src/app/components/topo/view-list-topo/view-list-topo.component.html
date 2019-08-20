@@ -1,3 +1,21 @@
-<p>
-  view-list-topo works!
-</p>
+<div class="container">
+  <table class="table" >
+    <tr>
+      <th>Nom du topo</th>
+      <th>Department</th>
+      <th>Date de parution</th>
+      <th>Nombre de secteur</th>
+      <th>Nombre de voies</th>
+      <th>Difficultées des voies</th>
+      <th>Disponible</th>
+    </tr>
+    <tr *ngFor="let topo of topos">
+      <td>{{topo.name}}</td>
+      <td>{{topo.department.id}} -  {{topo.department.name}}</td>
+      <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
+      <td>{{topo.name}}</td>
+      <td>{{topo.name}}</td>
+      <td>{{topo.name}}</td>
+      <td>{{topo.shared}}</td>
+  </table>
+</div>

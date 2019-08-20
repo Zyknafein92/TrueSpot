@@ -9,11 +9,11 @@ public interface ClimbingRoadManager {
 
     List<ClimbingRoad> findAllClimbingRoad();
 
-    ClimbingRoadDTO getClimbingRoad(Long id);
+    ClimbingRoad getClimbingRoad(Long id);
 
     ClimbingRoad saveClimbingRoad(ClimbingRoadDTO climbingRoadDTO);
 
-    void updateClimbingRoad(Long id, ClimbingRoad climbingRoad);
+    void updateClimbingRoad(ClimbingRoadDTO climbingRoadDTO);
 
     void deleteClimbingRoad(Long id);
 }

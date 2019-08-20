@@ -17,7 +17,7 @@ export interface User {
     roles?: Array<Role>;
     firstName?: string;
     lastName?: string;
-    age?: number;
+    birthDate?: Date;
     gender?: string;
     pseudo?: string;
     password?: string;

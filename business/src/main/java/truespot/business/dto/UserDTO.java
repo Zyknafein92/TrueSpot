@@ -21,7 +21,7 @@ public class UserDTO {
     private Set<Role> roles = new HashSet<>();
     private String firstName;
     private String lastName;
-    private int age;
+    private Date birthDate;
     private String gender;
     private String pseudo;
     private String password;

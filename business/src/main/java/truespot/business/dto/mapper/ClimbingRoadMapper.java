@@ -14,6 +14,7 @@ public class ClimbingRoadMapper {
         ClimbingRoadDTO climbingRoadDTO = new ClimbingRoadDTO();
 
         climbingRoadDTO.setId(climbingRoad.getId());
+        climbingRoadDTO.setIdArea(climbingRoad.getArea() != null ? Long.toString(AreaMapper.objectToDTO(climbingRoad.getArea()).getId()): climbingRoadDTO.getIdArea());
         climbingRoadDTO.setName(climbingRoad.getName() != null ? climbingRoad.getName() : climbingRoadDTO.getName());
         climbingRoadDTO.setDescription(climbingRoad.getDescription() != null ? climbingRoad.getDescription() : climbingRoadDTO.getDescription());
         climbingRoadDTO.setType(climbingRoad.getType() != null ? climbingRoad.getType() : climbingRoadDTO.getType());

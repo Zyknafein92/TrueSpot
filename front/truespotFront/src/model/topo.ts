@@ -18,6 +18,7 @@ export interface Topo {
     name?: string;
     user?: User;
     department?: Department;
+    releaseDate?: Date;
     description?: string;
     nearestCity?: string;
     carAccess?: boolean;
@@ -25,4 +26,5 @@ export interface Topo {
     accessDescription?: string;
     nearestHospital?: string;
     supplyComment?: string;
+    shared?: boolean;
 }

@@ -19,23 +19,10 @@ public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements Clim
     }
 
     @Override
-    public ClimbingRoadDTO getClimbingRoad(Long id) {
+    public ClimbingRoad getClimbingRoad(Long id) {
 
-        Optional<ClimbingRoad> climbingRoadOptional = getDaoFactory().getClimbingRoadRepository().findById(id);
-
-        ClimbingRoad climbingRoad = null;
-
-        if(climbingRoadOptional.isPresent() ) {
-            climbingRoad = new ClimbingRoad (
-                    climbingRoadOptional.get().getName(),
-                    climbingRoadOptional.get().getDescription(),
-                    climbingRoadOptional.get().getType(),
-                    climbingRoadOptional.get().getNumber(),
-                    climbingRoadOptional.get().getLetter(),
-                    climbingRoadOptional.get().getSymbol()
-            );
-        }
-        return climbingRoad != null ? ClimbingRoadMapper.objectToDTO(climbingRoad) : null;
+       // ClimbingRoad climbingRoad = getDaoFactory().getClimbingRoadRepository().getOne(id);
+        return getDaoFactory().getClimbingRoadRepository().getOne(id);
     }
 
     @Override
@@ -49,10 +36,12 @@ public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements Clim
     }
 
     @Override
-    public void updateClimbingRoad(Long id, ClimbingRoad climbingRoad) {
-        ClimbingRoadDTO climbingRoadDTO = getClimbingRoad(id);
-        ClimbingRoadMapper.updateDTO(climbingRoadDTO, climbingRoad);
-        climbingRoad.setId(id);
+    public void updateClimbingRoad( ClimbingRoadDTO climbingRoadDTO) {
+
+        Area area = getDaoFactory().getAreaRepository().getOne(new Long(climbingRoadDTO.getIdArea()));
+        ClimbingRoad climbingRoad = ClimbingRoadMapper.DTOToObject(climbingRoadDTO);
+        climbingRoad.setArea(area);
+        climbingRoad.setId(climbingRoadDTO.getId());
         getDaoFactory().getClimbingRoadRepository().save(climbingRoad);
     }
 

@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @ApiModel(value = "Topo")
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen")
@@ -26,11 +27,15 @@ public class Topo implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // ajout fetch
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
     @OneToOne
     private Department department;
+
+    @Column(name="release_date")
+    @Temporal(TemporalType.DATE)
+    private Date releaseDate;
 
     @Column(name="description")
     private String description;
@@ -58,10 +63,11 @@ public class Topo implements Serializable {
 
     public Topo(){}
 
-    public Topo(String name, User user, Department department, String description, String nearestCity, Boolean carAccess, Boolean carParking, String accessDescription, String nearestHospital, String supplyComment,Boolean shared) {
+    public Topo(String name, User user, Department department, Date releaseDate, String description, String nearestCity, Boolean carAccess, Boolean carParking, String accessDescription, String nearestHospital, String supplyComment, Boolean shared) {
         this.name = name;
         this.user = user;
         this.department = department;
+        this.releaseDate = releaseDate;
         this.description = description;
         this.nearestCity = nearestCity;
         this.carAccess = carAccess;
@@ -71,5 +77,4 @@ public class Topo implements Serializable {
         this.supplyComment = supplyComment;
         this.shared = shared;
     }
-
 }

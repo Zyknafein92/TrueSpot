@@ -1,11 +1,13 @@
 package truespot.business.impl;
 
+
 import org.springframework.stereotype.Service;
 import truespot.business.contract.UserMessageManager;
 import truespot.model.UserMessage;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class UserMessageManagerImpl extends BusinessManagerImpl implements UserMessageManager {
@@ -24,7 +26,7 @@ public class UserMessageManagerImpl extends BusinessManagerImpl implements UserM
     @Override
     public UserMessageManager saveUserMessageManager(UserMessageManager userMessageManager) {
         UserMessage userMessage = new UserMessage();
-        userMessage.setDate(new Date());
+        userMessage.setDate(new Date(String.valueOf(Locale.FRANCE)));
         return null;
     }
 

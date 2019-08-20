@@ -57,18 +57,17 @@
 
                   <div class="col-md-4">
                     <div class="form-group"
-                         [class.has-success]="forms.get('age').valid"
-                         [class.has-error]="forms.get('age').invalid && forms.get('age').touched">
-                      <label class="control-label">Age:</label>
+                         [class.has-success]="forms.get('birthDate').valid"
+                         [class.has-error]="forms.get('birthDate').invalid && forms.get('birthDate').touched">
+                      <label class="control-label">Date de Naissance:</label>
                       <input class="form-control input-md"
-                             type="number"
-                             name="Age"
-                             placeholder="age"
-                             formControlName="age"
+                             type="Date"
+                             name="Date de Naissance"
+                             placeholder="birthDate"
+                             formControlName="birthDate"
                              autocapitalize="on"
                              spellcheck="on"
-                             required
-                             minlength="10">
+                             required/>
                     </div>
                   </div>
 
