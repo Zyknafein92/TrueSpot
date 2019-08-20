@@ -7,6 +7,7 @@ import truespot.business.dto.mapper.ClimbingRoadMapper;
 import truespot.model.Area;
 import truespot.model.ClimbingRoad;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 //todo : refactor selon Area
@@ -16,6 +17,11 @@ public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements Clim
     @Override
     public List<ClimbingRoad> findAllClimbingRoad() {
         return getDaoFactory().getClimbingRoadRepository().findAll();
+    }
+
+    @Override
+    public List<ClimbingRoad>  findAllClimbingRoadByIdArea(Long idArea) {
+        return getDaoFactory().getClimbingRoadRepository().findAllByArea(idArea);
     }
 
     @Override

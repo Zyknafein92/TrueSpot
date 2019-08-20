@@ -21,6 +21,12 @@ public class AreaManagerImpl extends BusinessManagerImpl implements AreaManager 
     }
 
     @Override
+    public List<Area> findAllByIdTopo(Long idTopo) {
+        return getDaoFactory().getAreaRepository().findAllByTopo(idTopo);
+    }
+
+
+    @Override
     public AreaDTO getArea(Long id) {
         Optional<Area> areaOptional = getDaoFactory().getAreaRepository().findById(id);
         Area area = null;

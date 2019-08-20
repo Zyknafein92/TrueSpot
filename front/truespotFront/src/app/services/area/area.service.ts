@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {Area} from "../../../model/area";
@@ -23,6 +23,13 @@ export class AreaService {
     return this.http.get<Area>(this.areaUrl + '/' + id);
   }
 
+  getAreas(idTopo: string) {
+    return this.http.get<Area[]>(this.areaUrl  + '/getAllByTopo',
+      {
+        params: new HttpParams()
+          .set('idTopo', idTopo),
+      });
+  }
   updateArea(form: FormGroup, id: number): Observable<FormGroup>{
     return this.http.put<FormGroup>(this.areaUrl + '/' + id, form.value);
   }

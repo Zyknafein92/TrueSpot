@@ -9,6 +9,8 @@ public interface ClimbingRoadManager {
 
     List<ClimbingRoad> findAllClimbingRoad();
 
+    List<ClimbingRoad> findAllClimbingRoadByIdArea(Long idArea);
+
     ClimbingRoad getClimbingRoad(Long id);
 
     ClimbingRoad saveClimbingRoad(ClimbingRoadDTO climbingRoadDTO);

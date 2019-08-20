@@ -22,6 +22,7 @@ import { UpdateAreaComponent } from './components/area/update-area/update-area.c
 import { UpdateRoadComponent } from './components/road/update-road/update-road.component';
 import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 import { ViewUserprofilComponent } from './components/user/view-userprofil/view-userprofil.component';
+import { ViewMylistTopoComponent } from './components/topo/view-mylist-topo/view-mylist-topo.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ViewUserprofilComponent } from './components/user/view-userprofil/view-
     UpdateRoadComponent,
     UpdateUserComponent,
     ViewUserprofilComponent,
+    ViewMylistTopoComponent,
   ],
   imports: [
     BrowserModule,

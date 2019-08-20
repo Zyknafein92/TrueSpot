@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
 
   title = 'truespotFront';
 
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(private token: TokenStorageService) { }
 
   ngOnInit() {
 

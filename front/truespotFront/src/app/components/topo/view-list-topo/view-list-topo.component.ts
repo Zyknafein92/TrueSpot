@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {TopoService} from "../../../services/topo/topo.service";
 
 @Component({
@@ -11,7 +11,7 @@ export class ViewListTopoComponent implements OnInit {
 
   topos : any;
 
-  constructor(private route: ActivatedRoute, private topoService: TopoService) { }
+  constructor(private route: ActivatedRoute, private topoService: TopoService, private router: Router) { }
 
   ngOnInit() {
     this.getAllTopos();
@@ -28,4 +28,8 @@ export class ViewListTopoComponent implements OnInit {
         console.log("error: ", err.error.message);
       };
   }
+
+  sendIdTopo(id){
+    this.router.navigateByUrl("/topo/view-topo/"+id)
+    }
 }

@@ -70,24 +70,31 @@
           <br>
 
           <div class="card">
-            <div class="card-header">
-              <h3> Ma liste de  topos :</h3>
-              <div class="card-body">
-              <table class="table">
-                <tr>
-                  <th>Nom du topo</th>
-                  <th>Numéro du département</th>
-                  <th>Nom du département</th>
-                </tr>
-                <tr *ngFor="let topo of topos">
-                  <td>{{topo.name}}</td>
-                  <td>{{topo.department.name}}</td>
-                  <td>{{topo.department.id}}</td>
-                </tr>
-              </table>
+            <div class="card-header"><h3>Mes topos :</h3></div>
+          <div class="card-body">
+            <div class="card-deck">
+              <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <th>Nom du topo</th>
+                        <th>Department</th>
+                        <th>Date de parution</th>
+                        <th>Disponible</th>
+
+                      </tr>
+                      <tr *ngFor="let topo of topos">
+                        <td>{{topo.name}}</td>
+                        <td>{{topo.department.id}} -  {{topo.department.name}}</td>
+                        <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
+                        <td>{{topo.shared}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
-            </div>
-          </div>
+
 
 
 

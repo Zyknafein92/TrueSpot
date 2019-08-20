@@ -1,23 +1,25 @@
+<div class="well center">
 <div class="card">
-  <div class="card-header">
-    <h1>{{road.area.topo.department.id}}</h1><h1>{{road.area.topo.department.name}}</h1><h1>{{road.area.topo.releaseDate}}</h1>
+  <div class="card-header badge-primary" *ngIf="topo">
+    <h1> Département : {{topo.department.id}} - {{topo.department.name}}</h1><h1>Date de parution : {{topo.releaseDate | date: "dd/MM/yyyy"}}</h1>
   </div>
+  <br>
   <div class="card-body">
-    <h5 class="card-title">Informations générales :</h5>
+    <h5 class="card-title" >Informations générales :</h5>
     <div class="card-deck">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" *ngIf="topo">
           <h5 class="card-title">Nom du site :</h5>
-          <p class="card-text">{{road.area.topo.name}}</p>
+          <p class="card-text">{{topo.name}}</p>
           <br>
           <h5 class="card-title">Ville la plus proche :</h5>
-          <p class="card-text">{{road.area.topo.nearestCity}}</p>
+          <p class="card-text">{{topo.nearestCity}}</p>
         </div>
       </div>
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" *ngIf="topo">
           <h5 class="card-title">Description du site :</h5>
-          <p class="card-text">{{road.area.topo.description}}</p>
+          <p class="card-text">{{topo.description}}</p>
         </div>
       </div>
     </div>
@@ -27,18 +29,18 @@
     <h5 class="card-title">Accès au site :</h5>
     <div class="card-deck">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" *ngIf="topo">
           <h5 class="card-title">Accès en voiture :</h5>
-          <p class="card-text">{{road.area.topo.carAccess}}</p>
+          <p class="card-text">{{topo.carAccess}}</p>
           <br>
           <h5 class="card-title">Parking :</h5> <span></span>
-          <p class="card-text">{{road.area.topo.carParking}}</p>
+          <p class="card-text">{{topo.carParking}}</p>
         </div>
       </div>
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" *ngIf="topo">
           <h5 class="card-title">Description de l'accès au site :</h5>
-          <p class="card-text">{{road.area.topo.accessDescription}}</p>
+          <p class="card-text">{{topo.accessDescription}}</p>
         </div>
       </div>
     </div>
@@ -48,20 +50,21 @@
     <h5 class="card-title">Ravitaillement et soins :</h5>
     <div class="card-deck">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" *ngIf="topo">
           <h5 class="card-title">Hopital le plus proche :</h5>
-          <p class="card-text">{{road.area.topo.nearestHospital}}</p>
+          <p class="card-text">{{topo.nearestHospital}}</p>
         </div>
       </div>
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" *ngIf="topo">
           <h5 class="card-title">Ravitaillement :</h5>
-          <p class="card-text">{{road.area.topo.supplyComment}}</p>
+          <p class="card-text">{{topo.supplyComment}}</p>
         </div>
       </div>
     </div>
   </div>
-
+<br>
+</div>
   <div class="card">
     <div class="card-header">
       <h3> Secteurs :</h3>
@@ -73,17 +76,175 @@
             <th>Orientation</th>
             <th>Hauteur</th>
             <th>Description</th>
+            <th>voir voies</th>
+          </tr>
+          <tr class="accordion" id="accordionExample"  *ngFor="let area of areas">
+            <td>{{area.name}}</td>
+            <td>{{area.orientation}}</td>
+            <td>{{area.height}}</td>
+            <td>{{area.description}}</td>
+            <td>
+            <button class="btn btn-link" type="button"
+                    data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne"
+            (click)="getCureentIdArea(area.id) ">voir</button>
+          </td>
           </tr>
           <tr>
-            <td>{{road.area.name}}</td>
-            <td>{{road.area.orientation}}</td>
-            <td>{{road.area.height}}</td>
-            <td>{{road.area.description}}</td>
+            <div id="collapseOne" class="collapse in shadow-lg" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body ">
+                <table class="table" >
+                  <tr>
+                    <th>description</th>
+                    <th>height</th>
+                    <th>name</th>
+                    <th>orientation</th>
+                    <th>Action</th>
+                  </tr>
+                  <tr *ngFor="let road of roads">
+                    <td>{{road.description}}</td>
+                    <td>{{road.height}}</td>
+                    <td>{{road.name}}</td>
+                    <td>{{road.orientation}}</td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                              (click)="addRoad(road.area) ">Ajout voie</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </tr>
         </table>
       </div>
     </div>
   </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Ajouter une voie :</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
+
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveRoad()">
+
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group"
+                                 [class.has-success]="forms.get('name').valid"
+                                 [class.has-error]="forms.get('name').invalid && forms.get('name').touched">
+                              <label class="control-label">Nom:</label>
+                              <input class="form-control"
+                                     type="text"
+                                     name="name"
+                                     placeholder="Nom de la voie"
+                                     formControlName="name"
+                                     required minlength="2">
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <label class="control-label">Type de la voie:</label>
+                            <div class="form-group"
+                                 [class.has-success]="forms.get('type').valid"
+                                 [class.has-error]="forms.get('type').invalid && forms.get('type').touched">
+                              <select class="browser-default custom-select"  formControlName="type">
+                                <option value="Bloc">Bloc</option>
+                                <option value="Voie">Voie</option>
+                                <option value="Grande voie">Grande voie</option>
+                                <option value="Escalade libre">Escalade libre</option>
+                                <option value="Relais">Relais</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <h5>Cotation de la voie:</h5>
+                        <br>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label class="control-label">Chiffre:</label>
+                            <div class="form-group"
+                                 [class.has-success]="forms.get('number').valid"
+                                 [class.has-error]="forms.get('number').invalid && forms.get('number').touched">
+                              <select class="browser-default custom-select"  formControlName="number">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group"
+                                 [class.has-success]="forms.get('letter').valid"
+                                 [class.has-error]="forms.get('letter').invalid && forms.get('letter').touched">
+                              <label class="control-label">Lettre:</label>
+                              <select class="browser-default custom-select" formControlName="letter">
+                                <option value="null"></option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2">
+                            <div class="form-group"
+                                 [class.has-success]="forms.get('symbol').valid"
+                                 [class.has-error]="forms.get('symbol').invalid && forms.get('symbol').touched">
+                              <label class="control-label">Symbole:</label>
+                              <select class="browser-default custom-select" formControlName="symbol">
+                                <option value="null"></option>
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <h5>Description :</h5>
+                        <br>
+                        <div class="form-group"
+                             [class.has-success]="forms.get('description').valid"
+                             [class.has-error]="forms.get('description').invalid && forms.get('description').touched">
+          <textarea class="form-control input-md"
+                    type="text"
+                    rows="5"
+                    name="description"
+                    placeholder="Une rapide description de la voie..."
+                    formControlName="description"
+                    required
+                    minlength="2"
+          ></textarea>
+                        </div>
+
+                      </form>
+                    </div>
+                  </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary"  [disabled]="forms.invalid" (click)="saveRoad()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
 

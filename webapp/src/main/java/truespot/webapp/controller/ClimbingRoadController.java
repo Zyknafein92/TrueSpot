@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.ClimbingRoadManager;
 import truespot.business.dto.TopoDTO;
+import truespot.model.Area;
 import truespot.model.ClimbingRoad;
 import truespot.business.dto.ClimbingRoadDTO;
 
@@ -26,9 +27,15 @@ public class ClimbingRoadController {
 //            return climbingRoadManager.getClimbingRoad(id);
 //    }
 
+
+    @RequestMapping(value = "/road/getAllByArea", method = RequestMethod.GET)
+    public List<ClimbingRoad> getAllByArea(@RequestParam(name = "idArea", defaultValue = "")  String idArea){
+        return climbingRoadManager.findAllClimbingRoadByIdArea(Long.valueOf(idArea));
+    }
+
     @RequestMapping(value = "/road/getRoad", method = RequestMethod.GET)
-    public ClimbingRoad getRoad(@RequestParam(name = "id", defaultValue = "") String id) {
-        return climbingRoadManager.getClimbingRoad(new Long(id));
+    public ClimbingRoad getRoad(@RequestParam(name = "idArea", defaultValue = "") String idArea) {
+        return climbingRoadManager.getClimbingRoad(Long.valueOf(idArea));
     }
 
     @PostMapping(value="/road")

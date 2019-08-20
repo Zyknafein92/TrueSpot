@@ -10,6 +10,8 @@ public interface AreaManager {
 
     List<Area> findAllArea();
 
+    List<Area> findAllByIdTopo(Long idTopo);
+
     AreaDTO getArea(Long id);
 
     Area saveArea(AreaDTO areaDTO);

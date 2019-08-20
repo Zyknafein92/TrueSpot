@@ -42,7 +42,7 @@ export class TopoService {
 
   getTopoByUser(pseudo : string) {
     console.log("pseudoUser ", pseudo);
-    return this.http.get<Topo>(this.topoUrl + '/topo/getByUser/',     {
+    return this.http.get<Topo>(this.topoUrl + '/getByUser/',     {
       params : new HttpParams()
         .set('pseudo', this.token.getPseudo())
     });

@@ -27,6 +27,15 @@ export class RoadService {
       });
   }
 
+  getRoads(idArea: string){
+    return this.http.get<ClimbingRoad[]>( this.roadUrl + '/getAllByArea',
+      {
+        params: new HttpParams()
+          .set('idArea', idArea),
+      });
+  }
+
+
   updateRoad(form: FormGroup): Observable<FormGroup>{
     return this.http.put<FormGroup>(this.roadUrl + '/road/{id}', form.value)
   }

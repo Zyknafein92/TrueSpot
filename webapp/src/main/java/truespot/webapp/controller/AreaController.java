@@ -27,6 +27,11 @@ public class AreaController {
         return areaManager.getArea(id);
     }
 
+    @RequestMapping(value = "/area/getAllByTopo", method = RequestMethod.GET)
+    public List<Area> getAllByTopo(@RequestParam(name = "idTopo", defaultValue = "")  String idTopo){
+        return areaManager.findAllByIdTopo(Long.valueOf(idTopo));
+    }
+
 
     @PostMapping(value="/area")
     public Area createArea(@RequestBody AreaDTO areaDTO){

@@ -24,14 +24,14 @@ export class CreateUserComponent implements OnInit {
   }
 
   saveuser() {
-    console.log(this.forms.value)
+    console.log(this.forms.value);
     this.userService.saveUser(this.forms)
       .subscribe(
         response => {
           console.log("response: ", response);
         },
       err => {
-        console.log("EROOROROROROOROROROORORORO: ", err.error.message);
+        console.log("Error: ", err.error.message);
         this.messagError = err.error.message;
       })
   }

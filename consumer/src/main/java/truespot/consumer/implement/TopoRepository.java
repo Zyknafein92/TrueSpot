@@ -13,8 +13,9 @@ import java.util.List;
 @Repository
 public interface TopoRepository extends JpaRepository <Topo, Long> {
 
-    @Query("select t from Topo t,User u where  t.user.id = u.id and u.pseudo =:pseudo")
+    @Query("select t from Topo t, User u where  t.user.id = u.id and u.pseudo =:pseudo")
     List<Topo> findAllByUser_Pseudo(@Param("pseudo") String pseudo);
 
-    List<Topo> findAllByDepartment_Id(Long id);
+    @Query("select t from Topo t, Department d where  t.department.id = d.id and d.id =:id")
+    List<Topo> findAllByDepartment_Id(@Param("id")  Long id);
 }

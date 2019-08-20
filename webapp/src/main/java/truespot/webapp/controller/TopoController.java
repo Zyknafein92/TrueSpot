@@ -33,7 +33,7 @@ public class TopoController {
     }
 
 
-    @RequestMapping(value = "/topo/getTopo/", method = RequestMethod.GET)
+    @RequestMapping(value = "/topo/getTopo", method = RequestMethod.GET)
     public TopoDTO getTopo(@RequestParam(name = "id", defaultValue = "") String id) {
         return topoManager.getTopo(new Long(id));
    }
