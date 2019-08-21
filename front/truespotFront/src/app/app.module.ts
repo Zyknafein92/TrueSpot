@@ -14,7 +14,6 @@ import { ViewListTopoComponent } from './components/topo/view-list-topo/view-lis
 import { CreateRoadComponent } from './components/road/create-road/create-road.component';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { CreateAreaComponent } from './components/area/create-area/create-area.component';
-import { LogoutComponent } from './components/auth/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import {httpInterceptorProviders} from "./services/auth/auth-interceptor";
 import { UdapteTopoComponent } from './components/topo/udapte-topo/udapte-topo.component';
@@ -23,6 +22,7 @@ import { UpdateRoadComponent } from './components/road/update-road/update-road.c
 import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 import { ViewUserprofilComponent } from './components/user/view-userprofil/view-userprofil.component';
 import { ViewMylistTopoComponent } from './components/topo/view-mylist-topo/view-mylist-topo.component';
+import {LogoutComponent} from "./components/auth/logout/logout.component";
 
 @NgModule({
   declarations: [

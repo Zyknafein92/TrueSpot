@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../../model/user";
+import {Route, Router} from "@angular/router";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class CreateUserComponent implements OnInit {
   file_src: string;
   messagError: string;
 
-  constructor(private userService:UserService, private formBuilder: FormBuilder) { }
+  constructor(private userService:UserService, private formBuilder: FormBuilder, private router:Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -28,6 +29,7 @@ export class CreateUserComponent implements OnInit {
     this.userService.saveUser(this.forms)
       .subscribe(
         response => {
+          this.router.navigateByUrl("/");
           console.log("response: ", response);
         },
       err => {

@@ -15,4 +15,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
   }
+  logout() {
+    this.token.signOut();
+    window.location.reload();
+  }
 }

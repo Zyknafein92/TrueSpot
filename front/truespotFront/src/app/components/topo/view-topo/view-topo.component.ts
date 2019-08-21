@@ -3,7 +3,6 @@ import {ActivatedRoute, Route, Router} from "@angular/router";
 import {TopoService} from "../../../services/topo/topo.service";
 import {Topo} from "../../../../model/topo";
 import {RoadService} from "../../../services/road/roadservice";
-import {Area} from "../../../../model/area";
 import {ClimbingRoad} from "../../../../model/climbingRoad";
 import {AreaService} from "../../../services/area/area.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
@@ -41,11 +40,24 @@ export class ViewTopoComponent implements OnInit {
 
     this.getTopo();
     this.getArea();
-    this.initform();
+    this.initformArea();
+    this.initformRoad();
 
   }
 
-  private initform() {
+  private initformArea(){
+    this.forms = this.formBuilder.group(
+      {
+        name: new FormControl(),
+        description: new FormControl(),
+        orientation  : new FormControl(),
+        height: new FormControl(),
+        idTopo: this.idTopo,
+      }
+    );
+  }
+
+  private initformRoad() {
     this.forms = this.formBuilder.group(
       {
         name: new FormControl(),
@@ -58,6 +70,7 @@ export class ViewTopoComponent implements OnInit {
       }
     );
   }
+
   getTopo(){
     this.topoService.getTopo(this.idTopo)
       .subscribe(
@@ -83,21 +96,12 @@ export class ViewTopoComponent implements OnInit {
       }
   }
 
-  getCureentIdArea(id) {
+  getCurrentIdArea(id) {
     this.idArea = id;
     this.getRoad(id);
   }
-  getRoad(id) {
-    this.roadService.getRoads(id)
-      .subscribe(
-        response => {
-          this.roads = response;
-          console.log("ROADs: ", response);
-        }),
-      err => {
-        console.log("error: ", err.error.message);
-      }
-  }
+
+
 
   addRoad(area){
     console.log("ID AREA:", area)
@@ -119,6 +123,17 @@ export class ViewTopoComponent implements OnInit {
           $('#exampleModalCenter').modal('hide')
           this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelToRedirect);
           console.log("reponse: ", response);
+        }),
+      err => {
+        console.log("error: ", err.error.message);
+      }
+  }
+  getRoad(id) {
+    this.roadService.getRoads(id)
+      .subscribe(
+        response => {
+          this.roads = response;
+          console.log("ROADs: ", response);
         }),
       err => {
         console.log("error: ", err.error.message);
