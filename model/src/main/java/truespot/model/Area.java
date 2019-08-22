@@ -23,7 +23,7 @@ public class Area implements Serializable {
     @Column(name ="area_id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "topo_id", referencedColumnName = "topo_id", nullable = false)
     private Topo topo;
 

@@ -165,8 +165,8 @@
                       (click)="addRoad(road.area) ">Ajouter</button>
             </td>
             <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateRoad"
-                      (click)="updateRoad(road. id) ">Modifier</button>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addRoad"
+                      (click)="updateRoad(road.id) ">Modifier</button>
             </td>
             <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
               <button type="button" class="btn btn-danger"data-target="#deleteRoad"
@@ -185,7 +185,10 @@
   <!-- Modal -->
 
   <!-- Modal add Road -->
-  <div class="modal fade" id="addRoad" tabindex="-1" role="dialog" aria-labelledby="addRoad" aria-hidden="true">
+</div>
+
+<!-- Modal add Road -->
+<div class="modal fade" id="addRoad" tabindex="-1" role="dialog" aria-labelledby="addRoad" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header btn-primary">
@@ -198,7 +201,7 @@
 
         <div class="panel panel-primary">
           <div class="panel-body">
-            <form #f="ngForm" [formGroup]="formAddRoad" (ngSubmit)="saveRoad()">
+            <form #f="ngForm" [formGroup]="formAddRoad" >
 
               <div class="row">
                 <div class="col-md-2">
@@ -304,128 +307,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary"  [disabled]="formAddRoad.invalid"  data-dismiss="modal" (click)="saveRoad()">Enregistrer</button>
+        <button [hidden]="isAdd" type="button" class="btn btn-primary"  [disabled]="formAddRoad.invalid"  data-dismiss="modal" (click)="saveRoadModal()">Enregistrer</button>
+        <button  [hidden]="isModified" type="button" class="btn btn-primary"  [disabled]="formAddRoad.invalid"  data-dismiss="modal" (click)="updateRoadModel()">Modifier</button>
       </div>
     </div>
   </div>
-</div>
-
-  <!-- Modal Update Road -->
-  <div class="modal fade" id="updateRoad" tabindex="-1" role="dialog" aria-labelledby="updateRoad" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header btn-primary">
-          <h5 class="modal-title" id="updateRoadTitle">Ajouter une voie :</h5>
-          <button type="button btn-danger" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <div class="panel panel-primary">
-            <div class="panel-body">
-              <form #f="ngForm" [formGroup]="formAddRoad" (ngSubmit)="updateRoad()">
-
-                <div class="row">
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label class="control-label">Nom:</label>
-                      <input class="form-control"
-                             type="text"
-                             name="name"
-                             placeholder="Nom de la voie"
-                             formControlName="name"
-                             required minlength="2">
-                    </div>
-                  </div>
-
-                  <div class="col-md-2">
-                    <label class="control-label">Type de la voie:</label>
-                    <div class="form-group">
-                      <select class="browser-default custom-select"  formControlName="type">
-                        <option value="Bloc">Bloc</option>
-                        <option value="Voie">Voie</option>
-                        <option value="Grande voie">Grande voie</option>
-                        <option value="Escalade libre">Escalade libre</option>
-                        <option value="Relais">Relais</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <h5>Cotation de la voie:</h5>
-                <br>
-                <div class="row">
-                  <div class="col-md-2">
-                    <label class="control-label">Chiffre:</label>
-                    <div class="form-group">
-                      <select class="browser-default custom-select"  formControlName="number">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label class="control-label">Lettre:</label>
-                      <select class="browser-default custom-select" formControlName="letter">
-                        <option value="null"></option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label class="control-label">Symbole:</label>
-                      <select class="browser-default custom-select" formControlName="symbol">
-                        <option value="null"></option>
-                        <option value="+">+</option>
-                        <option value="-">-</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <h5>Description :</h5>
-                <br>
-                <div class="form-group">
-          <textarea class="form-control input-md"
-                    type="text"
-                    rows="5"
-                    name="description"
-                    placeholder="Une rapide description de la voie..."
-                    formControlName="description"
-                    required
-                    minlength="2"
-          ></textarea>
-                </div>
-
-              </form>
-            </div>
-          </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-primary"  [disabled]="formAddRoad.invalid"  data-dismiss="modal" (click)="saveRoad()">Enregistrer</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
 </div>

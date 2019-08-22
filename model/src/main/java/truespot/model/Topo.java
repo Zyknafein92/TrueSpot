@@ -27,7 +27,7 @@ public class Topo implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     private User user;
 
     @OneToOne

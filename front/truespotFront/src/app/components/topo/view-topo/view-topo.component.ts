@@ -34,6 +34,9 @@ export class ViewTopoComponent implements OnInit {
 
   authorities: string;
   pseudo: string;
+
+  isAdd:boolean=false;
+  isModified:boolean=false;
   constructor( private topoService: TopoService,
                private areaService: AreaService,private roadService: RoadService,
                private formBuilder: FormBuilder, private route: ActivatedRoute,
@@ -46,10 +49,12 @@ export class ViewTopoComponent implements OnInit {
 
     this.getTopo();
     this.getArea();
-    this.initformAddArea();
     this.initformAddRoad();
+   // this.initformUpdateRoad();
+
+
+   // this.initformAddArea();
     // this.initformUpdateArea();
-    // this.initformUpdateRoad();
     this.authorities = this.token.getAuthorities();
     this.pseudo = this.token.getPseudo();
 
@@ -80,10 +85,12 @@ export class ViewTopoComponent implements OnInit {
         number: new FormControl(),
         letter: new FormControl(),
         symbol: new FormControl(),
-        idArea : this.idArea
+        idArea : this.idArea,
+        id : new FormControl(),
       }
     );
   }
+
 
   // private initformUpdateArea(){
   //   this.formUpdateArea = this.formBuilder.group(
@@ -97,20 +104,6 @@ export class ViewTopoComponent implements OnInit {
   //   );
   // }
 
-
-  // private initformUpdateRoad() {
-  //   this.formUpdateRoad = this.formBuilder.group(
-  //     {
-  //       name: this.road.name,
-  //       description: this.road.description,
-  //       type: this.road.type,
-  //       number: this.road.number,
-  //       letter: this.road.letter,
-  //       symbol: this.road.symbol,
-  //       idArea : this.idArea
-  //     }
-  //   );
-  // }
 
   // TOPO //
   getTopo(){
@@ -149,7 +142,8 @@ export class ViewTopoComponent implements OnInit {
     console.log("ID ADDAREA:", idArea)
   }
   updateArea(idArea) {
-    console.log("ID UPDATEAREA:", idArea)
+    this.idArea = idArea;
+    console.log("ID UPDATEAREA:", this.idArea)
   }
 
   deleteArea(idArea) {
@@ -159,16 +153,45 @@ export class ViewTopoComponent implements OnInit {
  // ROAD //
   addRoad(area){
     console.log("ID AREA:", area);
+    this.isAdd = false;
+    this.isModified = true;
     this.idAreaToAdd = area.id;
     this.idTopoHelToRedirect  = area.topo.id
   }
 
-  updateRoad(road : any) {
-    this.roadService.updateRoad(this.formUpdateRoad).subscribe(
+  updateRoad(idRoad) {
+
+    this.idRoad = idRoad;
+    this.isAdd = true;
+    this.isModified = false;
+    this.roadService.getRoad(this.idRoad).subscribe(
+      response => {
+        console.log("ROAD CURRENT: ", response);
+        this.formAddRoad.patchValue({
+          name: response.name,
+          description:response.description,
+          type:response.type,
+          number: response.number,
+          letter: response.letter,
+          symbol: response.symbol,
+          idArea : response.area.id,
+          id : response.id
+        });
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+    console.log("F CURRENT:", this.formAddRoad.value)
+
+  }
+  updateRoadModel(){
+
+    console.log("FORM ", this.formAddRoad.value);
+    this.roadService.updateRoad(this.formAddRoad).subscribe(
       response => {
         // @ts-ignore
-        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelToRedirect);
-        console.log("reponse: ", response);
+        console.log("ROAD UPDDATING: ", response);
+
       }),
       err => {
         console.log("error: ", err.error.message);
@@ -188,7 +211,7 @@ export class ViewTopoComponent implements OnInit {
       };
   }
 
-  saveRoad() {
+  saveRoadModal() {
     this.formAddRoad.patchValue({
       idArea: this.idAreaToAdd,
     });
@@ -217,8 +240,6 @@ export class ViewTopoComponent implements OnInit {
         console.log("error: ", err.error.message);
       }
   }
-
-
 
 
 }

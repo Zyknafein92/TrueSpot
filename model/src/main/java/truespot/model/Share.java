@@ -22,11 +22,11 @@ public class Share {
     @Column(name="share_id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "user_owner_id", referencedColumnName = "user_id", nullable = false)
     private User userOwner;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "user_receiver_id", referencedColumnName = "user_id", nullable = false)
     private User userReceiver;
 

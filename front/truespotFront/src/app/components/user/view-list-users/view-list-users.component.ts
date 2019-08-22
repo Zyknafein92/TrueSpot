@@ -23,7 +23,7 @@ export class ViewListUsersComponent implements OnInit {
     this.userService.getUsers().subscribe(
       response => {
         this.users = response;
-        console.log(response);
+        console.log("URRRRRR ", response);
       },
       err => {
         console.log("error: ", err.error.message);

@@ -21,10 +21,10 @@ public class ClimbingRoadController {
         return climbingRoadManager.findAllClimbingRoad();
     }
 
-//    @GetMapping(value="/road/{id}")
-//    public ClimbingRoadDTO getClimbingRoad(@PathVariable Long id) {
-//            return climbingRoadManager.getClimbingRoad(id);
-//    }
+    @RequestMapping(value = "/road/getRoadByID", method = RequestMethod.GET)
+    public ClimbingRoad getClimbingRoad(@RequestParam(name = "idRoad", defaultValue = "")  String idRoad) {
+            return climbingRoadManager.getClimbingRoad(Long.valueOf(idRoad));
+    }
 
 
     @RequestMapping(value = "/road/getAllByArea", method = RequestMethod.GET)
@@ -42,7 +42,7 @@ public class ClimbingRoadController {
         return climbingRoadManager.saveClimbingRoad(climbingRoadDTO);
     }
 
-    @PutMapping(value = "/road/{id}")
+    @RequestMapping(value = "/road/update", method = RequestMethod.PUT)
     public void updateClimbingRoad(@RequestBody ClimbingRoadDTO climbingRoadDTO) {
         climbingRoadManager.updateClimbingRoad(climbingRoadDTO);
     }

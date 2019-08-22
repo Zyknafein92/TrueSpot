@@ -21,10 +21,10 @@ export class RoadService {
 
   getRoad(idRoad: string) :Observable<ClimbingRoad>{
     console.log("idRoad: ", idRoad)
-    return this.http.get<ClimbingRoad>( this.roadUrl + '/getRoad',
+    return this.http.get<ClimbingRoad>( this.roadUrl + '/getRoadByID',
       {
         params: new HttpParams()
-          .set('id', idRoad),
+          .set('idRoad', idRoad),
       });
   }
 
@@ -44,7 +44,7 @@ export class RoadService {
   }
 
 
-  updateRoad(form: FormGroup): Observable<FormGroup>{
-    return this.http.put<FormGroup>(this.roadUrl + '/road/{id}', form.value);
+  updateRoad(form: FormGroup): Observable<ClimbingRoad>{
+    return this.http.put<ClimbingRoad>(this.roadUrl + '/update', form.value);
   }
 }
