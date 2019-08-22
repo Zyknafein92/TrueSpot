@@ -1,3 +1,46 @@
-<p>
-  view-list-users works!
-</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header badge-primary"><h3>Liste des utilisateurs:</h3></div>
+    <div class="card-body">
+      <br>
+
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-responsive">
+              <table class="table table-hover table-condensed table-striped">
+                <thead class="User">
+
+              <tr>
+                <th>Pseudo</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Genre</th>
+                <th>Email</th>
+                <th>Numero de téléphone</th>
+                <th>Role</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+
+              <tr *ngFor="let user of users">
+                <td>{{user.pseudo}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>{{user.roles}}</td>
+               <td><button type="button" class="btn btn-secondary">Modifier les droits</button></td>
+              </tr>
+
+              </tbody>
+            </table>
+            </table>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

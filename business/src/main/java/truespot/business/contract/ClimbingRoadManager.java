@@ -17,5 +17,5 @@ public interface ClimbingRoadManager {
 
     void updateClimbingRoad(ClimbingRoadDTO climbingRoadDTO);
 
-    void deleteClimbingRoad(Long id);
+    void deleteClimbingRoad(Long idRoad);
 }

@@ -1,3 +1,72 @@
-<p>
-  view-mylist-topo works!
-</p>
+<div class="container">
+  <br>
+  <div class="card">
+    <div class="card-header"><h3>Liste de mes topos disponibles:</h3></div>
+    <div class="card-body">
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            <table class="table">
+              <tr>
+                <th>Nom du topo</th>
+                <th>Department</th>
+                <th>Date de parution</th>
+                <th>Nombre de secteurs</th>
+                <th>Nombre de voies</th>
+                <th>Difficultées des voies</th>
+                <th>Disponible</th>
+                <th>Actions</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let topo of topos">
+                <td>{{topo.name}}</td>
+                <td>{{topo.department.id}} -  {{topo.department.name}}</td>
+                <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
+                <td>{{topo.name}}</td>
+                <td>{{topo.name}}</td>
+                <td>{{topo.name}}</td>
+                <td>{{topo.shared}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</button></td>
+                <td><button type="button" class="btn btn-info" (click)="null">Partager le topo</button></td>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<br>
+<br>
+  <div class="card">
+    <div class="card-header"><h3>Liste des topos partagés:</h3></div>
+    <div class="card-body">
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            <table class="table" *ngIf="topos.share == false">
+              <tr>
+                <th>Nom du topo</th>
+                <th>Department</th>
+                <th>Date de parution</th>
+                <th>Nombre de secteurs</th>
+                <th>Nombre de voies</th>
+                <th>Difficultées des voies</th>
+                <th>Disponible</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let topo of topos">
+                <td>{{topo.name}}</td>
+                <td>{{topo.department.id}} -  {{topo.department.name}}</td>
+                <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
+                <td>{{topo.name}}</td>
+                <td>{{topo.name}}</td>
+                <td>{{topo.name}}</td>
+                <td>{{topo.shared}}</td>
+                <td><button type="button" class="btn btn-info" (click)="null">Annuler le partage</button></td>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

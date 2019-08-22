@@ -13,15 +13,13 @@ import {TopoService} from "../../../services/topo/topo.service";
 export class ViewMyprofilComponent implements OnInit {
 
   user: User;
-  topos: any;
   department: Department;
 
 
-  constructor( private userService:UserService,private token: TokenStorageService, private toposervice:TopoService) { }
+  constructor( private userService:UserService,private token: TokenStorageService) { }
 
   ngOnInit() {
     this.initProfil(this.token);
-    this.initTopos(this.token);
   }
 
   initProfil(token : TokenStorageService){
@@ -31,12 +29,4 @@ export class ViewMyprofilComponent implements OnInit {
       }
     );
   }
-  initTopos(token : TokenStorageService){
-    this.toposervice.getTopoByUser(this.token.getPseudo()).subscribe(
-      res => {
-        this.topos = res;
-      }
-    )
-  }
-
 }

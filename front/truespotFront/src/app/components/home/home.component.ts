@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
       pseudo: this.token.getPseudo(),
       authorities: this.token.getAuthorities()
     };
+
+    console.log("HOME COMPONENET: ", this.info)
   }
 
   logout() {

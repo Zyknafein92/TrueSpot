@@ -1,5 +1,6 @@
 package truespot.business.contract;
 
+
 import truespot.business.dto.ShareDTO;
 import truespot.model.Share;
 

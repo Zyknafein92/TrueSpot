@@ -22,7 +22,7 @@ public class ShareController {
 
     @RequestMapping(value = "/topo/share/{id}", method = RequestMethod.GET)
     public Share getSharedTopo(@RequestParam(name = "id", defaultValue = "") String id) {
-        return shareManager.getShare(new Long(id));
+        return shareManager.getShare(Long.valueOf(id));
     }
 
     @RequestMapping(value = "/topo/share", method = RequestMethod.POST)

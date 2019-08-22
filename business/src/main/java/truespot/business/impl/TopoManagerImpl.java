@@ -13,10 +13,7 @@ import truespot.model.Department;
 import truespot.model.Topo;
 import truespot.model.User;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
@@ -61,7 +58,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
                     topoOptional.get().getAccessDescription(),
                     topoOptional.get().getNearestHospital(),
                     topoOptional.get().getSupplyComment(),
-                    topoOptional.get().getShared()
+                    topoOptional.get().getAvaible()
             );
         }
 
@@ -78,6 +75,8 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         TopoDTO topoDTO = new TopoDTO();
 
         topoDTO.setName(topoDTOContext.getName());
+        if(topoDTO.getRelease_Date() == null){ topoDTO.setRelease_Date(new Date());}
+        if(topoDTO.getAvaible() == null) { topoDTO.setAvaible(true); }
         UserDTO userDTO = UserMapper.objectToDTO(user);
         topoDTO.setUser(userDTO);
         topoDTO.getUser().setRoles(new HashSet<>());

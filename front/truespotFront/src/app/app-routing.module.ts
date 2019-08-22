@@ -19,6 +19,7 @@ import {ViewUserprofilComponent} from "./components/user/view-userprofil/view-us
 import {ViewListUsersComponent} from "./components/user/view-list-users/view-list-users.component";
 
 
+
 const appRoutes: Routes = [
   {path: 'sign-in', component: SignInComponent},
   {path: 'logout', component: LogoutComponent},
@@ -38,8 +39,9 @@ const appRoutes: Routes = [
 
   {path: 'createTopo', component:CreateTopoComponent},
   {path: 'updateTopo', component: UdapteTopoComponent},
-  {path: 'viewTopos', component: ViewListTopoComponent},
-  {path: 'viewMyTopos', component: ViewMylistTopoComponent},
+  {path: 'list-topo', component: ViewListTopoComponent},
+  {path: 'list-myTopos', component: ViewMylistTopoComponent},
+  {path: 'view-topo', component: ViewTopoComponent},
 
 
 
@@ -83,7 +85,7 @@ const appRoutes: Routes = [
 
   {
     path: '',
-    redirectTo: '/viewTopos',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
 

@@ -9,7 +9,8 @@ const USER_KEY = "AuthUser";
   providedIn: 'root'
 })
 export class TokenStorageService {
-  private roles: Array<string> = [];
+  //private roles: Array<string> = [];
+  private roles: string;
   constructor() { }
 
   signOut() {
@@ -39,15 +40,17 @@ export class TokenStorageService {
     window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
 
-  public getAuthorities(): string[] {
-    this.roles = [];
+  public getAuthorities(): string {
+    //this.roles = [];
+    this.roles= "";
 
     if (sessionStorage.getItem(TOKEN_KEY)) {
       JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
-        this.roles.push(authority.authority);
+        console.log("AUUU ", authority.authority)
+        this.roles = authority.authority;
+       // this.roles.push(authority.authority);
       });
     }
-
     return this.roles;
   }
 }

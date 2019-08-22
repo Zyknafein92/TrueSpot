@@ -24,7 +24,7 @@ public class TopoMapper {
         topoDTO.setAccessDescription(topo.getAccessDescription() != null ? topo.getAccessDescription() : topoDTO.getAccessDescription());
         topoDTO.setNearestHospital(topo.getNearestHospital() != null ? topo.getNearestHospital() : topoDTO.getNearestHospital());
         topoDTO.setSupplyComment(topo.getSupplyComment() != null ? topo.getSupplyComment() : topoDTO.getSupplyComment());
-        topoDTO.setShared(topo.getShared() != null ? topo.getShared() : topoDTO.getShared());
+        topoDTO.setAvaible(topo.getAvaible() != null ? topo.getAvaible() : topoDTO.getAvaible());
         topoDTO.setRelease_Date(topo.getReleaseDate() != null ? topo.getReleaseDate() : topoDTO.getRelease_Date());
 
         return topoDTO;
@@ -45,7 +45,7 @@ public class TopoMapper {
         topo.setAccessDescription(topoDTO.getAccessDescription() != null ? topoDTO.getAccessDescription() : topo.getAccessDescription());
         topo.setNearestHospital(topoDTO.getNearestHospital() != null ? topoDTO.getNearestHospital() : topo.getNearestHospital());
         topo.setSupplyComment(topoDTO.getSupplyComment() != null ? topoDTO.getSupplyComment() : topo.getSupplyComment());
-        topo.setShared(topoDTO.getShared() != null ? topoDTO.getShared() : topo.getShared());
+        topo.setAvaible(topoDTO.getAvaible() != null ? topoDTO.getAvaible() : topo.getAvaible());
         topo.setReleaseDate(topoDTO.getRelease_Date() != null ? topoDTO.getRelease_Date() : topo.getReleaseDate());
         topoDTO.setId(topo.getId());
 
@@ -64,7 +64,7 @@ public class TopoMapper {
         topoDTO.setAccessDescription(topo.getAccessDescription()!= null ? topo.getAccessDescription() : topoDTO.getAccessDescription());
         topoDTO.setNearestHospital(topo.getNearestHospital()!= null ? topo.getNearestHospital() : topoDTO.getNearestHospital());
         topoDTO.setSupplyComment(topo.getSupplyComment()!= null ? topo.getSupplyComment() : topoDTO.getSupplyComment());
-        topoDTO.setShared(topo.getShared() != null ? topo.getShared() : topoDTO.getShared());
+        topoDTO.setAvaible(topo.getAvaible() != null ? topo.getAvaible() : topoDTO.getAvaible());
         topoDTO.setRelease_Date(topo.getReleaseDate() != null ? topo.getReleaseDate() : topoDTO.getRelease_Date());
 
         return topoDTO;

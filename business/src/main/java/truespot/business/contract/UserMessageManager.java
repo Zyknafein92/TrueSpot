@@ -1,16 +1,18 @@
 package truespot.business.contract;
 
+import truespot.model.UserMessage;
+
 import java.util.List;
 
 public interface UserMessageManager {
 
-    List<UserMessageManager> findAllUserMessageManager();
+    List<UserMessage> findAllUserMessageByTopoID(Long id);
 
-    UserMessageManager getUserMessageManager(Long id);
+    UserMessage getUserMessage(Long id);
 
-    UserMessageManager saveUserMessageManager(UserMessageManager userMessageManager);
+    UserMessage saveUserMessage(UserMessage userMessage);
 
-    void updateUserMessageManager(Long id, UserMessageManager userMessageManager);
+    void updateUserMessage(Long id, UserMessage userMessage);
 
-    void deleteUserMessageManager(Long id);
+    void deleteUserMessage(Long id);
 }

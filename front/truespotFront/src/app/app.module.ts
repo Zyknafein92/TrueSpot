@@ -24,6 +24,7 @@ import { ViewUserprofilComponent } from './components/user/view-userprofil/view-
 import { ViewMylistTopoComponent } from './components/topo/view-mylist-topo/view-mylist-topo.component';
 import {LogoutComponent} from "./components/auth/logout/logout.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import {LogoutComponent} from "./components/auth/logout/logout.component";
     UpdateUserComponent,
     ViewUserprofilComponent,
     ViewMylistTopoComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Form, FormGroup} from "@angular/forms";
-import {Observable} from "rxjs";
+import {Observable, pipe} from "rxjs";
 import {ClimbingRoad} from "../../../model/climbingRoad";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,15 @@ export class RoadService {
       });
   }
 
+  deleteRoad(idRoad: string): Observable<{}> {
+    return this.http.delete(this.roadUrl + {
+      params: new HttpParams()
+        .set('idRoad', idRoad),
+    })
+  }
+
 
   updateRoad(form: FormGroup): Observable<FormGroup>{
-    return this.http.put<FormGroup>(this.roadUrl + '/road/{id}', form.value)
+    return this.http.put<FormGroup>(this.roadUrl + '/road/{id}', form.value);
   }
 }

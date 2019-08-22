@@ -23,6 +23,10 @@ export class UserService {
     return this.http.post<FormGroup>(this.userRegisterUrl, form.value);
   }
 
+  getUsers(){
+    return this.http.get<User>(this.userUrl + 's');
+  }
+
   getProfil(pseudo : string) {
     return this.http.get<User>(this.userProfilURL,
       {

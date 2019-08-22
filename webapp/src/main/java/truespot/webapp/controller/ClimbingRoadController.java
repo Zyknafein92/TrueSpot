@@ -3,12 +3,11 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.ClimbingRoadManager;
-import truespot.business.dto.TopoDTO;
-import truespot.model.Area;
 import truespot.model.ClimbingRoad;
 import truespot.business.dto.ClimbingRoadDTO;
 
 import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ClimbingRoadController {
@@ -47,7 +46,6 @@ public class ClimbingRoadController {
     public void updateClimbingRoad(@RequestBody ClimbingRoadDTO climbingRoadDTO) {
         climbingRoadManager.updateClimbingRoad(climbingRoadDTO);
     }
-
-    @DeleteMapping(value= "/road/{id}")
-    public void deleteClimbingRoad(@PathVariable Long id){ climbingRoadManager.deleteClimbingRoad(id); }
+    @RequestMapping(value = "/road", method = RequestMethod.DELETE)
+    public void deleteClimbingRoad(@RequestParam(name = "idRoad", defaultValue = "") String idRoad){ climbingRoadManager.deleteClimbingRoad(Long.valueOf(idRoad)); }
 }

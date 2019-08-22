@@ -1,79 +1,68 @@
 <header>
+
 <div class="card-img-top">
-  <img src="assets/img/banner.jpg" class="img-fluid" alt="Responsive image">
+  <img src="../assets/img/banner.jpg" class="img-fluid" alt="Responsive image">
 </div>
+
 </header>
 
-<!--<nav class="navbar navbar-fixed-top navbar-dark bg-dark">-->
-<!--  <ul class="nav navbar-dark" routerLinkActive="active" a>-->
-<!--    <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>-->
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 
-<!--    <li class="nav-item"><a class="nav-link" routerLink="/myprofil">Profil</a></li>-->
-<!--    <li class="nav-item"><a class="nav-link" routerLink="/home">Token</a></li>-->
-
-<!--    <li class="nav-item"><a class="nav-link" routerLink="/sign-in">S'identifier</a></li>-->
-<!--    <li class="nav-item"><a class="nav-link" routerLink="/createUser">Créer un compte</a></li>-->
-<!--  </ul>-->
-<!--</nav>-->
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Links -->
+
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/" href="#">Home</a>
+    <li class="Home">
+      <a class="nav-link" routerLink="/">Home</a>
     </li>
+
+    <!-- Dropdown Admin -->
+    <li class="Admin">
+      <a class="nav-link dropdown-toggle" id="admin" data-toggle="dropdown" *ngIf="authorities =='ROLE_ADMIN'">
+        Gestion Admin
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="/list-user">Liste des utilisateurs</a>
+      </div>
+    </li>
+
     <!-- Dropdown Mon compte -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="moncompte" data-toggle="dropdown">
+
+    <li class="compte">
+      <a class="nav-link dropdown-toggle"id="moncompte" data-toggle="dropdown">
         Mon compte
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" routerLink="/myprofil">Mon profil</a>
-        <a class="dropdown-item" href="#">Ma liste de topo</a>
+        <a class="dropdown-item" routerLink="/list-myTopos">Ma liste de topo</a>
       </div>
     </li>
     <!-- Dropdown Topo -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="topos" data-toggle="dropdown">
+    <li class="topo">
+      <a class="nav-link dropdown-toggle" id="topos" data-toggle="dropdown">
         Topos
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" routerLink="/topo/add-topo">Créer un topo</a>
-        <a class="dropdown-item" routerLink="/viewTopos">Liste de topo</a>
-        <a class="dropdown-item" href="#">Rechercher de topo</a>
+        <a class="dropdown-item" routerLink="/list-topo">Liste de topo</a>
+        <a class="dropdown-item">Rechercher de topo</a>
       </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link"  routerLink="/sign-in" href="#">S'identifier</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link"  routerLink="/createUser" href="#">S'inscrire</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/" (click)="logout()">Se déconnecter</a>
     </li>
   </ul>
 
+  <ul class="navbar-nav ml-auto" >
+    <li class="identification" *ngIf="this.token.getPseudo() == null">
+      <a class="nav-link"  routerLink="/sign-in">S'identifier</a>
+    </li>
+
+    <li class="inscription" *ngIf="this.token.getPseudo() == null">
+      <a class="nav-link"  routerLink="/createUser">S'inscrire</a>
+    </li>
+
+    <li class="deconnexion" *ngIf="this.token.getPseudo() != null">
+      <a class="nav-link" routerLink="/" (click)="logout()">Se déconnecter</a>
+    </li>
+  </ul>
 </nav>
-<!--  <div class="dropdown-menu" aria-labelledby="Admin">-->
-<!--    <a class="dropdown-item" href="#">Liste des utilisateurs</a>-->
-<!--  </div>-->
-
-<!--  <div class="dropdown-menu" aria-labelledby="Mon compte">-->
-<!--    <a class="dropdown-item" href="#">Mon profil</a>-->
-<!--    <div class="dropdown-divider"></div>-->
-<!--    <a class="dropdown-item" href="#">Gérer mes topos</a>-->
-<!--    <div class="dropdown-divider"></div>-->
-<!--    <a class="dropdown-item" href="#">Faire une demande de prêt</a>-->
-<!--  </div>-->
-
-<!--  <div class="dropdown-menu" aria-labelledby="Topos">-->
-<!--    <a class="dropdown-item" routerLink="/topo/add-topo">Créer un topo</a>-->
-<!--    <div class="dropdown-divider"></div>-->
-<!--    <a class="dropdown-item" href="#">Liste des topos</a>-->
-<!--    <div class="dropdown-divider"></div>-->
-<!--    <a class="dropdown-item" href="#">Rechercher un topo</a>-->
-<!--  </div>-->
 
 <router-outlet></router-outlet>
 

@@ -1,90 +1,92 @@
 <div class="well center">
-  <div class="card">
-    <div class="card-header badge-primary" *ngIf="topo">
+  <div class= "card-title text-center" *ngIf="topo">
       <h1>{{topo.name}}</h1>
-    </div>
+  </div>
     <br>
+
+  <div class="card">
+
     <div class="card-body">
-      <h5 class="card-title" >Informations générales :</h5>
+      <h2 class="card-header" >Informations générales :</h2>
       <br>
       <div class="card-deck">
         <div class="card">
           <div class="card-body" *ngIf="topo">
             <div class="row">
-              <div class="col-md-3">
-                <h5 class="card-title">Départment:</h5>
+              <div class="col-md-6">
+                <h4 class="card-title">Départment :</h4>
                 <p class="card-text">{{topo.department.id}} - {{topo.department.name}} </p>
               </div>
-              <div class="col-md-3">
-                <h5 class="card-title">Date de parution : </h5>
-                <p class="card-text">{{topo.releaseDate | date: "dd/MM/yyyy"}}</p>
+              <div class="col-md-6">
+                <h4 class="card-title">Date de parution :</h4>
+                <p class="card-text">{{topo.release_Date | date:"dd/MM/yyyy"}}</p>
               </div>
             </div>
-
             <br>
-            <h5 class="card-title">Ville la plus proche :</h5>
+            <h4 class="card-title">Ville la plus proche :</h4>
             <p class="card-text">{{topo.nearestCity}}</p>
           </div>
-
         </div>
+
         <div class="card">
           <div class="card-body" *ngIf="topo">
-            <h5 class="card-title">Description du site :</h5>
+            <h4 class="card-title">Description du site :</h4>
             <p class="card-text">{{topo.description}}</p>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="card-body">
-      <h5 class="card-title">Accès au site :</h5>
-      <br>
-      <div class="card-deck">
-        <div class="card">
-          <div class="card-body" *ngIf="topo">
-            <h5 class="card-title">Accès en voiture :</h5>
-            <p class="card-text">{{topo.carAccess}}</p>
-            <br>
-            <h5 class="card-title">Parking :</h5> <span></span>
-            <p class="card-text">{{topo.carParking}}</p>
+
+      <div class="card-body">
+        <h2 class="card-header">Accès au site :</h2>
+        <br>
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-body" *ngIf="topo">
+              <h4 class="card-title">Accès en voiture :</h4>
+              <p class="card-text">{{topo.carAccess}}</p>
+              <br>
+              <h4 class="card-title">Parking :</h4> <span></span>
+              <p class="card-text">{{topo.carParking}}</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body" *ngIf="topo">
+              <h4 class="card-title">Description de l'accès au site :</h4>
+              <p class="card-text">{{topo.accessDescription}}</p>
+            </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-body" *ngIf="topo">
-            <h5 class="card-title">Description de l'accès au site :</h5>
-            <p class="card-text">{{topo.accessDescription}}</p>
+      </div>
+
+      <div class="card-body">
+        <h2 class="card-header">Ravitaillement et soins :</h2>
+        <br>
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-body" *ngIf="topo">
+              <h4 class="card-title">Hopital le plus proche :</h4>
+              <p class="card-text">{{topo.nearestHospital}}</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body" *ngIf="topo">
+              <h4 class="card-title">Ravitaillement :</h4>
+              <p class="card-text">{{topo.supplyComment}}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="card-body">
-      <h5 class="card-title">Ravitaillement et soins :</h5>
-      <br>
-      <div class="card-deck">
-        <div class="card">
-          <div class="card-body" *ngIf="topo">
-            <h5 class="card-title">Hopital le plus proche :</h5>
-            <p class="card-text">{{topo.nearestHospital}}</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body" *ngIf="topo">
-            <h5 class="card-title">Ravitaillement :</h5>
-            <p class="card-text">{{topo.supplyComment}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
   </div>
 
-  <br>
+  <br><br>
 
   <div class="card">
     <div class="card-header">
       <h3> Secteurs :</h3>
     </div>
+
     <div class="card-body">
       <table class="table table-responsive" >
         <table class="table table-hover table-condensed table-striped">
@@ -106,64 +108,22 @@
             <td>{{area.orientation}}</td>
             <td>{{area.height}}</td>
             <td>{{area.description}}</td>
-            <td>
+            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                      (click)="addArea(getCurrentIdArea(area.id)) ">Ajouter</button>
-            </td>
-            <td>
+                      (click)="addArea(area.id) ">Ajouter</button>
+            </td >
+            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter"
-                      (click)="updateArea(getCurrentIdArea(area.id)) ">Modifier</button>
+                      (click)="updateArea(area.id) ">Modifier</button>
             </td>
-            <td>
+            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
-                      (click)="deleteArea(getCurrentIdArea(area.id)) ">Supprimer</button>
+                      (click)="deleteArea(area.id)">Supprimer</button>
             </td>
-            <td>
-              <button class="btn btn-link" type="button"
-                      data-toggle="collapse" data-target="#collapseOne"
-                      aria-expanded="true" aria-controls="collapseOne"
-                      (click)="getCurrentIdArea(area.id) ">Afficher les voies</button>
-            </td>
-          </tr>
-
-          <tr data-ng-switch-when="true">
-            <td colspan="9">
-              <div class="span9">
-                <div class="pull-center">
-                  <table class="table">
-                    <thead class="Road">
-                    <tr>
-                      <th>Nom</th>
-                      <th>Type</th>
-                      <th>Cotation de la voie</th>
-                      <th>Description</th>
-                      <th>Actions</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let road of roads">
-                      <td>{{road.name}}</td>
-                      <td>{{road.type}}</td>
-                      <td>{{road.number}}{{road.letter}}{{road.symbol}}</td>
-                      <td>{{road.description}}</td>
-                      <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addArea"
-                                (click)="addRoad(road.area) ">Ajouter</button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateArea"
-                                (click)="updateRoad(road.area) ">Modifier</button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteArea"
-                                (click)="deleteRoad(road.area) ">Supprimer</button>
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
+            <td >
+              <div class="accordion" id="accordionExamples">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOnes" aria-expanded="false" aria-controls="collapseOnes"
+                        (click)="getCurrentIdArea(area.id) ">Afficher les voies</button>
               </div>
             </td>
           </tr>
@@ -172,18 +132,64 @@
       </table>
     </div>
   </div>
-</div>
+
+  <br><br>
+
+  <div class="card">
+    <div class="card-header">
+      <h3> Voies :</h3>
+    </div>
+    <div class="card-body">
+      <div data-ng-switch-when="true" id="collapseOnes" class="collapse">
+        <table class="table table-responsive">
+          <table class="table table-hover table-condensed table-striped">
+          <thead class="Road">
+          <tr>
+            <th>Nom</th>
+            <th>Type</th>
+            <th>Cotation de la voie</th>
+            <th>Description</th>
+            <th>Actions</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let road of roads">
+            <td>{{road.name}}</td>
+            <td>{{road.type}}</td>
+            <td>{{road.number}}{{road.letter}}{{road.symbol}}</td>
+            <td>{{road.description}}</td>
+            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRoad"
+                      (click)="addRoad(road.area) ">Ajouter</button>
+            </td>
+            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateRoad"
+                      (click)="updateRoad(road. id) ">Modifier</button>
+            </td>
+            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+              <button type="button" class="btn btn-danger"data-target="#deleteRoad"
+                      (click)="deleteRoad(road.id) ">Supprimer</button>
+            </td>
+          </tr>
+          </tbody>
+          </table>
+        </table>
+      </div>
+    </div>
+  </div>
 
 
 
-<!-- Modal -->
+  <!-- Modal -->
 
-<!-- Modal add Area -->
-<div class="modal fade" id="addArea" tabindex="-1" role="dialog" aria-labelledby="addArea" aria-hidden="true">
+  <!-- Modal add Road -->
+  <div class="modal fade" id="addRoad" tabindex="-1" role="dialog" aria-labelledby="addRoad" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addAreaTitle">Ajouter une voie :</h5>
+      <div class="modal-header btn-primary">
+        <h5 class="modal-title" id="addRoadTitle">Ajouter une voie :</h5>
         <button type="button btn-danger" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -192,13 +198,13 @@
 
         <div class="panel panel-primary">
           <div class="panel-body">
-            <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveRoad()">
+            <form #f="ngForm" [formGroup]="formAddRoad" (ngSubmit)="saveRoad()">
 
               <div class="row">
                 <div class="col-md-2">
                   <div class="form-group"
-                       [class.has-success]="forms.get('name').valid"
-                       [class.has-error]="forms.get('name').invalid && forms.get('name').touched">
+                       [class.has-success]="formAddRoad.get('name').valid"
+                       [class.has-error]="formAddRoad.get('name').invalid && formAddRoad.get('name').touched">
                     <label class="control-label">Nom:</label>
                     <input class="form-control"
                            type="text"
@@ -212,8 +218,8 @@
                 <div class="col-md-2">
                   <label class="control-label">Type de la voie:</label>
                   <div class="form-group"
-                       [class.has-success]="forms.get('type').valid"
-                       [class.has-error]="forms.get('type').invalid && forms.get('type').touched">
+                       [class.has-success]="formAddRoad.get('type').valid"
+                       [class.has-error]="formAddRoad.get('type').invalid && formAddRoad.get('type').touched">
                     <select class="browser-default custom-select"  formControlName="type">
                       <option value="Bloc">Bloc</option>
                       <option value="Voie">Voie</option>
@@ -231,8 +237,8 @@
                 <div class="col-md-2">
                   <label class="control-label">Chiffre:</label>
                   <div class="form-group"
-                       [class.has-success]="forms.get('number').valid"
-                       [class.has-error]="forms.get('number').invalid && forms.get('number').touched">
+                       [class.has-success]="formAddRoad.get('number').valid"
+                       [class.has-error]="formAddRoad.get('number').invalid && formAddRoad.get('number').touched">
                     <select class="browser-default custom-select"  formControlName="number">
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -249,8 +255,8 @@
 
                 <div class="col-md-2">
                   <div class="form-group"
-                       [class.has-success]="forms.get('letter').valid"
-                       [class.has-error]="forms.get('letter').invalid && forms.get('letter').touched">
+                       [class.has-success]="formAddRoad.get('letter').valid"
+                       [class.has-error]="formAddRoad.get('letter').invalid && formAddRoad.get('letter').touched">
                     <label class="control-label">Lettre:</label>
                     <select class="browser-default custom-select" formControlName="letter">
                       <option value="null"></option>
@@ -263,8 +269,8 @@
 
                 <div class="col-md-2">
                   <div class="form-group"
-                       [class.has-success]="forms.get('symbol').valid"
-                       [class.has-error]="forms.get('symbol').invalid && forms.get('symbol').touched">
+                       [class.has-success]="formAddRoad.get('symbol').valid"
+                       [class.has-error]="formAddRoad.get('symbol').invalid && formAddRoad.get('symbol').touched">
                     <label class="control-label">Symbole:</label>
                     <select class="browser-default custom-select" formControlName="symbol">
                       <option value="null"></option>
@@ -278,8 +284,8 @@
               <h5>Description :</h5>
               <br>
               <div class="form-group"
-                   [class.has-success]="forms.get('description').valid"
-                   [class.has-error]="forms.get('description').invalid && forms.get('description').touched">
+                   [class.has-success]="formAddRoad.get('description').valid"
+                   [class.has-error]="formAddRoad.get('description').invalid && formAddRoad.get('description').touched">
           <textarea class="form-control input-md"
                     type="text"
                     rows="5"
@@ -298,87 +304,128 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary"  [disabled]="forms.invalid" (click)="saveRoad()">Enregistrer</button>
+        <button type="button" class="btn btn-primary"  [disabled]="formAddRoad.invalid"  data-dismiss="modal" (click)="saveRoad()">Enregistrer</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal updateArea -->
-<div class="modal fade" id="updateArea" tabindex="-1" role="dialog" aria-labelledby="updateArea" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="updateAreaTitle">Modifier une voie :</h5>
-        <button type="button btn-danger" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+  <!-- Modal Update Road -->
+  <div class="modal fade" id="updateRoad" tabindex="-1" role="dialog" aria-labelledby="updateRoad" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header btn-primary">
+          <h5 class="modal-title" id="updateRoadTitle">Ajouter une voie :</h5>
+          <button type="button btn-danger" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
 
-        <div class="panel panel-primary">
-          <div class="panel-body">
-            <form #f="ngForm" [formGroup]="forms" (ngSubmit)="updateRoad()">
+          <div class="panel panel-primary">
+            <div class="panel-body">
+              <form #f="ngForm" [formGroup]="formAddRoad" (ngSubmit)="updateRoad()">
 
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="control-label">Nom:</label>
-                    <input class="form-control"
-                           type="text"
-                           name="name"
-                           placeholder="Nom du secteur"
-                           formControlName="name"
-                           required minlength="2">
+                <div class="row">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="control-label">Nom:</label>
+                      <input class="form-control"
+                             type="text"
+                             name="name"
+                             placeholder="Nom de la voie"
+                             formControlName="name"
+                             required minlength="2">
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    <label class="control-label">Type de la voie:</label>
+                    <div class="form-group">
+                      <select class="browser-default custom-select"  formControlName="type">
+                        <option value="Bloc">Bloc</option>
+                        <option value="Voie">Voie</option>
+                        <option value="Grande voie">Grande voie</option>
+                        <option value="Escalade libre">Escalade libre</option>
+                        <option value="Relais">Relais</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
+                <br>
+                <h5>Cotation de la voie:</h5>
+                <br>
+                <div class="row">
+                  <div class="col-md-2">
+                    <label class="control-label">Chiffre:</label>
+                    <div class="form-group">
+                      <select class="browser-default custom-select"  formControlName="number">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                      </select>
+                    </div>
+                  </div>
 
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="control-label">Description:</label>
-                    <input class="form-control input-md"
-                           type="text"
-                           name="description"
-                           placeholder="Description du secteur"
-                           formControlName="description"
-                           required
-                           minlength="2">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="control-label">Lettre:</label>
+                      <select class="browser-default custom-select" formControlName="letter">
+                        <option value="null"></option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="control-label">Symbole:</label>
+                      <select class="browser-default custom-select" formControlName="symbol">
+                        <option value="null"></option>
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-
-
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="orientation" class="control-label">Orientation du secteur:</label>
-                    <input required
-                           id="orientation"
-                           name="orientation"
-                           type="text"
-                           class="form-control"
-                           formControlName="orientation"
-                           placeholder="Nord, Nord-est">
-                  </div>
+                <br>
+                <h5>Description :</h5>
+                <br>
+                <div class="form-group">
+          <textarea class="form-control input-md"
+                    type="text"
+                    rows="5"
+                    name="description"
+                    placeholder="Une rapide description de la voie..."
+                    formControlName="description"
+                    required
+                    minlength="2"
+          ></textarea>
                 </div>
 
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label class="control-label">Hauteur estimée:</label>
-                    <input class="form-control input-md"
-                           type="number"
-                           name="height"
-                           placeholder="Hauteur estimée"
-                           formControlName="height"
-                           autocapitalize="on"
-                           spellcheck="on"
-                           required
-                           minlength="10">
-                  </div>
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary"  [disabled]="formAddRoad.invalid"  data-dismiss="modal" (click)="saveRoad()">Enregistrer</button>
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+
 </div>

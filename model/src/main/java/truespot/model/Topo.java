@@ -58,8 +58,8 @@ public class Topo implements Serializable {
     @Column(name="supply_comment")
     private String supplyComment;
 
-    @Column(name="is_Share")
-    private Boolean shared;
+    @Column(name="avaible")
+    private Boolean avaible;
 
     public Topo(){}
 
@@ -75,6 +75,6 @@ public class Topo implements Serializable {
         this.accessDescription = accessDescription;
         this.nearestHospital = nearestHospital;
         this.supplyComment = supplyComment;
-        this.shared = shared;
+        this.avaible = avaible;
     }
 }
