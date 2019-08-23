@@ -53,16 +53,20 @@ export class TopoService {
   }
 
   updateTopo(form: FormGroup) : Observable<Topo>{
-    return this.http.put<Topo>(this.topoUrl + '/topo/{id}', {
-      "name": form.get("name").value,
-      "idDepartment": form.get("department").value.id,
-      "description" : form.get("description").value,
-      "nearestCity" : form.get("nearestCity").value,
-      "carAccess" : form.get("carAccess").value,
-      "carParking" : form.get("carParking").value,
-      "accessDescription" : form.get("accessDescription").value,
-      "nearestHospital" : form.get("nearestHospital").value,
-      "supplyComment" : form.get("supplyComment").value,
+    return this.http.put<Topo>(this.topoUrl + '/update', form.value
+    );
+  }
+
+  updateShare(topo: any) : Observable<Topo>{
+    return this.http.put<Topo>(this.topoUrl + '/shareUpdate', topo
+    );
+  }
+
+  deleteTopo(idTopo: string): Observable<{}>{
+    console.log('DELETE Topo:', idTopo);
+    return this.http.delete(this.topoUrl + '/delete', {
+      params: new HttpParams()
+        .set('idTopo', idTopo),
     });
   }
 }

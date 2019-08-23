@@ -47,27 +47,9 @@ public class TopoMapper {
         topo.setSupplyComment(topoDTO.getSupplyComment() != null ? topoDTO.getSupplyComment() : topo.getSupplyComment());
         topo.setAvaible(topoDTO.getAvaible() != null ? topoDTO.getAvaible() : topo.getAvaible());
         topo.setReleaseDate(topoDTO.getRelease_Date() != null ? topoDTO.getRelease_Date() : topo.getReleaseDate());
-        topoDTO.setId(topo.getId());
+        topo.setId(topoDTO.getId());
 
         return topo;
     }
 
-    public static TopoDTO updateDTO(TopoDTO topoDTO, Topo topo) {
-
-        topoDTO.setName(topo.getName() != null ? topo.getName() : topoDTO.getName());
-        topoDTO.setUser(topo.getUser() != null ? UserMapper.objectToDTO(topo.getUser()) : null);
-        topoDTO.setDepartment(topo.getDepartment() != null ? DepartmentMapper.objectToDTO(topo.getDepartment()) : null);
-        topoDTO.setDescription(topo.getDescription() != null ? topo.getDescription() : topoDTO.getDescription());
-        topoDTO.setNearestCity(topo.getNearestCity() != null ? topo.getNearestCity() : topoDTO.getNearestCity());
-        topoDTO.setCarAccess(topo.getCarAccess() != null ? topo.getCarAccess() : topoDTO.getCarAccess());
-        topoDTO.setCarParking(topo.getCarParking() != null ? topo.getCarParking() : topoDTO.getCarParking());
-        topoDTO.setAccessDescription(topo.getAccessDescription()!= null ? topo.getAccessDescription() : topoDTO.getAccessDescription());
-        topoDTO.setNearestHospital(topo.getNearestHospital()!= null ? topo.getNearestHospital() : topoDTO.getNearestHospital());
-        topoDTO.setSupplyComment(topo.getSupplyComment()!= null ? topo.getSupplyComment() : topoDTO.getSupplyComment());
-        topoDTO.setAvaible(topo.getAvaible() != null ? topo.getAvaible() : topoDTO.getAvaible());
-        topoDTO.setRelease_Date(topo.getReleaseDate() != null ? topo.getReleaseDate() : topoDTO.getRelease_Date());
-
-        return topoDTO;
-
-    }
 }

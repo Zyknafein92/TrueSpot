@@ -60,7 +60,8 @@ public class User implements Serializable {
 
     public User(){}
 
-    public User(String firstName, String lastName, Date birthDate, String gender, String pseudo, String password, String email, String phoneNumber) {
+    public User(Set<Role> roles, String firstName, String lastName, Date birthDate, String gender, String pseudo, String password, String email, String phoneNumber) {
+        this.roles = roles;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -70,5 +71,4 @@ public class User implements Serializable {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
-
 }

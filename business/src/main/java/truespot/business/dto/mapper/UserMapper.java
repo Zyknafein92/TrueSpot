@@ -39,25 +39,10 @@ public class UserMapper {
          user.setEmail(userDTO.getEmail() != null ? userDTO.getEmail() : user.getEmail());
          user.setPhoneNumber(userDTO.getPhoneNumber() != null ? userDTO.getPhoneNumber() : user.getPhoneNumber());
          user.setRoles(userDTO.getRoles() != null ? userDTO.getRoles() : user.getRoles());
-         userDTO.setId(user.getId());
+         user.setId(userDTO.getId());
 
 
          return user;
-     }
-
-     public static UserDTO updateDTO(UserDTO userDTO, User user){
-
-         userDTO.setFirstName(user.getFirstName() != null ? user.getFirstName() : userDTO.getFirstName());
-         userDTO.setLastName(user.getLastName() != null ? user.getLastName() : userDTO.getLastName());
-         userDTO.setBirthDate(user.getBirthDate() != null ? user.getBirthDate() : userDTO.getBirthDate());
-         userDTO.setGender(user.getGender() != null ? user.getGender() : userDTO.getGender());
-         userDTO.setPseudo(user.getPseudo() != null ? user.getPseudo() : userDTO.getPseudo());
-         userDTO.setPassword(user.getPassword() != null ? user.getPassword() : userDTO.getPassword());
-         userDTO.setEmail(user.getEmail() != null ? user.getEmail() : userDTO.getEmail());
-         userDTO.setPhoneNumber(user.getPhoneNumber() != null ? user.getPhoneNumber() : userDTO.getPhoneNumber());
-         userDTO.setRoles(user.getRoles() != null ? user.getRoles() : userDTO.getRoles());
-
-        return userDTO;
      }
 
 }

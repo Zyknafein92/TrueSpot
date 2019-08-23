@@ -7,6 +7,9 @@ import {ClimbingRoad} from "../../../../model/climbingRoad";
 import {AreaService} from "../../../services/area/area.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
+import {DepartmentService} from "../../../services/department/department.service";
+import {Department} from "../../../../model/department";
+import {ShareService} from "../../../services/share/share.service";
 
 
 
@@ -18,7 +21,7 @@ import {TokenStorageService} from "../../../services/auth/token-storage.service"
 export class ViewTopoComponent implements OnInit {
   private sub: any;
   idTopo: any;
-  idTopoHelToRedirect: any;
+  idTopoHelpToRedirect: any;
   idArea: any;
   idAreaToAdd: any;
   idRoad: any;
@@ -26,21 +29,24 @@ export class ViewTopoComponent implements OnInit {
   areas: any;
   roads : any;
   road: ClimbingRoad;
+  department: Department;
+  departments: Department;
+  formRoad: FormGroup;
+  formArea: FormGroup;
+  formTopo: FormGroup;
 
-  formAddRoad: FormGroup;
-  formUpdateRoad: FormGroup;
-  formAddArea: FormGroup;
-  formUpdateArea: FormGroup;
+  idAreaFromViewTopo : string;
 
   authorities: string;
   pseudo: string;
 
   isAdd:boolean=false;
   isModified:boolean=false;
-  constructor( private topoService: TopoService,
+  constructor( private topoService: TopoService, private departmentService :DepartmentService,
                private areaService: AreaService,private roadService: RoadService,
                private formBuilder: FormBuilder, private route: ActivatedRoute,
-               private router: Router, private token: TokenStorageService) { }
+               private router: Router, private token: TokenStorageService,
+               private shareService: ShareService,) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -49,35 +55,50 @@ export class ViewTopoComponent implements OnInit {
 
     this.getTopo();
     this.getArea();
-    this.initformAddRoad();
-   // this.initformUpdateRoad();
-
-
-   // this.initformAddArea();
-    // this.initformUpdateArea();
+    this.initformTopo();
+    this.initformRoad();
+    this.initformArea();
+    this.initDepartmentList();
     this.authorities = this.token.getAuthorities();
     this.pseudo = this.token.getPseudo();
-
-    console.log("this.authorities ", this.authorities)
   }
 
 
   // INIT FORMULAIRE //
 
-  private initformAddArea(){
-    this.formAddArea = this.formBuilder.group(
+  private initformTopo(){
+    this.formTopo = this.formBuilder.group({
+      name: new FormControl(),
+      department : new FormControl(),
+      user: new FormControl(),
+      description: new FormControl(),
+      nearestCity: new FormControl(),
+      carAccess: new FormControl(),
+      carParking: new FormControl(),
+      accessDescription: new FormControl(),
+      nearestHospital: new FormControl(),
+      supplyComment: new FormControl(),
+      avaible: new FormControl(),
+      id: new FormControl(),
+    });
+
+  }
+
+  private initformArea(){
+    this.formArea = this.formBuilder.group(
       {
         name: new FormControl(),
         description: new FormControl(),
         orientation  : new FormControl(),
         height: new FormControl(),
         idTopo: this.idTopo,
+        id: new FormControl()
       }
     );
   }
 
-  private initformAddRoad() {
-    this.formAddRoad = this.formBuilder.group(
+  private initformRoad() {
+    this.formRoad = this.formBuilder.group(
       {
         name: new FormControl(),
         description: new FormControl(),
@@ -92,26 +113,15 @@ export class ViewTopoComponent implements OnInit {
   }
 
 
-  // private initformUpdateArea(){
-  //   this.formUpdateArea = this.formBuilder.group(
-  //     {
-  //       name: new FormControl(),
-  //       description: new FormControl(),
-  //       orientation  : new FormControl(),
-  //       height: new FormControl(),
-  //       idTopo: this.idTopo,
-  //     }
-  //   );
-  // }
-
-
   // TOPO //
+
+
   getTopo(){
     this.topoService.getTopo(this.idTopo)
       .subscribe(
         response => {
           this.topo = response;
-          console.log("TOPO: ", response);
+          console.log("TOPOTPTOOTP :", this.topo)
         },
         err => {
           console.log("error: ", err);
@@ -119,13 +129,85 @@ export class ViewTopoComponent implements OnInit {
 
   }
 
+  updateTopo(idTopo){
+    this.idTopo = idTopo;
+    this.topoService.getTopo(this.idTopo).subscribe(
+      response => {
+        this.formTopo.patchValue({
+          name: response.name,
+          department: response.department,
+          description : response.description,
+          nearestCity : response.nearestCity,
+          carAccess: response.carAccess,
+          carParking: response.carParking,
+          accessDescription : response.accessDescription,
+          nearestHospital : response.nearestHospital,
+          supplyComment : response.supplyComment,
+          id: this.idTopo,
+          releaseDate: response.releaseDate,
+          avaible: response.avaible,
+          user: response.user,
+        });
+        console.log("TOPO to UPDATE:", this.formTopo.value)
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+
+  }
+
+  updateTopoModel(){
+    console.log('FORMTOPO:', this.formTopo.value);
+    this.topoService.updateTopo(this.formTopo).subscribe(
+      response => {
+        console.log("Topo UPDDATING: ", response);
+        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        location.reload();
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+  }
+
+  deleteTopo(idTopo){
+    console.log("ID REMOVTOPO:", this.idTopo);
+    this.idTopo = idTopo;
+    this.topoService.deleteTopo(this.idTopo).subscribe(
+      response => {
+        this.router.navigateByUrl("/topo/list-topo/");
+        location.reload();
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+  }
+
+  shareTopo(){
+    console.log("BONJJOUURRR")
+    const shareDto = {"idUserOwner": this.topo.user.pseudo,"idUserReceiver" : this.token.getPseudo(),"idTopo": this.idTopo}
+    this.shareService.saveShare(shareDto).subscribe(
+      response => {
+        this.router.navigateByUrl("/list-topo");
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+  }
+  // DEPARTMENT  //
+
+  private initDepartmentList() {
+    this.departmentService.getDepartments().subscribe(
+      res => {
+        this.departments = res;
+      }
+    );
+  }
   // AREA //
   getArea(){
     this.areaService.getAreas(this.idTopo)
       .subscribe(
         response => {
           this.areas = response;
-          console.log("AREAS: ", this.areas);
         }),
       err => {
         console.log("error: ", err.error.message);
@@ -134,40 +216,104 @@ export class ViewTopoComponent implements OnInit {
 
   getCurrentIdArea(id) {
     this.idArea = id;
+    this.idAreaFromViewTopo = id;
     this.getRoad(id);
+
+    console.log("idAreaFromViewTopo ", this.idAreaFromViewTopo);
   }
 
 
   addArea(idArea) {
+    this.initformArea();
+    this.isAdd = false;
+    this.isModified = true;
     console.log("ID ADDAREA:", idArea)
   }
+
   updateArea(idArea) {
     this.idArea = idArea;
-    console.log("ID UPDATEAREA:", this.idArea)
+    this.isAdd = true;
+    this.isModified = false;
+    console.log("AREA TO ADD:", this.idArea);
+    this.areaService.getArea(this.idArea).subscribe(
+      response => {
+        console.log("Area CURRENT: ", response);
+        this.formArea.patchValue({
+          topo: response.topo.id,
+          name: response.name,
+          description: response.description,
+          orientation: response.orientation,
+          height: response.height,
+          id: response.id
+        });
+        console.log("F CURRENT:", this.formArea.value)
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+
+  }
+
+  saveAreaModal() {
+    this.formArea.patchValue({
+      idArea: this.idAreaToAdd,
+    });
+    this.areaService.saveArea(this.formArea)
+      .subscribe(
+        response => {
+       // Si Area = null -> Formulaire création Road
+          this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+          this.refresh();
+        }),
+      err => {
+        console.log("error: ", err.error.message);
+      }
+  }
+
+  updateAreaModel(){
+    console.log('FORMADD:', this.formArea.value);
+    this.areaService.updateArea(this.formArea).subscribe(
+      response => {
+        console.log("Area UPDDATING: ", response);
+        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.refresh();
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
   }
 
   deleteArea(idArea) {
-    console.log("ID REMOVEAREA:", idArea)
+    console.log("ID REMOVEAREA:", idArea);
+    this.idArea = idArea;
+    this.areaService.deleteArea(this.idArea).subscribe(
+      response => {
+        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.refresh()
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
   }
 
  // ROAD //
   addRoad(area){
+    this.initformRoad();
     console.log("ID AREA:", area);
     this.isAdd = false;
     this.isModified = true;
     this.idAreaToAdd = area.id;
-    this.idTopoHelToRedirect  = area.topo.id
+    this.idTopoHelpToRedirect  = area.topo.id
   }
 
   updateRoad(idRoad) {
-
     this.idRoad = idRoad;
     this.isAdd = true;
     this.isModified = false;
     this.roadService.getRoad(this.idRoad).subscribe(
       response => {
         console.log("ROAD CURRENT: ", response);
-        this.formAddRoad.patchValue({
+        this.formRoad.patchValue({
           name: response.name,
           description:response.description,
           type:response.type,
@@ -175,36 +321,35 @@ export class ViewTopoComponent implements OnInit {
           letter: response.letter,
           symbol: response.symbol,
           idArea : response.area.id,
-          id : response.id
+          id: response.id
         });
       }),
       err => {
         console.log("error: ", err.error.message);
       };
-    console.log("F CURRENT:", this.formAddRoad.value)
+    console.log("F CURRENT:", this.formRoad.value)
 
   }
   updateRoadModel(){
-
-    console.log("FORM ", this.formAddRoad.value);
-    this.roadService.updateRoad(this.formAddRoad).subscribe(
+    this.roadService.updateRoad(this.formRoad).subscribe(
       response => {
         // @ts-ignore
         console.log("ROAD UPDDATING: ", response);
-
+        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.refresh();
       }),
       err => {
         console.log("error: ", err.error.message);
       };
   }
 
-  deleteRoad(idRoad: any) {
+  deleteRoad(idRoad) {
     this.idRoad = idRoad;
     console.log("id:", this.idRoad);
     this.roadService.deleteRoad(this.idRoad).subscribe(
       response => {
-        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelToRedirect);
-        console.log("reponse: ", response);
+        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.refresh();
       }),
       err => {
         console.log("error: ", err.error.message);
@@ -212,16 +357,13 @@ export class ViewTopoComponent implements OnInit {
   }
 
   saveRoadModal() {
-    this.formAddRoad.patchValue({
+    this.formRoad.patchValue({
       idArea: this.idAreaToAdd,
     });
-    this.roadService.saveRoad(this.formAddRoad)
+    this.roadService.saveRoad(this.formRoad)
       .subscribe(
         response => {
-          // @ts-ignore
-          $('#addRoad').modal('hide');
-          this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelToRedirect);
-          console.log("reponse: ", response);
+          this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
         }),
       err => {
         console.log("error: ", err.error.message);
@@ -241,5 +383,8 @@ export class ViewTopoComponent implements OnInit {
       }
   }
 
+  refresh(){
+    this.getRoad(this.idArea);
+  }
 
 }

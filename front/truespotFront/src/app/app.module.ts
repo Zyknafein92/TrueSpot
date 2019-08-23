@@ -17,7 +17,6 @@ import { CreateAreaComponent } from './components/area/create-area/create-area.c
 import { HomeComponent } from './components/home/home.component';
 import {httpInterceptorProviders} from "./services/auth/auth-interceptor";
 import { UdapteTopoComponent } from './components/topo/udapte-topo/udapte-topo.component';
-import { UpdateAreaComponent } from './components/area/update-area/update-area.component';
 import { UpdateRoadComponent } from './components/road/update-road/update-road.component';
 import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 import { ViewUserprofilComponent } from './components/user/view-userprofil/view-userprofil.component';
@@ -40,7 +39,6 @@ import {LogoutComponent} from "./components/auth/logout/logout.component";
     LogoutComponent,
     HomeComponent,
     UdapteTopoComponent,
-    UpdateAreaComponent,
     UpdateRoadComponent,
     UpdateUserComponent,
     ViewUserprofilComponent,

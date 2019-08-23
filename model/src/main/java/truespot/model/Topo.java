@@ -59,11 +59,11 @@ public class Topo implements Serializable {
     private String supplyComment;
 
     @Column(name="avaible")
-    private Boolean avaible;
+    private String avaible;
 
     public Topo(){}
 
-    public Topo(String name, User user, Department department, Date releaseDate, String description, String nearestCity, Boolean carAccess, Boolean carParking, String accessDescription, String nearestHospital, String supplyComment, Boolean shared) {
+    public Topo(String name, User user, Department department, Date releaseDate, String description, String nearestCity, Boolean carAccess, Boolean carParking, String accessDescription, String nearestHospital, String supplyComment, String avaible) {
         this.name = name;
         this.user = user;
         this.department = department;

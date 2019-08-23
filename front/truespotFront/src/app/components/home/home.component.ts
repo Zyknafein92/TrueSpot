@@ -9,22 +9,26 @@ import {TokenStorageService} from "../../services/auth/token-storage.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  info: any;
+
+  searchSelect : any;
 
   constructor(private token: TokenStorageService) { }
 
   ngOnInit() {
-    this.info = {
-      token: this.token.getToken(),
-      pseudo: this.token.getPseudo(),
-      authorities: this.token.getAuthorities()
-    };
-
-    console.log("HOME COMPONENET: ", this.info)
+    this.searchOptionInit()
   }
 
   logout() {
     this.token.signOut();
     window.location.reload();
   }
+
+  searchOptionInit() {
+    this.searchSelect = [
+      { value: '1', label: 'Département' },
+      { value: '2', label: '' },
+      { value: '3', label: 'Option 3' },
+    ];
+  }
+
 }

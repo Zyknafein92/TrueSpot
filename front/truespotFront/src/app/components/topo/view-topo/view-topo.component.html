@@ -1,8 +1,8 @@
 <div class="well center">
   <div class= "card-title text-center" *ngIf="topo">
-      <h1>{{topo.name}}</h1>
+    <h1>{{topo.name}}</h1>
   </div>
-    <br>
+  <br>
 
   <div class="card">
 
@@ -44,10 +44,10 @@
           <div class="card">
             <div class="card-body" *ngIf="topo">
               <h4 class="card-title">Accès en voiture :</h4>
-              <p class="card-text">{{topo.carAccess}}</p>
+              <p class="card-text">{{topo.carAccess ? 'Oui' : 'Non'}}</p>
               <br>
               <h4 class="card-title">Parking :</h4> <span></span>
-              <p class="card-text">{{topo.carParking}}</p>
+              <p class="card-text">{{topo.carParking ? 'Oui' : 'Non'}}</p>
             </div>
           </div>
           <div class="card">
@@ -97,9 +97,6 @@
             <th>Hauteur</th>
             <th>Description</th>
             <th>Actions</th>
-            <th></th>
-            <th></th>
-            <th></th>
           </tr>
           </thead>
           <tbody>
@@ -108,24 +105,26 @@
             <td>{{area.orientation}}</td>
             <td>{{area.height}}</td>
             <td>{{area.description}}</td>
-            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                      (click)="addArea(area.id) ">Ajouter</button>
-            </td >
-            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter"
-                      (click)="updateArea(area.id) ">Modifier</button>
-            </td>
-            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
-                      (click)="deleteArea(area.id)">Supprimer</button>
-            </td>
-            <td >
-              <div class="accordion" id="accordionExamples">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOnes" aria-expanded="false" aria-controls="collapseOnes"
-                        (click)="getCurrentIdArea(area.id) ">Afficher les voies</button>
-              </div>
-            </td>
+            <div class="btn-group">
+              <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addArea"
+                        (click)="addArea(area.id) ">Ajouter un secteur</button>
+              </td >
+              <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addArea"
+                        (click)="updateArea(area.id) ">Modifier le secteur</button>
+              </td>
+              <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteArea"
+                        (click)="deleteArea(area.id)">Supprimer le secteur</button>
+              </td>
+              <td >
+                <div class="accordion" id="accordionExamples">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOnes" aria-expanded="false" aria-controls="collapseOnes"
+                          (click)="getCurrentIdArea(area.id) ">Afficher les voies</button>
+                </div>
+              </td>
+            </div>
           </tr>
           </tbody>
         </table>
@@ -141,58 +140,83 @@
     </div>
     <div class="card-body">
       <div data-ng-switch-when="true" id="collapseOnes" class="collapse">
+        <button type="button"
+                data-toggle="modal" data-target="#createRoad"
+                class="btn btn-primary btn-lg btn-block">Ajout voie</button>
         <table class="table table-responsive">
           <table class="table table-hover table-condensed table-striped">
-          <thead class="Road">
-          <tr>
-            <th>Nom</th>
-            <th>Type</th>
-            <th>Cotation de la voie</th>
-            <th>Description</th>
-            <th>Actions</th>
-            <th></th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let road of roads">
-            <td>{{road.name}}</td>
-            <td>{{road.type}}</td>
-            <td>{{road.number}}{{road.letter}}{{road.symbol}}</td>
-            <td>{{road.description}}</td>
-            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRoad"
-                      (click)="addRoad(road.area) ">Ajouter</button>
-            </td>
-            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addRoad"
-                      (click)="updateRoad(road.id) ">Modifier</button>
-            </td>
-            <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-              <button type="button" class="btn btn-danger"data-target="#deleteRoad"
-                      (click)="deleteRoad(road.id) ">Supprimer</button>
-            </td>
-          </tr>
-          </tbody>
+            <thead class="Road">
+            <tr>
+              <th>Nom</th>
+              <th>Type</th>
+              <th>Cotation de la voie</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let road of roads">
+              <td>{{road.name}}</td>
+              <td>{{road.type}}</td>
+              <td>{{road.number}}{{road.letter}}{{road.symbol}}</td>
+              <td>{{road.description}}</td>
+              <div class="btn-group">
+                <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRoad"
+                          (click)="addRoad(road.area) ">Ajouter une voie</button>
+                </td>
+                <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addRoad"
+                          (click)="updateRoad(road.id) ">Modifier la voie</button>
+                </td>
+                <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
+                  <button type="button" class="btn btn-danger"data-target="#deleteRoad"
+                          (click)="deleteRoad(road.id) ">Supprimer la voie</button>
+                </td>
+              </div>
+            </tr>
+            </tbody>
           </table>
         </table>
       </div>
     </div>
   </div>
 
+  <br>
 
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3" *ngIf="topo">
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateTopo"
+              *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+              (click)="updateTopo(idTopo)">Modifier le topo
+      </button>
+    </div>
+    <div class="col-md-3" *ngIf="topo">
+      <button type="button"  class="btn btn-danger" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+              (click)="deleteTopo(idTopo) ">Supprimer le topo</button>
+    </div>
+    <div *ngIf="topo">
+      <button type="button" class="btn btn-info"
+              *ngIf="pseudo != topo.user.pseudo && topo.avaible == 'DISPONIBLE'"
+              (click)="shareTopo()">Emprunter le topo</button>
+    </div>
+  </div>
 
-  <!-- Modal -->
-
-  <!-- Modal add Road -->
 </div>
 
-<!-- Modal add Road -->
-<div class="modal fade" id="addRoad" tabindex="-1" role="dialog" aria-labelledby="addRoad" aria-hidden="true">
+
+
+
+
+<!-- Modal -->
+
+<!-- Modal Topo -->
+<div class="modal fade" id="updateTopo" tabindex="-1" role="dialog" aria-labelledby="updateTopo" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header btn-primary">
-        <h5 class="modal-title" id="addRoadTitle">Ajouter une voie :</h5>
+        <h5 class="modal-title" id="updateTopoTitle">Modifier le topo :</h5>
         <button type="button btn-danger" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -201,13 +225,291 @@
 
         <div class="panel panel-primary">
           <div class="panel-body">
-            <form #f="ngForm" [formGroup]="formAddRoad" >
+            <form #f="ngForm" [formGroup]="formTopo">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group"
+                     [class.has-success]="formTopo.get('name').valid"
+                     [class.has-error]="formTopo.get('name').invalid && formTopo.get('name').touched">
+                  <label class="control-label">Nom:</label>
+                  <input class="form-control"
+                         type="text"
+                         name="name"
+                         placeholder="Nom du Topo"
+                         formControlName="name"
+                         required minlength="2">
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <label> Choisissez un département : </label>
+                <label>
+                  <select name="department" class="form-control select"  formControlName="department">
+                    <option *ngFor="let department of departments" [ngValue]="department" >
+                      {{ department.id }}  {{department.name }}
+                    </option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <br>
+            <h2>Informations générales</h2><br>
+
+            <div class="row">
+
+              <div class="col-md-4">
+                <div class="form-group"
+                     [class.has-success]="formTopo.get('nearestCity').valid"
+                     [class.has-error]="formTopo.get('nearestCity').invalid && formTopo.get('nearestCity').touched">
+                  <label class="control-label">Ville la plus proche:</label>
+                  <input class="form-control"
+                         type="text"
+                         name="nearestCity"
+                         placeholder="Nom de la ville la plus proche"
+                         formControlName="nearestCity"
+                         required minlength="2">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group"
+                     [class.has-success]="formTopo.get('description').valid"
+                     [class.has-error]="formTopo.get('description').invalid && formTopo.get('description').touched">
+                  <label class="control-label">Description du site:</label>
+                  <textarea class="form-control input-md"
+                            type="text"
+                            rows="5"
+                            name="description"
+                            placeholder="Une rapide description du site"
+                            formControlName="description"
+                            required
+                            minlength="2"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <br>
+            <h2>Accès au site</h2><br>
+
+            <div class="row">
+              <div class="col-md-2">
+                <label> Accès en voiture :</label>
+                <div class="form-group"
+                     [class.has-success]="formTopo.get('carAccess').valid"
+                     [class.has-error]="formTopo.get('carAccess').invalid && formTopo.get('carAccess').touched">
+                  <div class="form-group">
+                    <select class="browser-default custom-select" formControlName="carAccess">
+                      <option [value]="true">Oui</option>
+                      <option [value]="false">Non</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <label> Parking :</label>
+                <div class="form-group"
+                     [class.has-success]="formTopo.get('carParking').valid"
+                     [class.has-error]="formTopo.get('carParking').invalid && formTopo.get('carParking').touched">
+                  <div class="form-group">
+                    <select class="browser-default custom-select" formControlName="carParking">
+                      <option [value]="true">Oui</option>
+                      <option [value]="false">Non</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group"
+                     [class.has-success]="formTopo.get('accessDescription').valid"
+                     [class.has-error]="formTopo.get('accessDescription').invalid && formTopo.get('accessDescription').touched">
+                  <label class="control-label">Description l'accès au site:</label>
+                  <textarea class="form-control input-md"
+                            type="text"
+                            rows="5"
+                            name="accessDescription"
+                            placeholder="Une rapide description de l'accès au site..."
+                            formControlName="accessDescription"
+                            required
+                            minlength="2"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <br>
+            <h2> Ravitaillement et soins</h2><br>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group"
+                     [class.has-success]="formTopo.get('nearestHospital').valid"
+                     [class.has-error]="formTopo.get('nearestHospital').invalid && formTopo.get('nearestHospital').touched">
+                  <label class="control-label">Nom de l'Hopital le plus proche:</label>
+                  <input class="form-control"
+                         type="text"
+                         name="nearestHospital"
+                         placeholder="Nom du l'hopital"
+                         formControlName="nearestHospital"
+                         required minlength="2">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group"
+                     [class.has-success]="formTopo.get('supplyComment').valid"
+                     [class.has-error]="formTopo.get('supplyComment').invalid && formTopo.get('supplyComment').touched">
+                  <label class="control-label">Lieu de ravitaillement :</label>
+                  <textarea class="form-control input-md"
+                            type="text"
+                            rows="10"
+                            name="supplyComment"
+                            placeholder="exemple : Intermarché du coin : adresse...."
+                            formControlName="supplyComment"
+                            required
+                            minlength="2"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+        </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+              <button type="button" class="btn btn-primary"  [disabled]="formTopo.invalid"  data-dismiss="modal" (click)="updateTopoModel()">Modifier</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+<!-- Modal Area -->
+<div class="modal fade" id="addArea" tabindex="-1" role="dialog" aria-labelledby="addArea" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header btn-primary">
+        <h5 class="modal-title" id="addAreaTitle">Manipuler un secteur :</h5>
+        <button type="button btn-danger" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="panel panel-primary">
+          <div class="panel-body">
+            <form #f="ngForm" [formGroup]="formArea">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group"
+                       [class.has-success]="formArea.get('name').valid"
+                       [class.has-error]="formArea.get('name').invalid && formArea.get('name').touched">
+                    <label class="control-label">Nom:</label>
+                    <input class="form-control"
+                           type="text"
+                           name="name"
+                           placeholder="Nom du secteur"
+                           formControlName="name"
+                           required minlength="2">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group"
+                       [class.has-success]="formArea.get('description').valid"
+                       [class.has-error]="formArea.get('description').invalid && formArea.get('description').touched">
+                    <label class="control-label">Description:</label>
+                    <input class="form-control input-md"
+                           type="text"
+                           name="description"
+                           placeholder="Description du secteur"
+                           formControlName="description"
+                           required
+                           minlength="2">
+                  </div>
+                </div>
+
+
+                <div class="col-md-4">
+                  <div class="form-group"
+                       [class.has-success]="formArea.get('orientation').valid"
+                       [class.has-error]="formArea.get('orientation').invalid && formArea.get('orientation').touched">
+                    <label for="orientation" class="control-label">Orientation du secteur:</label>
+                    <input required
+                           id="orientation"
+                           name="orientation"
+                           type="text"
+                           class="form-control"
+                           formControlName="orientation"
+                           placeholder="Nord, Nord-est">
+                  </div>
+                </div>
+
+
+                <div class="col-md-4">
+                  <div class="form-group"
+                       [class.has-success]="formArea.get('height').valid"
+                       [class.has-error]="formArea.get('height').invalid && formArea.get('height').touched">
+                    <label class="control-label">Hauteur estimée:</label>
+                    <input class="form-control input-md"
+                           type="number"
+                           name="height"
+                           placeholder="Hauteur estimée"
+                           formControlName="height"
+                           autocapitalize="on"
+                           spellcheck="on"
+                           required
+                           minlength="10">
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+              <button [hidden]="isAdd" type="button" class="btn btn-primary"  [disabled]="formArea.invalid"  data-dismiss="modal" (click)="saveAreaModal()">Enregistrer</button>
+              <button  [hidden]="isModified" type="button" class="btn btn-primary"  [disabled]="formArea.invalid"  data-dismiss="modal" (click)="updateAreaModel()">Modifier</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Road -->
+<div class="modal fade" id="addRoad" tabindex="-1" role="dialog" aria-labelledby="addRoad" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header btn-primary">
+        <h5 class="modal-title" id="addRoadTitle">Manipuler une voie :</h5>
+        <button type="button btn-danger" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="panel panel-primary">
+          <div class="panel-body">
+            <form #f="ngForm" [formGroup]="formRoad" >
 
               <div class="row">
                 <div class="col-md-2">
                   <div class="form-group"
-                       [class.has-success]="formAddRoad.get('name').valid"
-                       [class.has-error]="formAddRoad.get('name').invalid && formAddRoad.get('name').touched">
+                       [class.has-success]="formRoad.get('name').valid"
+                       [class.has-error]="formRoad.get('name').invalid && formRoad.get('name').touched">
                     <label class="control-label">Nom:</label>
                     <input class="form-control"
                            type="text"
@@ -221,8 +523,8 @@
                 <div class="col-md-2">
                   <label class="control-label">Type de la voie:</label>
                   <div class="form-group"
-                       [class.has-success]="formAddRoad.get('type').valid"
-                       [class.has-error]="formAddRoad.get('type').invalid && formAddRoad.get('type').touched">
+                       [class.has-success]="formRoad.get('type').valid"
+                       [class.has-error]="formRoad.get('type').invalid && formRoad.get('type').touched">
                     <select class="browser-default custom-select"  formControlName="type">
                       <option value="Bloc">Bloc</option>
                       <option value="Voie">Voie</option>
@@ -240,8 +542,8 @@
                 <div class="col-md-2">
                   <label class="control-label">Chiffre:</label>
                   <div class="form-group"
-                       [class.has-success]="formAddRoad.get('number').valid"
-                       [class.has-error]="formAddRoad.get('number').invalid && formAddRoad.get('number').touched">
+                       [class.has-success]="formRoad.get('number').valid"
+                       [class.has-error]="formRoad.get('number').invalid && formRoad.get('number').touched">
                     <select class="browser-default custom-select"  formControlName="number">
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -258,8 +560,8 @@
 
                 <div class="col-md-2">
                   <div class="form-group"
-                       [class.has-success]="formAddRoad.get('letter').valid"
-                       [class.has-error]="formAddRoad.get('letter').invalid && formAddRoad.get('letter').touched">
+                       [class.has-success]="formRoad.get('letter').valid"
+                       [class.has-error]="formRoad.get('letter').invalid && formRoad.get('letter').touched">
                     <label class="control-label">Lettre:</label>
                     <select class="browser-default custom-select" formControlName="letter">
                       <option value="null"></option>
@@ -272,8 +574,8 @@
 
                 <div class="col-md-2">
                   <div class="form-group"
-                       [class.has-success]="formAddRoad.get('symbol').valid"
-                       [class.has-error]="formAddRoad.get('symbol').invalid && formAddRoad.get('symbol').touched">
+                       [class.has-success]="formRoad.get('symbol').valid"
+                       [class.has-error]="formRoad.get('symbol').invalid && formRoad.get('symbol').touched">
                     <label class="control-label">Symbole:</label>
                     <select class="browser-default custom-select" formControlName="symbol">
                       <option value="null"></option>
@@ -287,8 +589,8 @@
               <h5>Description :</h5>
               <br>
               <div class="form-group"
-                   [class.has-success]="formAddRoad.get('description').valid"
-                   [class.has-error]="formAddRoad.get('description').invalid && formAddRoad.get('description').touched">
+                   [class.has-success]="formRoad.get('description').valid"
+                   [class.has-error]="formRoad.get('description').invalid && formRoad.get('description').touched">
           <textarea class="form-control input-md"
                     type="text"
                     rows="5"
@@ -307,8 +609,24 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button [hidden]="isAdd" type="button" class="btn btn-primary"  [disabled]="formAddRoad.invalid"  data-dismiss="modal" (click)="saveRoadModal()">Enregistrer</button>
-        <button  [hidden]="isModified" type="button" class="btn btn-primary"  [disabled]="formAddRoad.invalid"  data-dismiss="modal" (click)="updateRoadModel()">Modifier</button>
+        <button [hidden]="isAdd" type="button" class="btn btn-primary"  [disabled]="formRoad.invalid"  data-dismiss="modal" (click)="saveRoadModal()">Enregistrer</button>
+        <button  [hidden]="isModified" type="button" class="btn btn-primary"  [disabled]="formRoad.invalid"  data-dismiss="modal" (click)="updateRoadModel()">Modifier</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div *ngIf="idAreaFromViewTopo" class="modal fade" id="createRoad" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-create-road [idAreaFromViewTopo]="idAreaFromViewTopo"></app-create-road>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="refresh()">Close</button>
       </div>
     </div>
   </div>

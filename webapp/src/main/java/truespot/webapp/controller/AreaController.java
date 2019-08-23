@@ -17,14 +17,14 @@ public class AreaController {
     @Autowired
     private AreaManager areaManager;
 
-    @GetMapping(value="/area")
-    public List<Area> getAreas(){
-        return areaManager.findAllArea();
-    }
+//    @GetMapping(value="/areas")
+//    public List<Area> getAreas(){
+//        return areaManager.findAllArea();
+//    }
 
-    @GetMapping(value="/area/{id}")
-    public AreaDTO getArea(@PathVariable Long id) {
-        return areaManager.getArea(id);
+    @RequestMapping(value = "/area/getByID", method = RequestMethod.GET)
+    public Area getArea(@RequestParam(name = "idArea", defaultValue = "")  String idArea) {
+        return areaManager.getArea(Long.valueOf(idArea));
     }
 
     @RequestMapping(value = "/area/getAllByTopo", method = RequestMethod.GET)
@@ -39,14 +39,14 @@ public class AreaController {
     }
 
 
-    @PutMapping(value = "/area/{id}")
-    public void updateArea(@PathVariable Long id , @RequestBody Area area) {
-        areaManager.updateArea(id,area);
+    @RequestMapping(value = "/area/update", method = RequestMethod.PUT)
+    public void updateClimbingRoad(@RequestBody AreaDTO areaDTO) {
+        areaManager.updateArea(areaDTO);
     }
 
 
-    @DeleteMapping(value= "/area/{id}")
-    public void deleteArea(@PathVariable Long id){
-        areaManager.deleteArea(id);
+    @RequestMapping(value = "/area/delete", method = RequestMethod.DELETE)
+    public void deleteArea(@RequestParam(name = "idArea", defaultValue = "")  String idArea){
+        areaManager.deleteArea(Long.valueOf(idArea));
     }
 }

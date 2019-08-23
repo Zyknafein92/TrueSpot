@@ -19,11 +19,11 @@
               <tr *ngFor="let topo of topos">
                 <td>{{topo.name}}</td>
                 <td>{{topo.department.id}} -  {{topo.department.name}}</td>
-                <td>{{topo.release_Date | date:"dd/MM/yyyy"}}</td>
+                <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
                 <td>{{topo.name}}</td>
                 <td>{{topo.name}}</td>
                 <td>{{topo.name}}</td>
-                <td>{{topo.shared}}</td>
+                <td>{{topo.avaible}}</td>
                 <td><a class="btn btn-light" (click)="sendIdTopo(topo.id)">Voir</a></td>
             </table>
           </div>

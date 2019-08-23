@@ -42,7 +42,6 @@ public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements Clim
 
     @Override
     public void updateClimbingRoad( ClimbingRoadDTO climbingRoadDTO) {
-
         Area area = getDaoFactory().getAreaRepository().getOne(new Long(climbingRoadDTO.getIdArea()));
         ClimbingRoad climbingRoad = ClimbingRoadMapper.DTOToObject(climbingRoadDTO);
         climbingRoad.setArea(area);

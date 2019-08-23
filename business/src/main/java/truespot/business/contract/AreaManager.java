@@ -1,5 +1,6 @@
 package truespot.business.contract;
 
+import org.springframework.data.repository.query.Param;
 import truespot.business.dto.AreaDTO;
 import truespot.model.Area;
 
@@ -12,12 +13,14 @@ public interface AreaManager {
 
     List<Area> findAllByIdTopo(Long idTopo);
 
-    AreaDTO getArea(Long id);
+    List<Area> deleteAreaByTopo(Long id);
+
+    Area getArea(Long id);
 
     Area saveArea(AreaDTO areaDTO);
 
-    void updateArea(Long id, Area area);
+    void updateArea(AreaDTO areaDTO);
 
-    void deleteArea(Long id);
+    void deleteArea(Long idArea);
 
 }

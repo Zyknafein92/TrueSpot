@@ -46,7 +46,6 @@ export class TokenStorageService {
 
     if (sessionStorage.getItem(TOKEN_KEY)) {
       JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
-        console.log("AUUU ", authority.authority)
         this.roles = authority.authority;
        // this.roles.push(authority.authority);
       });

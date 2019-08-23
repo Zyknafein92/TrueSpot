@@ -21,7 +21,9 @@ public interface TopoManager {
 
     Topo saveTopo(TopoDTOContext topoDTOContext);
 
-    void updateTopo(Long id, Topo topo);
+    void updateTopo(TopoDTO topoDTO);
+
+    void updateShareTopo(TopoDTO topoDTO);
 
     void deleteTopo(Long id);
 }

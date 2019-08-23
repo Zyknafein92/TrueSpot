@@ -20,22 +20,22 @@ public class ShareController {
         return shareManager.findAllShare();
     }
 
-    @RequestMapping(value = "/topo/share/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/topo/share", method = RequestMethod.GET)
     public Share getSharedTopo(@RequestParam(name = "id", defaultValue = "") String id) {
         return shareManager.getShare(Long.valueOf(id));
     }
 
-    @RequestMapping(value = "/topo/share", method = RequestMethod.POST)
+    @RequestMapping(value = "/topo/share/create", method = RequestMethod.POST)
     public Share createShare(@RequestBody ShareDTO shareDTO) {
         return shareManager.saveShare(shareDTO);
     }
 
-    @PutMapping(value = "/topo/share/{id}")
+    @PutMapping(value = "/topo/share/update")
     public void updateShare(@PathVariable Long id , @RequestBody Share share) {
         shareManager.updateShare(id,share);
     }
 
-    @DeleteMapping(value= "/topo/share/{id}")
+    @DeleteMapping(value= "/topo/share/delete")
     public void deleteShare(@PathVariable Long id){
         shareManager.deleteShare(id);
     }

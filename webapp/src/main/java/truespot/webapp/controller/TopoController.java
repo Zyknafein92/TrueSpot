@@ -36,22 +36,29 @@ public class TopoController {
     @RequestMapping(value = "/topo/getTopo", method = RequestMethod.GET)
     public TopoDTO getTopo(@RequestParam(name = "id", defaultValue = "") String id) {
         return topoManager.getTopo(new Long(id));
-   }
+    }
 
     @RequestMapping(value = "/topo", method = RequestMethod.POST)
     public Topo createTopo(@RequestBody TopoDTOContext topoDTOContext) {
         return topoManager.saveTopo(topoDTOContext);
     }
 
-    @PutMapping(value = "/topo/{id}")
-    public void updateTopo(@PathVariable Long id , @RequestBody Topo topo) {
-        topoManager.updateTopo(id,topo);
+
+
+    @RequestMapping(value = "/topo/update", method = RequestMethod.PUT)
+    public void updateTopo(@RequestBody TopoDTO topoDTO) {
+        topoManager.updateTopo(topoDTO);
 
     }
 
-    @DeleteMapping(value= "/topo/{id}")
-    public void deleteTopo(@PathVariable Long id){
-        topoManager.deleteTopo(id);
+    @RequestMapping(value = "/topo/shareUpdate", method = RequestMethod.PUT)
+    public void updateShareTopo(@RequestBody TopoDTO topoDTO) {
+        topoManager.updateShareTopo(topoDTO);
+    }
+
+    @RequestMapping(value = "/topo/delete", method = RequestMethod.DELETE)
+    public void deleteArea(@RequestParam(name = "idTopo", defaultValue = "")  String idTopo){
+        topoManager.deleteTopo(Long.valueOf(idTopo));
     }
 
 }

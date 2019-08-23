@@ -36,13 +36,13 @@ export class RoadService {
       });
   }
 
-  deleteRoad(idRoad: string): Observable<{}> {
-    return this.http.delete(this.roadUrl + {
+  deleteRoad(idRoad: string): Observable<{}>{
+    console.log('DELETE ROAD:', idRoad);
+    return this.http.delete(this.roadUrl, {
       params: new HttpParams()
         .set('idRoad', idRoad),
-    })
+    });
   }
-
 
   updateRoad(form: FormGroup): Observable<ClimbingRoad>{
     return this.http.put<ClimbingRoad>(this.roadUrl + '/update', form.value);

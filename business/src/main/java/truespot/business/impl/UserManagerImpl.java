@@ -90,7 +90,7 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     @Override
     public void updateUser(Long id, User user) {
         UserDTO userDTO = getUser(id);
-        UserMapper.updateDTO(userDTO, user);
+     //   UserMapper.updateDTO(userDTO, user);
         user.setId(id);
         getDaoFactory().getUserRepository().save(user);
     }

@@ -28,6 +28,6 @@ public class TopoDTO {
     private String accessDescription;
     private String nearestHospital;
     private String supplyComment;
-    private Boolean avaible;
+    private String avaible;
 
 }

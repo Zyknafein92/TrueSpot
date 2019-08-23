@@ -2,6 +2,8 @@ package truespot.business.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import truespot.business.contract.AreaManager;
+import truespot.business.contract.DepartmentManager;
 import truespot.business.contract.TopoManager;
 import truespot.business.dto.TopoDTO;
 import truespot.business.dto.TopoDTOContext;
@@ -20,7 +22,9 @@ import java.util.*;
 public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager {
 
     @Autowired
-    DepartmentManagerImpl departmentManager;
+    DepartmentManager departmentManager;
+    @Autowired
+    AreaManager areaManager;
 
     @Override
     public List<Topo> findAllTopo() {
@@ -76,7 +80,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
 
         topoDTO.setName(topoDTOContext.getName());
         if(topoDTO.getRelease_Date() == null){ topoDTO.setRelease_Date(new Date());}
-        if(topoDTO.getAvaible() == null) { topoDTO.setAvaible(true); }
+
         UserDTO userDTO = UserMapper.objectToDTO(user);
         topoDTO.setUser(userDTO);
         topoDTO.getUser().setRoles(new HashSet<>());
@@ -88,6 +92,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         topoDTO.setAccessDescription(topoDTOContext.getAccessDescription());
         topoDTO.setNearestHospital(topoDTOContext.getNearestHospital());
         topoDTO.setSupplyComment(topoDTOContext.getSupplyComment());
+        topoDTO.setAvaible("DISPONIBLE");
 
         Topo topo = TopoMapper.dtoToObject(topoDTO);
         topo.setUser(user);
@@ -98,15 +103,29 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
 
 
     @Override
-    public void updateTopo(Long id, Topo topo) {
-        TopoDTO topoDTO = getTopo(id);
-        TopoMapper.updateDTO(topoDTO, topo);
-        topo.setId(id);
+    public void updateTopo(TopoDTO topoDTO) {
+        User user = getDaoFactory().getUserRepository().findByPseudo(topoDTO.getUser().getPseudo());
+        Department department = getDaoFactory().getDepartmentRepository().getOne(topoDTO.getDepartment().getId());
+
+        topoDTO.setDepartment(DepartmentMapper.objectToDTO(department));
+        topoDTO.setUser(UserMapper.objectToDTO(user));
+        topoDTO.getUser().setRoles(new HashSet<>());
+
+        Topo topo = TopoMapper.dtoToObject(topoDTO);
+        topo.setId(topoDTO.getId());
+
+        getDaoFactory().getTopoRepository().save(topo);
+    }
+
+    @Override
+    public void updateShareTopo(TopoDTO topoDTO) {
+        Topo topo = getDaoFactory().getTopoRepository().getOne(topoDTO.getId());
+        topo.setAvaible("INDISPONIBLE");
         getDaoFactory().getTopoRepository().save(topo);
     }
 
     @Override
     public void deleteTopo(Long id) {
-        getDaoFactory().getTopoRepository().deleteById(id);
+        getDaoFactory().getTopoRepository().delete(getDaoFactory().getTopoRepository().getOne(id));
     }
 }

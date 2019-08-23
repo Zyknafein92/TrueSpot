@@ -19,8 +19,11 @@ export class AreaService {
     return this.http.post<FormGroup>(this.areaUrl, form.value);
   }
 
-  getArea(id: number) {
-    return this.http.get<Area>(this.areaUrl + '/' + id);
+  getArea(idArea: string) {
+    return this.http.get<Area>(this.areaUrl+ '/getByID',{
+      params: new HttpParams()
+        .set('idArea', idArea),
+    });
   }
 
   getAreas(idTopo: string) {
@@ -30,7 +33,15 @@ export class AreaService {
           .set('idTopo', idTopo),
       });
   }
-  updateArea(form: FormGroup, id: number): Observable<FormGroup>{
-    return this.http.put<FormGroup>(this.areaUrl + '/' + id, form.value);
+  updateArea(form: FormGroup): Observable<Area>{
+    return this.http.put<Area>(this.areaUrl + '/update', form.value);
+  }
+
+  deleteArea(idArea: string): Observable<{}>{
+    console.log('DELETE AREA:', idArea);
+    return this.http.delete(this.areaUrl + '/delete', {
+      params: new HttpParams()
+        .set('idArea', idArea),
+    });
   }
 }

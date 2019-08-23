@@ -1,8 +1,11 @@
 package truespot.business.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.ShareManager;
+import truespot.business.contract.TopoManager;
 import truespot.business.dto.ShareDTO;
+import truespot.business.dto.mapper.TopoMapper;
 import truespot.model.Share;
 import truespot.model.Topo;
 import truespot.model.User;
@@ -12,6 +15,9 @@ import java.util.Optional;
 
 @Service
 public class ShareManagerImpl extends BusinessManagerImpl implements ShareManager {
+
+    @Autowired
+    TopoManager topoManager;
 
     @Override
     public List<Share> findAllShare() {
@@ -46,6 +52,7 @@ public class ShareManagerImpl extends BusinessManagerImpl implements ShareManage
         Share share = new Share();
         share.setUserOwner(userOwner);
         share.setUserReceiver(userReceiver);
+        topo.setAvaible("ATTENTE DE VALIDATION");
         share.setTopo(topo);
 
         return getDaoFactory().getShareRepository().save(share);
