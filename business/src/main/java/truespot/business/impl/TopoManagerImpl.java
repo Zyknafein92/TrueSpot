@@ -11,6 +11,7 @@ import truespot.business.dto.UserDTO;
 import truespot.business.dto.mapper.DepartmentMapper;
 import truespot.business.dto.mapper.TopoMapper;
 import truespot.business.dto.mapper.UserMapper;
+import truespot.model.Area;
 import truespot.model.Department;
 import truespot.model.Topo;
 import truespot.model.User;
@@ -41,6 +42,11 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         return getDaoFactory().getTopoRepository().findAllByDepartment_Id(id);
     }
 
+    @Override
+    public List<Topo> findAllShareTopoByUser(Long id) {
+        return getDaoFactory().getTopoRepository().findAllShareToByUser(id);
+    }
+
 
     @Override
     public TopoDTO getTopo(Long id) {
@@ -51,6 +57,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
 
         if(topoOptional.isPresent()){
             topo = new Topo(
+                    topoOptional.get().getId(),
                     topoOptional.get().getName(),
                     topoOptional.get().getUser(),
                     topoOptional.get().getDepartment(),
@@ -79,7 +86,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         TopoDTO topoDTO = new TopoDTO();
 
         topoDTO.setName(topoDTOContext.getName());
-        if(topoDTO.getRelease_Date() == null){ topoDTO.setRelease_Date(new Date());}
+        topoDTO.setReleaseDate(new Date());
 
         UserDTO userDTO = UserMapper.objectToDTO(user);
         topoDTO.setUser(userDTO);
@@ -113,6 +120,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
 
         Topo topo = TopoMapper.dtoToObject(topoDTO);
         topo.setId(topoDTO.getId());
+        topo.setReleaseDate(topoDTO.getReleaseDate());
 
         getDaoFactory().getTopoRepository().save(topo);
     }
@@ -126,6 +134,15 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
 
     @Override
     public void deleteTopo(Long id) {
+
+        List<Area> areas = getDaoFactory().getAreaRepository().findAllByTopo(id);
+        if(areas.size() > 0){
+            for (Area area: areas) {
+             Area areaDelete = getDaoFactory().getAreaRepository().getOne(area.getId());
+                areaManager.deleteArea(areaDelete.getId());
+            }
+        }
+
         getDaoFactory().getTopoRepository().delete(getDaoFactory().getTopoRepository().getOne(id));
     }
 }

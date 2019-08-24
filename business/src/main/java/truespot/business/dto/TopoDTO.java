@@ -20,7 +20,7 @@ public class TopoDTO {
     private String name;
     private UserDTO user;
     private DepartmentDTO department;
-    private Date release_Date;
+    private Date releaseDate;
     private String description;
     private String nearestCity;
     private Boolean carAccess;

@@ -19,7 +19,7 @@
               </div>
               <div class="col-md-6">
                 <h4 class="card-title">Date de parution :</h4>
-                <p class="card-text">{{topo.release_Date | date:"dd/MM/yyyy"}}</p>
+                <p class="card-text">{{topo.releaseDate | date:"dd/MM/yyyy"}}</p>
               </div>
             </div>
             <br>
@@ -69,7 +69,7 @@
               <p class="card-text">{{topo.nearestHospital}}</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" *ngIf="topo">
             <div class="card-body" *ngIf="topo">
               <h4 class="card-title">Ravitaillement :</h4>
               <p class="card-text">{{topo.supplyComment}}</p>
@@ -87,8 +87,11 @@
       <h3> Secteurs :</h3>
     </div>
 
-    <div class="card-body">
-      <table class="table table-responsive" >
+    <div class="card-body" *ngIf="topo">
+      <button type="button"
+              data-toggle="modal" data-target="#createArea"
+              class="btn btn-primary btn-lg btn-block" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">Ajouter un secteur</button>
+      <table class="table table-responsive">
         <table class="table table-hover table-condensed table-striped">
           <thead class="Area">
           <tr>
@@ -106,10 +109,6 @@
             <td>{{area.height}}</td>
             <td>{{area.description}}</td>
             <div class="btn-group">
-              <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addArea"
-                        (click)="addArea(area.id) ">Ajouter un secteur</button>
-              </td >
               <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addArea"
                         (click)="updateArea(area.id) ">Modifier le secteur</button>
@@ -138,11 +137,11 @@
     <div class="card-header">
       <h3> Voies :</h3>
     </div>
-    <div class="card-body">
+    <div class="card-body" *ngIf="topo">
       <div data-ng-switch-when="true" id="collapseOnes" class="collapse">
         <button type="button"
                 data-toggle="modal" data-target="#createRoad"
-                class="btn btn-primary btn-lg btn-block">Ajout voie</button>
+                class="btn btn-primary btn-lg btn-block" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">Ajouter une voie</button>
         <table class="table table-responsive">
           <table class="table table-hover table-condensed table-striped">
             <thead class="Road">
@@ -161,10 +160,6 @@
               <td>{{road.number}}{{road.letter}}{{road.symbol}}</td>
               <td>{{road.description}}</td>
               <div class="btn-group">
-                <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRoad"
-                          (click)="addRoad(road.area) ">Ajouter une voie</button>
-                </td>
                 <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addRoad"
                           (click)="updateRoad(road.id) ">Modifier la voie</button>
@@ -203,8 +198,45 @@
     </div>
   </div>
 
-</div>
+  <br><br>
 
+  <div class="card">
+    <div class="card-header">
+      <h3> Message :</h3>
+        <button type="button"
+                data-toggle="modal" data-target="#createMessage"
+                class="btn btn-primary btn-lg btn-block">Ajouter une message</button>
+
+    <div class="card-body">
+      <div class="card-deck">
+        <div class="card" *ngFor="let message of messages">
+          <div class="card-body">
+            <h5 class="card-title">{{message.user.pseudo}}</h5>
+            <p class="card-text">{{message.message}}</p>
+            <p class="card-text"><small class="text-muted">{{message.date}}</small></p>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateTopo"
+                        *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+                        (click)="updateMessage(message.id)">Modifier le message
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button type="button"  class="btn btn-danger" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+                        (click)="deleteMessage(message.id) ">Supprimer le message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
 
 
 
@@ -618,7 +650,7 @@
 
 
 
-<!-- Modal -->
+<!-- Modal  createRoad-->
 <div *ngIf="idAreaFromViewTopo" class="modal fade" id="createRoad" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -626,8 +658,41 @@
         <app-create-road [idAreaFromViewTopo]="idAreaFromViewTopo"></app-create-road>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="refresh()">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="refreshRoad()">Fermer</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Modal  createArea -->
+<div *ngIf="idTopoFromViewTopo " class="modal fade" id="createArea" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-create-area [idTopoFromViewTopo]="idTopoFromViewTopo "></app-create-area>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="refreshArea()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal  createUserMessage -->
+  <div  *ngIf="topo" class="modal fade" id="createMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-user-message [topo]="topo "></app-user-message>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="refreshMessages()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

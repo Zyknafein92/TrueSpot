@@ -1,6 +1,8 @@
 package truespot.business.dto;
 
 import lombok.Data;
+import truespot.model.Topo;
+import truespot.model.User;
 
 import java.util.Date;
 
@@ -8,8 +10,8 @@ import java.util.Date;
 public class UserMessageDTO {
 
     private Long id;
-    private Long idTopo;
-    private Long idUser;
+    private Topo topo;
+    private User user;
     private String message;
     private Date date;
 

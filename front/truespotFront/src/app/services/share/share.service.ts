@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Share} from "../../../model/share";
+import {Topo} from "../../../model/topo";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,11 @@ export class ShareService {
 
   saveShare(shareDTO: any): Observable<Share> {
     return this.http.post<Share>(this.shareURL + '/create', shareDTO);
+  }
+
+  updateTopo(topo: any){
+    console.log('UPDTAE Share:', topo);
+    return this.http.put<Topo>(this.shareURL + '/update', topo);
   }
 
 }

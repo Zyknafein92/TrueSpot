@@ -52,7 +52,6 @@ export class SignInComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
         this.router.navigateByUrl("/");
-      //  this.reloadPage();
       },
       error => {
         console.log("errorerror:",error);
@@ -61,8 +60,4 @@ export class SignInComponent implements OnInit {
       }
     );
   }
-
- // reloadPage() {
- //   window.location.reload();
-//  }
 }

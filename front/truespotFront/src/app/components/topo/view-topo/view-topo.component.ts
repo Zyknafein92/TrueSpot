@@ -10,6 +10,8 @@ import {TokenStorageService} from "../../../services/auth/token-storage.service"
 import {DepartmentService} from "../../../services/department/department.service";
 import {Department} from "../../../../model/department";
 import {ShareService} from "../../../services/share/share.service";
+import {UserMessage} from "../../../../model/userMessage";
+import {UsermessageService} from "../../../services/user.message/usermessage.service";
 
 
 
@@ -28,6 +30,8 @@ export class ViewTopoComponent implements OnInit {
   topo : Topo;
   areas: any;
   roads : any;
+  messages: any;
+
   road: ClimbingRoad;
   department: Department;
   departments: Department;
@@ -36,6 +40,7 @@ export class ViewTopoComponent implements OnInit {
   formTopo: FormGroup;
 
   idAreaFromViewTopo : string;
+  idTopoFromViewTopo: string;
 
   authorities: string;
   pseudo: string;
@@ -46,11 +51,13 @@ export class ViewTopoComponent implements OnInit {
                private areaService: AreaService,private roadService: RoadService,
                private formBuilder: FormBuilder, private route: ActivatedRoute,
                private router: Router, private token: TokenStorageService,
-               private shareService: ShareService,) { }
+               private shareService: ShareService,
+               private userMessageService: UsermessageService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.idTopo = params['idTopo']; // (+) converts string 'id' to a number
+      this.idTopo = params['idTopo'];
+      this.idTopoFromViewTopo = this.idTopo;// (+) converts string 'id' to a number
     });
 
     this.getTopo();
@@ -59,8 +66,10 @@ export class ViewTopoComponent implements OnInit {
     this.initformRoad();
     this.initformArea();
     this.initDepartmentList();
+    this.getMessages(this.idTopo);
     this.authorities = this.token.getAuthorities();
     this.pseudo = this.token.getPseudo();
+
   }
 
 
@@ -79,6 +88,7 @@ export class ViewTopoComponent implements OnInit {
       nearestHospital: new FormControl(),
       supplyComment: new FormControl(),
       avaible: new FormControl(),
+      releaseDate: new FormControl(),
       id: new FormControl(),
     });
 
@@ -162,7 +172,7 @@ export class ViewTopoComponent implements OnInit {
       response => {
         console.log("Topo UPDDATING: ", response);
         this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
-        location.reload();
+        this.refreshTopo();
       }),
       err => {
         console.log("error: ", err.error.message);
@@ -174,8 +184,7 @@ export class ViewTopoComponent implements OnInit {
     this.idTopo = idTopo;
     this.topoService.deleteTopo(this.idTopo).subscribe(
       response => {
-        this.router.navigateByUrl("/topo/list-topo/");
-        location.reload();
+        this.router.navigateByUrl("/list-topo");
       }),
       err => {
         console.log("error: ", err.error.message);
@@ -261,9 +270,9 @@ export class ViewTopoComponent implements OnInit {
     this.areaService.saveArea(this.formArea)
       .subscribe(
         response => {
-       // Si Area = null -> Formulaire création Road
+          // Si Area = null -> Formulaire création Road
           this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
-          this.refresh();
+          this.refreshArea();
         }),
       err => {
         console.log("error: ", err.error.message);
@@ -276,7 +285,7 @@ export class ViewTopoComponent implements OnInit {
       response => {
         console.log("Area UPDDATING: ", response);
         this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
-        this.refresh();
+        this.refreshArea();
       }),
       err => {
         console.log("error: ", err.error.message);
@@ -289,14 +298,14 @@ export class ViewTopoComponent implements OnInit {
     this.areaService.deleteArea(this.idArea).subscribe(
       response => {
         this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
-        this.refresh()
+        this.refreshArea()
       }),
       err => {
         console.log("error: ", err.error.message);
       };
   }
 
- // ROAD //
+  // ROAD //
   addRoad(area){
     this.initformRoad();
     console.log("ID AREA:", area);
@@ -336,7 +345,7 @@ export class ViewTopoComponent implements OnInit {
         // @ts-ignore
         console.log("ROAD UPDDATING: ", response);
         this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
-        this.refresh();
+        this.refreshRoad();
       }),
       err => {
         console.log("error: ", err.error.message);
@@ -349,7 +358,7 @@ export class ViewTopoComponent implements OnInit {
     this.roadService.deleteRoad(this.idRoad).subscribe(
       response => {
         this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
-        this.refresh();
+        this.refreshRoad();
       }),
       err => {
         console.log("error: ", err.error.message);
@@ -383,8 +392,44 @@ export class ViewTopoComponent implements OnInit {
       }
   }
 
-  refresh(){
+  // MESSAGE //
+
+  getMessages(id) {
+    console.log("ID TOTPO MESSAGE COMPONEN ", id)
+    this.userMessageService.getAllMessageByTopoID(id)
+      .subscribe(
+        response => {
+          this.messages = response;
+          console.log("Messages: ", response);
+        }),
+      err => {
+        console.log("error: ", err.error.message);
+      }
+  }
+
+  updateMessage(id: any) {
+    console.log("Message update: ", id);
+  }
+
+  deleteMessage(id: any) {
+    console.log("Message delete: ", id);
+  }
+  // UTILITAIRE //
+
+  refreshArea(){
+    this.getArea();
+  }
+  refreshTopo(){
+    this.getTopo();
+  }
+
+  refreshRoad(){
     this.getRoad(this.idArea);
+  }
+  refreshMessages(){
+    console.log("REFR MESSAGE")
+    this.getMessages(this.idTopo);
+    // this.getRoad(this.idArea);
   }
 
 }

@@ -17,6 +17,8 @@ public interface TopoManager {
 
     List<Topo> findAllByDepartment_Id(Long id);
 
+    List<Topo> findAllShareTopoByUser (Long id);
+
     TopoDTO getTopo(Long id);
 
     Topo saveTopo(TopoDTOContext topoDTOContext);

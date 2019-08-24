@@ -14,6 +14,7 @@ public class TopoMapper {
 
         TopoDTO topoDTO = new TopoDTO();
 
+        topoDTO.setId(topo.getId() != null ? topo.getId() : topoDTO.getId());
         topoDTO.setName(topo.getName() != null ? topo.getName() : topoDTO.getName());
         topoDTO.setUser(topo.getUser() != null ? UserMapper.objectToDTO(topo.getUser()) : null);
         topoDTO.setDepartment(topo.getDepartment() != null ? DepartmentMapper.objectToDTO(topo.getDepartment()) : null);
@@ -25,7 +26,7 @@ public class TopoMapper {
         topoDTO.setNearestHospital(topo.getNearestHospital() != null ? topo.getNearestHospital() : topoDTO.getNearestHospital());
         topoDTO.setSupplyComment(topo.getSupplyComment() != null ? topo.getSupplyComment() : topoDTO.getSupplyComment());
         topoDTO.setAvaible(topo.getAvaible() != null ? topo.getAvaible() : topoDTO.getAvaible());
-        topoDTO.setRelease_Date(topo.getReleaseDate() != null ? topo.getReleaseDate() : topoDTO.getRelease_Date());
+        topoDTO.setReleaseDate(topo.getReleaseDate() != null ? topo.getReleaseDate() : topoDTO.getReleaseDate());
 
         return topoDTO;
     }
@@ -46,7 +47,7 @@ public class TopoMapper {
         topo.setNearestHospital(topoDTO.getNearestHospital() != null ? topoDTO.getNearestHospital() : topo.getNearestHospital());
         topo.setSupplyComment(topoDTO.getSupplyComment() != null ? topoDTO.getSupplyComment() : topo.getSupplyComment());
         topo.setAvaible(topoDTO.getAvaible() != null ? topoDTO.getAvaible() : topo.getAvaible());
-        topo.setReleaseDate(topoDTO.getRelease_Date() != null ? topoDTO.getRelease_Date() : topo.getReleaseDate());
+        topo.setReleaseDate(topoDTO.getReleaseDate() != null ? topoDTO.getReleaseDate() : topo.getReleaseDate());
         topo.setId(topoDTO.getId());
 
         return topo;

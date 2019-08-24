@@ -3,6 +3,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TopoService} from "../../../services/topo/topo.service";
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
 import {Topo} from "../../../../model/topo";
+import {UserService} from "../../../services/user/user.service";
+import {User} from "../../../../model/user";
+import {ShareService} from "../../../services/share/share.service";
 
 @Component({
   selector: 'app-view-mylist-topo',
@@ -11,22 +14,55 @@ import {Topo} from "../../../../model/topo";
 })
 export class ViewMylistTopoComponent implements OnInit {
   topos : any;
+  toposShare: any;
   topo: Topo;
+  currentUser: User;
 
 
-  constructor(private route: ActivatedRoute, private topoService: TopoService, private router: Router, private token:TokenStorageService) { }
+  constructor(private route: ActivatedRoute, private topoService: TopoService, private router: Router,
+              private token:TokenStorageService, private userService:UserService,
+              private shareService:ShareService) {
+  }
 
   ngOnInit() {
     this.getAllMyTopos(this.token);
+    this.getAllShareTopoByUser();
+  }
+
+  getCurrentUser() {
+    this.userService.getProfil(this.token.getPseudo()).subscribe(
+      res => {
+        this.currentUser = res;
+      }
+    )
   }
 
   getAllMyTopos(token : TokenStorageService){
-      this.topoService.getTopoByUser(this.token.getPseudo()).subscribe(
-        res => {
-          this.topos = res;
-        }
-      )
-    }
+    this.topoService.getTopoByUser(this.token.getPseudo()).subscribe(
+      res => {
+        this.topos = res;
+      }
+    )
+  }
+
+
+  getAllShareTopoByUser(){
+    this.userService.getProfil(this.token.getPseudo()).subscribe(
+      res => {
+        this.currentUser = res;
+        console.log("CURRENT USER ", this.currentUser);
+        this.topoService.getAllShareTopoByUser(this.currentUser.id.toString()).subscribe(
+          res => {
+            this.toposShare = res;
+            console.log("SHARE ", this.toposShare);
+
+          }
+        )
+      }
+    )
+  }
+
+
 
   sendIdTopo(id){
     this.router.navigateByUrl("/topo/view-topo/"+id)
@@ -35,6 +71,16 @@ export class ViewMylistTopoComponent implements OnInit {
   shareTopo(id){
     const shareDTO = {"id": id}
     this.topoService.updateShare(shareDTO).subscribe(
+      response => {
+        this.router.navigateByUrl("/list-topo");
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+  }
+
+  updateTopo(id){
+    this.shareService.updateTopo({"id": id}).subscribe(
       response => {
         this.router.navigateByUrl("/list-topo");
       }),

@@ -1,6 +1,5 @@
 body {
-  padding: 10px;
-  padding-right:30px;
+  padding: 10px 30px 10px 10px;
 }
 
 p {
@@ -8,7 +7,7 @@ font-size: medium;
 }
 
 .Area {
-  background-color: #005cbf;
+  background-color: #5a6268;
   color: white;
 }
 .Road {

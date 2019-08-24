@@ -30,7 +30,7 @@ public class Share {
     @JoinColumn(name = "user_receiver_id", referencedColumnName = "user_id", nullable = false)
     private User userReceiver;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "topo_id", referencedColumnName = "topo_id", nullable = false)
     private Topo topo;
 

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.ShareManager;
 import truespot.business.dto.ShareDTO;
 import truespot.model.Share;
+import truespot.model.Topo;
 
 import java.util.List;
 
@@ -31,12 +32,12 @@ public class ShareController {
     }
 
     @PutMapping(value = "/topo/share/update")
-    public void updateShare(@PathVariable Long id , @RequestBody Share share) {
-        shareManager.updateShare(id,share);
+    public void updateShare(@RequestBody Topo topo) {
+        shareManager.updateShare(topo);
     }
 
-    @DeleteMapping(value= "/topo/share/delete")
-    public void deleteShare(@PathVariable Long id){
-        shareManager.deleteShare(id);
+    @RequestMapping(value = "/topo/share/delete", method = RequestMethod.PUT)
+    public void deleteShare(@RequestParam(name = "id", defaultValue = "")  String id){
+        shareManager.deleteShare(Long.valueOf(id));
     }
 }

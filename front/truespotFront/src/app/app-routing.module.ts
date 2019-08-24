@@ -17,6 +17,7 @@ import {UdapteTopoComponent} from "./components/topo/udapte-topo/udapte-topo.com
 import {UpdateUserComponent} from "./components/user/update-user/update-user.component";
 import {ViewUserprofilComponent} from "./components/user/view-userprofil/view-userprofil.component";
 import {ViewListUsersComponent} from "./components/user/view-list-users/view-list-users.component";
+import {AuthGuard} from "./auth.guard";
 
 
 
@@ -26,22 +27,22 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
 
   {path: 'createUser', component: CreateUserComponent},
-  {path: 'updateUser', component:UpdateUserComponent},
-  {path: 'myprofil', component: ViewMyprofilComponent},
-  {path: 'list-user', component: ViewListUsersComponent},
-  {path: 'view-UserProfil', component: ViewUserprofilComponent},
+  {path: 'updateUser', component:UpdateUserComponent, canActivate: [AuthGuard]},
+  {path: 'myprofil', component: ViewMyprofilComponent, canActivate: [AuthGuard]},
+  {path: 'list-user', component: ViewListUsersComponent, canActivate: [AuthGuard]},
+  {path: 'view-UserProfil', component: ViewUserprofilComponent, canActivate: [AuthGuard]},
 
-  {path: 'createArea', component: CreateAreaComponent},
+  {path: 'createArea', component: CreateAreaComponent, canActivate: [AuthGuard]},
 
-
-  {path: 'createRoad', component: CreateRoadComponent},
+  {path: 'createRoad', component: CreateRoadComponent, canActivate: [AuthGuard]},
   {path: 'updateRoad', component: UpdateRoadComponent},
 
-  {path: 'createTopo', component:CreateTopoComponent},
-  {path: 'updateTopo', component: UdapteTopoComponent},
-  {path: 'list-topo', component: ViewListTopoComponent},
-  {path: 'list-myTopos', component: ViewMylistTopoComponent},
-  {path: 'view-topo', component: ViewTopoComponent},
+  {path: 'createTopo', component:CreateTopoComponent, canActivate: [AuthGuard]},
+  {path: 'updateTopo', component: UdapteTopoComponent, canActivate: [AuthGuard]},
+
+  {path: 'list-topo', component: ViewListTopoComponent, canActivate: [AuthGuard]},
+  {path: 'list-myTopos', component: ViewMylistTopoComponent, canActivate: [AuthGuard]},
+  {path: 'view-topo', component: ViewTopoComponent, canActivate: [AuthGuard]},
 
 
 
@@ -53,14 +54,17 @@ const appRoutes: Routes = [
       {
         path: 'add-topo',
         component: CreateTopoComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'list-topo',
         component: CreateTopoComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'view-topo/:idTopo',
         component: ViewTopoComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'area',
@@ -68,6 +72,7 @@ const appRoutes: Routes = [
           {
             path: 'add-area/:idTopo',
             component: CreateAreaComponent,
+            canActivate: [AuthGuard],
           },
         ]
       },
@@ -77,6 +82,7 @@ const appRoutes: Routes = [
           {
             path: 'add-road/:idArea',
             component: CreateRoadComponent,
+            canActivate: [AuthGuard],
           },
         ]
       },

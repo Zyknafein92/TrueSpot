@@ -36,7 +36,7 @@ export class CreateRoadComponent implements OnInit {
       .subscribe(
         response => {
           // @ts-ignore
-          this.router.navigateByUrl("/list-myTopos");
+          this.router.navigateByUrl("/topo/view-topo/" + response.id);
           console.log("reponse: ", response);
         }),
       err => {
@@ -44,8 +44,7 @@ export class CreateRoadComponent implements OnInit {
       }
   }
 
-private initform() {
-
+  private initform() {
     console.log("idAreaFromViewTopo from ROAD", this.idAreaFromViewTopo)
     this.forms = this.formBuilder.group(
       {

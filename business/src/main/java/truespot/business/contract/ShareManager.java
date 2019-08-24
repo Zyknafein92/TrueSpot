@@ -3,6 +3,7 @@ package truespot.business.contract;
 
 import truespot.business.dto.ShareDTO;
 import truespot.model.Share;
+import truespot.model.Topo;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface ShareManager {
 
     Share saveShare(ShareDTO shareDTO);
 
-    void updateShare(Long id, Share share);
+    void updateShare(Topo topo);
 
     void deleteShare(Long id);
 }

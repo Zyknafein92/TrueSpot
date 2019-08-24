@@ -76,6 +76,7 @@ public class DaoFactoryImpl implements DaoFactory {
     }
 
     @Override
+    @Autowired
     public void setUserMessageRepository(UserMessageRepository userMessageRepository) {
         this.userMessageRepository = userMessageRepository;
     }

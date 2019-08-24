@@ -77,4 +77,21 @@ public class Topo implements Serializable {
         this.supplyComment = supplyComment;
         this.avaible = avaible;
     }
+
+
+    public Topo(Long id, String name, User user, Department department, Date releaseDate, String description, String nearestCity, Boolean carAccess, Boolean carParking, String accessDescription, String nearestHospital, String supplyComment, String avaible) {
+        this.id = id;
+        this.name = name;
+        this.user = user;
+        this.department = department;
+        this.releaseDate = releaseDate;
+        this.description = description;
+        this.nearestCity = nearestCity;
+        this.carAccess = carAccess;
+        this.carParking = carParking;
+        this.accessDescription = accessDescription;
+        this.nearestHospital = nearestHospital;
+        this.supplyComment = supplyComment;
+        this.avaible = avaible;
+    }
 }

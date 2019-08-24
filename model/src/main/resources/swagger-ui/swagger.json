@@ -327,18 +327,21 @@
         "type" : {
           "type" : "string"
         },
+        "position" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
         "format" : {
           "type" : "string"
         },
         "description" : {
           "type" : "string"
         },
-        "position" : {
-          "type" : "integer",
-          "format" : "int32"
+        "example" : {
+          "type" : "object"
         },
-        "title" : {
-          "type" : "string"
+        "allowEmptyValue" : {
+          "type" : "boolean"
         },
         "vendorExtensions" : {
           "type" : "object",
@@ -346,14 +349,11 @@
             "type" : "object"
           }
         },
+        "title" : {
+          "type" : "string"
+        },
         "xml" : {
           "$ref" : "#/definitions/Xml"
-        },
-        "example" : {
-          "type" : "object"
-        },
-        "allowEmptyValue" : {
-          "type" : "boolean"
         }
       }
     },

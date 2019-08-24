@@ -48,6 +48,14 @@ export class TopoService {
     });
   }
 
+  getAllShareTopoByUser(id : string) {
+    console.log("ShareTopoByUser ", id);
+    return this.http.get<Topo[]>(this.topoUrl + '/getAllShareTopoByUser/',     {
+      params : new HttpParams()
+        .set('id', id)
+    });
+  }
+
   getAllTopo(){
     return this.http.get<Topo>('http://localhost:8080/getAllTopos');
   }

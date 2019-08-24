@@ -22,6 +22,7 @@ import { UpdateUserComponent } from './components/user/update-user/update-user.c
 import { ViewUserprofilComponent } from './components/user/view-userprofil/view-userprofil.component';
 import { ViewMylistTopoComponent } from './components/topo/view-mylist-topo/view-mylist-topo.component';
 import {LogoutComponent} from "./components/auth/logout/logout.component";
+import { UserMessageComponent } from './components/user/user-message/user-message.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {LogoutComponent} from "./components/auth/logout/logout.component";
     UpdateUserComponent,
     ViewUserprofilComponent,
     ViewMylistTopoComponent,
+    UserMessageComponent,
 
   ],
   imports: [

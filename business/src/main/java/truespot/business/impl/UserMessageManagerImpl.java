@@ -4,15 +4,22 @@ package truespot.business.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.UserMessageManager;
+import truespot.business.dto.UserMessageDTO;
 import truespot.consumer.implement.UserMessageRepository;
+import truespot.model.Topo;
+import truespot.model.User;
 import truespot.model.UserMessage;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 @Service
 public class UserMessageManagerImpl extends BusinessManagerImpl implements UserMessageManager {
+
+    @Autowired
+    UserMessageRepository userMessageRepository;
 
 
     @Override
@@ -27,16 +34,17 @@ public class UserMessageManagerImpl extends BusinessManagerImpl implements UserM
 
     @Override
     public UserMessage saveUserMessage(UserMessage userMessage) {
-        return getDaoFactory().getUserMessageRepository().save(userMessage);
+        userMessage.setDate(new Date());
+       return getDaoFactory().getUserMessageRepository().save(userMessage);
     }
 
     @Override
-    public void updateUserMessage(Long id, UserMessage userMessage) {
+    public void updateUserMessage(UserMessage userMessage) {
         getDaoFactory().getUserMessageRepository().save(userMessage);
     }
 
     @Override
     public void deleteUserMessage(Long id) {
-        getDaoFactory().getUserMessageRepository().deleteById(id);
+        getDaoFactory().getUserMessageRepository().delete(getDaoFactory().getUserMessageRepository().getOne(id));
     }
 }

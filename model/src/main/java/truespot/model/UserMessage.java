@@ -27,7 +27,7 @@ public class UserMessage {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "topo_id", referencedColumnName = "topo_id", nullable = false)
     private Topo topo;
 
@@ -40,4 +40,10 @@ public class UserMessage {
 
     public UserMessage() {}
 
+    public UserMessage(User user, Topo topo, String message, Date date) {
+        this.user = user;
+        this.topo = topo;
+        this.message = message;
+        this.date = date;
+    }
 }

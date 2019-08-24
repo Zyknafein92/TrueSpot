@@ -1,5 +1,6 @@
 package truespot.business.contract;
 
+import truespot.business.dto.UserMessageDTO;
 import truespot.model.UserMessage;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface UserMessageManager {
 
     UserMessage saveUserMessage(UserMessage userMessage);
 
-    void updateUserMessage(Long id, UserMessage userMessage);
+    void updateUserMessage(UserMessage userMessage);
 
     void deleteUserMessage(Long id);
 }

@@ -10,7 +10,7 @@
               <form #f="ngForm" [formGroup]="forms" (ngSubmit)="saveRoad()">
 
                 <div class="row">
-                  <div class="col-md-2">
+                  <div class="col-md-6">
                     <div class="form-group"
                          [class.has-success]="forms.get('name').valid"
                          [class.has-error]="forms.get('name').invalid && forms.get('name').touched">
@@ -24,7 +24,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-2">
+                  <div class="col-md-6">
                     <label class="control-label">Type de la voie:</label>
                     <div class="form-group"
                          [class.has-success]="forms.get('type').valid"
