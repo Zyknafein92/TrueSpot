@@ -35,9 +35,9 @@ export class ViewListUsersComponent implements OnInit {
   }
 
   updateRole(user: User) {
-    user = this.userToUpdate;
-    console.log("User to Up :", this.users);
-    this.userService.updateUserRole(user).subscribe(
+    this.userToUpdate = user;
+    console.log("User to Up :", this.userToUpdate);
+    this.userService.updateUserRole(this.userToUpdate).subscribe(
       response => {
        this.getAllUsers();
       }),

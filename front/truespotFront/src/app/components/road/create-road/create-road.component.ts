@@ -37,7 +37,7 @@ export class CreateRoadComponent implements OnInit {
         response => {
           // @ts-ignore
           this.router.navigateByUrl("/topo/view-topo/" + response.id);
-          console.log("reponse: ", response);
+          console.log("reponse SAVE: ", response);
         }),
       err => {
         console.log("error: ", err.error.message);

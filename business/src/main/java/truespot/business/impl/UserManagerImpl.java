@@ -93,6 +93,7 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     public void updateUser(UserDTO userDTO) {
         User user = getDaoFactory().getUserRepository().findByPseudo(userDTO.getPseudo());
         String password = user.getPassword();
+        encoder.encode(userDTO.getPassword());
 
         if (!encoder.matches(password, userDTO.getPassword())) {
             user.setPassword(encoder.encode(userDTO.getPassword()));
@@ -110,11 +111,11 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
 
         Set<Role> roleToAdd = new HashSet<>();
 
-        if(!user.getRoles().contains(userRole)){
-            user.getRoles().removeAll(user.getRoles());
-            roleToAdd.add(adminRole);
-            user.setRoles(roleToAdd);
-        }
+
+        user.getRoles().removeAll(user.getRoles());
+        roleToAdd.add(adminRole);
+        user.setRoles(roleToAdd);
+
         getDaoFactory().getUserRepository().save(user);
     }
 
@@ -128,6 +129,8 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
                 getDaoFactory().getTopoRepository().delete(topo);
             }
         }
+        user.getRoles().removeAll(user.getRoles());
+        //clean le role
 
         getDaoFactory().getUserRepository().delete(getDaoFactory().getUserRepository().getOne(id));
     }

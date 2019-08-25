@@ -31,7 +31,7 @@
                 <td>{{user.email}}</td>
                 <td>{{user.phoneNumber}}</td>
                 <td>{{user.roles}}</td>
-               <td><button type="button" class="btn btn-secondary" *ngIf="user" (click)="updateRole(users)">Modifier les droits</button></td>
+               <td><button type="button" class="btn btn-secondary" *ngIf="user" datatype="user" (click)="updateRole(user)">Modifier les droits</button></td>
               </tr>
 
               </tbody>
