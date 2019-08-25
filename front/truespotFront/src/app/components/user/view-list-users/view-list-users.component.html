@@ -10,7 +10,6 @@
             <table class="table table-responsive">
               <table class="table table-hover table-condensed table-striped">
                 <thead class="User">
-
               <tr>
                 <th>Pseudo</th>
                 <th>Nom</th>
@@ -20,6 +19,7 @@
                 <th>Numero de téléphone</th>
                 <th>Role</th>
                 <th>Actions</th>
+              </tr>
                 </thead>
                 <tbody>
 
@@ -30,8 +30,8 @@
                 <td>{{user.gender}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.phoneNumber}}</td>
-                <td>{{user.roles[0].name}}</td>
-               <td><button type="button" class="btn btn-secondary">Modifier les droits</button></td>
+                <td>{{user.roles}}</td>
+               <td><button type="button" class="btn btn-secondary" *ngIf="user" (click)="updateRole(users)">Modifier les droits</button></td>
               </tr>
 
               </tbody>

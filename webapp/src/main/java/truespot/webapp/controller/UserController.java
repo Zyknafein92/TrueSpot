@@ -58,6 +58,11 @@ public class UserController {
         userManager.updateUser(userDTO);
     }
 
+    @RequestMapping(value = "/user/update/role", method = RequestMethod.PUT)
+    public void updateUserRole(@RequestBody UserDTO userDTO) {
+        userManager.updateUserRole(userDTO);
+    }
+
     @RequestMapping(value = "/user/delete", method = RequestMethod.DELETE)
     public void deleteUser(@RequestParam(name = "idUser", defaultValue = "")  String idUser){
         userManager.deleteUser(Long.valueOf(idUser));

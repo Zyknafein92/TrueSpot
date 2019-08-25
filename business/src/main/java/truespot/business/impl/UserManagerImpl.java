@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import truespot.business.contract.RoleManager;
 import truespot.business.contract.UserManager;
 import truespot.business.dto.UserDTO;
 import truespot.business.dto.mapper.UserMapper;
@@ -17,6 +18,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 
 @Service
@@ -26,7 +28,7 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     PasswordEncoder encoder;
 
     @Autowired
-    RoleRepository roleRepository;
+    RoleManager roleManager;
 
     @Override
     public List<User> findAllUser() {
@@ -57,24 +59,27 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     @Override
     public ResponseEntity<Object> saveUser(UserDTO userDTO) {
 
-            User userFind = getDaoFactory().getUserRepository().findByPseudo(userDTO.getPseudo());
-            if (userFind == null){
-                User user = UserMapper.dtoToObject(userDTO);
-                Role userRole = roleRepository.findByName(RoleName.ROLE_USER);
-                Set<Role> roles = new HashSet<>();
+        User userFind = getDaoFactory().getUserRepository().findByPseudo(userDTO.getPseudo());
+        Set<Role> roles= new HashSet<>();
 
-                if(user.getRoles().isEmpty()){
-                    roles.add(userRole);
-                }
+        Role roleUser = roleManager.findByRoleName(RoleName.ROLE_USER);
 
-                user.setRoles(roles);
-                user.setPassword(encoder.encode(user.getPassword()));
-                User userToSave = getDaoFactory().getUserRepository().save(user);
-                return new ResponseEntity<>(userToSave, HttpStatus.OK);
-            }else{
-                ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST,"Ce PSEUDO EXISTE DEJA");
-                return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+        if (userFind == null){
+            User user = UserMapper.dtoToObject(userDTO);
+
+
+            if(user.getRoles().isEmpty()){
+                roles.add(roleUser);
             }
+
+            user.setRoles(roles);
+            user.setPassword(encoder.encode(user.getPassword()));
+            User userToSave = getDaoFactory().getUserRepository().save(user);
+            return new ResponseEntity<>(userToSave, HttpStatus.OK);
+        }else {
+            ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST,"Ce PSEUDO EXISTE DEJA");
+            return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -97,6 +102,23 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     }
 
     @Override
+    public void updateUserRole(UserDTO userDTO){
+        User user = getDaoFactory().getUserRepository().findByPseudo(userDTO.getPseudo());
+
+        Role adminRole = roleManager.findByRoleName(RoleName.ROLE_ADMIN);
+        Role userRole = roleManager.findByRoleName(RoleName.ROLE_USER);
+
+        Set<Role> roleToAdd = new HashSet<>();
+
+        if(!user.getRoles().contains(userRole)){
+            user.getRoles().removeAll(user.getRoles());
+            roleToAdd.add(adminRole);
+            user.setRoles(roleToAdd);
+        }
+        getDaoFactory().getUserRepository().save(user);
+    }
+
+    @Override
     public void deleteUser(Long id) {
 
         User user = getDaoFactory().getUserRepository().getOne(id);
@@ -109,4 +131,5 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
 
         getDaoFactory().getUserRepository().delete(getDaoFactory().getUserRepository().getOne(id));
     }
+
 }

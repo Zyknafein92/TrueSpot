@@ -6,6 +6,7 @@ import {DepartmentService} from "../../../services/department/department.service
 import {Department} from "../../../../model/department";
 import {User} from "../../../../model/user";
 import {Router} from "@angular/router";
+import {TokenStorageService} from "../../../services/auth/token-storage.service";
 
 @Component({
   selector: 'app-create-topo',
@@ -19,11 +20,12 @@ export class CreateTopoComponent implements OnInit {
   user: User;
   department: Department;
   departments: Department;
+  authorities: string;
 
 
 
   constructor(private topoService: TopoService, private departmentService :DepartmentService, private formBuilder: FormBuilder,
-              private router: Router){
+              private router: Router, private token:TokenStorageService){
   }
 
   ngOnInit() {
@@ -42,7 +44,6 @@ export class CreateTopoComponent implements OnInit {
         err => {
           console.log("error: ", err.error.message);
         })
-
   }
 
   private initForm() {
@@ -57,6 +58,7 @@ export class CreateTopoComponent implements OnInit {
       accessDescription: new FormControl(),
       nearestHospital: new FormControl(),
       supplyComment: new FormControl(),
+      isAmical : new FormControl(),
     });
   }
 

@@ -68,7 +68,8 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
                     topoOptional.get().getAccessDescription(),
                     topoOptional.get().getNearestHospital(),
                     topoOptional.get().getSupplyComment(),
-                    topoOptional.get().getAvaible()
+                    topoOptional.get().getAvaible(),
+                    topoOptional.get().getIsAmical()
             );
         }
 
@@ -98,6 +99,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         topoDTO.setAccessDescription(topoDTOContext.getAccessDescription());
         topoDTO.setNearestHospital(topoDTOContext.getNearestHospital());
         topoDTO.setSupplyComment(topoDTOContext.getSupplyComment());
+        topoDTO.setIsAmical(topoDTOContext.getIsAmical());
         topoDTO.setAvaible("DISPONIBLE");
 
         Topo topo = TopoMapper.dtoToObject(topoDTO);

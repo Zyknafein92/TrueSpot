@@ -27,4 +27,5 @@ export interface Topo {
     nearestHospital?: string;
     supplyComment?: string;
     avaible?: string;
+    isAmical?: boolean;
 }

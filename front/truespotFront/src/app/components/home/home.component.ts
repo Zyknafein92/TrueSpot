@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   idDepartement: any;
   department: Department;
   departments: Department;
-
+  info: any;
   formSearchDept: FormGroup;
   departement: Department;
 
@@ -30,8 +30,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.initDepartmentList();
-    this.initDepartmentForm()
+    this.initDepartmentForm();
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getPseudo(),
+      authorities: this.token.getAuthorities()
+    };
   }
+
 
   private initDepartmentForm(){
     this.formSearchDept = this.formBuilder.group(

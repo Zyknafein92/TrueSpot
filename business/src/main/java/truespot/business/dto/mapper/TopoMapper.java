@@ -15,6 +15,7 @@ public class TopoMapper {
         TopoDTO topoDTO = new TopoDTO();
 
         topoDTO.setId(topo.getId() != null ? topo.getId() : topoDTO.getId());
+        topoDTO.setIsAmical(topo.getIsAmical() != null ? topo.getIsAmical() : topoDTO.getIsAmical());
         topoDTO.setName(topo.getName() != null ? topo.getName() : topoDTO.getName());
         topoDTO.setUser(topo.getUser() != null ? UserMapper.objectToDTO(topo.getUser()) : null);
         topoDTO.setDepartment(topo.getDepartment() != null ? DepartmentMapper.objectToDTO(topo.getDepartment()) : null);
@@ -28,6 +29,7 @@ public class TopoMapper {
         topoDTO.setAvaible(topo.getAvaible() != null ? topo.getAvaible() : topoDTO.getAvaible());
         topoDTO.setReleaseDate(topo.getReleaseDate() != null ? topo.getReleaseDate() : topoDTO.getReleaseDate());
 
+
         return topoDTO;
     }
 
@@ -35,7 +37,7 @@ public class TopoMapper {
 
         Topo topo = new Topo();
 
-
+        topo.setIsAmical(topoDTO.getIsAmical() != null ? topoDTO.getIsAmical() : topo.getIsAmical());
         topo.setName(topoDTO.getName() != null ? topoDTO.getName() : topo.getName());
         topo.setUser(topoDTO.getUser() != null ? UserMapper.dtoToObject(topoDTO.getUser()) : null);
         topo.setDepartment(topoDTO.getDepartment() != null ? DepartmentMapper.DTOToObject(topoDTO.getDepartment()) : null);

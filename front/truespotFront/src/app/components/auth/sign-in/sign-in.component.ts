@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  //roles: string[] = [];
+  // roles: string[] = [];
   roles: string = "[]";
   private loginInfo: AuthLoginInfo;
 

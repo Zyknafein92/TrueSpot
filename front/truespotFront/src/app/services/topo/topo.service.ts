@@ -28,6 +28,7 @@ export class TopoService {
       "accessDescription" : form.get("accessDescription").value,
       "nearestHospital" : form.get("nearestHospital").value,
       "supplyComment" : form.get("supplyComment").value,
+      "isAmical": form.get("isAmical").value,
     });
   }
 

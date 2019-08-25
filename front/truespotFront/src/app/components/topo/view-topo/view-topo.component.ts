@@ -89,6 +89,7 @@ export class ViewTopoComponent implements OnInit {
       avaible: new FormControl(),
       releaseDate: new FormControl(),
       id: new FormControl(),
+      isOfficial : new FormControl(),
     });
 
   }

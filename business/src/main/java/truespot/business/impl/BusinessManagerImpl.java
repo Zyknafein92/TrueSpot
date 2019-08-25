@@ -12,6 +12,7 @@ public class BusinessManagerImpl extends BusinessManager {
     private AreaManager areaManager;
     private ClimbingRoadManager climbingRoadManager;
     private DepartmentManager departmentManager;
+    private RoleManager roleManager;
     private ShareManager shareManager;
     private TopoManager topoManager;
     private UserMessageManager userMessageManager;
@@ -26,6 +27,8 @@ public class BusinessManagerImpl extends BusinessManager {
     public ClimbingRoadManager getClimbingRoadManager() { return climbingRoadManager;}
 
     public DepartmentManager getDepartmentManager() { return departmentManager; }
+
+    public RoleManager getRoleManager() { return roleManager;}
 
     public ShareManager getShareManager() { return shareManager;}
 
@@ -47,6 +50,9 @@ public class BusinessManagerImpl extends BusinessManager {
 
     @Autowired
     public void setDepartmentManager(DepartmentManager departmentManager) { this.departmentManager = departmentManager; }
+
+    @Autowired
+    public void setRoleManager(RoleManager roleManager) { this.roleManager = roleManager;}
 
     @Autowired
     public void setShareManager (ShareManager shareManager) { this.shareManager = shareManager; }

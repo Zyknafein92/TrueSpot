@@ -19,6 +19,8 @@ public interface UserManager {
 
     void updateUser(UserDTO userDTO);
 
+    void updateUserRole(UserDTO userDTO);
+
     void deleteUser(Long id);
 
 }

@@ -1,6 +1,10 @@
 <div class="well center">
   <div class= "card-title text-center" *ngIf="topo">
     <h1>{{topo.name}}</h1>
+    <br>
+    <div class *ngIf="topo.isAmical == true">
+      <h4>Topic officiel "Les amis de l’escalade"</h4>
+    </div>
   </div>
   <br>
 
@@ -23,8 +27,10 @@
               </div>
             </div>
             <br>
+            <div class="col-md-6">
             <h4 class="card-title">Ville la plus proche :</h4>
             <p class="card-text">{{topo.nearestCity}}</p>
+            </div>
           </div>
         </div>
 

@@ -9,8 +9,8 @@ const USER_KEY = "AuthUser";
   providedIn: 'root'
 })
 export class TokenStorageService {
-  //private roles: Array<string> = [];
-  private roles: string;
+  // private roles: Array<string> = [];
+ private roles: string;
   constructor() { }
 
   signOut() {
@@ -41,13 +41,13 @@ export class TokenStorageService {
   }
 
   public getAuthorities(): string {
-    //this.roles = [];
-    this.roles= "";
+    // this.roles = [];
+   this.roles= "";
 
     if (sessionStorage.getItem(TOKEN_KEY)) {
       JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
-        this.roles = authority.authority;
-       // this.roles.push(authority.authority);
+       this.roles = authority.authority;
+      //  this.roles.push(authority.authority);
       });
     }
     return this.roles;

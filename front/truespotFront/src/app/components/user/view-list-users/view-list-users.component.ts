@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../../model/user";
+import {Role} from "../../../../model/role";
 
 @Component({
   selector: 'app-view-list-users',
@@ -12,6 +13,9 @@ export class ViewListUsersComponent implements OnInit {
 
   users: any;
   user: User;
+  userToUpdate : User;
+  authorities: string;
+
 
   constructor(private token:TokenStorageService, private userService: UserService) { }
 
@@ -30,4 +34,15 @@ export class ViewListUsersComponent implements OnInit {
       });
   }
 
+  updateRole(user: User) {
+    user = this.userToUpdate;
+    console.log("User to Up :", this.users);
+    this.userService.updateUserRole(user).subscribe(
+      response => {
+       this.getAllUsers();
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+  }
 }

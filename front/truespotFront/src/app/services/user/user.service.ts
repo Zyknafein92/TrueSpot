@@ -44,6 +44,10 @@ export class UserService {
     return this.http.put<Topo>(this.userUrl + '/update', forms.value)
   }
 
+  updateUserRole(user : any): Observable<User> {
+    return this.http.put<User>(this.userUrl + '/update/role', user)
+  }
+
   deleteUser(idUser: any): Observable<{}>{
     return this.http.delete<User>( this.userUrl + '/delete', {
       params: new HttpParams()

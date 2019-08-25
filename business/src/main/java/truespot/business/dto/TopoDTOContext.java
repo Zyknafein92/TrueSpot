@@ -21,4 +21,5 @@ public class TopoDTOContext {
     private String nearestHospital;
     private String supplyComment;
     private String avaible;
+    private Boolean isAmical;
 }

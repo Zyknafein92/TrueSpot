@@ -162,6 +162,22 @@
                   </div>
                 </div>
 
+                <div class="row" *ngIf="this.token.getAuthorities() == 'ROLE_ADMIN'">
+                  <div class="col-md-2">
+                    <label> Topic Officiel ?</label>
+                    <div class="form-group"
+                         [class.has-success]="forms.get('isAmical').valid"
+                         [class.has-error]="forms.get('isAmical').invalid && forms.get('isAmical').touched">
+                      <div class="form-group">
+                        <select class="browser-default custom-select" formControlName="isAmical">
+                          <option [value]="true">Oui</option>
+                          <option [value]="false">Non</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <br>
                 <br>
 
