@@ -1,25 +1,110 @@
 
+<button type="button"
+        data-toggle="modal" data-target="#SearchDept"
+        class="btn btn-primary btn-lg btn-block">Rechercher un topo par son département</button>
 
-<div class="container-fluid">
+<div class="container">
   <div class="card">
-    <div class="card-header badge-primary"><h3>Recherche :</h3></div>
+    <div class="card-header badge-primary"><h3>Liste des topos :</h3></div>
     <div class="card-body">
       <div class="card-deck">
         <div class="card">
           <div class="card-body">
-            <div class="row">
-              <select class="selectpicker" da>
-
-              </select>
-              </div>
-            </div>
-            </div>
+            <table class="table table-responsive" >
+              <table class="table table-hover table-condensed table-striped">
+                <thead class="table-display">
+                <tr>
+                  <th>Nom du topo</th>
+                  <th>Department</th>
+                  <th>Date de parution</th>
+                  <th>Disponible</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let topo of topos">
+                  <td>{{topo.name}}</td>
+                  <td>{{topo.department.id}} -  {{topo.department.name}}</td>
+                  <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
+                  <td>{{topo.avaible}}</td>
+                  <td><a button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</a></td>
+                </tbody>
+              </table>
+            </table>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </div>
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Modal Search Dept -->
+<div class="modal fade" id="SearchDept" tabindex="-1" role="dialog" aria-labelledby="SearchDept" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header btn-primary">
+        <h5 class="modal-title" id="SearchDeptTitle">Modifier le topo :</h5>
+        <button type="button btn-danger" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="panel panel-primary">
+          <div class="panel-body">
+            <form #f="ngForm" [formGroup]="formSearchDept">
+
+              <div class="col-md-4">
+                <div class="form-group"
+                     [class.has-success]="formSearchDept.get('idDepartment').valid"
+                     [class.has-error]="formSearchDept.get('idDepartment').invalid && formSearchDept.get('idDepartment').touched">
+                  <label class="control-label">Departement:</label>
+                  <input class="form-control input-md"
+                         type="number"
+                         name="idDepartment"
+                         placeholder="Numéro du département"
+                         formControlName="idDepartment"
+                         autocapitalize="on"
+                         spellcheck="on"
+                         required
+                         min="1"
+                         minlength="95">
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary"  [disabled]="formSearchDept.invalid"  data-dismiss="modal" (click)="this.getTopoByDept()">Rechercher</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

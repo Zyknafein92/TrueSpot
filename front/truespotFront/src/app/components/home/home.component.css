@@ -1,0 +1,12 @@
+body {
+  padding: 10px 30px 10px 10px;
+}
+
+p {
+  font-size: medium;
+}
+
+.table-display {
+  background-color: #5a6268;
+  color: white;
+}

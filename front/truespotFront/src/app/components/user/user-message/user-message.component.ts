@@ -55,6 +55,7 @@ export class UserMessageComponent implements OnInit {
       })
 
   }
+
   saveMessage(){
     this.forms.patchValue({
       user: this.currentUSer,

@@ -4,6 +4,7 @@ import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {User} from "../../../model/user";
 import {TokenStorageService} from "../auth/token-storage.service";
+import {Topo} from "../../../model/topo";
 
 
 
@@ -38,4 +39,16 @@ export class UserService {
   getUser(id:number){
     return this.http.get<User>(this.userUrl + '/' + id);
   }
+
+  updateUser(forms: FormGroup): Observable<User> {
+    return this.http.put<Topo>(this.userUrl + '/update', forms.value)
+  }
+
+  deleteUser(idUser: any): Observable<{}>{
+    return this.http.delete<User>( this.userUrl + '/delete', {
+      params: new HttpParams()
+        .set('idUser', idUser)
+    });
+  }
+
 }

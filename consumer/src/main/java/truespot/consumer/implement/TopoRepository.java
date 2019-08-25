@@ -20,5 +20,5 @@ public interface TopoRepository extends JpaRepository <Topo, Long> {
     List<Topo> findAllByDepartment_Id(@Param("id")  Long id);
 
     @Query("select  t from Topo t, Share s, User u where  u.id = s.userReceiver.id and  s.topo.id = t.id and s.userReceiver.id =:id")
-    List<Topo> findAllShareToByUser(@Param("id")  Long id);
+    List<Topo> findAllShareTopoByUser(@Param("id")  Long id);
 }

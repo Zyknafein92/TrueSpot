@@ -60,6 +60,14 @@ export class TopoService {
     return this.http.get<Topo>('http://localhost:8080/getAllTopos');
   }
 
+  getTopoByDepartment(idDepartment : string): Observable<Topo[]>{
+   console.log("id to", idDepartment);
+    return this.http.get<Topo[]>(this.topoUrl + '/getByDepartment', {
+      params : new HttpParams()
+        .set('idDepartment', idDepartment)
+    });
+  }
+
   updateTopo(form: FormGroup) : Observable<Topo>{
     return this.http.put<Topo>(this.topoUrl + '/update', form.value
     );

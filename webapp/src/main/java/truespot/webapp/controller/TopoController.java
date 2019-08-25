@@ -26,10 +26,9 @@ public class TopoController {
     public List<Topo> getTopoByUser(@RequestParam(name = "pseudo", defaultValue = "") String pseudo) {
         return topoManager.findAllByUser_Pseudo(pseudo);
     }
-
-    @RequestMapping(value = "/topo/getByDepartment/", method = RequestMethod.GET)
-    public List<Topo> getTopoByDepartment(@RequestParam(name = "id", defaultValue = "") String id) {
-        return topoManager.findAllByDepartment_Id(new Long(id));
+    @RequestMapping(value = "/topo/getByDepartment", method = RequestMethod.GET)
+    public List<Topo> getTopoByDepartment(@RequestParam(name = "idDepartment", defaultValue = "") String idDepartment) {
+        return topoManager.findAllByDepartment_Id(Long.valueOf(idDepartment));
     }
 
     @RequestMapping(value = "/topo/getAllShareTopoByUser", method = RequestMethod.GET)

@@ -24,6 +24,7 @@ public class ShareManagerImpl extends BusinessManagerImpl implements ShareManage
         return getDaoFactory().getShareRepository().findAll();
     }
 
+
     @Override
     public Share getShare(Long id) {
 
@@ -71,6 +72,5 @@ public class ShareManagerImpl extends BusinessManagerImpl implements ShareManage
     @Override
     public void deleteShare(Long id) {
         getDaoFactory().getShareRepository().delete(getDaoFactory().getShareRepository().getOne(id));
-
     }
 }

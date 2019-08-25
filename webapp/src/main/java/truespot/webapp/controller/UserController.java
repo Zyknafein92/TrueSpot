@@ -53,15 +53,17 @@ public class UserController {
         return userManager.saveUser(userDTO);
     }
 
-    @PutMapping(value = "/user/{id}")
-    public void updateUser(@PathVariable Long id , @RequestBody User user) {
-        userManager.updateUser(id,user);
+    @RequestMapping(value = "/user/update", method = RequestMethod.PUT)
+    public void updateUser(@RequestBody UserDTO userDTO) {
+        userManager.updateUser(userDTO);
     }
 
-    @DeleteMapping(value= "/user/{id}")
-    public void deleteUser(@PathVariable Long id){
-        userManager.deleteUser(id);
+    @RequestMapping(value = "/user/delete", method = RequestMethod.DELETE)
+    public void deleteUser(@RequestParam(name = "idUser", defaultValue = "")  String idUser){
+        userManager.deleteUser(Long.valueOf(idUser));
     }
+
+
 
     @PostMapping(value="/login")
     public JwtResponse login (@RequestBody User user) {

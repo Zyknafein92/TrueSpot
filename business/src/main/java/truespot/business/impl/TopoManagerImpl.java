@@ -2,19 +2,14 @@ package truespot.business.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import truespot.business.contract.AreaManager;
-import truespot.business.contract.DepartmentManager;
-import truespot.business.contract.TopoManager;
+import truespot.business.contract.*;
 import truespot.business.dto.TopoDTO;
 import truespot.business.dto.TopoDTOContext;
 import truespot.business.dto.UserDTO;
 import truespot.business.dto.mapper.DepartmentMapper;
 import truespot.business.dto.mapper.TopoMapper;
 import truespot.business.dto.mapper.UserMapper;
-import truespot.model.Area;
-import truespot.model.Department;
-import truespot.model.Topo;
-import truespot.model.User;
+import truespot.model.*;
 
 import java.util.*;
 
@@ -26,6 +21,10 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
     DepartmentManager departmentManager;
     @Autowired
     AreaManager areaManager;
+    @Autowired
+    UserMessageManager userMessageManager;
+    @Autowired
+    ShareManager shareManager;
 
     @Override
     public List<Topo> findAllTopo() {
@@ -44,7 +43,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
 
     @Override
     public List<Topo> findAllShareTopoByUser(Long id) {
-        return getDaoFactory().getTopoRepository().findAllShareToByUser(id);
+        return getDaoFactory().getTopoRepository().findAllShareTopoByUser(id);
     }
 
 
@@ -136,12 +135,27 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
     public void deleteTopo(Long id) {
 
         List<Area> areas = getDaoFactory().getAreaRepository().findAllByTopo(id);
+        List<UserMessage> messages = getDaoFactory().getUserMessageRepository().findAllUserMessageByTopoID(id);
+        Share share;
+
+
         if(areas.size() > 0){
             for (Area area: areas) {
-             Area areaDelete = getDaoFactory().getAreaRepository().getOne(area.getId());
+                Area areaDelete = getDaoFactory().getAreaRepository().getOne(area.getId());
                 areaManager.deleteArea(areaDelete.getId());
             }
         }
+
+        if(messages.size() > 0){
+            for(UserMessage userMessage : messages) {
+                UserMessage userMessageD =  getDaoFactory().getUserMessageRepository().getOne(userMessage.getId());
+                userMessageManager.deleteUserMessage(userMessageD.getId());
+            }
+        }
+
+
+            share = getDaoFactory().getShareRepository().findShareByTopo(id);
+           if(share != null){shareManager.deleteShare(share.getId());}
 
         getDaoFactory().getTopoRepository().delete(getDaoFactory().getTopoRepository().getOne(id));
     }

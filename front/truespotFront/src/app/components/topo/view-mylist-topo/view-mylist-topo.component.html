@@ -1,7 +1,7 @@
 <div class="container">
   <br>
   <div class="card">
-    <div class="card-header badge-primary"><h3>Mes topos disponibles:</h3></div>
+    <div class="card-header badge-primary"><h3>Mes topos :</h3></div>
     <div class="card-body">
       <div class="card-deck">
         <div class="card">
@@ -13,11 +13,9 @@
                   <th>Nom du topo</th>
                   <th>Department</th>
                   <th>Date de parution</th>
-                  <th>Nombre de secteurs</th>
-                  <th>Nombre de voies</th>
-                  <th>Difficultées des voies</th>
                   <th>Disponible</th>
                   <th>Actions</th>
+                  <th></th>
                   <th></th>
                 </tr>
                 </thead>
@@ -26,12 +24,10 @@
                   <td>{{topo.name}}</td>
                   <td>{{topo.department.id}} -  {{topo.department.name}}</td>
                   <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
-                  <td>{{topo.name}}</td>
-                  <td>{{topo.name}}</td>
-                  <td>{{topo.name}}</td>
                   <td>{{topo.avaible}}</td>
                   <td><button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</button></td>
-                  <td><button type="button" class="btn btn-info" (click)="shareTopo(topo.id)">Partager le topo</button></td>
+                  <td><button type="button" class="btn btn-info" *ngIf=" topo.avaible == 'ATTENTE DE VALIDATION'" (click)="shareTopo(topo.id)">Partager le topo</button></td>
+                  <td><button type="button" class="btn btn-danger"  *ngIf=" topo.avaible == 'INDISPONIBLE'"  (click)="updateTopo(topo.id)">Annuler le partage</button></td>
                 </tr>
                 </tbody>
               </table>
@@ -45,7 +41,7 @@
   <br>
   <br>
   <div class="card">
-    <div class="card-header badge-primary"><h3>En attente de validation:</h3></div>
+    <div class="card-header badge-primary"><h3> Prêt en attente de validation:</h3></div>
     <div class="card-body">
       <div class="card-deck">
         <div class="card">
@@ -67,7 +63,7 @@
                   <td>{{topo.department.id}} -  {{topo.department.name}}</td>
                   <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
                   <td>{{topo.avaible}}</td>
-                  <td><button type="button" class="btn btn-info" (click)="updateTopo(topo.id)">Annuler le partage</button></td>
+                  <td><button type="button" class="btn btn-info" (click)="updateTopo(topo.id)">Annuler la requête</button></td>
                 </tr>
                 </tbody>
               </table>
@@ -83,7 +79,7 @@
 
 
   <div class="card">
-    <div class="card-header badge-primary"><h3>Mes topos empruntés:</h3></div>
+    <div class="card-header badge-primary"><h3>Prêt d'un utilisateur:</h3></div>
     <div class="card-body">
       <div class="card-deck">
         <div class="card">

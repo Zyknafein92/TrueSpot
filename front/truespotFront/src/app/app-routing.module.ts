@@ -27,6 +27,7 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
 
   {path: 'createUser', component: CreateUserComponent},
+
   {path: 'updateUser', component:UpdateUserComponent, canActivate: [AuthGuard]},
   {path: 'myprofil', component: ViewMyprofilComponent, canActivate: [AuthGuard]},
   {path: 'list-user', component: ViewListUsersComponent, canActivate: [AuthGuard]},

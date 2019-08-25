@@ -60,4 +60,8 @@ export class SignInComponent implements OnInit {
       }
     );
   }
+
+  navigateToRegister() {
+    this.router.navigateByUrl("/createUser");
+  }
 }

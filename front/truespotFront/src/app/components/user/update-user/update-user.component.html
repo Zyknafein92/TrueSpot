@@ -8,11 +8,13 @@
             <div class="panel-heading"><h3>Modifier votre profil utilisateur :</h3></div>
             <div class="panel-body">
 
-              <form #f="ngForm" [formGroup]="forms" (ngSubmit)="updateUser()">
+              <form #f="ngForm" *ngIf="user" [formGroup]="forms" (ngSubmit)="updateUser()">
 
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"
+                         [class.has-success]="forms.get('firstName').valid"
+                         [class.has-error]="forms.get('firstName').invalid && forms.get('firstName').touched">
                       <label class="control-label">Prénom:</label>
                       <input class="form-control"
                              type="text"
@@ -24,7 +26,9 @@
                   </div>
 
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"
+                         [class.has-success]="forms.get('lastName').valid"
+                         [class.has-error]="forms.get('lastName').invalid && forms.get('lastName').touched">
                       <label class="control-label">Nom:</label>
                       <input class="form-control input-md"
                              type="text"
@@ -37,7 +41,9 @@
                   </div>
 
                   <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group"
+                         [class.has-success]="forms.get('email').valid"
+                         [class.has-error]="forms.get('email').invalid && forms.get('email').touched">
                       <label for="email" class="control-label">Email:</label>
                       <input required
                              id="email"
@@ -50,7 +56,9 @@
                   </div>
 
                   <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group"
+                         [class.has-success]="forms.get('birthDate').valid"
+                         [class.has-error]="forms.get('birthDate').invalid && forms.get('birthDate').touched">
                       <label class="control-label">Date de Naissance:</label>
                       <input class="form-control input-md"
                              type="Date"
@@ -65,7 +73,9 @@
 
 
                   <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group"
+                         [class.has-success]="forms.get('phoneNumber').valid"
+                         [class.has-error]="forms.get('phoneNumber').invalid && forms.get('phoneNumber').touched">
                       <label class="control-label">Numéro de téléphone:</label>
                       <input class="form-control input-md"
                              type="phoneNumber"
@@ -78,7 +88,9 @@
 
                   <div class="col-md-4">
                     <label> Genre:</label>
-                    <div class="form-group">
+                    <div class="form-group"
+                         [class.has-success]="forms.get('gender').valid"
+                         [class.has-error]="forms.get('gender').invalid && forms.get('gender').touched">
                       <div class="form-group">
                         <label class="d-block">
                           <input type="radio" class="mr-1" name="gender" value="Homme" formControlName="gender"> Homme
@@ -93,7 +105,9 @@
 
 
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"
+                         [class.has-success]="forms.get('pseudo').valid"
+                         [class.has-error]="forms.get('pseudo').invalid && forms.get('pseudo').touched">
                       <label class="control-label">Pseudo: <span class="badge-danger rounded-circle" *ngIf="messagError">{{messagError}}</span></label>
                       <input class="form-control input-md"
                              type="text"
@@ -105,7 +119,9 @@
                   </div>
 
                   <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group"
+                         [class.has-success]="forms.get('password').valid"
+                         [class.has-error]="forms.get('password').invalid && forms.get('password').touched">
                       <label class="control-label">Mot de passe:</label>
                       <input class="form-control input-md"
                              type="password"
@@ -113,7 +129,7 @@
                              placeholder="Mot de passe"
                              formControlName="password"
                              minlength="6"
-                             required>
+                             >
                     </div>
                   </div>
 

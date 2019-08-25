@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../../model/user";
 import {UserService} from "../../../services/user/user.service";
+import {TokenStorageService} from "../../../services/auth/token-storage.service";
 
 @Component({
   selector: 'app-update-user',
@@ -11,37 +12,47 @@ import {UserService} from "../../../services/user/user.service";
 export class UpdateUserComponent implements OnInit {
 
   forms: FormGroup;
-  user: User;
-  files: FileList;
-  file_src: string;
+  // files: FileList;
+  // file_src: string;
   messagError: string;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder) {
+  @Input() user: User;
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private token:TokenStorageService) {
   }
 
   ngOnInit() {
     this.initForm();
   }
 
+
+
   private initForm() {
+    console.log("User to Update: ", this.user);
     this.forms = this.formBuilder.group(
       {
+        id: this.user.id,
         firstName: this.user.firstName,
         lastName: this.user.lastName,
-        // email: this.user.email('', Validators.compose([
-        //   Validators.required,
-        //   Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-        // ])),
+        email: this.user.email,
         birthDate: this.user.birthDate,
-        // phoneNumber: this.user.phoneNumber('', Validators.compose([
-        //   Validators.required,
-        //   Validators.pattern('^[0-9]{10}$')
-        // ])),
+        phoneNumber: this.user.phoneNumber,
         gender: this.user.gender,
         pseudo: this.user.pseudo,
         password: this.user.password,
         // image: this.user.image(),
       }
     );
+  }
+
+  updateUser(){
+    this.userService.updateUser(this.forms).subscribe(
+      response => {
+        // @ts-ignore
+        this.router.navigateByUrl("/myprofil");
+        console.log("response: ", response);
+      },
+      err => {
+        console.log("Error: ", err);
+      })
   }
 }

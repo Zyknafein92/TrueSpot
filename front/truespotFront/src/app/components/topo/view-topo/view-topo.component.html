@@ -203,40 +203,45 @@
   <div class="card">
     <div class="card-header">
       <h3> Message :</h3>
-        <button type="button"
-                data-toggle="modal" data-target="#createMessage"
-                class="btn btn-primary btn-lg btn-block">Ajouter une message</button>
+      <button type="button"
+              data-toggle="modal" data-target="#createMessage"
+              class="btn btn-primary btn-lg btn-block">Ajouter une message</button>
 
-    <div class="card-body">
-      <div class="card-deck">
-        <div class="card" *ngFor="let message of messages">
-          <div class="card-body">
-            <h5 class="card-title">{{message.user.pseudo}}</h5>
-            <p class="card-text">{{message.message}}</p>
-            <p class="card-text"><small class="text-muted">{{message.date}}</small></p>
-          </div>
-          <div class="card-footer">
+      <div class="card-body">
+        <div class="card-deck">
+          <div class="card" *ngFor="let message of messages">
             <div class="row">
-              <div class="col-md-3"></div>
-              <div class="col-md-3">
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateTopo"
-                        *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
-                        (click)="updateMessage(message.id)">Modifier le message
-                </button>
-              </div>
-              <div class="col-md-3">
-                <button type="button"  class="btn btn-danger" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
-                        (click)="deleteMessage(message.id) ">Supprimer le message</button>
+              <div class="col-md-12">
+                <div class="card-body">
+                  <h5 class="card-title">{{message.user.pseudo}}</h5>
+                  <p class="card-text">{{message.message}}</p>
+                  <p class="card-text"><small class="text-muted">{{message.date}}</small></p>
+                </div>
+
+                <div class="card-footer">
+                  <div class="btn-group">
+                    <div class="col-md-3"></div>
+                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateTopo"
+                              *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+                              (click)="updateMessage(message.id)">Modifier le message
+                      </button>
+                       <div class="col-md-3"></div>
+                    </div>
+                      <button type="button"  class="btn btn-danger "aria-label="Left Align" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+                              (click)="deleteMessage(message.id) ">Supprimer le message</button>
+                  <div class="col-md-3"></div>
+                  </div>
+                  </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-</div>
-</div>
+
+
 
 
 
@@ -258,171 +263,171 @@
         <div class="panel panel-primary">
           <div class="panel-body">
             <form #f="ngForm" [formGroup]="formTopo">
-            <div class="row">
-              <div class="col-md-2">
-                <div class="form-group"
-                     [class.has-success]="formTopo.get('name').valid"
-                     [class.has-error]="formTopo.get('name').invalid && formTopo.get('name').touched">
-                  <label class="control-label">Nom:</label>
-                  <input class="form-control"
-                         type="text"
-                         name="name"
-                         placeholder="Nom du Topo"
-                         formControlName="name"
-                         required minlength="2">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('name').valid"
+                       [class.has-error]="formTopo.get('name').invalid && formTopo.get('name').touched">
+                    <label class="control-label">Nom:</label>
+                    <input class="form-control"
+                           type="text"
+                           name="name"
+                           placeholder="Nom du Topo"
+                           formControlName="name"
+                           required minlength="2">
+                  </div>
                 </div>
-              </div>
 
-              <div class="col-md-2">
-                <label> Choisissez un département : </label>
-                <label>
-                  <select name="department" class="form-control select"  formControlName="department">
-                    <option *ngFor="let department of departments" [ngValue]="department" >
-                      {{ department.id }}  {{department.name }}
-                    </option>
-                  </select>
-                </label>
-              </div>
-            </div>
-            <br>
-            <h2>Informations générales</h2><br>
-
-            <div class="row">
-
-              <div class="col-md-4">
-                <div class="form-group"
-                     [class.has-success]="formTopo.get('nearestCity').valid"
-                     [class.has-error]="formTopo.get('nearestCity').invalid && formTopo.get('nearestCity').touched">
-                  <label class="control-label">Ville la plus proche:</label>
-                  <input class="form-control"
-                         type="text"
-                         name="nearestCity"
-                         placeholder="Nom de la ville la plus proche"
-                         formControlName="nearestCity"
-                         required minlength="2">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-8">
-                <div class="form-group"
-                     [class.has-success]="formTopo.get('description').valid"
-                     [class.has-error]="formTopo.get('description').invalid && formTopo.get('description').touched">
-                  <label class="control-label">Description du site:</label>
-                  <textarea class="form-control input-md"
-                            type="text"
-                            rows="5"
-                            name="description"
-                            placeholder="Une rapide description du site"
-                            formControlName="description"
-                            required
-                            minlength="2"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-            <br>
-            <h2>Accès au site</h2><br>
-
-            <div class="row">
-              <div class="col-md-2">
-                <label> Accès en voiture :</label>
-                <div class="form-group"
-                     [class.has-success]="formTopo.get('carAccess').valid"
-                     [class.has-error]="formTopo.get('carAccess').invalid && formTopo.get('carAccess').touched">
-                  <div class="form-group">
-                    <select class="browser-default custom-select" formControlName="carAccess">
-                      <option [value]="true">Oui</option>
-                      <option [value]="false">Non</option>
+                <div class="col-md-2">
+                  <label> Choisissez un département : </label>
+                  <label>
+                    <select name="department" class="form-control select"  formControlName="department">
+                      <option *ngFor="let department of departments" [ngValue]="department" >
+                        {{ department.id }}  {{department.name }}
+                      </option>
                     </select>
+                  </label>
+                </div>
+              </div>
+              <br>
+              <h2>Informations générales</h2><br>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('nearestCity').valid"
+                       [class.has-error]="formTopo.get('nearestCity').invalid && formTopo.get('nearestCity').touched">
+                    <label class="control-label">Ville la plus proche:</label>
+                    <input class="form-control"
+                           type="text"
+                           name="nearestCity"
+                           placeholder="Nom de la ville la plus proche"
+                           formControlName="nearestCity"
+                           required minlength="2">
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-2">
-                <label> Parking :</label>
-                <div class="form-group"
-                     [class.has-success]="formTopo.get('carParking').valid"
-                     [class.has-error]="formTopo.get('carParking').invalid && formTopo.get('carParking').touched">
-                  <div class="form-group">
-                    <select class="browser-default custom-select" formControlName="carParking">
-                      <option [value]="true">Oui</option>
-                      <option [value]="false">Non</option>
-                    </select>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('description').valid"
+                       [class.has-error]="formTopo.get('description').invalid && formTopo.get('description').touched">
+                    <label class="control-label">Description du site:</label>
+                    <textarea class="form-control input-md"
+                              type="text"
+                              rows="5"
+                              name="description"
+                              placeholder="Une rapide description du site"
+                              formControlName="description"
+                              required
+                              minlength="2"
+                    ></textarea>
                   </div>
                 </div>
               </div>
-            </div>
+              <br>
+              <h2>Accès au site</h2><br>
 
-            <div class="row">
-              <div class="col-md-8">
-                <div class="form-group"
-                     [class.has-success]="formTopo.get('accessDescription').valid"
-                     [class.has-error]="formTopo.get('accessDescription').invalid && formTopo.get('accessDescription').touched">
-                  <label class="control-label">Description l'accès au site:</label>
-                  <textarea class="form-control input-md"
-                            type="text"
-                            rows="5"
-                            name="accessDescription"
-                            placeholder="Une rapide description de l'accès au site..."
-                            formControlName="accessDescription"
-                            required
-                            minlength="2"
-                  ></textarea>
+              <div class="row">
+                <div class="col-md-2">
+                  <label> Accès en voiture :</label>
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('carAccess').valid"
+                       [class.has-error]="formTopo.get('carAccess').invalid && formTopo.get('carAccess').touched">
+                    <div class="form-group">
+                      <select class="browser-default custom-select" formControlName="carAccess">
+                        <option [value]="true">Oui</option>
+                        <option [value]="false">Non</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <label> Parking :</label>
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('carParking').valid"
+                       [class.has-error]="formTopo.get('carParking').invalid && formTopo.get('carParking').touched">
+                    <div class="form-group">
+                      <select class="browser-default custom-select" formControlName="carParking">
+                        <option [value]="true">Oui</option>
+                        <option [value]="false">Non</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <br>
-            <h2> Ravitaillement et soins</h2><br>
 
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group"
-                     [class.has-success]="formTopo.get('nearestHospital').valid"
-                     [class.has-error]="formTopo.get('nearestHospital').invalid && formTopo.get('nearestHospital').touched">
-                  <label class="control-label">Nom de l'Hopital le plus proche:</label>
-                  <input class="form-control"
-                         type="text"
-                         name="nearestHospital"
-                         placeholder="Nom du l'hopital"
-                         formControlName="nearestHospital"
-                         required minlength="2">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('accessDescription').valid"
+                       [class.has-error]="formTopo.get('accessDescription').invalid && formTopo.get('accessDescription').touched">
+                    <label class="control-label">Description l'accès au site:</label>
+                    <textarea class="form-control input-md"
+                              type="text"
+                              rows="5"
+                              name="accessDescription"
+                              placeholder="Une rapide description de l'accès au site..."
+                              formControlName="accessDescription"
+                              required
+                              minlength="2"
+                    ></textarea>
+                  </div>
                 </div>
               </div>
-            </div>
+              <br>
+              <h2> Ravitaillement et soins</h2><br>
 
-            <div class="row">
-              <div class="col-md-8">
-                <div class="form-group"
-                     [class.has-success]="formTopo.get('supplyComment').valid"
-                     [class.has-error]="formTopo.get('supplyComment').invalid && formTopo.get('supplyComment').touched">
-                  <label class="control-label">Lieu de ravitaillement :</label>
-                  <textarea class="form-control input-md"
-                            type="text"
-                            rows="10"
-                            name="supplyComment"
-                            placeholder="exemple : Intermarché du coin : adresse...."
-                            formControlName="supplyComment"
-                            required
-                            minlength="2"
-                  ></textarea>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('nearestHospital').valid"
+                       [class.has-error]="formTopo.get('nearestHospital').invalid && formTopo.get('nearestHospital').touched">
+                    <label class="control-label">Nom de l'Hopital le plus proche:</label>
+                    <input class="form-control"
+                           type="text"
+                           name="nearestHospital"
+                           placeholder="Nom du l'hopital"
+                           formControlName="nearestHospital"
+                           required minlength="2">
+                  </div>
                 </div>
               </div>
-            </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('supplyComment').valid"
+                       [class.has-error]="formTopo.get('supplyComment').invalid && formTopo.get('supplyComment').touched">
+                    <label class="control-label">Lieu de ravitaillement :</label>
+                    <textarea class="form-control input-md"
+                              type="text"
+                              rows="10"
+                              name="supplyComment"
+                              placeholder="exemple : Intermarché du coin : adresse...."
+                              formControlName="supplyComment"
+                              required
+                              minlength="2"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
 
         </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-              <button type="button" class="btn btn-primary"  [disabled]="formTopo.invalid"  data-dismiss="modal" (click)="updateTopoModel()">Modifier</button>
-            </div>
-          </div>
-
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary"  [disabled]="formTopo.invalid"  data-dismiss="modal" (click)="updateTopoModel()">Modifier</button>
         </div>
       </div>
+
     </div>
+  </div>
+</div>
 
 
 <!-- Modal Area -->
@@ -680,8 +685,8 @@
 
 
 <!-- Modal  createUserMessage -->
-  <div  *ngIf="topo" class="modal fade" id="createMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div  *ngIf="topo" class="modal fade" id="createMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
         <app-user-message [topo]="topo "></app-user-message>

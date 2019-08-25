@@ -10,7 +10,6 @@ import {TokenStorageService} from "../../../services/auth/token-storage.service"
 import {DepartmentService} from "../../../services/department/department.service";
 import {Department} from "../../../../model/department";
 import {ShareService} from "../../../services/share/share.service";
-import {UserMessage} from "../../../../model/userMessage";
 import {UsermessageService} from "../../../services/user.message/usermessage.service";
 
 

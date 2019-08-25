@@ -4,61 +4,63 @@
   </div>
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 
-    <!-- Links -->
 
-    <ul class="navbar-nav">
-      <li class="Home">
-        <a class="nav-link" routerLink="/">Home</a>
-      </li>
+      <!-- Links -->
 
-      <!-- Dropdown Admin -->
-      <li class="Admin">
-        <a class="nav-link dropdown-toggle" id="admin" data-toggle="dropdown" *ngIf="authorities =='ROLE_ADMIN'">
-          Gestion Admin
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="/list-user">Liste des utilisateurs</a>
-        </div>
-      </li>
+      <ul class="navbar-nav">
+        <li class="Home">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
 
-      <!-- Dropdown Mon compte -->
+        <!-- Dropdown Admin -->
+        <li class="Admin">
+          <a class="nav-link dropdown-toggle" id="admin" data-toggle="dropdown" *ngIf="authorities =='ROLE_ADMIN'">
+            Gestion Admin
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/list-user">Liste des utilisateurs</a>
+          </div>
+        </li>
 
-      <li class="compte">
-        <a class="nav-link dropdown-toggle"id="moncompte" data-toggle="dropdown">
-          Mon compte
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="/myprofil">Mon profil</a>
-          <a class="dropdown-item" routerLink="/list-myTopos">Ma liste de topo</a>
-        </div>
-      </li>
-      <!-- Dropdown Topo -->
-      <li class="topo">
-        <a class="nav-link dropdown-toggle" id="topos" data-toggle="dropdown">
-          Topos
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" routerLink="/topo/add-topo">Créer un topo</a>
-          <a class="dropdown-item" routerLink="/list-topo">Liste de topo</a>
-          <a class="dropdown-item">Rechercher de topo</a>
-        </div>
-      </li>
-    </ul>
+        <!-- Dropdown Mon compte -->
 
-    <ul class="navbar-nav ml-auto" >
-      <li class="identification" *ngIf="this.token.getPseudo() == null">
-        <a class="nav-link"  routerLink="/sign-in">S'identifier</a>
-      </li>
+        <li class="compte">
+          <a class="nav-link dropdown-toggle"id="moncompte" data-toggle="dropdown">
+            Mon compte
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/myprofil">Mon profil</a>
+            <a class="dropdown-item" routerLink="/list-myTopos">Ma liste de topo</a>
+          </div>
+        </li>
+        <!-- Dropdown Topo -->
+        <li class="topo">
+          <a class="nav-link dropdown-toggle" id="topos" data-toggle="dropdown">
+            Topos
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/topo/add-topo">Créer un topo</a>
+            <a class="dropdown-item" routerLink="/list-topo">Liste de topo</a>
+            <a class="dropdown-item">Rechercher de topo</a>
+          </div>
+        </li>
+      </ul>
 
-      <li class="inscription" *ngIf="this.token.getPseudo() == null">
-        <a class="nav-link"  routerLink="/createUser">S'inscrire</a>
-      </li>
+        <ul class="navbar-nav ml-auto" >
+          <li class="identification" *ngIf="this.token.getPseudo() == null">
+            <a class="nav-link"  routerLink="/sign-in">S'identifier</a>
+          </li>
 
-      <li class="deconnexion" *ngIf="this.token.getPseudo() != null">
-        <a class="nav-link" routerLink="/" (click)="logout()">Se déconnecter</a>
-      </li>
-    </ul>
+          <li class="inscription" *ngIf="this.token.getPseudo() == null">
+            <a class="nav-link"  routerLink="/createUser">S'inscrire</a>
+          </li>
+
+          <li class="deconnexion" *ngIf="this.token.getPseudo() != null">
+            <a class="nav-link" routerLink="/" (click)="logout()">Se déconnecter</a>
+          </li>
+        </ul>
   </nav>
+
 </header>
 
 <router-outlet></router-outlet>

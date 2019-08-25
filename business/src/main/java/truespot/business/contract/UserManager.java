@@ -17,9 +17,7 @@ public interface UserManager {
 
     User findByPseudo(String pseudo);
 
-   // String login (User user);
-
-    void updateUser(Long id, User user);
+    void updateUser(UserDTO userDTO);
 
     void deleteUser(Long id);
 

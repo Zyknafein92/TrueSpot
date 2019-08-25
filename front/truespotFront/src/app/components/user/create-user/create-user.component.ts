@@ -55,7 +55,7 @@ export class CreateUserComponent implements OnInit {
         gender: new FormControl(),
         pseudo: new FormControl(),
         password: new FormControl(),
-        image: new FormControl()
+        //image: new FormControl()
       }
     );
   }

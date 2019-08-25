@@ -11,10 +11,7 @@ import truespot.business.contract.UserManager;
 import truespot.business.dto.UserDTO;
 import truespot.business.dto.mapper.UserMapper;
 import truespot.consumer.implement.RoleRepository;
-import truespot.model.ApiError;
-import truespot.model.Role;
-import truespot.model.RoleName;
-import truespot.model.User;
+import truespot.model.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -88,15 +85,28 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
 
 
     @Override
-    public void updateUser(Long id, User user) {
-        UserDTO userDTO = getUser(id);
-     //   UserMapper.updateDTO(userDTO, user);
-        user.setId(id);
+    public void updateUser(UserDTO userDTO) {
+        User user = getDaoFactory().getUserRepository().findByPseudo(userDTO.getPseudo());
+        String password = user.getPassword();
+
+        if (!encoder.matches(password, userDTO.getPassword())) {
+            user.setPassword(encoder.encode(userDTO.getPassword()));
+        }
+        user =  UserMapper.dtoToObject(userDTO);
         getDaoFactory().getUserRepository().save(user);
     }
 
     @Override
     public void deleteUser(Long id) {
-        getDaoFactory().getUserRepository().deleteById(id);
+
+        User user = getDaoFactory().getUserRepository().getOne(id);
+        List<Topo> topos = getDaoFactory().getTopoRepository().findAllByUser_Pseudo(user.getPseudo());
+        if(topos.size() > 0){
+            for (Topo topo: topos) {
+                getDaoFactory().getTopoRepository().delete(topo);
+            }
+        }
+
+        getDaoFactory().getUserRepository().delete(getDaoFactory().getUserRepository().getOne(id));
     }
 }
