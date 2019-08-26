@@ -105,7 +105,7 @@ export class ViewMylistTopoComponent implements OnInit {
   }
 
   sendUsertoShowShare(id){
-    console.log(" USERRR sendUsertoShowShare ", id)
+    console.log(" USERRR sendUsertoShowShare ", id);
 
 
     this.shareService.findUserShare(id).subscribe(

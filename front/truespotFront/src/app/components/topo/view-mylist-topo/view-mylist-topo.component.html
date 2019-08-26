@@ -26,9 +26,9 @@
 
                     <div class="btn-group"  role="group">
                     <td><button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</button></td>
-                    <td><button type="button" class="btn btn-info"  data-toggle="modal" data-target="#userToShow" *ngIf="topo.avaible == 'INDISPONIBLE'"(click)="sendUsertoShowShare(topo.id)">Voir les coordonnées</button></td>
+                    <td><button type="button" class="btn btn-info"  data-toggle="modal" data-target="#userToShow" *ngIf="topo.avaible == 'TOPO EMPRUNTE'"(click)="sendUsertoShowShare(topo.id)">Voir les coordonnées</button></td>
                     <td><button type="button" class="btn btn-info"  *ngIf=" topo.avaible == 'ATTENTE DE VALIDATION'" (click)="shareTopo(topo.id)">Partager le topo</button></td>
-                    <td><button type="button" class="btn btn-danger"   *ngIf=" topo.avaible == 'INDISPONIBLE'"  (click)="updateTopo(topo.id)">Annuler le partage</button></td>
+                    <td><button type="button" class="btn btn-danger"   *ngIf=" topo.avaible == 'TOPO EMPRUNTE'"  (click)="updateTopo(topo.id)">Annuler le partage</button></td>
                   </div>
 
                 </tr>
@@ -100,7 +100,7 @@
                 </tr>
                 </thead>
                 <tbody  *ngFor="let topo of toposShare">
-                <tr  *ngIf=" topo.avaible == 'INDISPONIBLE'">
+                <tr  *ngIf=" topo.avaible == 'TOPO EMPRUNTE'">
                   <td>{{topo.name}}</td>
                   <td>{{topo.department.id}} -  {{topo.department.name}}</td>
                   <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>

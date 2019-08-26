@@ -178,7 +178,7 @@ export class ViewTopoComponent implements OnInit {
     this.topoService.updateTopo(this.formTopo).subscribe(
       response => {
         console.log("Topo UPDDATING: ", response);
-        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.router.navigateByUrl("/topo/view-topo/"+ this.formTopo.getRawValue().id);
         this.refreshTopo();
       }),
       err => {
@@ -290,10 +290,12 @@ export class ViewTopoComponent implements OnInit {
 
   updateAreaModel(){
     console.log('FORMADD:', this.formArea.value);
+    this.idTopoFromViewTopo = this.formArea.getRawValue().idTopo;
+    console.log('FORMADD:', this.idTopoFromViewTopo);
     this.areaService.updateArea(this.formArea).subscribe(
       response => {
         console.log("Area UPDDATING: ", response);
-        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.router.navigateByUrl("/topo/view-topo/"+  this.idTopoFromViewTopo);
         this.refreshArea();
       }),
       err => {
@@ -302,11 +304,11 @@ export class ViewTopoComponent implements OnInit {
   }
 
   deleteArea(idArea) {
-    console.log("ID REMOVEAREA:", idArea);
+
     this.idArea = idArea;
     this.areaService.deleteArea(this.idArea).subscribe(
       response => {
-        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopo);
         this.refreshArea()
       }),
       err => {
@@ -315,6 +317,7 @@ export class ViewTopoComponent implements OnInit {
   }
 
   // ROAD //
+
   addRoad(area){
     this.initformRoad();
     console.log("ID AREA:", area);
@@ -398,12 +401,13 @@ export class ViewTopoComponent implements OnInit {
     this.formRoad.patchValue({
       idArea: this.idAreaToAdd,
     });
-
+    this.roadHelpToRedirect = this.formRoad.getRawValue().id.value;
+    console.log("save roadHelpToRedirect", this.roadHelpToRedirect);
     this.roadService.saveRoad(this.formRoad)
       .subscribe(
         response => {
           this.refreshRoad();
-          this.router.navigateByUrl("/topo/view-topo/"+ this.roadHelpToRedirect.area.topo.id);
+          this.router.navigateByUrl("/topo/view-topo/"+ this.roadHelpToRedirect);
         }),
       err => {
         console.log("error: ", err.error.message);
