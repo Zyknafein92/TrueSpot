@@ -14,8 +14,6 @@
                   <th>Department</th>
                   <th>Date de parution</th>
                   <th>Disponible</th>
-                  <th>Actions</th>
-                  <th></th>
                   <th></th>
                 </tr>
                 </thead>
@@ -25,10 +23,14 @@
                   <td>{{topo.department.id}} -  {{topo.department.name}}</td>
                   <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
                   <td>{{topo.avaible}}</td>
-                  <td><button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</button></td>
-                  <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#userToShow" *ngIf="topo.avaible == 'INDISPONIBLE'"(click)="sendUsertoShowShare(topo.id)">Voir les coordonnées</button></td>
-                  <td><button type="button" class="btn btn-info" *ngIf=" topo.avaible == 'ATTENTE DE VALIDATION'" (click)="shareTopo(topo.id)">Partager le topo</button></td>
-                  <td><button type="button" class="btn btn-danger"  *ngIf=" topo.avaible == 'INDISPONIBLE'"  (click)="updateTopo(topo.id)">Annuler le partage</button></td>
+
+                    <div class="btn-group"  role="group">
+                    <td><button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</button></td>
+                    <td><button type="button" class="btn btn-info"  data-toggle="modal" data-target="#userToShow" *ngIf="topo.avaible == 'INDISPONIBLE'"(click)="sendUsertoShowShare(topo.id)">Voir les coordonnées</button></td>
+                    <td><button type="button" class="btn btn-info"  *ngIf=" topo.avaible == 'ATTENTE DE VALIDATION'" (click)="shareTopo(topo.id)">Partager le topo</button></td>
+                    <td><button type="button" class="btn btn-danger"   *ngIf=" topo.avaible == 'INDISPONIBLE'"  (click)="updateTopo(topo.id)">Annuler le partage</button></td>
+                  </div>
+
                 </tr>
                 </tbody>
               </table>

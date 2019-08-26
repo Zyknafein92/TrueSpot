@@ -35,7 +35,7 @@ public class UserMessageController {
         return userMessageManager.saveUserMessage(userMessage);
     }
 
-    @PutMapping(value = "/message/topo/userMessage/update")
+    @RequestMapping(value = "/message/topo/userMessage/update", method = RequestMethod.PUT)
     public void updateUserMessage(@RequestBody UserMessage userMessage) {
         userMessageManager.updateUserMessage(userMessage);
     }

@@ -37,7 +37,7 @@ export class UserService {
   }
 
   getUser(idUser:string){
-    return this.http.get<User>(this.userUrl , {
+    return this.http.get<User>(this.userUrl + 'userMessage', {
       params: new HttpParams()
         .set('id', idUser)
     });

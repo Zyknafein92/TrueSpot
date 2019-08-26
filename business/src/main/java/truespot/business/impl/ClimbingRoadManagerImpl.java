@@ -51,5 +51,6 @@ public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements Clim
 
     @Override
     public void deleteClimbingRoad(Long idRoad) {
-        getDaoFactory().getClimbingRoadRepository().delete(getDaoFactory().getClimbingRoadRepository().getOne(idRoad));}
+        getDaoFactory().getClimbingRoadRepository().delete(getDaoFactory().getClimbingRoadRepository().getOne(idRoad));
+    }
 }

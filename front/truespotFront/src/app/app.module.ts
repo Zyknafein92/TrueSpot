@@ -23,7 +23,9 @@ import { ViewUserprofilComponent } from './components/user/view-userprofil/view-
 import { ViewMylistTopoComponent } from './components/topo/view-mylist-topo/view-mylist-topo.component';
 import {LogoutComponent} from "./components/auth/logout/logout.component";
 import { UserMessageComponent } from './components/user/user-message/user-message.component';
-import { SearchDepartmentComponent } from './components/search/search-department/search-department.component';
+
+
+
 
 
 
@@ -47,7 +49,9 @@ import { SearchDepartmentComponent } from './components/search/search-department
     ViewUserprofilComponent,
     ViewMylistTopoComponent,
     UserMessageComponent,
-    SearchDepartmentComponent,
+
+
+
 
 
   ],

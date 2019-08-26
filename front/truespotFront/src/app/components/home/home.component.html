@@ -4,88 +4,79 @@
     <div class="card-deck">
       <div class="card">
         <div class="card-body">
-          <div class="row">
 
-            <form [formGroup]="forms">
 
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label class="control-label">Departement:</label>
-                      <select (change)="searchCriteria()"
-                        class="browser-default custom-select" formControlName="departs"> 
-                        <option *ngFor="let departs of departments" [value]="departs.id">{{departs.name}}</option> 
-                      </select> 
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label class="control-label">Type de la voie:</label>
-                  <div class="form-group">
-                    <select
-                      class="browser-default custom-select"
-                      formControlName="type"
-                      (change)="searchCriteria()">
-                      <option value="Bloc">Bloc</option>
-                      <option value="Voie">Voie</option>
-                      <option value="Grande voie">Grande voie</option>
-                      <option value="Escalade libre">Escalade libre</option>
-                      <option value="Relais">Relais</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label class="control-label">Type de la voie:</label>
-                  <div class="form-group">
-                    <select
-                      class="browser-default custom-select"
-                      formControlName="avaible"
-                      (change)="searchCriteria()">
-                      <option value="EMPRUNTABLE">Disponible</option>
-                      <option value="INDISPONIBLE">Indisponible</option>
-                    </select>
-                  </div>
+          <form [formGroup]="forms">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="control-label">Departement:</label>
+                  <select (change)="searchCriteria()"
+                          class="browser-default custom-select" formControlName="departs">
+                    <option *ngFor="let departs of departments" [value]="departs.id">{{departs.name}}</option>
+                  </select>
                 </div>
               </div>
-            </form>
-          </div>
+              <div class="col-md-4">
+                <label class="control-label">Type de la voie:</label>
+                <div class="form-group">
+                  <select
+                    class="browser-default custom-select"
+                    formControlName="type"
+                    (change)="searchCriteria()">
+                    <option value="Bloc">Bloc</option>
+                    <option value="Voie">Voie</option>
+                    <option value="Grande voie">Grande voie</option>
+                    <option value="Escalade libre">Escalade libre</option>
+                    <option value="Relais">Relais</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label class="control-label">Type de la voie:</label>
+                <div class="form-group">
+                  <select
+                    class="browser-default custom-select"
+                    formControlName="avaible"
+                    (change)="searchCriteria()">
+                    <option value="EMPRUNTABLE">Disponible</option>
+                    <option value="INDISPONIBLE">Indisponible</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <br>
 
 <div class="container">
-  <div class="card">
-    <div class="card-deck">
-      <div class="card">
-        <div class="card-body">
-          <table class="table table-responsive" >
-            <table class="table table-hover table-condensed table-striped">
-              <thead class="table-display">
-              <tr>
-                <th>Nom du topo</th>
-                <th>Department</th>
-                <th>Date de parution</th>
-                <th>Disponible</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let topo of topos">
-                <td>{{topo.name}}</td>
-                <td>{{topo.department.id}} -  {{topo.department.name}}</td>
-                <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
-                <td >{{topo.avaible}}</td>
-                <td><a button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</a></td>
-              </tbody>
-            </table>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+  <table class="table table-responsive" >
+    <table class="table table-hover table-condensed table-striped">
+      <thead class="table-display">
+      <tr>
+        <th>Nom du topo</th>
+        <th>Department</th>
+        <th>Date de parution</th>
+        <th>Disponible</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let topo of topos">
+        <td>{{topo.name}}</td>
+        <td>{{topo.department.id}} -  {{topo.department.name}}</td>
+        <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
+        <td >{{topo.avaible}}</td>
+        <td><a button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</a></td>
+      </tbody>
+    </table>
+  </table>
 </div>
 
 
@@ -113,17 +104,3 @@
 
 
 
-
-<br>
-<br>
-<br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<footer>
-  <h5 class="text-primary">Your Information</h5>
-  <p>
-    <strong>Username:</strong> {{info.username}}<br/>
-    <strong>Roles:</strong> {{info.authorities}}<br />
-    <strong>Token:</strong> {{info.token}}.
-  </p>
-  <button class="btn btn-secondary" (click)="logout()">Logout</button>
-</footer>

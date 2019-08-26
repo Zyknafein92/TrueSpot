@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnChanges, OnInit} from '@angular/core';
 import {ActivatedRoute, Route, Router} from "@angular/router";
 import {TopoService} from "../../../services/topo/topo.service";
 import {Topo} from "../../../../model/topo";
@@ -26,6 +26,7 @@ export class ViewTopoComponent implements OnInit {
   idArea: any;
   idAreaToAdd: any;
   idRoad: any;
+  idMessage: any;
   topo : Topo;
   areas: any;
   roads : any;
@@ -37,12 +38,15 @@ export class ViewTopoComponent implements OnInit {
   formRoad: FormGroup;
   formArea: FormGroup;
   formTopo: FormGroup;
+  formMessage: FormGroup;
 
   idAreaFromViewTopo : string;
   idTopoFromViewTopo: string;
 
   authorities: string;
   pseudo: string;
+
+  roadHelpToRedirect: any
 
   isAdd:boolean=false;
   isModified:boolean=false;
@@ -54,16 +58,13 @@ export class ViewTopoComponent implements OnInit {
                private userMessageService: UsermessageService) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.idTopo = params['idTopo'];
-      this.idTopoFromViewTopo = this.idTopo;// (+) converts string 'id' to a number
-    });
-
+    this.getParam();
     this.getTopo();
     this.getArea();
     this.initformTopo();
     this.initformRoad();
     this.initformArea();
+    this.initformMessage();
     this.initDepartmentList();
     this.getMessages(this.idTopo);
     this.authorities = this.token.getAuthorities();
@@ -71,6 +72,12 @@ export class ViewTopoComponent implements OnInit {
 
   }
 
+  getParam(){
+    this.sub = this.route.params.subscribe(params => {
+      this.idTopo = params['idTopo'];
+      this.idTopoFromViewTopo = this.idTopo;// (+) converts string 'id' to a number
+    });
+  }
 
   // INIT FORMULAIRE //
 
@@ -342,11 +349,21 @@ export class ViewTopoComponent implements OnInit {
 
   }
   updateRoadModel(){
+    this.roadService.getRoad(this.formRoad.getRawValue().id).subscribe(
+      response => {
+        console.log("ID TOOTPTOTPTOTP getRoad ", response)
+        this.roadHelpToRedirect = response;
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+
+    console.log("ROAD UPDDATING: ", this.formRoad.getRawValue().id);
     this.roadService.updateRoad(this.formRoad).subscribe(
       response => {
         // @ts-ignore
-        console.log("ROAD UPDDATING: ", response);
-        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+
+        this.router.navigateByUrl("/topo/view-topo/"+ this.roadHelpToRedirect.area.topo.id);
         this.refreshRoad();
       }),
       err => {
@@ -355,11 +372,21 @@ export class ViewTopoComponent implements OnInit {
   }
 
   deleteRoad(idRoad) {
+
     this.idRoad = idRoad;
     console.log("id:", this.idRoad);
+    this.roadService.getRoad(this.idRoad).subscribe(
+      response => {
+        console.log("ID TOOTPTOTPTOTP getRoad ", response)
+        this.roadHelpToRedirect = response;
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+
     this.roadService.deleteRoad(this.idRoad).subscribe(
       response => {
-        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.router.navigateByUrl("/topo/view-topo/"+ this.roadHelpToRedirect.area.topo.id);
         this.refreshRoad();
       }),
       err => {
@@ -371,10 +398,12 @@ export class ViewTopoComponent implements OnInit {
     this.formRoad.patchValue({
       idArea: this.idAreaToAdd,
     });
+
     this.roadService.saveRoad(this.formRoad)
       .subscribe(
         response => {
-          this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+          this.refreshRoad();
+          this.router.navigateByUrl("/topo/view-topo/"+ this.roadHelpToRedirect.area.topo.id);
         }),
       err => {
         console.log("error: ", err.error.message);
@@ -409,8 +438,56 @@ export class ViewTopoComponent implements OnInit {
       }
   }
 
-  updateMessage(id: any) {
-    console.log("Message update: ", id);
+  updateMessage(id) {
+    this.idMessage = id;
+    this.userMessageService.getUserMessage(this.idMessage).subscribe(
+      response => {
+        console.log("Message CURRENT ID: ", response);
+        this.formMessage.patchValue({
+          user: response.user,
+          message:  response.message,
+          date:  response.date,
+          topo:  response.topo,
+          id: response.id
+        });
+        console.log("updateMessage IN :", this.formMessage.value)
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+
+    console.log("updateMessage END :", this.formMessage.value)
+
+  }
+
+  private initformMessage() {
+    this.formMessage = this.formBuilder.group(
+      {
+        id: new FormControl(),
+        message: new FormControl(),
+        user:  new FormControl(),
+        date:  new FormControl(),
+        topo:  this.topo,
+      }
+    );
+
+    console.log("initformMessage :", this.formMessage.value)
+  }
+
+
+  updateMessageModel(){
+    console.log("Message update: ", this.formMessage.value);
+
+    this.userMessageService.updateUserMessage(this.formMessage).subscribe(
+      response => {
+        // @ts-ignore
+        console.log("Message UPDDATING: ", response);
+        this.router.navigateByUrl("/topo/view-topo/"+ this.idTopoHelpToRedirect);
+        this.refreshMessages();
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
   }
 
   deleteMessage(id: any) {
@@ -441,7 +518,6 @@ export class ViewTopoComponent implements OnInit {
   refreshMessages(){
     console.log("REFR MESSAGE")
     this.getMessages(this.idTopo);
-    // this.getRoad(this.idArea);
   }
 
 }

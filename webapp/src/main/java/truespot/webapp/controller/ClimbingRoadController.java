@@ -47,5 +47,6 @@ public class ClimbingRoadController {
         climbingRoadManager.updateClimbingRoad(climbingRoadDTO);
     }
     @RequestMapping(value = "/road", method = RequestMethod.DELETE)
-    public void deleteClimbingRoad(@RequestParam(name = "idRoad", defaultValue = "") String idRoad){ climbingRoadManager.deleteClimbingRoad(Long.valueOf(idRoad)); }
+    public void deleteClimbingRoad(@RequestParam(name = "idRoad", defaultValue = "") String idRoad){
+        climbingRoadManager.deleteClimbingRoad(Long.valueOf(idRoad)); }
 }

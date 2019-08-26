@@ -16,6 +16,8 @@ export class UsermessageService {
 
   constructor(private http:HttpClient) { }
 
+
+
   getAllMessageByTopoID(id: string): Observable<UserMessage[]>{
     return this.http.get<UserMessage[]>(this.userMessageUrl + '/userMessageByTopo' , {
       params: new HttpParams()
@@ -39,5 +41,13 @@ export class UsermessageService {
       params: new HttpParams()
         .set('id', idMessage),
     });
+  }
+
+  getUserMessage(idMessage: any) {
+    return this.http.get<UserMessage>(this.userMessageUrl + '/userMessage' , {
+      params: new HttpParams()
+        .set('id', idMessage),
+    });
+
   }
 }
