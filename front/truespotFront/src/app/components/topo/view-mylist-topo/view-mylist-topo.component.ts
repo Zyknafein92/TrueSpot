@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TopoService} from "../../../services/topo/topo.service";
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
@@ -6,6 +6,7 @@ import {Topo} from "../../../../model/topo";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../../model/user";
 import {ShareService} from "../../../services/share/share.service";
+import {Share} from "../../../../model/share";
 
 @Component({
   selector: 'app-view-mylist-topo',
@@ -16,8 +17,9 @@ export class ViewMylistTopoComponent implements OnInit {
   topos : any;
   toposShare: any;
   topo: Topo;
+  currentShare: Share;
   currentUser: User;
-
+  usertoShow: User;
 
   constructor(private route: ActivatedRoute, private topoService: TopoService, private router: Router,
               private token:TokenStorageService, private userService:UserService,
@@ -55,14 +57,11 @@ export class ViewMylistTopoComponent implements OnInit {
           res => {
             this.toposShare = res;
             console.log("SHARE ", this.toposShare);
-
           }
         )
       }
     )
   }
-
-
 
   sendIdTopo(id){
     this.router.navigateByUrl("/topo/view-topo/"+id)
@@ -87,5 +86,37 @@ export class ViewMylistTopoComponent implements OnInit {
       err => {
         console.log("error: ", err.error.message);
       };
+  }
+
+  sendUsertoShow(user){
+    this.usertoShow = user;
+    console.log(" USERRR ", user)
+  }
+
+
+  findUserShare(id){
+    this.shareService.findUserShare(id).subscribe(
+      response => {
+        this.currentShare = response;
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+  }
+
+  sendUsertoShowShare(id){
+    console.log(" USERRR sendUsertoShowShare ", id)
+
+
+    this.shareService.findUserShare(id).subscribe(
+      response => {
+        this.currentShare = response;
+        this.usertoShow = this.currentShare.userReceiver;
+        console.log("findUserShare Userddd: ", this.usertoShow);
+      }),
+      err => {
+        console.log("error: ", err.error.message);
+      };
+
   }
 }

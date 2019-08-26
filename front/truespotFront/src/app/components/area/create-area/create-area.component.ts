@@ -42,12 +42,12 @@ export class CreateAreaComponent implements OnInit {
           console.log("PREVIOUS URL: ", this.pushRouteService.getPreviousUrl());
 
           if ("/topo/topo/add-topo/" == this.pushRouteService.getPreviousUrl()) {
-            console.log(" /topo/topo/add-topo/ ")
+            console.log(" /topo/topo/add-topo/ ");
            // this.router.navigateByUrl("/topo/road/add-road/"+response.id)
             // @ts-ignore
             this.pushRouteService.navigateByUrl("/topo/road/add-road/"+response.id);
           } else if ("/topo/view-topo/"+this.idTopo == this.pushRouteService.getPreviousUrl()) {
-            console.log("/topo/view-topo/")
+            console.log("/topo/view-topo/");
             this.pushRouteService.navigateByUrl("/topo/view-topo/"+this.idTopo);
           }else{
             this.pushRouteService.navigateByUrl("/topo/view-topo/"+this.idTopo);

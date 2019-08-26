@@ -19,6 +19,8 @@ public interface TopoManager {
 
     List<Topo> findAllShareTopoByUser (Long id);
 
+    List<Topo> searchCriteres(Long idDepartment, String avaible, String type);
+
     TopoDTO getTopo(Long id);
 
     Topo saveTopo(TopoDTOContext topoDTOContext);

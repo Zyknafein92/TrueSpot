@@ -4,7 +4,7 @@ import {DepartmentService} from "../../services/department/department.service";
 import {Department} from "../../../model/department";
 import {Topo} from "../../../model/topo";
 import {TopoService} from "../../services/topo/topo.service";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
 
@@ -23,12 +23,23 @@ export class HomeComponent implements OnInit {
   departments: Department;
   info: any;
   formSearchDept: FormGroup;
-  departement: Department;
+  forms: FormGroup;
+  idDpartSearch: string;
+  numberSearch: string;
+
+
 
 
   constructor(private token: TokenStorageService,private departmentService :DepartmentService, private topoService:TopoService, private formBuilder: FormBuilder, private router:Router) { }
 
   ngOnInit() {
+
+    this.forms = this.formBuilder.group(
+      {
+        departs:new FormControl('', Validators.required),
+        avaible: new FormControl(),
+        type: new FormControl(),
+      });
     this.initDepartmentList();
     this.initDepartmentForm();
     this.info = {
@@ -36,6 +47,7 @@ export class HomeComponent implements OnInit {
       username: this.token.getPseudo(),
       authorities: this.token.getAuthorities()
     };
+    this.getAllDepart();
   }
 
 
@@ -80,6 +92,33 @@ export class HomeComponent implements OnInit {
 
 
 
+  searchCriteria() {
+    this.topoService.getTopoBySearch(
+      this.forms.get("departs").value!=null?this.forms.get("departs").value:"",
+      this.forms.get("avaible").value!=null?this.forms.get("avaible").value:"",
+      this.forms.get("type").value!=null?this.forms.get("type").value:"")
+      .subscribe(
+        response => {
+          this.topos = response;
+          console.log("TOPO Search :", this.topos)
+        },
+        err => {
+          console.log("error: ", err);
+        })
+  }
+
+
+  getAllDepart() {
+    this.topoService.getAllTopo()
+      .subscribe(
+        response => {
+          this.topos = response;
+          console.log("TOPO Search :", this.topos)
+        },
+        err => {
+          console.log("error: ", err);
+        })
+  }
 
   logout() {
     this.token.signOut();

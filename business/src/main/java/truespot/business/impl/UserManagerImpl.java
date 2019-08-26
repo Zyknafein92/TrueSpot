@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.RoleManager;
+import truespot.business.contract.TopoManager;
 import truespot.business.contract.UserManager;
 import truespot.business.dto.UserDTO;
 import truespot.business.dto.mapper.UserMapper;
@@ -29,6 +30,9 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
 
     @Autowired
     RoleManager roleManager;
+
+    @Autowired
+    TopoManager topoManager;
 
     @Override
     public List<User> findAllUser() {
@@ -123,14 +127,16 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
     public void deleteUser(Long id) {
 
         User user = getDaoFactory().getUserRepository().getOne(id);
+
         List<Topo> topos = getDaoFactory().getTopoRepository().findAllByUser_Pseudo(user.getPseudo());
+
         if(topos.size() > 0){
             for (Topo topo: topos) {
-                getDaoFactory().getTopoRepository().delete(topo);
+               topoManager.deleteTopo(topo.getId());
             }
         }
         user.getRoles().removeAll(user.getRoles());
-        //clean le role
+
 
         getDaoFactory().getUserRepository().delete(getDaoFactory().getUserRepository().getOne(id));
     }

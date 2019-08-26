@@ -26,6 +26,7 @@
                   <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
                   <td>{{topo.avaible}}</td>
                   <td><button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</button></td>
+                  <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#userToShow" *ngIf="topo.avaible == 'INDISPONIBLE'"(click)="sendUsertoShowShare(topo.id)">Voir les coordonnées</button></td>
                   <td><button type="button" class="btn btn-info" *ngIf=" topo.avaible == 'ATTENTE DE VALIDATION'" (click)="shareTopo(topo.id)">Partager le topo</button></td>
                   <td><button type="button" class="btn btn-danger"  *ngIf=" topo.avaible == 'INDISPONIBLE'"  (click)="updateTopo(topo.id)">Annuler le partage</button></td>
                 </tr>
@@ -93,6 +94,7 @@
                   <th>Date de parution</th>
                   <th>Disponible</th>
                   <th></th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody  *ngFor="let topo of toposShare">
@@ -102,12 +104,31 @@
                   <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
                   <td>{{topo.avaible}}</td>
                   <td><button type="button" class="btn btn-info" (click)="updateTopo(topo.id)">Annuler le partage</button></td>
+                  <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#userToShow" (click)="sendUsertoShow(topo.user)">Voir les coordonnées du propriétaire</button></td>
                 </tr>
                 </tbody>
               </table>
             </table>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div *ngIf="usertoShow" class="modal fade" id="userToShow" tabindex="-1" role="dialog" aria-labelledby="userToShow" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-view-userprofil [usertoShow]="usertoShow"></app-view-userprofil>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>

@@ -1,3 +1,27 @@
-<p>
-  view-userprofil works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="well-block">
+        <div class="well-title">
+          <div class="card-body">
+            <h5 class="card-title">Coordonnées :</h5>
+            <div class="card-deck">
+              <div class="card">
+                <div class="card-body" *ngIf="usertoShow">
+                  <h5 class="card-title">Pseudo :</h5>
+                  <p class="card-text">{{usertoShow.pseudo}}</p>
+                  <br>
+                  <h5 class="card-title">Téléphone :</h5>
+                  <p class="card-text">{{usertoShow.phoneNumber}}</p>
+                  <br>
+                  <h5 class="card-title">Email :</h5> <span></span>
+                  <p class="card-text">{{usertoShow.email}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -36,8 +36,11 @@ export class UserService {
       });
   }
 
-  getUser(id:number){
-    return this.http.get<User>(this.userUrl + '/' + id);
+  getUser(idUser:string){
+    return this.http.get<User>(this.userUrl , {
+      params: new HttpParams()
+        .set('id', idUser)
+    });
   }
 
   updateUser(forms: FormGroup): Observable<User> {

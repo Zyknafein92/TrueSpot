@@ -15,6 +15,13 @@ export class ShareService {
 
   constructor(private http: HttpClient) { }
 
+  findUserShare(idTopo : string): Observable<Share>{
+    return this.http.get<Share>(this.shareURL + '/user', {
+      params : new HttpParams()
+        .set('id', idTopo)
+    });
+  }
+
 
   saveShare(shareDTO: any): Observable<Share> {
     return this.http.post<Share>(this.shareURL + '/create', shareDTO);

@@ -58,7 +58,7 @@ export class TopoService {
   }
 
   getAllTopo(){
-    return this.http.get<Topo>('http://localhost:8080/getAllTopos');
+    return this.http.get<Topo[]>('http://localhost:8080/getAllTopos');
   }
 
   getTopoByDepartment(idDepartment : string): Observable<Topo[]>{
@@ -66,6 +66,16 @@ export class TopoService {
     return this.http.get<Topo[]>(this.topoUrl + '/getByDepartment', {
       params : new HttpParams()
         .set('idDepartment', idDepartment)
+    });
+  }
+
+  getTopoBySearch(idDepartment : string, avaible: string, type: string): Observable<Topo[]>{
+    console.log("id to", idDepartment);
+    return this.http.get<Topo[]>(this.topoUrl + '/search', {
+      params : new HttpParams()
+        .set('idDepartment', idDepartment)
+        .set('avaible', avaible)
+        .set('type', type)
     });
   }
 

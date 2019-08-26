@@ -38,9 +38,9 @@ public class UserController {
         return userManager.findAllUser();
     }
 
-    @GetMapping(value="/user/{id}")
-    public UserDTO getUser(@PathVariable Long id) {
-        return userManager.getUser(id); }
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public UserDTO getUser(@RequestParam(name = "id", defaultValue = "")  String id) {
+        return userManager.getUser(Long.valueOf(id)); }
 
     @GetMapping(value="/user/myprofil")
     public User getProfil(@RequestParam(name = "pseudo", defaultValue = "") String pseudo){

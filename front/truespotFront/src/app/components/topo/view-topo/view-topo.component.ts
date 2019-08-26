@@ -224,11 +224,13 @@ export class ViewTopoComponent implements OnInit {
   }
 
   getCurrentIdArea(id) {
+
+    console.log(" AREA CURRENT ", id)
     this.idArea = id;
     this.idAreaFromViewTopo = id;
     this.getRoad(id);
 
-    console.log("idAreaFromViewTopo ", this.idAreaFromViewTopo);
+    console.log("idAreaFromViewTopo Vieuw", this.idAreaFromViewTopo);
   }
 
 
@@ -413,6 +415,16 @@ export class ViewTopoComponent implements OnInit {
 
   deleteMessage(id: any) {
     console.log("Message delete: ", id);
+    this.userMessageService.deleteUserMessage(id)
+      .subscribe(
+        response => {
+          this.refreshMessages();
+          this.messages = response;
+          console.log("Messages: ", response);
+        }),
+      err => {
+        console.log("error: ", err.error.message);
+      }
   }
   // UTILITAIRE //
 

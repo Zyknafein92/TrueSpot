@@ -28,8 +28,8 @@
             </div>
             <br>
             <div class="col-md-6">
-            <h4 class="card-title">Ville la plus proche :</h4>
-            <p class="card-text">{{topo.nearestCity}}</p>
+              <h4 class="card-title">Ville la plus proche :</h4>
+              <p class="card-text">{{topo.nearestCity}}</p>
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@
     </div>
     <div *ngIf="topo">
       <button type="button" class="btn btn-info"
-              *ngIf="pseudo != topo.user.pseudo && topo.avaible == 'DISPONIBLE'"
+              *ngIf="pseudo != topo.user.pseudo && topo.avaible == 'WGOOD'"
               (click)="shareTopo()">Emprunter le topo</button>
     </div>
   </div>
@@ -208,44 +208,51 @@
 
   <div class="card">
     <div class="card-header">
+
       <h3> Message :</h3>
+      <br>
       <button type="button"
               data-toggle="modal" data-target="#createMessage"
-              class="btn btn-primary btn-lg btn-block">Ajouter une message</button>
+              class="btn btn-primary btn-lg btn-block">Ajouter un message</button>
 
-      <div class="card-body">
-        <div class="card-deck">
-          <div class="card" *ngFor="let message of messages">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card-body">
-                  <h5 class="card-title">{{message.user.pseudo}}</h5>
-                  <p class="card-text">{{message.message}}</p>
-                  <p class="card-text"><small class="text-muted">{{message.date}}</small></p>
-                </div>
+      <div class="container">
+        <section class="row">
 
-                <div class="card-footer">
-                  <div class="btn-group">
-                    <div class="col-md-3"></div>
-                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateTopo"
-                              *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
-                              (click)="updateMessage(message.id)">Modifier le message
-                      </button>
-                       <div class="col-md-3"></div>
-                    </div>
-                      <button type="button"  class="btn btn-danger "aria-label="Left Align" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
-                              (click)="deleteMessage(message.id) ">Supprimer le message</button>
-                  <div class="col-md-3"></div>
+          <div class="card-body">
+            <div class="card-deck">
+              <section class="row">
+
+                <div class="card"  *ngFor="let message of messages">
+                  <div class="card-body col-md-12">
+                    <h5 class="card-title">{{message.user.pseudo}}</h5>
+                    <p class="card-text">{{message.message}}</p>
+                    <p class="card-text"><small class="text-muted">{{message.date}}</small></p>
                   </div>
-                  </div>
+
+                  <div class="card-footer">
+                    <div class="row">
+                      <div classe="col-md-3">
+                        <div class="btn-group " role="group">
+                          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateTopo"
+                                  *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+                                  (click)="updateMessage(message.id)">Modifier</button>
+
+                        </div>
+                        <button type="button"  class="btn btn-danger "aria-label="Left Align" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+                                (click)="deleteMessage(message.id) ">Supprimer</button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </div>
-          </div>
-        </div>
 
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -483,20 +490,25 @@
                 </div>
 
 
-                <div class="col-md-4">
+
+                <div class="col-md-6">
+                  <label class="control-label">Orientation du secteur:</label>
                   <div class="form-group"
                        [class.has-success]="formArea.get('orientation').valid"
                        [class.has-error]="formArea.get('orientation').invalid && formArea.get('orientation').touched">
-                    <label for="orientation" class="control-label">Orientation du secteur:</label>
-                    <input required
-                           id="orientation"
-                           name="orientation"
-                           type="text"
-                           class="form-control"
-                           formControlName="orientation"
-                           placeholder="Nord, Nord-est">
+                    <select class="browser-default custom-select"  formControlName="orientation">
+                      <option value="Nord">Nord</option>
+                      <option value="Sud">Sud</option>
+                      <option value="Est">Est</option>
+                      <option value="Ouest">Ouest</option>
+                      <option value="Nord-Est">Nord-Est</option>
+                      <option value="Nord-Ouest">Nord-Ouest</option>
+                      <option value="Sud-Est">Sud-Est</option>
+                      <option value="Sud-Ouest">Sud-Ouest</option>
+                    </select>
                   </div>
                 </div>
+
 
 
                 <div class="col-md-4">

@@ -37,7 +37,7 @@ export class UsermessageService {
     console.log('DELETE MessageTopo:', idMessage);
     return this.http.delete(this.userMessageUrl + '/delete', {
       params: new HttpParams()
-        .set('idMessage', idMessage),
+        .set('id', idMessage),
     });
   }
 }

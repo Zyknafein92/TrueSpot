@@ -40,8 +40,8 @@ public class UserMessageController {
         userMessageManager.updateUserMessage(userMessage);
     }
 
-    @DeleteMapping(value= "/message/topo/userMessage/{id}")
-    public void deleteUserMessage(@PathVariable Long id){
-        userMessageManager.deleteUserMessage(id);
+    @RequestMapping(value = "/message/topo/delete", method = RequestMethod.DELETE)
+    public void deleteUserMessage(@RequestParam(name = "id", defaultValue = "") String id){
+        userMessageManager.deleteUserMessage(Long.valueOf(id));
     }
 }

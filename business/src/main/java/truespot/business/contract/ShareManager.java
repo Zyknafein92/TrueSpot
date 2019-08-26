@@ -15,6 +15,8 @@ public interface ShareManager {
 
     Share saveShare(ShareDTO shareDTO);
 
+    Share findUserShare(Long id);
+
     void updateShare(Topo topo);
 
     void deleteShare(Long id);

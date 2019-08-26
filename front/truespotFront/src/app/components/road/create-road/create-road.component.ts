@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {RoadService} from "../../../services/road/roadservice";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ClimbingRoad} from "../../../../model/climbingRoad";
@@ -10,7 +10,8 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './create-road.component.html',
   styleUrls: ['./create-road.component.css']
 })
-export class CreateRoadComponent implements OnInit {
+
+export class CreateRoadComponent implements OnInit, OnChanges {
 
   forms: FormGroup;
   road: ClimbingRoad;
@@ -32,6 +33,8 @@ export class CreateRoadComponent implements OnInit {
 
   saveRoad() {
     console.log(this.forms.value);
+    this.patchValue()
+    console.log("FORM PATCH ", this.forms.value)
     this.roadService.saveRoad(this.forms)
       .subscribe(
         response => {
@@ -45,7 +48,7 @@ export class CreateRoadComponent implements OnInit {
   }
 
   private initform() {
-    console.log("idAreaFromViewTopo from ROAD", this.idAreaFromViewTopo)
+    console.log("idAreaFromViewTopo from ADD ROAD", this.idAreaFromViewTopo);
     this.forms = this.formBuilder.group(
       {
         name: new FormControl(),
@@ -57,5 +60,14 @@ export class CreateRoadComponent implements OnInit {
         idArea : this.idArea==null?this.idAreaFromViewTopo:this.idArea
       }
     );
+  }
+  ngOnChanges():void{
+    console.log("idAreaFromViewTopo from ADD ROAD ngOnChanges", this.idAreaFromViewTopo);
+  }
+
+  private patchValue(){
+    this.forms.patchValue({
+      idArea : this.idArea==null?this.idAreaFromViewTopo:this.idArea
+    });
   }
 }

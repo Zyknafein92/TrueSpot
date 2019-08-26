@@ -42,17 +42,20 @@
 
 
                   <div class="col-md-4">
+                    <label class="control-label">Orientation du secteur:</label>
                     <div class="form-group"
                          [class.has-success]="forms.get('orientation').valid"
                          [class.has-error]="forms.get('orientation').invalid && forms.get('orientation').touched">
-                      <label for="orientation" class="control-label">Orientation du secteur:</label>
-                      <input required
-                             id="orientation"
-                             name="orientation"
-                             type="text"
-                             class="form-control"
-                             formControlName="orientation"
-                             placeholder="Nord, Nord-est">
+                      <select class="browser-default custom-select"  formControlName="orientation">
+                        <option value="Nord">Nord</option>
+                        <option value="Sud">Sud</option>
+                        <option value="Est">Est</option>
+                        <option value="Ouest">Ouest</option>
+                        <option value="Nord-Est">Nord-Est</option>
+                        <option value="Nord-Ouest">Nord-Ouest</option>
+                        <option value="Sud-Est">Sud-Est</option>
+                        <option value="Sud-Ouest">Sud-Ouest</option>
+                      </select>
                     </div>
                   </div>
 

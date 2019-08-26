@@ -26,6 +26,11 @@ public class ShareController {
         return shareManager.getShare(Long.valueOf(id));
     }
 
+    @RequestMapping(value = "/topo/share/user", method = RequestMethod.GET)
+    public Share findUserShare(@RequestParam(name = "id", defaultValue = "") String id) {
+        return shareManager.findUserShare(Long.valueOf(id));
+    }
+
     @RequestMapping(value = "/topo/share/create", method = RequestMethod.POST)
     public Share createShare(@RequestBody ShareDTO shareDTO) {
         return shareManager.saveShare(shareDTO);

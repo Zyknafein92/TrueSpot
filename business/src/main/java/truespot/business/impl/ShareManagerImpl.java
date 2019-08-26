@@ -60,11 +60,16 @@ public class ShareManagerImpl extends BusinessManagerImpl implements ShareManage
     }
 
     @Override
+    public Share findUserShare(Long id) {
+        return getDaoFactory().getShareRepository().findUserShare(id);
+    }
+
+    @Override
     public void updateShare(Topo topo) {
 
         Share share = getDaoFactory().getShareRepository().findShareByTopo(topo.getId());
         Topo topoToSave = share.getTopo();
-        topoToSave.setAvaible("DISPONIBLE");
+        topoToSave.setAvaible("WGOOD");
         getDaoFactory().getShareRepository().delete(share);
         getDaoFactory().getTopoRepository().save(topoToSave);
     }
