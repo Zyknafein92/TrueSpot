@@ -69,7 +69,7 @@ public class ShareManagerImpl extends BusinessManagerImpl implements ShareManage
 
         Share share = getDaoFactory().getShareRepository().findShareByTopo(topo.getId());
         Topo topoToSave = share.getTopo();
-        topoToSave.setAvaible("WGOOD");
+        topoToSave.setAvaible("EMPRUNTABLE");
         getDaoFactory().getShareRepository().delete(share);
         getDaoFactory().getTopoRepository().save(topoToSave);
     }

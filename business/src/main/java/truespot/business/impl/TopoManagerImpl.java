@@ -49,7 +49,6 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
     @Override
     public List<Topo> searchCriteres(Long idDepartment, String avaible, String typee) {
       return getDaoFactory().getTopoRepository().searchCriteres(idDepartment,"%" + avaible +"%" ,"%" +typee+"%");
-      //  return getDaoFactory().getTopoRepository().searchCriteres(idDepartment, avaible  ,typee);
     }
 
 
@@ -106,7 +105,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         topoDTO.setNearestHospital(topoDTOContext.getNearestHospital());
         topoDTO.setSupplyComment(topoDTOContext.getSupplyComment());
         topoDTO.setIsAmical(topoDTOContext.getIsAmical());
-        topoDTO.setAvaible("WGOOOD");
+        topoDTO.setAvaible("EMPRUNTABLE");
 
         Topo topo = TopoMapper.dtoToObject(topoDTO);
         topo.setUser(user);
@@ -135,7 +134,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
     @Override
     public void updateShareTopo(TopoDTO topoDTO) {
         Topo topo = getDaoFactory().getTopoRepository().getOne(topoDTO.getId());
-        topo.setAvaible("INDISPONIBLE");
+        topo.setAvaible("TOPO EMPRUNTE");
         getDaoFactory().getTopoRepository().save(topo);
     }
 

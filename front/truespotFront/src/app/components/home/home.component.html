@@ -40,9 +40,8 @@
                       class="browser-default custom-select"
                       formControlName="avaible"
                       (change)="searchCriteria()">
-                      <option value="WGOOD">Disponible</option>
+                      <option value="EMPRUNTABLE">Disponible</option>
                       <option value="INDISPONIBLE">Indisponible</option>
-                      <option value="ATTENTE DE VALIDATION">Attente de validation</option>
                     </select>
                   </div>
                 </div>
@@ -78,8 +77,7 @@
                 <td>{{topo.name}}</td>
                 <td>{{topo.department.id}} -  {{topo.department.name}}</td>
                 <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
-                <td *ngIf="topo.avaible=='WGOOD'">DISPONIBLE</td>
-                <td *ngIf="topo.avaible!='WGOOD'">{{topo.avaible}}</td>
+                <td >{{topo.avaible}}</td>
                 <td><a button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</a></td>
               </tbody>
             </table>

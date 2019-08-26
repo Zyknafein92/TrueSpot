@@ -24,8 +24,7 @@ export class HomeComponent implements OnInit {
   info: any;
   formSearchDept: FormGroup;
   forms: FormGroup;
-  idDpartSearch: string;
-  numberSearch: string;
+
 
 
 

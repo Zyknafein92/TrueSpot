@@ -30,7 +30,9 @@
                 <td>{{user.gender}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.phoneNumber}}</td>
-                <td>{{user.roles}}</td>
+                <td *ngFor="let role of user.roles">
+                  {{role.name}}
+                </td>
                <td><button type="button" class="btn btn-secondary" *ngIf="user" datatype="user" (click)="updateRole(user)">Modifier les droits</button></td>
               </tr>
 
