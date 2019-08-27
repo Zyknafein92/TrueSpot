@@ -11,6 +11,6 @@ public class ClimbingRoadDTO {
     private String description;
     private String type;
     private int number;
-    private char letter;
-    private char symbol;
+    private String letter;
+    private String symbol;
 }

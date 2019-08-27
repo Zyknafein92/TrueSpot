@@ -19,8 +19,8 @@ public class ClimbingRoadMapper {
         climbingRoadDTO.setDescription(climbingRoad.getDescription() != null ? climbingRoad.getDescription() : climbingRoadDTO.getDescription());
         climbingRoadDTO.setType(climbingRoad.getType() != null ? climbingRoad.getType() : climbingRoadDTO.getType());
         climbingRoadDTO.setNumber(climbingRoad.getNumber() != 0 ? climbingRoad.getNumber() : climbingRoadDTO.getNumber());
-        climbingRoadDTO.setLetter(climbingRoad.getLetter() != ' ' ? climbingRoad.getLetter() : climbingRoadDTO.getLetter());
-        climbingRoadDTO.setSymbol(climbingRoad.getSymbol() != ' ' ? climbingRoad.getSymbol() : climbingRoadDTO.getSymbol());
+        climbingRoadDTO.setLetter(climbingRoad.getLetter() != null ? climbingRoad.getLetter() : climbingRoadDTO.getLetter());
+        climbingRoadDTO.setSymbol(climbingRoad.getSymbol() != null ? climbingRoad.getSymbol() : climbingRoadDTO.getSymbol());
 
         return climbingRoadDTO;
     }
@@ -33,8 +33,8 @@ public class ClimbingRoadMapper {
         climbingRoad.setDescription(climbingRoadDTO.getDescription() != null ? climbingRoadDTO.getDescription() : climbingRoad.getDescription());
         climbingRoad.setType(climbingRoadDTO.getType() != null ? climbingRoadDTO.getType() : climbingRoad.getType());
         climbingRoad.setNumber(climbingRoadDTO.getNumber() != 0 ? climbingRoadDTO.getNumber() : climbingRoad.getNumber());
-        climbingRoad.setLetter(climbingRoadDTO.getLetter() != ' ' ? climbingRoadDTO.getLetter() : climbingRoad.getLetter());
-        climbingRoad.setSymbol(climbingRoadDTO.getSymbol() != ' ' ? climbingRoadDTO.getSymbol() : climbingRoad.getSymbol());
+        climbingRoad.setLetter(climbingRoadDTO.getLetter() != null ? climbingRoadDTO.getLetter() : climbingRoad.getLetter());
+        climbingRoad.setSymbol(climbingRoadDTO.getSymbol() != null ? climbingRoadDTO.getSymbol() : climbingRoad.getSymbol());
 
         return climbingRoad;
     }

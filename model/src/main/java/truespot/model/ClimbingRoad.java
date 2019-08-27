@@ -40,16 +40,16 @@ public class ClimbingRoad implements Serializable {
     private int number;
 
     @Column(name="letter")
-    private char letter;
+    private String letter;
 
     @Column(name="symbol")
-    private char symbol;
+    private String symbol;
 
     public ClimbingRoad() {
 
     }
 
-    public ClimbingRoad(String name, String description, String type, int number, char letter, char symbol) {
+    public ClimbingRoad(String name, String description, String type, int number, String letter, String symbol) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -58,7 +58,7 @@ public class ClimbingRoad implements Serializable {
         this.symbol = symbol;
     }
 
-    public ClimbingRoad(Area area, String name, String description, String type, int number, char letter, char symbol) {
+    public ClimbingRoad(Area area, String name, String description, String type, int number, String letter, String symbol) {
         this.area = area;
         this.name = name;
         this.description = description;

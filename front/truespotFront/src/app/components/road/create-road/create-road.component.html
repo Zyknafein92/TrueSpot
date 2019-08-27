@@ -34,7 +34,6 @@
                         <option value="Voie">Voie</option>
                         <option value="Grande voie">Grande voie</option>
                         <option value="Escalade libre">Escalade libre</option>
-                        <option value="Relais">Relais</option>
                       </select>
                     </div>
                   </div>
@@ -69,7 +68,7 @@
                          [class.has-error]="forms.get('letter').invalid && forms.get('letter').touched">
                       <label class="control-label">Lettre:</label>
                       <select class="browser-default custom-select" formControlName="letter">
-                        <option value="null"></option>
+                        <option value=" "></option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -83,7 +82,7 @@
                          [class.has-error]="forms.get('symbol').invalid && forms.get('symbol').touched">
                       <label class="control-label">Symbole:</label>
                       <select class="browser-default custom-select" formControlName="symbol">
-                        <option value="null"></option>
+                        <option value=" "></option>
                         <option value="+">+</option>
                         <option value="-">-</option>
                       </select>
@@ -111,7 +110,7 @@
                   <div class="form-group">
                     <button
                       type="submit"
-                      class="btn btn-primary"[disabled]="forms.invalid">Valider
+                      class="btn btn-primary" [disabled]="forms.invalid">Valider
                     </button>
                   </div>
                 </div>

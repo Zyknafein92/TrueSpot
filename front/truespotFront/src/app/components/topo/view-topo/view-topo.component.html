@@ -163,7 +163,7 @@
             <tr *ngFor="let road of roads">
               <td>{{road.name}}</td>
               <td>{{road.type}}</td>
-              <td>{{road.number}}{{road.letter}}{{road.symbol}}</td>
+              <td>{{road.number}} {{road.letter}} {{road.symbol}}</td>
               <td>{{road.description}}</td>
               <div class="btn-group">
                 <td *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo">
@@ -422,6 +422,22 @@
                   </div>
                 </div>
               </div>
+
+              <div class="row" *ngIf="this.token.getAuthorities() == 'ROLE_ADMIN'">
+                <div class="col-md-2">
+                  <label> Topic Officiel ?</label>
+                  <div class="form-group"
+                       [class.has-success]="formTopo.get('isAmical').valid"
+                       [class.has-error]="formTopo.get('isAmical').invalid && formTopo.get('isAmical').touched">
+                    <div class="form-group">
+                      <select class="browser-default custom-select" formControlName="isAmical">
+                        <option [value]="true">Oui</option>
+                        <option [value]="false">Non</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
 
@@ -579,7 +595,6 @@
                       <option value="Voie">Voie</option>
                       <option value="Grande voie">Grande voie</option>
                       <option value="Escalade libre">Escalade libre</option>
-                      <option value="Relais">Relais</option>
                     </select>
                   </div>
                 </div>
@@ -613,7 +628,7 @@
                        [class.has-error]="formRoad.get('letter').invalid && formRoad.get('letter').touched">
                     <label class="control-label">Lettre:</label>
                     <select class="browser-default custom-select" formControlName="letter">
-                      <option value="null"></option>
+                      <option value=" "></option>
                       <option value="A">A</option>
                       <option value="B">B</option>
                       <option value="C">C</option>
@@ -627,7 +642,7 @@
                        [class.has-error]="formRoad.get('symbol').invalid && formRoad.get('symbol').touched">
                     <label class="control-label">Symbole:</label>
                     <select class="browser-default custom-select" formControlName="symbol">
-                      <option value="null"></option>
+                      <option value=" "></option>
                       <option value="+">+</option>
                       <option value="-">-</option>
                     </select>
