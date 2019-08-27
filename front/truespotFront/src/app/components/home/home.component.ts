@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
   constructor(private token: TokenStorageService,private departmentService :DepartmentService, private topoService:TopoService, private formBuilder: FormBuilder, private router:Router) { }
 
   ngOnInit() {
-
     this.forms = this.formBuilder.group(
       {
         departs:new FormControl('', Validators.required),
@@ -40,7 +39,7 @@ export class HomeComponent implements OnInit {
         type: new FormControl(),
       });
     this.initDepartmentList();
-    this.initDepartmentForm();
+
     this.info = {
       token: this.token.getToken(),
       username: this.token.getPseudo(),
@@ -48,16 +47,6 @@ export class HomeComponent implements OnInit {
     };
     this.getAllDepart();
   }
-
-
-  private initDepartmentForm(){
-    this.formSearchDept = this.formBuilder.group(
-      {
-        idDepartment: new FormControl(),
-      });
-    console.log(this.formSearchDept);
-  }
-
 
   private initDepartmentList() {
     this.departmentService.getDepartments().subscribe(
@@ -71,24 +60,6 @@ export class HomeComponent implements OnInit {
   sendIdTopo(id){
     this.router.navigateByUrl("/topo/view-topo/"+id)
   }
-
-
-  getTopoByDept() {
-    this.idDepartement = this.formSearchDept.value;
-    console.log("value id:",this.idDepartement)
-    this.topoService.getTopoByDepartment(this.idDepartement)
-      .subscribe(
-        response => {
-          this.topos = response;
-          console.log("TOPOTPTOOTP :", this.topo)
-        },
-        err => {
-          console.log("error: ", err);
-        })
-
-  }
-
-
 
 
   searchCriteria() {

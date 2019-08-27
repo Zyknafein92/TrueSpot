@@ -22,7 +22,7 @@ public interface TopoRepository extends JpaRepository <Topo, Long> {
     @Query("select  t from Topo t, Share s, User u where  u.id = s.userReceiver.id and  s.topo.id = t.id and s.userReceiver.id =:id")
     List<Topo> findAllShareTopoByUser(@Param("id")  Long id);
 
-    @Query("select distinct t from Topo t, ClimbingRoad c, Area a where  t.department.id = :idDepartment  and t.id = a.topo.id and a.id = c.area.id and t.avaible like :avaible and c.type like :typee")
+    @Query("select distinct t from Topo t, ClimbingRoad c, Area a where  t.department.id = :idDepartment and t.id = a.topo.id and a.id = c.area.id and t.avaible like :avaible and c.type like :typee")
     List<Topo> searchCriteres(
             @Param("idDepartment")  Long idDepartment,
             @Param("avaible")  String avaible,

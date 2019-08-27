@@ -1,6 +1,9 @@
 
 <div class="container">
   <div class="card">
+    <div class="card-header">
+      <div class="card-title"><h4>Barre de recherche :</h4></div>
+    </div>
     <div class="card-deck">
       <div class="card">
         <div class="card-body">
@@ -38,7 +41,8 @@
                     class="browser-default custom-select"
                     formControlName="avaible"
                     (change)="searchCriteria()">
-                    <option value="EMPRUNTABLE">Disponible</option>
+                    <option value="EMPRUNTABLE">Empruntable</option>
+                    <option value="EN ATTENTE DE VALIDATION">En attente de validation pour un prêt</option>
                     <option value="INDISPONIBLE">Indisponible</option>
                   </select>
                 </div>
@@ -71,7 +75,7 @@
         <td>{{topo.name}}</td>
         <td>{{topo.department.id}} -  {{topo.department.name}}</td>
         <td>{{topo.releaseDate | date:"dd/MM/yyyy"}}</td>
-        <td >{{topo.avaible}}</td>
+        <td>{{topo.avaible}}</td>
         <td><a button type="button" class="btn btn-primary" (click)="sendIdTopo(topo.id)">Voir</a></td>
       </tbody>
     </table>
