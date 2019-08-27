@@ -8,7 +8,7 @@ import truespot.model.Department;
 
 import java.util.List;
 import java.util.Optional;
-//todo : refactor selon area
+
 @Service
 public class DepartmentManagerImpl extends BusinessManagerImpl implements DepartmentManager {
 
