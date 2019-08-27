@@ -4,7 +4,7 @@ import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {User} from "../../../model/user";
 import {TokenStorageService} from "../auth/token-storage.service";
-import {Topo} from "../../../model/topo";
+
 
 
 
@@ -44,7 +44,7 @@ export class UserService {
   }
 
   updateUser(forms: FormGroup): Observable<User> {
-    return this.http.put<Topo>(this.userUrl + '/update', forms.value)
+    return this.http.put<User>(this.userUrl + '/update', forms.value)
   }
 
   updateUserRole(user : any): Observable<User> {

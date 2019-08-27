@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {User} from "../../../../model/user";
 import {UserService} from "../../../services/user/user.service";
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-user',
@@ -17,7 +18,7 @@ export class UpdateUserComponent implements OnInit {
   messagError: string;
 
   @Input() user: User;
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private token:TokenStorageService) {
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private token:TokenStorageService, private router:Router) {
   }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class UpdateUserComponent implements OnInit {
         phoneNumber: this.user.phoneNumber,
         gender: this.user.gender,
         pseudo: this.user.pseudo,
-        password: this.user.password,
+        password: new FormControl(),
         // image: this.user.image(),
       }
     );
@@ -47,9 +48,11 @@ export class UpdateUserComponent implements OnInit {
   updateUser(){
     this.userService.updateUser(this.forms).subscribe(
       response => {
-        // @ts-ignore
-        this.router.navigateByUrl("/myprofil");
         console.log("response: ", response);
+        if(this.forms.getRawValue().password != null || this.forms.getRawValue().pseudo != this.token.getPseudo()){
+          this.token.signOut();
+          this.router.navigateByUrl("/sign-in").then(r => location.reload());
+        }
       },
       err => {
         console.log("Error: ", err);

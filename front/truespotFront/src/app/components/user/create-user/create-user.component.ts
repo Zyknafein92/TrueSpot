@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../../model/user";
-import {Route, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -29,7 +29,7 @@ export class CreateUserComponent implements OnInit {
     this.userService.saveUser(this.forms)
       .subscribe(
         response => {
-          this.router.navigateByUrl("/");
+          this.router.navigateByUrl("/sign-in");
           console.log("response: ", response);
         },
       err => {

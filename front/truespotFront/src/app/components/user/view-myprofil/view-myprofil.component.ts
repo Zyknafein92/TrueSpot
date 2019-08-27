@@ -33,7 +33,7 @@ export class ViewMyprofilComponent implements OnInit {
   }
 
   refreshUser() {
-  this.initProfil(this.token);
+      this.initProfil(this.token);
   }
 
   deleteUser(user: User) {

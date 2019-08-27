@@ -95,14 +95,13 @@ public class UserManagerImpl extends BusinessManagerImpl implements UserManager 
 
     @Override
     public void updateUser(UserDTO userDTO) {
-        User user = getDaoFactory().getUserRepository().findByPseudo(userDTO.getPseudo());
-        String password = user.getPassword();
-        encoder.encode(userDTO.getPassword());
-
-        if (!encoder.matches(password, userDTO.getPassword())) {
-            user.setPassword(encoder.encode(userDTO.getPassword()));
+        User user = getDaoFactory().getUserRepository().getOne(userDTO.getId());
+        if(userDTO.getPassword() == null){
+            userDTO.setPassword(user.getPassword());
+        }else{
+            userDTO.setPassword(encoder.encode(userDTO.getPassword()));
         }
-        user =  UserMapper.dtoToObject(userDTO);
+        user = UserMapper.dtoToObject(userDTO);
         getDaoFactory().getUserRepository().save(user);
     }
 

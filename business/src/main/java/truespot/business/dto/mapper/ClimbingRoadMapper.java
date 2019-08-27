@@ -39,15 +39,4 @@ public class ClimbingRoadMapper {
         return climbingRoad;
     }
 
-    public static ClimbingRoadDTO updateDTO(ClimbingRoadDTO climbingRoadDTO, ClimbingRoad climbingRoad) {
-
-        climbingRoadDTO.setName(climbingRoad.getName() != null ? climbingRoad.getName() : climbingRoadDTO.getName() );
-        climbingRoadDTO.setDescription(climbingRoad.getDescription() != null ? climbingRoad.getDescription() : climbingRoadDTO.getDescription());
-        climbingRoadDTO.setType(climbingRoad.getType() != null ? climbingRoad.getType() : climbingRoadDTO.getType() );
-        climbingRoadDTO.setNumber(climbingRoad.getNumber() != 0 ? climbingRoad.getNumber() : climbingRoadDTO.getNumber() );
-        climbingRoadDTO.setLetter(climbingRoad.getLetter() != ' ' ? climbingRoad.getLetter() : climbingRoadDTO.getLetter() );
-        climbingRoadDTO.setSymbol(climbingRoad.getSymbol() != ' ' ? climbingRoad.getSymbol() : climbingRoadDTO.getSymbol() );
-
-        return climbingRoadDTO;
-    }
 }
