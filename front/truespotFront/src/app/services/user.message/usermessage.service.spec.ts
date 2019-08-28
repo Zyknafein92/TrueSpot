@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { UsermessageService } from './usermessage.service';
+import {UsermessageService} from './usermessage.service';
 
 describe('UsermessageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

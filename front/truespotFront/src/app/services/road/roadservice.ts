@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Form, FormGroup} from "@angular/forms";
-import {Observable, pipe} from "rxjs";
+import {FormGroup} from "@angular/forms";
+import {Observable} from "rxjs";
 import {ClimbingRoad} from "../../../model/climbingRoad";
-import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'

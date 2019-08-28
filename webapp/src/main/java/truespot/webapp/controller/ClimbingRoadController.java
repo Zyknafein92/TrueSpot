@@ -3,8 +3,8 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.ClimbingRoadManager;
-import truespot.model.ClimbingRoad;
 import truespot.business.dto.ClimbingRoadDTO;
+import truespot.model.ClimbingRoad;
 
 import java.util.List;
 

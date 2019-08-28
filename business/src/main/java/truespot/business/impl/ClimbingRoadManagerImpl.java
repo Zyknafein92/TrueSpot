@@ -7,9 +7,7 @@ import truespot.business.dto.mapper.ClimbingRoadMapper;
 import truespot.model.Area;
 import truespot.model.ClimbingRoad;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClimbingRoadManagerImpl extends BusinessManagerImpl implements ClimbingRoadManager {

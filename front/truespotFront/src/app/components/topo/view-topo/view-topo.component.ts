@@ -1,5 +1,5 @@
-import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnChanges, OnInit} from '@angular/core';
-import {ActivatedRoute, Route, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {TopoService} from "../../../services/topo/topo.service";
 import {Topo} from "../../../../model/topo";
 import {RoadService} from "../../../services/road/roadservice";
@@ -11,7 +11,6 @@ import {DepartmentService} from "../../../services/department/department.service
 import {Department} from "../../../../model/department";
 import {ShareService} from "../../../services/share/share.service";
 import {UsermessageService} from "../../../services/user.message/usermessage.service";
-
 
 
 @Component({

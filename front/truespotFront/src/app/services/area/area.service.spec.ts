@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { AreaService } from './area.service';
+import {AreaService} from './area.service';
 
 describe('AreaServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

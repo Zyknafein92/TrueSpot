@@ -4,16 +4,11 @@ package truespot.business.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import truespot.business.contract.UserMessageManager;
-import truespot.business.dto.UserMessageDTO;
 import truespot.consumer.implement.UserMessageRepository;
-import truespot.model.Topo;
-import truespot.model.User;
 import truespot.model.UserMessage;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class UserMessageManagerImpl extends BusinessManagerImpl implements UserMessageManager {

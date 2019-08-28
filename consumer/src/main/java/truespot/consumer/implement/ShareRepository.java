@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import truespot.model.Share;
-import truespot.model.Topo;
-import truespot.model.User;
 
 @Repository
 public interface ShareRepository extends JpaRepository<Share, Long> {

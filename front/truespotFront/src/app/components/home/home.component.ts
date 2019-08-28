@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "../../services/auth/token-storage.service";
 import {DepartmentService} from "../../services/department/department.service";
 import {Department} from "../../../model/department";
@@ -6,7 +6,6 @@ import {Topo} from "../../../model/topo";
 import {TopoService} from "../../services/topo/topo.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-
 
 
 @Component({

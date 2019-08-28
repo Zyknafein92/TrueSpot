@@ -1,11 +1,9 @@
 package truespot.business.contract;
 
-import org.springframework.data.repository.query.Param;
 import truespot.business.dto.AreaDTO;
 import truespot.model.Area;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface AreaManager {
 

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Property } from './property';
+import {Property} from './property';
 
 
 export interface Response {

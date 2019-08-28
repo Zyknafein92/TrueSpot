@@ -2,16 +2,11 @@ package truespot.business.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import truespot.model.Role;
-import truespot.model.RoleName;
-import truespot.model.User;
 
-
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

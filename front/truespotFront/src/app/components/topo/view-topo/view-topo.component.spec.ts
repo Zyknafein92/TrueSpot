@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ViewTopoComponent } from './view-topo.component';
+import {ViewTopoComponent} from './view-topo.component';
 
 describe('ViewTopoComponent', () => {
   let component: ViewTopoComponent;

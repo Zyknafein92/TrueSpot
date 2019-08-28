@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import truespot.business.contract.ShareManager;
 import truespot.business.contract.TopoManager;
 import truespot.business.dto.ShareDTO;
-import truespot.business.dto.mapper.TopoMapper;
 import truespot.model.Share;
 import truespot.model.Topo;
 import truespot.model.User;

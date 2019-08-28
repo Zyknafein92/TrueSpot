@@ -11,7 +11,10 @@ import truespot.business.dto.mapper.TopoMapper;
 import truespot.business.dto.mapper.UserMapper;
 import truespot.model.*;
 
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 
 
 @Service

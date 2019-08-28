@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CreateAreaComponent } from './create-area.component';
+import {CreateAreaComponent} from './create-area.component';
 
 describe('CreateAreaComponent', () => {
   let component: CreateAreaComponent;

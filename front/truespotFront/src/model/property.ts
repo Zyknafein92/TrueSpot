@@ -9,17 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Xml } from './xml';
+import {Xml} from './xml';
 
 
 export interface Property {
     readOnly?: boolean;
     type?: string;
-    description?: string;
     format?: string;
+    description?: string;
     position?: number;
-    title?: string;
     vendorExtensions?: { [key: string]: any; };
+    title?: string;
     xml?: Xml;
     example?: any;
     allowEmptyValue?: boolean;

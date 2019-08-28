@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Share} from "../../../model/share";

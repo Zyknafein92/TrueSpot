@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../../model/user";
-import {Role} from "../../../../model/role";
 
 @Component({
   selector: 'app-view-list-users',

@@ -1,11 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Area} from "../../../../model/area";
 import {AreaService} from "../../../services/area/area.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PushRouteService} from "../../../services/pushRoute/push-route.service";
-
-
 
 
 @Component({

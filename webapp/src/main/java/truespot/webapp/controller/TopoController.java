@@ -3,9 +3,9 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.TopoManager;
+import truespot.business.dto.TopoDTO;
 import truespot.business.dto.TopoDTOContext;
 import truespot.model.Topo;
-import truespot.business.dto.TopoDTO;
 
 import java.util.List;
 

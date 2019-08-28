@@ -3,8 +3,6 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.UserMessageManager;
-import truespot.business.dto.UserMessageDTO;
-import truespot.model.Share;
 import truespot.model.UserMessage;
 
 import java.util.List;

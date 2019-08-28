@@ -3,12 +3,10 @@ package truespot.webapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.AreaManager;
-import truespot.business.dto.mapper.AreaMapper;
-import truespot.model.Area;
 import truespot.business.dto.AreaDTO;
+import truespot.model.Area;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController

@@ -11,9 +11,7 @@ import truespot.model.Area;
 import truespot.model.ClimbingRoad;
 import truespot.model.Topo;
 
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AreaManagerImpl extends BusinessManagerImpl implements AreaManager {

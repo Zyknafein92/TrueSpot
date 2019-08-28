@@ -3,9 +3,7 @@ package truespot.business.contract;
 
 import truespot.business.dto.TopoDTO;
 import truespot.business.dto.TopoDTOContext;
-import truespot.model.Department;
 import truespot.model.Topo;
-import truespot.model.User;
 
 import java.util.List;
 

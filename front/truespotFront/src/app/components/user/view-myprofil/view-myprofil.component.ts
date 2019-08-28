@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../../model/user";
 import {TokenStorageService} from "../../../services/auth/token-storage.service";
 import {Department} from "../../../../model/department";
 import {Router} from "@angular/router";
-
 
 
 @Component({

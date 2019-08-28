@@ -1,6 +1,5 @@
 package truespot.business.contract;
 
-import truespot.business.dto.UserMessageDTO;
 import truespot.model.UserMessage;
 
 import java.util.List;

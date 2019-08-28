@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UpdateUserComponent } from './update-user.component';
+import {UpdateUserComponent} from './update-user.component';
 
 describe('UpdateUserComponent', () => {
   let component: UpdateUserComponent;

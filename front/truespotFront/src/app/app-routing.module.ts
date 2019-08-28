@@ -20,7 +20,6 @@ import {ViewListUsersComponent} from "./components/user/view-list-users/view-lis
 import {AuthGuard} from "./auth.guard";
 
 
-
 const appRoutes: Routes = [
   {path: 'sign-in', component: SignInComponent},
   {path: 'logout', component: LogoutComponent},

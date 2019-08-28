@@ -10,11 +10,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import truespot.business.contract.UserManager;
-import truespot.model.User;
 import truespot.business.dto.UserDTO;
+import truespot.model.User;
 import truespot.webapp.security.jwt.JwtProvider;
 import truespot.webapp.security.jwt.JwtResponse;
-
 
 import java.util.List;
 

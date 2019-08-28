@@ -3,7 +3,6 @@ package truespot.consumer.contract;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import truespot.consumer.implement.*;
-import truespot.model.UserMessage;
 
 
 public interface DaoFactory {

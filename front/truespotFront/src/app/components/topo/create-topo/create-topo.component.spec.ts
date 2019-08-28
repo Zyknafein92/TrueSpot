@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CreateTopoComponent } from './create-topo.component';
+import {CreateTopoComponent} from './create-topo.component';
 
 describe('CreateTopoComponent', () => {
   let component: CreateTopoComponent;

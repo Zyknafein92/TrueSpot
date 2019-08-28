@@ -327,24 +327,24 @@
         "type" : {
           "type" : "string"
         },
-        "description" : {
+        "format" : {
           "type" : "string"
         },
-        "format" : {
+        "description" : {
           "type" : "string"
         },
         "position" : {
           "type" : "integer",
           "format" : "int32"
         },
-        "title" : {
-          "type" : "string"
-        },
         "vendorExtensions" : {
           "type" : "object",
           "additionalProperties" : {
             "type" : "object"
           }
+        },
+        "title" : {
+          "type" : "string"
         },
         "xml" : {
           "$ref" : "#/definitions/Xml"

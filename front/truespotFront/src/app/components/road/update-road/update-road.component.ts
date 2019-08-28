@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {RoadService} from "../../../services/road/roadservice";
-import {ActivatedRoute, Router} from "@angular/router";
 import {ClimbingRoad} from "../../../../model/climbingRoad";
 
 @Component({

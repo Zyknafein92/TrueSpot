@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { PushRouteService } from './push-route.service';
+import {PushRouteService} from './push-route.service';
 
 describe('PushRouteService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
