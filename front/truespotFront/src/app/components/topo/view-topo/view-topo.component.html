@@ -228,9 +228,9 @@
                   <div class="row justify-content-md-center">
                     <div class="btn-group " style="" role="group">
                       <button type="button" class="btn btn-info" data-toggle="modal" data-target="#updateMessage"
-                              *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+                              *ngIf="authorities =='ROLE_ADMIN' || message.user.pseudo == this.token.getPseudo()"
                               (click)="updateMessage(message.id)">Modifier</button>
-                      <button type="button"  class="btn btn-danger "aria-label="Left Align" *ngIf="authorities =='ROLE_ADMIN' || pseudo == topo.user.pseudo"
+                      <button type="button"  class="btn btn-danger "aria-label="Left Align" *ngIf="authorities =='ROLE_ADMIN' || message.user.pseudo == this.token.getPseudo()"
                               (click)="deleteMessage(message.id) ">Supprimer</button>
                     </div>
                   </div>

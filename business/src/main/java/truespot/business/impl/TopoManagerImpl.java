@@ -99,6 +99,7 @@ public class TopoManagerImpl extends BusinessManagerImpl implements TopoManager 
         UserDTO userDTO = UserMapper.objectToDTO(user);
         topoDTO.setUser(userDTO);
         topoDTO.getUser().setRoles(new HashSet<>());
+
         topoDTO.setDepartment(DepartmentMapper.objectToDTO(department));
         topoDTO.setDescription(topoDTOContext.getDescription());
         topoDTO.setNearestCity(topoDTOContext.getNearestCity());

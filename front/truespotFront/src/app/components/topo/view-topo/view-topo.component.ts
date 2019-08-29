@@ -208,6 +208,7 @@ export class ViewTopoComponent implements OnInit {
         console.log("error: ", err.error.message);
       };
   }
+
   // DEPARTMENT  //
 
   private initDepartmentList() {

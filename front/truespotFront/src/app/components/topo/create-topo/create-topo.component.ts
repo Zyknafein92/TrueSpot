@@ -38,7 +38,7 @@ export class CreateTopoComponent implements OnInit {
     this.topoService.saveTopo(this.forms)
       .subscribe(
         response => {
-          this.router.navigateByUrl("/topo/area/add-area/"+response.id)
+          this.router.navigateByUrl("/topo/area/add-area/"+response.id);
           console.log("response: ", response);
         },
         err => {

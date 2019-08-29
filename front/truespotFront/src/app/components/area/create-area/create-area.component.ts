@@ -31,7 +31,7 @@ export class CreateAreaComponent implements OnInit {
   }
 
   saveArea() {
-    console.log(this.forms.value)
+    console.log(this.forms.value);
     this.areaService.saveArea(this.forms)
       .subscribe(
         response => {
