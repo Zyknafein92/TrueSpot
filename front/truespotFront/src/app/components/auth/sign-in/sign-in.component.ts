@@ -49,7 +49,7 @@ export class SignInComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-        this.router.navigateByUrl("/");
+        this.router.navigateByUrl("/").then(()=> window.location.reload());
       },
       error => {
         console.log("errorerror:",error);
